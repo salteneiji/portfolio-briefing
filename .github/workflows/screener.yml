@@ -1,0 +1,20 @@
+name: Daily Screener Alert
+
+on:
+  schedule:
+    - cron: '15 4 * * 1-5'   # 8:15 AM UAE time (UTC+4), Mon–Fri
+  workflow_dispatch:           # allows manual trigger from GitHub
+
+jobs:
+  screener-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run screener alert
+        run: python screener_alert.py
