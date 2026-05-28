@@ -16,5 +16,8 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: pip install requests
+
       - name: Run screener alert
         run: python screener_alert.py
