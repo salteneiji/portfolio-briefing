@@ -678,54 +678,70 @@ const UNIVERSE = {
 
 // ── FETCH FUNDAMENTALS ────────────────────────────────────────────────────
 async function fetchFundamentals(ticker){
-  const url  = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=defaultKeyStatistics,financialData,assetProfile,earningsTrend,incomeStatementHistory`;
-  const data = await proxyFetch(url);
-  const res  = data?.quoteSummary?.result?.[0];
-  if(!res) throw new Error('No data');
+  let ks={}, fd={}, ap={}, et=[], isArr=[];
 
-  const ks = res.defaultKeyStatistics || {};
-  const fd = res.financialData         || {};
-  const ap = res.assetProfile          || {};
-  const et = res.earningsTrend?.trend  || [];
-  const is = res.incomeStatementHistory?.incomeStatementHistory || [];
+  // Try quoteSummary — query2 (less restricted) then query1
+  const mods = 'defaultKeyStatistics,financialData,assetProfile,earningsTrend,incomeStatementHistory';
+  for(const host of ['query2','query1']){
+    try{
+      const d = await proxyFetch(`https://${host}.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=${mods}`);
+      const r = d?.quoteSummary?.result?.[0];
+      if(r){
+        ks    = r.defaultKeyStatistics                          || {};
+        fd    = r.financialData                                 || {};
+        ap    = r.assetProfile                                  || {};
+        et    = r.earningsTrend?.trend                          || [];
+        isArr = r.incomeStatementHistory?.incomeStatementHistory|| [];
+        break;
+      }
+    }catch(e){}
+  }
 
-  // Pull EPS and Revenue arrays (most recent first)
-  const epsArr = is.map(s=>s.basicEPS?.raw ?? s.dilutedEPS?.raw).filter(e=>e!=null);
-  const revArr = is.map(s=>s.totalRevenue?.raw).filter(r=>r!=null);
+  // If quoteSummary completely failed, try v7/finance/quote for basic metrics
+  if(!Object.keys(ks).length && !Object.keys(fd).length){
+    try{
+      const d = await proxyFetch(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`);
+      const q = d?.quoteResponse?.result?.[0]||{};
+      ks = { pegRatio:{raw:q.pegRatio??null}, trailingPE:{raw:q.trailingPE??null}, shortName:q.shortName||ticker };
+      fd = { debtToEquity:{raw:q.debtToEquity??null}, marketCap:{raw:q.marketCap??null}, returnOnEquity:{raw:q.returnOnEquity??null} };
+      ap = { longName:q.longName||q.shortName||ticker, sector:q.sector||'—', industry:q.industry||'—' };
+    }catch(e){}
+  }
 
-  function cagr(end,start,yrs){ if(!end||!start||start===0||yrs<=0) return null; return (Math.pow(Math.abs(end/start),1/yrs)-1)*100*(end<0||start<0?-1:1); }
+  // CAGR from income statement history
+  const epsArr = isArr.map(s=>s.basicEPS?.raw??s.dilutedEPS?.raw).filter(e=>e!=null);
+  const revArr = isArr.map(s=>s.totalRevenue?.raw).filter(r=>r!=null);
+  function cagr(end,start,yrs){ if(!end||!start||start===0||yrs<=0)return null; return (Math.pow(Math.abs(end/start),1/yrs)-1)*100*(end<0&&start>0?-1:1); }
+  const epsGrowth3Y = epsArr.length>=4 ? cagr(epsArr[0],epsArr[3],3) : null;
+  const epsGrowth5Y = epsArr.length>=6 ? cagr(epsArr[0],epsArr[5],5) : null;
+  const revGrowth3Y = revArr.length>=4 ? cagr(revArr[0],revArr[3],3) : null;
+  const revGrowth5Y = revArr.length>=6 ? cagr(revArr[0],revArr[5],5) : null;
+  const next5Y      = et.find(t=>t.period==='+5y');
+  const epsNext5Y   = next5Y ? (next5Y.earningsEstimate?.growth?.raw??null)*100 : null;
 
-  const epsGrowth3Y  = epsArr.length>=4  ? cagr(epsArr[0],epsArr[3],3)  : null;
-  const epsGrowth5Y  = epsArr.length>=6  ? cagr(epsArr[0],epsArr[5],5)  : null;
-  const revGrowth3Y  = revArr.length>=4  ? cagr(revArr[0],revArr[3],3)  : null;
-  const revGrowth5Y  = revArr.length>=6  ? cagr(revArr[0],revArr[5],5)  : null;
-  const next5Y       = et.find(t=>t.period==='+5y');
-  const epsNext5Y    = next5Y ? (next5Y.earningsEstimate?.growth?.raw||null)*100 : null;
-
-  // Price info
-  const chartUrl  = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
-  const chartData = await proxyFetch(chartUrl);
+  // Price from v8/chart (always works)
+  const chartData = await proxyFetch(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`);
   const cm        = chartData?.chart?.result?.[0]?.meta||{};
   const closes    = chartData?.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(c=>c!=null)||[];
   const price     = cm.regularMarketPrice||cm.chartPreviousClose;
   const prev      = cm.chartPreviousClose||cm.previousClose||(closes.length>=2?closes[closes.length-2]:price);
+  if(!price) throw new Error(`No price for ${ticker}`);
+
+  // Look up sector from universe if API didn't return one
+  let sector = ap.sector||'—';
+  if(sector==='—'){ for(const [s,arr] of Object.entries(UNIVERSE)){ if(arr.includes(ticker)){ sector=s; break; } } }
 
   return {
     ticker,
-    name:       ap.longName || ks.shortName || ticker,
-    sector:     ap.sector   || '—',
-    industry:   ap.industry || '—',
-    price,
-    prev:       prev||price,
-    peg:        typeof ks.pegRatio?.raw==='number' ? ks.pegRatio.raw : null,
-    debtEquity: typeof fd.debtToEquity?.raw==='number' ? fd.debtToEquity.raw/100 : null,
-    epsGrowth3Y,
-    epsGrowth5Y,
-    revGrowth3Y,
-    revGrowth5Y,
-    epsNext5Y,
-    mktCap:     ks.enterpriseValue?.raw || fd.marketCap?.raw || null,
-    pe:         ks.trailingPE?.raw || null,
+    name:       ap.longName||ks.shortName||ticker,
+    sector,
+    industry:   ap.industry||'—',
+    price, prev:prev||price,
+    peg:        typeof ks.pegRatio?.raw==='number'      ? ks.pegRatio.raw      : null,
+    debtEquity: typeof fd.debtToEquity?.raw==='number'  ? fd.debtToEquity.raw/100 : null,
+    epsGrowth3Y, epsGrowth5Y, revGrowth3Y, revGrowth5Y, epsNext5Y,
+    mktCap:     ks.enterpriseValue?.raw||fd.marketCap?.raw||null,
+    pe:         ks.trailingPE?.raw||null,
     roe:        typeof fd.returnOnEquity?.raw==='number' ? fd.returnOnEquity.raw*100 : null,
   };
 }
@@ -767,24 +783,31 @@ async function runFundScreener(){
   document.getElementById('scr-hint').textContent = '';
 
   const results = [];
-  let done = 0;
-  await Promise.all(tickers.map(async t => {
-    try{
-      const d = await fetchFundamentals(t);
-      // Apply filters
-      if(pegMax  != null && (d.peg        == null || d.peg        > pegMax))  return;
-      if(deMax   != null && (d.debtEquity == null || d.debtEquity > deMax))   return;
-      if(eps3Min != null && (d.epsGrowth3Y== null || d.epsGrowth3Y< eps3Min)) return;
-      if(eps5Min != null && (d.epsGrowth5Y== null || d.epsGrowth5Y< eps5Min)) return;
-      if(rev3Min != null && (d.revGrowth3Y== null || d.revGrowth3Y< rev3Min)) return;
-      if(rev5Min != null && (d.revGrowth5Y== null || d.revGrowth5Y< rev5Min)) return;
-      if(nxtMin  != null && (d.epsNext5Y  == null || d.epsNext5Y  < nxtMin))  return;
-      results.push(d);
-    }catch(e){}
-    done++;
-    const bar = document.getElementById('scr-bar');
-    if(bar) bar.style.width = `${(done/tickers.length)*100}%`;
-  }));
+  let done = 0, failed = 0;
+
+  // Batched execution (4 at a time) to avoid proxy rate-limiting
+  for(let i=0; i<tickers.length; i+=4){
+    const batch = tickers.slice(i, i+4);
+    await Promise.all(batch.map(async t => {
+      try{
+        const d = await fetchFundamentals(t);
+        // Apply filters (skip filter if data unavailable — show with "—")
+        if(pegMax  != null && d.peg        != null && d.peg        > pegMax)  return;
+        if(deMax   != null && d.debtEquity != null && d.debtEquity > deMax)   return;
+        if(eps3Min != null && d.epsGrowth3Y!= null && d.epsGrowth3Y< eps3Min) return;
+        if(eps5Min != null && d.epsGrowth5Y!= null && d.epsGrowth5Y< eps5Min) return;
+        if(rev3Min != null && d.revGrowth3Y!= null && d.revGrowth3Y< rev3Min) return;
+        if(rev5Min != null && d.revGrowth5Y!= null && d.revGrowth5Y< rev5Min) return;
+        if(nxtMin  != null && d.epsNext5Y  != null && d.epsNext5Y  < nxtMin)  return;
+        results.push(d);
+      }catch(e){ failed++; }
+      done++;
+      const bar = document.getElementById('scr-bar');
+      if(bar) bar.style.width = `${(done/tickers.length)*100}%`;
+      const hint = document.getElementById('scr-hint');
+      if(hint) hint.textContent = `${done}/${tickers.length} fetched${failed?' · '+failed+' failed':''}`;
+    }));
+  }
 
   if(!results.length){ el.innerHTML='<div class="scr-no-match">No stocks matched your criteria. Try relaxing the filters.</div>'; return; }
 
