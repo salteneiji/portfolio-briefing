@@ -222,7 +222,18 @@ const PORTFOLIO = [
   {ticker:"SMH",  name:"VanEck Semi ETF", shares:271.50/595.94,  avgPrice:595.94},
 ];
 const COLORS = ["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#10b981","#ef4444"];
-const PROXY  = "https://api.allorigins.win/get?url=";
+// Multiple proxies — tries each in order until one works
+async function proxyFetch(targetUrl) {
+  const strategies = [
+    async u => { const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`); const d = await r.json(); return JSON.parse(d.contents); },
+    async u => { const r = await fetch(`https://corsproxy.io/?url=${encodeURIComponent(u)}`); return r.json(); },
+    async u => { const r = await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`); return r.json(); },
+  ];
+  for (const fn of strategies) {
+    try { return await fn(targetUrl); } catch(e) { /* try next */ }
+  }
+  throw new Error('All proxies failed');
+}
 
 // ── TABS ─────────────────────────────────────────────────────────────────
 function showTab(name){
@@ -235,25 +246,20 @@ function showTab(name){
 
 // ── FETCH HELPERS ─────────────────────────────────────────────────────────
 async function fetchPrice(ticker){
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
-  const res  = await fetch(PROXY + encodeURIComponent(url));
-  const wrap = await res.json();
-  const data = JSON.parse(wrap.contents);
+  const url    = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
+  const data   = await proxyFetch(url);
   const result = data.chart.result[0];
   const meta   = result.meta;
   const closes = result.indicators?.quote?.[0]?.close?.filter(c => c != null) || [];
   const price  = meta.regularMarketPrice || meta.chartPreviousClose;
-  // Use chartPreviousClose first (most reliable), then fall back to second-to-last historical close
   const prev   = meta.chartPreviousClose || meta.previousClose ||
                  (closes.length >= 2 ? closes[closes.length - 2] : price);
   return {price, prev: prev || price};
 }
 
 async function fetchNews(ticker){
-  const url = `https://query2.finance.yahoo.com/v1/finance/search?q=${ticker}&newsCount=4&enableFuzzyQuery=false`;
-  const res  = await fetch(PROXY + encodeURIComponent(url));
-  const wrap = await res.json();
-  const data = JSON.parse(wrap.contents);
+  const url  = `https://query2.finance.yahoo.com/v1/finance/search?q=${ticker}&newsCount=4&enableFuzzyQuery=false`;
+  const data = await proxyFetch(url);
   return (data.news||[]).slice(0,4);
 }
 
