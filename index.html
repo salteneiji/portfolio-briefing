@@ -235,13 +235,20 @@ function showTab(name){
 
 // ── FETCH HELPERS ─────────────────────────────────────────────────────────
 async function fetchPrice(ticker){
-  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketChange,regularMarketChangePercent,shortName`;
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
   const res = await fetch(PROXY+encodeURIComponent(url));
   const data = await res.json();
-  const q = data.quoteResponse.result[0];
-  const price = q.regularMarketPrice;
-  const prev  = q.regularMarketPreviousClose || price;
-  return {price, prev};
+  const meta   = data.chart.result[0].meta;
+  const closes = data.chart.result[0].indicators?.quote?.[0]?.close || [];
+  const price  = meta.regularMarketPrice || meta.chartPreviousClose;
+  // Try multiple sources for previous close
+  let prev = meta.previousClose || meta.chartPreviousClose;
+  // If prev is 0 or same as price, get yesterday's close from historical data
+  if(!prev || prev === price) {
+    const validCloses = closes.filter(c => c != null);
+    prev = validCloses.length >= 2 ? validCloses[validCloses.length - 2] : price;
+  }
+  return {price, prev: prev || price};
 }
 
 async function fetchNews(ticker){
