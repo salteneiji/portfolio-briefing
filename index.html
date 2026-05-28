@@ -235,11 +235,13 @@ function showTab(name){
 
 // ── FETCH HELPERS ─────────────────────────────────────────────────────────
 async function fetchPrice(ticker){
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`;
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}&fields=regularMarketPrice,regularMarketPreviousClose,regularMarketChange,regularMarketChangePercent,shortName`;
   const res = await fetch(PROXY+encodeURIComponent(url));
   const data = await res.json();
-  const meta = data.chart.result[0].meta;
-  return {price:meta.regularMarketPrice||meta.previousClose, prev:meta.previousClose};
+  const q = data.quoteResponse.result[0];
+  const price = q.regularMarketPrice;
+  const prev  = q.regularMarketPreviousClose || price;
+  return {price, prev};
 }
 
 async function fetchNews(ticker){
@@ -294,7 +296,7 @@ async function loadPrices(){
       const pl=value-cost, plPct=(pl/cost)*100;
       const dayChg=p.price-p.prev, dayPct=(dayChg/p.prev)*100, dayVal=p.shares*dayChg;
       totalCost+=cost; totalValue+=value; totalDay+=dayVal;
-      const dc=dayChg>=0?'up':'down';
+      const dc=dayChg>0?'up':dayChg<0?'down':'flat';
       document.getElementById(`price-${p.ticker}`).textContent=`$${fmt(p.price)}`;
       document.getElementById(`day-${p.ticker}`).className=`day-change ${dc}`;
       document.getElementById(`day-${p.ticker}`).textContent=`${sign(dayChg)}${fmt(Math.abs(dayPct))}% today`;
