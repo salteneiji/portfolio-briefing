@@ -98,11 +98,16 @@ input,select,button{font-family:inherit}
 /* SCREENER */
 .scr-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
 .scr-panel-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:16px}
-.scr-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px}
-.scr-filter-group label{display:block;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
-.scr-sel,.scr-inp{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--text);padding:8px 10px;font-size:.82rem;outline:none;transition:border-color .2s}
-.scr-sel:focus,.scr-inp:focus{border-color:var(--blue)}
-.scr-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.scr-filters-v2{display:flex;flex-direction:column;gap:14px;margin-bottom:16px}
+.scr-filter-group{display:flex;flex-direction:column;gap:6px}
+.scr-filter-group label{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.scr-sel{width:260px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--text);padding:8px 10px;font-size:.82rem;outline:none;transition:border-color .2s}
+.scr-sel:focus{border-color:var(--blue)}
+.btn-group{display:flex;flex-wrap:wrap;gap:6px}
+.btn-pill{background:var(--surface);border:1px solid var(--border2);border-radius:20px;color:var(--muted2);padding:5px 13px;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap}
+.btn-pill:hover{border-color:var(--blue);color:var(--text)}
+.btn-pill.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.scr-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
 .scr-hint{font-size:.75rem;color:var(--muted)}
 .scr-lookup{display:flex;gap:10px;margin-bottom:14px}
 .search-input{flex:1;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:10px 16px;font-size:.9rem;outline:none;transition:border-color .2s}
@@ -304,52 +309,99 @@ footer{text-align:center;padding:16px;font-size:.7rem;color:var(--muted);border-
     <!-- Filter Panel -->
     <div class="scr-panel">
       <div class="scr-panel-title">🔬 Fundamental Screener</div>
-      <div class="scr-filters">
+      <div class="scr-filters-v2">
+
         <div class="scr-filter-group">
           <label>Sector</label>
           <select class="scr-sel" id="f-sector">
             <option value="">All Sectors</option>
-            <option>Technology</option>
-            <option>Healthcare</option>
-            <option>Financials</option>
-            <option>Energy</option>
-            <option>Consumer Discretionary</option>
-            <option>Consumer Staples</option>
-            <option>Industrials</option>
-            <option>Communication Services</option>
-            <option>Utilities</option>
-            <option>Real Estate</option>
-            <option>Materials</option>
+            <option>Technology</option><option>Healthcare</option>
+            <option>Financials</option><option>Energy</option>
+            <option>Consumer Discretionary</option><option>Consumer Staples</option>
+            <option>Industrials</option><option>Communication Services</option>
+            <option>Utilities</option><option>Real Estate</option><option>Materials</option>
           </select>
         </div>
+
         <div class="scr-filter-group">
-          <label>PEG Ratio (max)</label>
-          <input class="scr-inp" id="f-peg" type="number" placeholder="e.g. 2.0" step="0.1"/>
+          <label>PEG Ratio — max</label>
+          <div class="btn-group" id="f-peg">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="1" onclick="selectPill(this)">&lt; 1</button>
+            <button class="btn-pill" data-val="1.5" onclick="selectPill(this)">&lt; 1.5</button>
+            <button class="btn-pill" data-val="2" onclick="selectPill(this)">&lt; 2</button>
+            <button class="btn-pill" data-val="3" onclick="selectPill(this)">&lt; 3</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>Debt / Equity (max)</label>
-          <input class="scr-inp" id="f-de" type="number" placeholder="e.g. 1.5" step="0.1"/>
+          <label>Debt / Equity — max</label>
+          <div class="btn-group" id="f-de">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="0.5" onclick="selectPill(this)">&lt; 0.5</button>
+            <button class="btn-pill" data-val="1" onclick="selectPill(this)">&lt; 1</button>
+            <button class="btn-pill" data-val="1.5" onclick="selectPill(this)">&lt; 1.5</button>
+            <button class="btn-pill" data-val="2" onclick="selectPill(this)">&lt; 2</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>EPS Growth 3Y (min %)</label>
-          <input class="scr-inp" id="f-eps3" type="number" placeholder="e.g. 10" step="1"/>
+          <label>EPS Growth 3Y — min</label>
+          <div class="btn-group" id="f-eps3">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="5" onclick="selectPill(this)">&gt; 5%</button>
+            <button class="btn-pill" data-val="10" onclick="selectPill(this)">&gt; 10%</button>
+            <button class="btn-pill" data-val="15" onclick="selectPill(this)">&gt; 15%</button>
+            <button class="btn-pill" data-val="20" onclick="selectPill(this)">&gt; 20%</button>
+            <button class="btn-pill" data-val="30" onclick="selectPill(this)">&gt; 30%</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>EPS Growth 5Y (min %)</label>
-          <input class="scr-inp" id="f-eps5" type="number" placeholder="e.g. 10" step="1"/>
+          <label>EPS Growth 5Y — min</label>
+          <div class="btn-group" id="f-eps5">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="5" onclick="selectPill(this)">&gt; 5%</button>
+            <button class="btn-pill" data-val="10" onclick="selectPill(this)">&gt; 10%</button>
+            <button class="btn-pill" data-val="15" onclick="selectPill(this)">&gt; 15%</button>
+            <button class="btn-pill" data-val="20" onclick="selectPill(this)">&gt; 20%</button>
+            <button class="btn-pill" data-val="30" onclick="selectPill(this)">&gt; 30%</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>Sales Growth 3Y (min %)</label>
-          <input class="scr-inp" id="f-rev3" type="number" placeholder="e.g. 5" step="1"/>
+          <label>Sales Growth 3Y — min</label>
+          <div class="btn-group" id="f-rev3">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="5" onclick="selectPill(this)">&gt; 5%</button>
+            <button class="btn-pill" data-val="10" onclick="selectPill(this)">&gt; 10%</button>
+            <button class="btn-pill" data-val="15" onclick="selectPill(this)">&gt; 15%</button>
+            <button class="btn-pill" data-val="20" onclick="selectPill(this)">&gt; 20%</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>Sales Growth 5Y (min %)</label>
-          <input class="scr-inp" id="f-rev5" type="number" placeholder="e.g. 5" step="1"/>
+          <label>Sales Growth 5Y — min</label>
+          <div class="btn-group" id="f-rev5">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="5" onclick="selectPill(this)">&gt; 5%</button>
+            <button class="btn-pill" data-val="10" onclick="selectPill(this)">&gt; 10%</button>
+            <button class="btn-pill" data-val="15" onclick="selectPill(this)">&gt; 15%</button>
+            <button class="btn-pill" data-val="20" onclick="selectPill(this)">&gt; 20%</button>
+          </div>
         </div>
+
         <div class="scr-filter-group">
-          <label>EPS Growth Next 5Y (min %)</label>
-          <input class="scr-inp" id="f-epsnxt" type="number" placeholder="e.g. 10" step="1"/>
+          <label>EPS Growth Next 5Y — min</label>
+          <div class="btn-group" id="f-epsnxt">
+            <button class="btn-pill active" data-val="" onclick="selectPill(this)">Any</button>
+            <button class="btn-pill" data-val="5" onclick="selectPill(this)">&gt; 5%</button>
+            <button class="btn-pill" data-val="10" onclick="selectPill(this)">&gt; 10%</button>
+            <button class="btn-pill" data-val="15" onclick="selectPill(this)">&gt; 15%</button>
+            <button class="btn-pill" data-val="20" onclick="selectPill(this)">&gt; 20%</button>
+          </div>
         </div>
+
       </div>
       <div class="scr-actions">
         <button class="btn btn-primary" onclick="runFundScreener()">🔍 Run Screener</button>
@@ -678,16 +730,28 @@ async function fetchFundamentals(ticker){
   };
 }
 
+// ── PILL SELECTOR HELPERS ─────────────────────────────────────────────────
+function selectPill(btn){
+  const group = btn.closest('.btn-group');
+  group.querySelectorAll('.btn-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function getPillVal(id){
+  const active = document.querySelector(`#${id} .btn-pill.active`);
+  const v = active ? active.dataset.val : '';
+  return v === '' ? null : parseFloat(v);
+}
+
 // ── RUN FUNDAMENTAL SCREENER ──────────────────────────────────────────────
 async function runFundScreener(){
   const sector  = document.getElementById('f-sector').value;
-  const pegMax  = parseFloat(document.getElementById('f-peg').value)    || null;
-  const deMax   = parseFloat(document.getElementById('f-de').value)     || null;
-  const eps3Min = parseFloat(document.getElementById('f-eps3').value)   || null;
-  const eps5Min = parseFloat(document.getElementById('f-eps5').value)   || null;
-  const rev3Min = parseFloat(document.getElementById('f-rev3').value)   || null;
-  const rev5Min = parseFloat(document.getElementById('f-rev5').value)   || null;
-  const nxtMin  = parseFloat(document.getElementById('f-epsnxt').value) || null;
+  const pegMax  = getPillVal('f-peg');
+  const deMax   = getPillVal('f-de');
+  const eps3Min = getPillVal('f-eps3');
+  const eps5Min = getPillVal('f-eps5');
+  const rev3Min = getPillVal('f-rev3');
+  const rev5Min = getPillVal('f-rev5');
+  const nxtMin  = getPillVal('f-epsnxt');
 
   // Build universe to query
   let tickers = [];
@@ -765,8 +829,13 @@ async function runFundScreener(){
 }
 
 function clearFilters(){
-  ['f-sector','f-peg','f-de','f-eps3','f-eps5','f-rev3','f-rev5','f-epsnxt'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
+  document.getElementById('f-sector').value = '';
+  ['f-peg','f-de','f-eps3','f-eps5','f-rev3','f-rev5','f-epsnxt'].forEach(id=>{
+    const group = document.getElementById(id);
+    if(!group) return;
+    group.querySelectorAll('.btn-pill').forEach(b=>b.classList.remove('active'));
+    const first = group.querySelector('.btn-pill[data-val=""]');
+    if(first) first.classList.add('active');
   });
   document.getElementById('scr-hint').textContent='';
 }
