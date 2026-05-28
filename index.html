@@ -222,7 +222,7 @@ const PORTFOLIO = [
   {ticker:"SMH",  name:"VanEck Semi ETF", shares:271.50/595.94,  avgPrice:595.94},
 ];
 const COLORS = ["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#10b981","#ef4444"];
-const PROXY  = "https://corsproxy.io/?url=";
+const PROXY  = "https://api.allorigins.win/get?url=";
 
 // ── TABS ─────────────────────────────────────────────────────────────────
 function showTab(name){
@@ -236,25 +236,24 @@ function showTab(name){
 // ── FETCH HELPERS ─────────────────────────────────────────────────────────
 async function fetchPrice(ticker){
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
-  const res = await fetch(PROXY+encodeURIComponent(url));
-  const data = await res.json();
-  const meta   = data.chart.result[0].meta;
-  const closes = data.chart.result[0].indicators?.quote?.[0]?.close || [];
+  const res  = await fetch(PROXY + encodeURIComponent(url));
+  const wrap = await res.json();
+  const data = JSON.parse(wrap.contents);
+  const result = data.chart.result[0];
+  const meta   = result.meta;
+  const closes = result.indicators?.quote?.[0]?.close?.filter(c => c != null) || [];
   const price  = meta.regularMarketPrice || meta.chartPreviousClose;
-  // Try multiple sources for previous close
-  let prev = meta.previousClose || meta.chartPreviousClose;
-  // If prev is 0 or same as price, get yesterday's close from historical data
-  if(!prev || prev === price) {
-    const validCloses = closes.filter(c => c != null);
-    prev = validCloses.length >= 2 ? validCloses[validCloses.length - 2] : price;
-  }
+  // Use chartPreviousClose first (most reliable), then fall back to second-to-last historical close
+  const prev   = meta.chartPreviousClose || meta.previousClose ||
+                 (closes.length >= 2 ? closes[closes.length - 2] : price);
   return {price, prev: prev || price};
 }
 
 async function fetchNews(ticker){
   const url = `https://query2.finance.yahoo.com/v1/finance/search?q=${ticker}&newsCount=4&enableFuzzyQuery=false`;
-  const res = await fetch(PROXY+encodeURIComponent(url));
-  const data = await res.json();
+  const res  = await fetch(PROXY + encodeURIComponent(url));
+  const wrap = await res.json();
+  const data = JSON.parse(wrap.contents);
   return (data.news||[]).slice(0,4);
 }
 
