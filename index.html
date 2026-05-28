@@ -96,25 +96,46 @@ input,select,button{font-family:inherit}
 .lval{font-size:.75rem;color:var(--muted)}
 
 /* SCREENER */
-.screener-search{display:flex;gap:10px;margin-bottom:20px}
+.scr-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+.scr-panel-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:16px}
+.scr-filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.scr-filter-group label{display:block;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.scr-sel,.scr-inp{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:8px;color:var(--text);padding:8px 10px;font-size:.82rem;outline:none;transition:border-color .2s}
+.scr-sel:focus,.scr-inp:focus{border-color:var(--blue)}
+.scr-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.scr-hint{font-size:.75rem;color:var(--muted)}
+.scr-lookup{display:flex;gap:10px;margin-bottom:14px}
 .search-input{flex:1;background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text);padding:10px 16px;font-size:.9rem;outline:none;transition:border-color .2s}
 .search-input:focus{border-color:var(--blue)}
-.screener-result{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.sr-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:12px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.sr-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);align-items:center;transition:background .15s}
-.sr-row:last-child{border-bottom:none}
-.sr-row:hover{background:rgba(255,255,255,.03)}
-@media(max-width:700px){.sr-header,.sr-row{grid-template-columns:2fr 1fr 1fr}}
-.sr-ticker-wrap .t{font-size:.92rem;font-weight:700;color:#fff}
-.sr-ticker-wrap .n{font-size:.72rem;color:var(--muted);margin-top:1px}
-.sr-price{font-size:.9rem;font-weight:600;color:#fff}
-.sr-chg{font-size:.82rem;font-weight:600}
-.sr-chg.up{color:var(--green)}.sr-chg.down{color:var(--red)}.sr-chg.flat{color:var(--muted)}
-.sr-meta{font-size:.8rem;color:var(--muted2)}
-.add-to-port{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:600;cursor:pointer;transition:background .2s}
+/* Results table */
+.scr-table{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow-x:auto}
+.scr-table table{width:100%;border-collapse:collapse;min-width:900px}
+.scr-table th{padding:10px 12px;text-align:left;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;background:var(--surface);border-bottom:1px solid var(--border);white-space:nowrap}
+.scr-table td{padding:12px;font-size:.82rem;border-bottom:1px solid var(--border);vertical-align:middle;white-space:nowrap}
+.scr-table tr:last-child td{border-bottom:none}
+.scr-table tr:hover td{background:rgba(255,255,255,.02)}
+.scr-ticker{font-weight:700;color:#fff;font-size:.9rem}
+.scr-name{font-size:.7rem;color:var(--muted);margin-top:1px}
+.scr-val{color:var(--muted2)}
+.scr-val.pos{color:var(--green)}.scr-val.neg{color:var(--red)}.scr-val.na{color:var(--border2)}
+.scr-badge{font-size:.7rem;padding:2px 8px;border-radius:20px;background:var(--surface);color:var(--muted2)}
+/* Single ticker card */
+.ticker-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;max-width:760px}
+.tc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.tc-title{font-size:1.3rem;font-weight:800;color:#fff}
+.tc-sub{font-size:.8rem;color:var(--muted);margin-top:3px}
+.tc-metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.tc-metric{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px}
+.tc-metric .m-lbl{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tc-metric .m-val{font-size:1.2rem;font-weight:700;color:#fff}
+.tc-metric .m-note{font-size:.7rem;color:var(--muted);margin-top:3px}
+.add-to-port{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:5px 14px;font-size:.75rem;font-weight:600;cursor:pointer}
 .add-to-port:hover{background:#2563eb}
-.screener-empty{padding:48px;text-align:center;color:var(--muted);font-size:.9rem}
+.screener-empty{padding:48px;text-align:center;color:var(--muted);font-size:.88rem;line-height:1.6}
 .screener-loading{padding:32px;text-align:center;color:var(--muted);font-size:.85rem}
+.scr-progress{width:100%;background:var(--border);border-radius:4px;height:4px;margin-top:12px;overflow:hidden}
+.scr-progress-bar{height:4px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:4px;transition:width .3s}
+.scr-no-match{padding:32px;text-align:center;color:var(--muted);font-size:.85rem}
 
 /* WATCHLIST */
 .wl-add{display:flex;gap:8px;margin-bottom:14px}
@@ -280,12 +301,69 @@ footer{text-align:center;padding:16px;font-size:.7rem;color:var(--muted);border-
 
   <!-- SCREENER -->
   <div class="tab-content" id="tab-screener">
-    <div class="screener-search">
-      <input class="search-input" id="screener-input" placeholder="Search ticker or company name (e.g. NVDA, Apple, semiconductors)..." onkeydown="if(event.key==='Enter')runScreener()"/>
-      <button class="btn btn-primary" onclick="runScreener()">Search</button>
+    <!-- Filter Panel -->
+    <div class="scr-panel">
+      <div class="scr-panel-title">🔬 Fundamental Screener</div>
+      <div class="scr-filters">
+        <div class="scr-filter-group">
+          <label>Sector</label>
+          <select class="scr-sel" id="f-sector">
+            <option value="">All Sectors</option>
+            <option>Technology</option>
+            <option>Healthcare</option>
+            <option>Financials</option>
+            <option>Energy</option>
+            <option>Consumer Discretionary</option>
+            <option>Consumer Staples</option>
+            <option>Industrials</option>
+            <option>Communication Services</option>
+            <option>Utilities</option>
+            <option>Real Estate</option>
+            <option>Materials</option>
+          </select>
+        </div>
+        <div class="scr-filter-group">
+          <label>PEG Ratio (max)</label>
+          <input class="scr-inp" id="f-peg" type="number" placeholder="e.g. 2.0" step="0.1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>Debt / Equity (max)</label>
+          <input class="scr-inp" id="f-de" type="number" placeholder="e.g. 1.5" step="0.1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>EPS Growth 3Y (min %)</label>
+          <input class="scr-inp" id="f-eps3" type="number" placeholder="e.g. 10" step="1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>EPS Growth 5Y (min %)</label>
+          <input class="scr-inp" id="f-eps5" type="number" placeholder="e.g. 10" step="1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>Sales Growth 3Y (min %)</label>
+          <input class="scr-inp" id="f-rev3" type="number" placeholder="e.g. 5" step="1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>Sales Growth 5Y (min %)</label>
+          <input class="scr-inp" id="f-rev5" type="number" placeholder="e.g. 5" step="1"/>
+        </div>
+        <div class="scr-filter-group">
+          <label>EPS Growth Next 5Y (min %)</label>
+          <input class="scr-inp" id="f-epsnxt" type="number" placeholder="e.g. 10" step="1"/>
+        </div>
+      </div>
+      <div class="scr-actions">
+        <button class="btn btn-primary" onclick="runFundScreener()">🔍 Run Screener</button>
+        <button class="btn btn-ghost btn-sm" onclick="clearFilters()">Clear Filters</button>
+        <span class="scr-hint" id="scr-hint"></span>
+      </div>
+    </div>
+    <!-- Single Ticker Lookup -->
+    <div class="scr-lookup">
+      <input class="search-input" id="screener-input" placeholder="Or look up a single ticker (e.g. NVDA)..." onkeydown="if(event.key==='Enter')lookupTicker()" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"/>
+      <button class="btn btn-ghost" onclick="lookupTicker()">Look Up</button>
     </div>
     <div id="screener-results">
-      <div class="screener-empty">Search for any stock, ETF, or crypto above to see key metrics and add to your portfolio.</div>
+      <div class="screener-empty">Set filters above and click <strong>Run Screener</strong>, or look up a single ticker for a full fundamental breakdown.</div>
     </div>
   </div>
 
@@ -531,43 +609,217 @@ function drawPie(slices){
     </div>`).join('');
 }
 
-// ── SCREENER ──────────────────────────────────────────────────────────────
-async function runScreener(){
-  const q = document.getElementById('screener-input').value.trim();
-  if(!q) return;
+// ── SCREENER UNIVERSE ─────────────────────────────────────────────────────
+const UNIVERSE = {
+  Technology:                ['AAPL','MSFT','NVDA','GOOGL','META','AVGO','ORCL','CRM','AMD','QCOM','INTC','ADBE','MU','AMAT','LRCX','KLAC','TXN','NOW','SNOW','PLTR'],
+  Healthcare:                ['JNJ','LLY','UNH','ABBV','MRK','PFE','TMO','AMGN','GILD','CVS','ISRG','REGN','VRTX','BSX','SYK','MDT','ZBH','BIIB'],
+  Financials:                ['JPM','BAC','WFC','GS','MS','V','MA','AXP','BLK','SCHW','C','USB','PNC','TFC','BX'],
+  Energy:                    ['XOM','CVX','COP','SLB','EOG','PSX','VLO','MPC','LNG','OXY','DVN','FANG'],
+  'Consumer Discretionary':  ['AMZN','TSLA','HD','NKE','MCD','SBUX','TGT','LOW','BKNG','ABNB','CMG','RH'],
+  'Consumer Staples':        ['WMT','COST','PG','KO','PEP','MDLZ','PM','MO','EL','CL'],
+  Industrials:               ['CAT','BA','GE','HON','UPS','DE','LMT','RTX','NOC','FDX','CSX','NSC'],
+  'Communication Services':  ['DIS','NFLX','T','VZ','CMCSA','CHTR','SNAP','PINS','MTCH'],
+  Utilities:                 ['NEE','DUK','SO','D','AEP','EXC','XEL','WEC'],
+  'Real Estate':             ['PLD','O','EQIX','AMT','CCI','SPG','PSA','EQR'],
+  Materials:                 ['LIN','APD','FCX','NEM','NUE','CF','MOS','ALB'],
+};
+
+// ── FETCH FUNDAMENTALS ────────────────────────────────────────────────────
+async function fetchFundamentals(ticker){
+  const url  = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=defaultKeyStatistics,financialData,assetProfile,earningsTrend,incomeStatementHistory`;
+  const data = await proxyFetch(url);
+  const res  = data?.quoteSummary?.result?.[0];
+  if(!res) throw new Error('No data');
+
+  const ks = res.defaultKeyStatistics || {};
+  const fd = res.financialData         || {};
+  const ap = res.assetProfile          || {};
+  const et = res.earningsTrend?.trend  || [];
+  const is = res.incomeStatementHistory?.incomeStatementHistory || [];
+
+  // Pull EPS and Revenue arrays (most recent first)
+  const epsArr = is.map(s=>s.basicEPS?.raw ?? s.dilutedEPS?.raw).filter(e=>e!=null);
+  const revArr = is.map(s=>s.totalRevenue?.raw).filter(r=>r!=null);
+
+  function cagr(end,start,yrs){ if(!end||!start||start===0||yrs<=0) return null; return (Math.pow(Math.abs(end/start),1/yrs)-1)*100*(end<0||start<0?-1:1); }
+
+  const epsGrowth3Y  = epsArr.length>=4  ? cagr(epsArr[0],epsArr[3],3)  : null;
+  const epsGrowth5Y  = epsArr.length>=6  ? cagr(epsArr[0],epsArr[5],5)  : null;
+  const revGrowth3Y  = revArr.length>=4  ? cagr(revArr[0],revArr[3],3)  : null;
+  const revGrowth5Y  = revArr.length>=6  ? cagr(revArr[0],revArr[5],5)  : null;
+  const next5Y       = et.find(t=>t.period==='+5y');
+  const epsNext5Y    = next5Y ? (next5Y.earningsEstimate?.growth?.raw||null)*100 : null;
+
+  // Price info
+  const chartUrl  = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=5d`;
+  const chartData = await proxyFetch(chartUrl);
+  const cm        = chartData?.chart?.result?.[0]?.meta||{};
+  const closes    = chartData?.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(c=>c!=null)||[];
+  const price     = cm.regularMarketPrice||cm.chartPreviousClose;
+  const prev      = cm.chartPreviousClose||cm.previousClose||(closes.length>=2?closes[closes.length-2]:price);
+
+  return {
+    ticker,
+    name:       ap.longName || ks.shortName || ticker,
+    sector:     ap.sector   || '—',
+    industry:   ap.industry || '—',
+    price,
+    prev:       prev||price,
+    peg:        typeof ks.pegRatio?.raw==='number' ? ks.pegRatio.raw : null,
+    debtEquity: typeof fd.debtToEquity?.raw==='number' ? fd.debtToEquity.raw/100 : null,
+    epsGrowth3Y,
+    epsGrowth5Y,
+    revGrowth3Y,
+    revGrowth5Y,
+    epsNext5Y,
+    mktCap:     ks.enterpriseValue?.raw || fd.marketCap?.raw || null,
+    pe:         ks.trailingPE?.raw || null,
+    roe:        typeof fd.returnOnEquity?.raw==='number' ? fd.returnOnEquity.raw*100 : null,
+  };
+}
+
+// ── RUN FUNDAMENTAL SCREENER ──────────────────────────────────────────────
+async function runFundScreener(){
+  const sector  = document.getElementById('f-sector').value;
+  const pegMax  = parseFloat(document.getElementById('f-peg').value)    || null;
+  const deMax   = parseFloat(document.getElementById('f-de').value)     || null;
+  const eps3Min = parseFloat(document.getElementById('f-eps3').value)   || null;
+  const eps5Min = parseFloat(document.getElementById('f-eps5').value)   || null;
+  const rev3Min = parseFloat(document.getElementById('f-rev3').value)   || null;
+  const rev5Min = parseFloat(document.getElementById('f-rev5').value)   || null;
+  const nxtMin  = parseFloat(document.getElementById('f-epsnxt').value) || null;
+
+  // Build universe to query
+  let tickers = [];
+  if(sector && UNIVERSE[sector]) tickers = UNIVERSE[sector];
+  else Object.values(UNIVERSE).forEach(arr=>arr.forEach(t=>tickers.push(t)));
+  // Limit to 20 if no sector selected to avoid too many calls
+  if(!sector) tickers = tickers.slice(0,24);
+
   const el = document.getElementById('screener-results');
-  el.innerHTML = '<div class="screener-loading">🔍 Searching…</div>';
+  el.innerHTML = `<div class="screener-loading">Fetching fundamentals for ${tickers.length} stocks…
+    <div class="scr-progress"><div class="scr-progress-bar" id="scr-bar" style="width:0%"></div></div>
+  </div>`;
+  document.getElementById('scr-hint').textContent = '';
+
+  const results = [];
+  let done = 0;
+  await Promise.all(tickers.map(async t => {
+    try{
+      const d = await fetchFundamentals(t);
+      // Apply filters
+      if(pegMax  != null && (d.peg        == null || d.peg        > pegMax))  return;
+      if(deMax   != null && (d.debtEquity == null || d.debtEquity > deMax))   return;
+      if(eps3Min != null && (d.epsGrowth3Y== null || d.epsGrowth3Y< eps3Min)) return;
+      if(eps5Min != null && (d.epsGrowth5Y== null || d.epsGrowth5Y< eps5Min)) return;
+      if(rev3Min != null && (d.revGrowth3Y== null || d.revGrowth3Y< rev3Min)) return;
+      if(rev5Min != null && (d.revGrowth5Y== null || d.revGrowth5Y< rev5Min)) return;
+      if(nxtMin  != null && (d.epsNext5Y  == null || d.epsNext5Y  < nxtMin))  return;
+      results.push(d);
+    }catch(e){}
+    done++;
+    const bar = document.getElementById('scr-bar');
+    if(bar) bar.style.width = `${(done/tickers.length)*100}%`;
+  }));
+
+  if(!results.length){ el.innerHTML='<div class="scr-no-match">No stocks matched your criteria. Try relaxing the filters.</div>'; return; }
+
+  results.sort((a,b)=>(b.epsGrowth3Y||0)-(a.epsGrowth3Y||0));
+
+  const fmtPct = v => v==null ? '<span class="scr-val na">—</span>' : `<span class="scr-val ${v>=0?'pos':'neg'}">${v>=0?'+':''}${v.toFixed(1)}%</span>`;
+  const fmtNum = v => v==null ? '<span class="scr-val na">—</span>' : `<span class="scr-val">${v.toFixed(2)}</span>`;
+
+  el.innerHTML = `
+    <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">${results.length} stocks matched · sorted by EPS growth 3Y</div>
+    <div class="scr-table"><table>
+      <thead><tr>
+        <th>Stock</th><th>Sector</th><th>Price</th><th>Day</th>
+        <th>PEG</th><th>D/E</th>
+        <th>EPS 3Y</th><th>EPS 5Y</th>
+        <th>Sales 3Y</th><th>Sales 5Y</th>
+        <th>EPS Next 5Y</th><th>Mkt Cap</th><th></th>
+      </tr></thead>
+      <tbody>${results.map(d => {
+        const dayChg = (d.price&&d.prev) ? d.price-d.prev : null;
+        const dayPct = (dayChg&&d.prev)  ? (dayChg/d.prev)*100 : null;
+        const inPort = portfolio.find(p=>p.ticker===d.ticker);
+        return `<tr>
+          <td><div class="scr-ticker">${d.ticker}</div><div class="scr-name">${(d.name||'').slice(0,22)}</div></td>
+          <td><span class="scr-badge">${d.sector||'—'}</span></td>
+          <td class="scr-val">${d.price?'$'+fmt(d.price):'—'}</td>
+          <td>${dayPct!=null?`<span class="scr-val ${dayPct>=0?'pos':'neg'}">${dayPct>=0?'+':''}${dayPct.toFixed(2)}%</span>`:'<span class="scr-val na">—</span>'}</td>
+          <td>${fmtNum(d.peg)}</td>
+          <td>${fmtNum(d.debtEquity)}</td>
+          <td>${fmtPct(d.epsGrowth3Y)}</td>
+          <td>${fmtPct(d.epsGrowth5Y)}</td>
+          <td>${fmtPct(d.revGrowth3Y)}</td>
+          <td>${fmtPct(d.revGrowth5Y)}</td>
+          <td>${fmtPct(d.epsNext5Y)}</td>
+          <td class="scr-val">${fmtM(d.mktCap)}</td>
+          <td>${inPort?'<span style="font-size:.7rem;color:var(--muted)">✓ Held</span>':`<button class="add-to-port" onclick="quickAdd('${d.ticker}','${(d.name||'').replace(/'/g,"\\'")}',${d.price||0})">+ Add</button>`}</td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>`;
+
+  document.getElementById('scr-hint').textContent = `${results.length} match${results.length===1?'':'es'}`;
+}
+
+function clearFilters(){
+  ['f-sector','f-peg','f-de','f-eps3','f-eps5','f-rev3','f-rev5','f-epsnxt'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
+  document.getElementById('scr-hint').textContent='';
+}
+
+// ── TICKER LOOKUP ─────────────────────────────────────────────────────────
+async function lookupTicker(){
+  const t = document.getElementById('screener-input').value.trim().toUpperCase();
+  if(!t) return;
+  const el = document.getElementById('screener-results');
+  el.innerHTML = `<div class="screener-loading">Fetching fundamentals for ${t}…</div>`;
   try{
-    // Search for tickers matching query
-    const searchUrl = `https://query2.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(q)}&quotesCount=8&newsCount=0`;
-    const searchData = await proxyFetch(searchUrl);
-    const quotes = (searchData.quotes||[]).filter(q=>q.quoteType&&['EQUITY','ETF','MUTUALFUND','CRYPTOCURRENCY'].includes(q.quoteType)).slice(0,6);
-    if(!quotes.length){ el.innerHTML='<div class="screener-empty">No results found.</div>'; return; }
-    // Fetch prices for each
-    const tickers = quotes.map(q=>q.symbol);
-    const details = await Promise.all(tickers.map(async t => {
-      try{ return await fetchQuote(t); }catch(e){ return {ticker:t,name:quotes.find(q=>q.symbol===t)?.shortname||t,price:null,prev:null}; }
-    }));
+    const d = await fetchFundamentals(t);
+    const dayChg = (d.price&&d.prev) ? d.price-d.prev : null;
+    const dayPct = (dayChg&&d.prev)  ? (dayChg/d.prev)*100 : null;
+    const inPort = portfolio.find(p=>p.ticker===d.ticker);
+    const m = (lbl,val,note='',cls='') => `
+      <div class="tc-metric">
+        <div class="m-lbl">${lbl}</div>
+        <div class="m-val ${cls}">${val}</div>
+        ${note?`<div class="m-note">${note}</div>`:''}
+      </div>`;
+    const fmtG = v => v==null?'—':`${v>=0?'+':''}${v.toFixed(1)}%`;
+    const gCls = v => v==null?'':v>=0?'pos':'neg';
     el.innerHTML = `
-      <div class="screener-result">
-        <div class="sr-header"><div>Symbol</div><div>Price</div><div>Day %</div><div>Mkt Cap</div><div>52W Range</div><div></div></div>
-        ${details.map(d => {
-          const chg = (d.price&&d.prev) ? d.price-d.prev : null;
-          const pct = (chg&&d.prev) ? (chg/d.prev)*100 : null;
-          const dc  = pct==null?'flat':pct>0?'up':'down';
-          const inPort = portfolio.find(p=>p.ticker===d.ticker);
-          return `<div class="sr-row">
-            <div class="sr-ticker-wrap"><div class="t">${d.ticker}</div><div class="n">${d.name}</div></div>
-            <div class="sr-price">${d.price?'$'+fmt(d.price):'—'}</div>
-            <div class="sr-chg ${dc}">${pct!=null?sign(chg)+fmt(Math.abs(pct))+'%':'—'}</div>
-            <div class="sr-meta">${fmtM(d.mktCap)}</div>
-            <div class="sr-meta" style="font-size:.72rem">${d.lo52?'$'+fmt(d.lo52):''} ${d.hi52?'– $'+fmt(d.hi52):''}</div>
-            <div>${inPort?'<span style="font-size:.75rem;color:var(--muted)">In portfolio</span>':`<button class="add-to-port" onclick="quickAdd('${d.ticker}','${(d.name||'').replace(/'/g,'\\'')}',${d.price||0})">+ Add</button>`}</div>
-          </div>`;
-        }).join('')}
+      <div class="ticker-card">
+        <div class="tc-header">
+          <div>
+            <div class="tc-title">${d.ticker} — ${d.name||''}</div>
+            <div class="tc-sub">${d.sector||''}${d.industry?' · '+d.industry:''}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:1.5rem;font-weight:800;color:#fff">${d.price?'$'+fmt(d.price):'—'}</div>
+            <div style="font-size:.8rem;font-weight:600;margin-top:2px" class="${gCls(dayPct)}">${dayPct!=null?(dayPct>=0?'+':'')+dayPct.toFixed(2)+'% today':'—'}</div>
+          </div>
+        </div>
+        <div class="tc-metrics">
+          ${m('PEG Ratio', d.peg!=null?d.peg.toFixed(2):'—', 'Price/Earnings/Growth', d.peg!=null&&d.peg<2?'pos':d.peg>3?'neg':'')}
+          ${m('Debt / Equity', d.debtEquity!=null?d.debtEquity.toFixed(2):'—', 'Lower = less leverage', d.debtEquity!=null&&d.debtEquity<1?'pos':d.debtEquity>2?'neg':'')}
+          ${m('EPS Growth 3Y', fmtG(d.epsGrowth3Y), '3-year EPS CAGR', gCls(d.epsGrowth3Y))}
+          ${m('EPS Growth 5Y', fmtG(d.epsGrowth5Y), '5-year EPS CAGR', gCls(d.epsGrowth5Y))}
+          ${m('Sales Growth 3Y', fmtG(d.revGrowth3Y), '3-year revenue CAGR', gCls(d.revGrowth3Y))}
+          ${m('Sales Growth 5Y', fmtG(d.revGrowth5Y), '5-year revenue CAGR', gCls(d.revGrowth5Y))}
+          ${m('EPS Growth Next 5Y', fmtG(d.epsNext5Y), 'Analyst consensus estimate', gCls(d.epsNext5Y))}
+          ${m('Market Cap', fmtM(d.mktCap), '')}
+          ${m('Trailing P/E', d.pe!=null?d.pe.toFixed(1):'—', '')}
+          ${m('Return on Equity', d.roe!=null?d.roe.toFixed(1)+'%':'—', '', gCls(d.roe))}
+        </div>
+        <div style="margin-top:16px">
+          ${inPort?`<span style="font-size:.8rem;color:var(--green)">✓ Already in your portfolio</span>`:`<button class="add-to-port" onclick="quickAdd('${d.ticker}','${(d.name||'').replace(/'/g,"\\'")}',${d.price||0})" style="padding:8px 20px;font-size:.85rem">+ Add to Portfolio</button>`}
+        </div>
       </div>`;
   }catch(err){
-    el.innerHTML='<div class="screener-empty">Search failed. Try again.</div>';
+    el.innerHTML=`<div class="screener-empty">Could not fetch data for <strong>${t}</strong>. Check the ticker and try again.</div>`;
     console.error(err);
   }
 }
