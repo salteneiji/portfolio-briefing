@@ -17,7 +17,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install finvizfinance pandas
 
       - name: Run screener alert
         run: python screener_alert.py
