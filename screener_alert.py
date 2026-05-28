@@ -24,9 +24,9 @@ CHAT_ID   = "6050679787"
 FILTERS = {
     'Sector'                    : 'Technology',
     'Debt/Equity'               : 'Under 1',
-    'EPS growth past 3 years'   : 'Over 20%',
-    'Sales growth past 3 years' : 'Over 20%',
-    'EPS growth next 5 years'   : 'Over 20%',
+    'EPS growthpast 5 years'    : 'Over 20%',
+    'Sales growthpast 5 years'  : 'Over 20%',
+    'EPS growthnext 5 years'    : 'Over 20%',
     'P/E'                       : 'Under 50',
     'PEG'                       : 'Under 1',
 }
