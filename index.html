@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saif's Portfolio Tracker</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    #last-updated {
+      font-size: 0.78rem;
+      color: #475569;
+      margin-top: 6px;
+    }
+
+    /* SUMMARY CARD */
+    .summary {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1a2744 100%);
+      border: 1px solid #2d4a7a;
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .summary .label {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .summary .total-value {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 6px 0 4px;
+    }
+
+    .summary .total-pl {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .summary .total-pl.positive { color: #34d399; }
+    .summary .total-pl.negative { color: #f87171; }
+    .summary .total-pl.neutral  { color: #94a3b8; }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #2d4a7a;
+    }
+
+    .summary-row .stat .val {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .summary-row .stat .lbl {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* POSITION CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto 28px;
+    }
+
+    .card {
+      background: #161b27;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: #334155; }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .ticker {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .company {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .current-price {
+      text-align: right;
+    }
+
+    .current-price .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .day-change {
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .day-change.up   { color: #34d399; }
+    .day-change.down { color: #f87171; }
+    .day-change.flat { color: #94a3b8; }
+
+    .card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+
+    .stat-item .val {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .card-footer {
+      border-top: 1px solid #1e293b;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pl-label { font-size: 0.75rem; color: #64748b; }
+
+    .pl-value {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .pl-value.positive { color: #34d399; }
+    .pl-value.negative { color: #f87171; }
+    .pl-value.neutral  { color: #94a3b8; }
+
+    .pl-pct {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .pl-pct.positive { background: #064e3b; color: #34d399; }
+    .pl-pct.negative { background: #4c0519; color: #f87171; }
+    .pl-pct.neutral  { background: #1e293b; color: #94a3b8; }
+
+    /* REFRESH BUTTON */
+    .actions {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    button#refresh {
+      background: #1d4ed8;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 28px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button#refresh:hover    { background: #2563eb; }
+    button#refresh:disabled { background: #1e3a5f; color: #475569; cursor: not-allowed; }
+
+    /* LOADING SKELETON */
+    .skeleton {
+      background: linear-gradient(90deg, #1e293b 25%, #273449 50%, #1e293b 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 6px;
+      height: 1em;
+      display: inline-block;
+      width: 80px;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ERROR BANNER */
+    #error-banner {
+      display: none;
+      background: #4c0519;
+      border: 1px solid #9f1239;
+      color: #fda4af;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      max-width: 480px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #334155;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Saif's Portfolio</h1>
+  <p>Live positions · Prices from Yahoo Finance</p>
+  <div id="last-updated">Loading...</div>
+</header>
+
+<div id="error-banner"></div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="label">Total Portfolio Value</div>
+  <div class="total-value" id="total-value"><span class="skeleton"></span></div>
+  <div class="total-pl neutral" id="total-pl"><span class="skeleton" style="width:120px"></span></div>
+  <div class="summary-row">
+    <div class="stat">
+      <div class="val" id="total-cost"><span class="skeleton" style="width:60px"></span></div>
+      <div class="lbl">Cost Basis</div>
+    </div>
+    <div class="stat">
+      <div class="val" id="day-total"><span class="skeleton" style="width:60px"></span></div>
+      <div class="lbl">Today's Change</div>
+    </div>
+    <div class="stat">
+      <div class="val" id="positions-count">3</div>
+      <div class="lbl">Positions</div>
+    </div>
+  </div>
+</div>
+
+<!-- POSITION CARDS -->
+<div class="cards" id="cards"></div>
+
+<div class="actions">
+  <button id="refresh" onclick="loadPrices()">⟳ Refresh Prices</button>
+</div>
+
+<footer>Prices delayed ~15 min · Not financial advice</footer>
+
+<script>
+  const PORTFOLIO = [
+    { ticker: "META",  name: "Meta Platforms",    shares: 2711.40 / 635.33, avgPrice: 635.33 },
+    { ticker: "ONTO",  name: "Onto Innovation",   shares: 135.00  / 140.36, avgPrice: 140.36 },
+    { ticker: "SMH",   name: "VanEck Semi ETF",   shares: 271.50  / 595.94, avgPrice: 595.94 },
+  ];
+
+  // Build empty cards first
+  const cardsEl = document.getElementById('cards');
+  PORTFOLIO.forEach(p => {
+    cardsEl.innerHTML += `
+    <div class="card" id="card-${p.ticker}">
+      <div class="card-header">
+        <div>
+          <div class="ticker">${p.ticker}</div>
+          <div class="company">${p.name}</div>
+        </div>
+        <div class="current-price">
+          <div class="price" id="price-${p.ticker}"><span class="skeleton"></span></div>
+          <div class="day-change flat" id="day-${p.ticker}">—</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="stat-item">
+          <div class="lbl">Shares</div>
+          <div class="val">${p.shares.toFixed(4)}</div>
+        </div>
+        <div class="stat-item">
+          <div class="lbl">Avg Cost</div>
+          <div class="val">$${p.avgPrice.toFixed(2)}</div>
+        </div>
+        <div class="stat-item">
+          <div class="lbl">Cost Basis</div>
+          <div class="val">$${(p.shares * p.avgPrice).toFixed(2)}</div>
+        </div>
+        <div class="stat-item">
+          <div class="lbl">Market Value</div>
+          <div class="val" id="value-${p.ticker}"><span class="skeleton"></span></div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div>
+          <div class="pl-label">Unrealized P&L</div>
+          <div class="pl-value neutral" id="pl-${p.ticker}"><span class="skeleton"></span></div>
+        </div>
+        <div class="pl-pct neutral" id="plpct-${p.ticker}">—</div>
+      </div>
+    </div>`;
+  });
+
+  function fmt(n, dec=2) { return n.toFixed(dec); }
+  function fmtUSD(n)     { return '$' + Math.abs(n).toFixed(2); }
+  function sign(n)       { return n >= 0 ? '+' : '-'; }
+  function colorClass(n) { return n > 0 ? 'positive' : n < 0 ? 'negative' : 'neutral'; }
+
+  async function fetchPrice(ticker) {
+    const proxy = 'https://corsproxy.io/?url=';
+    const url   = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`;
+    const res   = await fetch(proxy + encodeURIComponent(url));
+    const data  = await res.json();
+    const meta  = data.chart.result[0].meta;
+    return {
+      price: meta.regularMarketPrice || meta.previousClose,
+      prev:  meta.previousClose,
+    };
+  }
+
+  async function loadPrices() {
+    const btn = document.getElementById('refresh');
+    btn.disabled = true;
+    btn.textContent = 'Refreshing...';
+    document.getElementById('error-banner').style.display = 'none';
+
+    try {
+      let totalCost = 0, totalValue = 0, totalDayChange = 0;
+
+      const results = await Promise.all(PORTFOLIO.map(async p => {
+        const { price, prev } = await fetchPrice(p.ticker);
+        return { ...p, price, prev };
+      }));
+
+      results.forEach(p => {
+        const value   = p.shares * p.price;
+        const cost    = p.shares * p.avgPrice;
+        const pl      = value - cost;
+        const plPct   = (pl / cost) * 100;
+        const dayChg  = p.price - p.prev;
+        const dayPct  = (dayChg / p.prev) * 100;
+        const dayVal  = p.shares * dayChg;
+
+        totalCost      += cost;
+        totalValue     += value;
+        totalDayChange += dayVal;
+
+        const cc = colorClass(pl);
+        const dc = dayChg >= 0 ? 'up' : 'down';
+
+        document.getElementById(`price-${p.ticker}`).textContent    = `$${fmt(p.price)}`;
+        document.getElementById(`day-${p.ticker}`).className        = `day-change ${dc}`;
+        document.getElementById(`day-${p.ticker}`).textContent      = `${sign(dayChg)}${fmt(Math.abs(dayPct))}% today`;
+        document.getElementById(`value-${p.ticker}`).textContent    = `$${fmt(value)}`;
+        document.getElementById(`pl-${p.ticker}`).className         = `pl-value ${cc}`;
+        document.getElementById(`pl-${p.ticker}`).textContent       = `${sign(pl)}${fmtUSD(pl)}`;
+        document.getElementById(`plpct-${p.ticker}`).className      = `pl-pct ${cc}`;
+        document.getElementById(`plpct-${p.ticker}`).textContent    = `${sign(plPct)}${fmt(Math.abs(plPct))}%`;
+      });
+
+      // Summary
+      const totalPL    = totalValue - totalCost;
+      const totalPLPct = (totalPL / totalCost) * 100;
+      const tcc        = colorClass(totalPL);
+      const dcc        = colorClass(totalDayChange);
+
+      document.getElementById('total-value').textContent = `$${fmt(totalValue)}`;
+      document.getElementById('total-pl').className      = `total-pl ${tcc}`;
+      document.getElementById('total-pl').textContent    = `${sign(totalPL)}$${fmt(Math.abs(totalPL))} (${sign(totalPLPct)}${fmt(Math.abs(totalPLPct))}%) all time`;
+      document.getElementById('total-cost').textContent  = `$${fmt(totalCost)}`;
+      document.getElementById('day-total').className     = `val ${dcc}`;
+      document.getElementById('day-total').textContent   = `${sign(totalDayChange)}$${fmt(Math.abs(totalDayChange))}`;
+
+      const now = new Date();
+      document.getElementById('last-updated').textContent =
+        `Last updated: ${now.toLocaleTimeString()} · ${now.toLocaleDateString()}`;
+
+    } catch (err) {
+      const banner = document.getElementById('error-banner');
+      banner.style.display = 'block';
+      banner.textContent   = '⚠️ Could not fetch prices. Check your connection and try again.';
+      console.error(err);
+    }
+
+    btn.disabled     = false;
+    btn.textContent  = '⟳ Refresh Prices';
+  }
+
+  loadPrices();
+</script>
+</body>
+</html>
