@@ -8,6 +8,7 @@ Run via GitHub Actions daily.
 import json
 import math
 import sys
+import time
 from datetime import datetime
 
 import yfinance as yf
@@ -121,6 +122,9 @@ for sym in TICKERS:
     except Exception as e:
         print(f"  ERROR: {e}")
         output[sym] = {'error': str(e)}
+
+    # Rate limit — avoid Yahoo Finance blocking
+    time.sleep(0.5)
 
 output['_updated'] = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 output['_tickers'] = TICKERS
