@@ -33,6 +33,16 @@ input,select,button{font-family:inherit}
 ::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-thumb{background:var(--borderh);border-radius:3px}
 
+/* CHART CARD */
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:16px 20px 0;overflow:hidden}
+.chart-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
+.chart-title{font-size:.82rem;font-weight:700;color:var(--text)}
+.chart-btns{display:flex;gap:4px}
+.cbtn{background:transparent;border:1px solid var(--border);color:var(--muted2);border-radius:6px;padding:3px 10px;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .15s}
+.cbtn:hover{border-color:var(--borderh);color:var(--text)}
+.cbtn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+#port-chart{width:100%;display:block}
+
 /* HEADER */
 .hdr{position:sticky;top:0;z-index:100;height:56px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,8,13,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .hdr-l{display:flex;align-items:center;gap:12px}
@@ -257,6 +267,25 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
 
   <!-- HOLDINGS -->
   <div class="tab-pane active" id="tab-holdings">
+
+    <!-- Portfolio Progress Chart -->
+    <div class="chart-card" id="port-chart-card">
+      <div class="chart-hdr">
+        <span class="chart-title">Portfolio Value</span>
+        <div class="chart-btns">
+          <button class="cbtn active" onclick="setChartRange('1M',this)">1M</button>
+          <button class="cbtn" onclick="setChartRange('3M',this)">3M</button>
+          <button class="cbtn" onclick="setChartRange('6M',this)">6M</button>
+          <button class="cbtn" onclick="setChartRange('1Y',this)">1Y</button>
+        </div>
+      </div>
+      <div style="position:relative">
+        <canvas id="port-chart" height="160"></canvas>
+        <div id="port-chart-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted)">Loading chart…</div>
+      </div>
+      <div id="port-chart-stat" style="display:flex;gap:24px;padding:10px 16px 4px;font-size:.75rem;color:var(--muted2)"></div>
+    </div>
+
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr>
@@ -940,11 +969,180 @@ async function loadNews(){
 }
 
 // ──────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+// PORTFOLIO PROGRESS CHART
+// ──────────────────────────────────────────────────────────────
+let chartRange = '1M';
+let chartData = null; // { dates:[], values:[] }
+
+function setChartRange(r, btn){
+  chartRange = r;
+  document.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(chartData) drawPortChart(chartData);
+}
+
+async function loadPortChart(){
+  if(!portfolio.length) return;
+  const loading = document.getElementById('port-chart-loading');
+  if(loading) loading.style.display='flex';
+
+  try {
+    // Fetch 1Y daily history for each holding via proxy
+    const proxies = [
+      u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+      u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+    ];
+    async function proxyFetch(url){
+      for(const p of proxies){
+        try{ const r=await fetch(p(url),{signal:AbortSignal.timeout(8000)}); if(r.ok) return r; }catch(e){}
+      }
+      throw new Error('All proxies failed');
+    }
+
+    const now = Math.floor(Date.now()/1000);
+    const oneYear = now - 365*24*3600;
+
+    // Fetch all tickers in parallel
+    const results = await Promise.all(portfolio.map(async p => {
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${p.ticker}?interval=1d&period1=${oneYear}&period2=${now}`;
+      try {
+        const resp = await proxyFetch(url);
+        const json = await resp.json();
+        const res = json?.chart?.result?.[0];
+        if(!res) return null;
+        const timestamps = res.timestamp || [];
+        const closes = res.indicators?.quote?.[0]?.close || [];
+        return { ticker: p.ticker, shares: p.shares, timestamps, closes };
+      } catch(e){ return null; }
+    }));
+
+    // Build unified date map
+    const validResults = results.filter(r=>r&&r.timestamps.length);
+    if(!validResults.length){ if(loading) loading.style.display='none'; return; }
+
+    // Find common dates across all holdings
+    const dateSets = validResults.map(r => new Set(r.timestamps.map(t => Math.floor(t/86400)*86400)));
+    const commonDates = [...dateSets[0]].filter(d => dateSets.every(s=>s.has(d))).sort((a,b)=>a-b);
+
+    // For each common date, sum portfolio value
+    const values = commonDates.map(date => {
+      return validResults.reduce((sum, r) => {
+        const idx = r.timestamps.findIndex(t => Math.floor(t/86400)*86400 === date);
+        const price = idx>=0 ? r.closes[idx] : null;
+        return price!=null ? sum + r.shares * price : sum;
+      }, 0);
+    });
+
+    chartData = { dates: commonDates, values };
+    drawPortChart(chartData);
+  } catch(e){ console.error('Chart error:', e); }
+  if(loading) loading.style.display='none';
+}
+
+function drawPortChart(data){
+  const loading = document.getElementById('port-chart-loading');
+  if(loading) loading.style.display='none';
+
+  // Filter by range
+  const now = Date.now()/1000;
+  const rangeDays = { '1M':30, '3M':90, '6M':180, '1Y':365 }[chartRange] || 365;
+  const cutoff = now - rangeDays*24*3600;
+  const filtered = data.dates.map((d,i)=>({d,v:data.values[i]})).filter(x=>x.d>=cutoff);
+  if(filtered.length<2) return;
+
+  const dates = filtered.map(x=>x.d);
+  const values = filtered.map(x=>x.v);
+
+  const canvas = document.getElementById('port-chart');
+  const dpr = window.devicePixelRatio||1;
+  const W = canvas.offsetWidth; const H = 160;
+  canvas.width = W*dpr; canvas.height = H*dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+
+  const pad = {t:10,r:16,b:28,l:60};
+  const cw = W-pad.l-pad.r, ch = H-pad.t-pad.b;
+
+  const minV = Math.min(...values)*0.995;
+  const maxV = Math.max(...values)*1.005;
+  const range = maxV-minV||1;
+
+  const toX = i => pad.l + (i/(values.length-1))*cw;
+  const toY = v => pad.t + ch - ((v-minV)/range)*ch;
+
+  const isUp = values[values.length-1] >= values[0];
+  const lineColor = isUp ? '#18d47a' : '#f04460';
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+  ctx.lineWidth = 1;
+  for(let i=0;i<4;i++){
+    const y = pad.t + (ch/3)*i;
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cw,y); ctx.stroke();
+  }
+
+  // Gradient fill
+  const grad = ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+  grad.addColorStop(0, isUp?'rgba(24,212,122,0.18)':'rgba(240,68,96,0.18)');
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.beginPath();
+  ctx.moveTo(toX(0), toY(values[0]));
+  values.forEach((v,i)=>ctx.lineTo(toX(i),toY(v)));
+  ctx.lineTo(toX(values.length-1), H-pad.b);
+  ctx.lineTo(toX(0), H-pad.b);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  ctx.moveTo(toX(0), toY(values[0]));
+  values.forEach((v,i)=>ctx.lineTo(toX(i),toY(v)));
+  ctx.strokeStyle = lineColor;
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // Y-axis labels
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '10px -apple-system,sans-serif';
+  ctx.textAlign = 'right';
+  [0,.5,1].forEach(t=>{
+    const v = minV + t*range;
+    const y = pad.t + ch - t*ch;
+    ctx.fillText('$'+(v>=1000?(v/1000).toFixed(1)+'K':v.toFixed(0)), pad.l-6, y+4);
+  });
+
+  // X-axis date labels
+  ctx.textAlign = 'center';
+  const labelCount = Math.min(5, dates.length);
+  const step = Math.floor((dates.length-1)/(labelCount-1));
+  for(let i=0;i<labelCount;i++){
+    const idx = i===labelCount-1 ? dates.length-1 : i*step;
+    const d = new Date(dates[idx]*1000);
+    const label = d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    ctx.fillText(label, toX(idx), H-pad.b+14);
+  }
+
+  // Stats
+  const startVal = values[0], endVal = values[values.length-1];
+  const change = endVal-startVal, pct = startVal>0?change/startVal*100:0;
+  const sign = change>=0?'+':'';
+  document.getElementById('port-chart-stat').innerHTML=`
+    <span>Start <strong style="color:var(--text)">$${startVal.toFixed(2)}</strong></span>
+    <span>Current <strong style="color:var(--text)">$${endVal.toFixed(2)}</strong></span>
+    <span style="color:${change>=0?'var(--green)':'var(--red)'}"><strong>${sign}$${Math.abs(change).toFixed(2)} (${sign}${pct.toFixed(2)}%)</strong></span>
+  `;
+}
+
 // INIT
 // ──────────────────────────────────────────────────────────────
 async function loadAll(){
   fundLoaded=false; techLoaded=false; newsLoaded=false;
+  chartData=null;
   renderHoldings(); await loadPrices();
+  loadPortChart();
 }
 loadAll();
 </script>
