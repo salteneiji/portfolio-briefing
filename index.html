@@ -433,55 +433,15 @@ async function fetchHistory(ticker){
 }
 
 // ──────────────────────────────────────────────────────────────
-// FUNDAMENTALS FETCH — multi-strategy with graceful fallback
+// FUNDAMENTALS — read from fundamentals.json (server-side fetched)
 // ──────────────────────────────────────────────────────────────
-async function fetchFundamentals(ticker){
-  // Strategy 1: quoteSummary with all modules (full data)
-  const modsAll = 'financialData,defaultKeyStatistics,summaryProfile,incomeStatementHistoryAnnual,earnings';
-  for(const [host,ver] of [['query2','v10'],['query1','v10'],['query2','v11'],['query1','v11']]){
-    try{
-      const data = await proxyFetch(`https://${host}.finance.yahoo.com/${ver}/finance/quoteSummary/${ticker}?modules=${modsAll}&formatted=false`);
-      if(data?.quoteSummary?.result?.[0]){
-        console.log(`[fund] ${ticker} got full quoteSummary via ${host}/${ver}`);
-        return { _src:'qs', ...data.quoteSummary.result[0] };
-      }
-    }catch(e){}
-  }
-  // Strategy 2: quoteSummary with minimal modules only
-  const modsMin = 'financialData,defaultKeyStatistics,summaryProfile';
-  for(const host of ['query2','query1']){
-    try{
-      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=${modsMin}&formatted=false`);
-      if(data?.quoteSummary?.result?.[0]){
-        console.log(`[fund] ${ticker} got minimal quoteSummary via ${host}`);
-        return { _src:'qs_min', ...data.quoteSummary.result[0] };
-      }
-    }catch(e){}
-  }
-  // Strategy 3: v6/finance/quote — basic metrics, no multi-year growth
-  for(const host of ['query1','query2']){
-    try{
-      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v6/finance/quote?symbols=${ticker}&fields=trailingPE,forwardPE,pegRatio,epsTrailingTwelveMonths,epsForward,earningsGrowth,revenueGrowth,grossMargins,profitMargins,freeCashflow,debtToEquity,returnOnEquity,industry,sector`);
-      const q = data?.quoteResponse?.result?.[0];
-      if(q){
-        console.log(`[fund] ${ticker} got v6/quote via ${host}`);
-        return { _src:'v6', _v6: q };
-      }
-    }catch(e){}
-  }
-  // Strategy 4: v7/finance/quote
-  for(const host of ['query1','query2']){
-    try{
-      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`);
-      const q = data?.quoteResponse?.result?.[0];
-      if(q){
-        console.log(`[fund] ${ticker} got v7/quote via ${host}`);
-        return { _src:'v7', _v6: q };
-      }
-    }catch(e){}
-  }
-  console.warn(`[fund] ${ticker} all strategies failed`);
-  return null;
+let _fundCache = null;
+async function getFundamentalsJson(){
+  if(_fundCache) return _fundCache;
+  const resp = await fetch('./fundamentals.json?t='+Date.now());
+  if(!resp.ok) throw new Error(`fundamentals.json not found (${resp.status})`);
+  _fundCache = await resp.json();
+  return _fundCache;
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -712,101 +672,74 @@ function mbadge(val, text, greenIf, amberIf){
 async function loadFundamentals(force=false){
   if(fundLoaded&&!force) return;
   fundLoaded=true;
+  _fundCache=null; // clear cache on force refresh
   const tbody=document.getElementById('fund-body');
-  // skeleton rows
   tbody.innerHTML=portfolio.map(p=>`
     <tr id="fr-${p.ticker}">
       <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
       ${Array(9).fill('<td><span class="sk" style="width:48px"></span></td>').join('')}
     </tr>`).join('');
 
+  let allData;
+  try{
+    allData = await getFundamentalsJson();
+  }catch(e){
+    // fundamentals.json doesn't exist yet — show setup message
+    tbody.innerHTML=`<tr><td colspan="10">
+      <div class="empty" style="padding:32px">
+        <strong style="color:var(--text)">fundamentals.json not generated yet.</strong><br><br>
+        Go to GitHub → Actions → <em>Fetch Fundamentals</em> → Run workflow.<br>
+        After it completes, click Refresh above.
+      </div>
+    </td></tr>`;
+    return;
+  }
+
+  const updated = allData._updated ? new Date(allData._updated).toLocaleDateString() : '';
+
   for(const p of portfolio){
     const row=document.getElementById(`fr-${p.ticker}`);
     if(!row) continue;
-    try{
-      const d=await fetchFundamentals(p.ticker);
-      if(!d){ throw new Error('no data from any source'); }
-
-      let pe,peg,de,fcf,industry,eps3,eps5,rev3,rev5;
-
-      if(d._src==='v6'||d._src==='v7'){
-        // v6/v7 quote fallback — basic metrics only
-        const q=d._v6||{};
-        pe  = q.trailingPE??null;
-        peg = q.pegRatio??null;
-        const deRaw = q.debtToEquity??null;
-        de  = deRaw!=null ? deRaw/100 : null;
-        fcf = q.freeCashflow??null;
-        industry = q.industry||q.sector||'—';
-        // growth from single-year fields only
-        eps3=null; eps5=null; rev3=null; rev5=null;
-      } else {
-        // Full or minimal quoteSummary
-        const fd = d.financialData||{};
-        const ks = d.defaultKeyStatistics||{};
-        const sp = d.summaryProfile||{};
-        const earnHist = d.earnings?.earningsChart?.yearly||[];
-        const incHist  = d.incomeStatementHistoryAnnual?.incomeStatementHistory||[];
-
-        const earnSorted=[...earnHist].sort((a,b)=>Number(a.date)-Number(b.date));
-        const incSorted =[...incHist].sort((a,b)=>(a.endDate?.raw||0)-(b.endDate?.raw||0));
-
-        pe  = rv(ks,'trailingPE');
-        peg = rv(ks,'pegRatio');
-        const deRaw = rv(fd,'debtToEquity');
-        de  = deRaw!=null ? deRaw/100 : null;
-        fcf = rv(fd,'freeCashflow');
-        industry = sp.industry||sp.sector||'—';
-
-        function epsCagr(years){
-          if(earnSorted.length<years+1) return null;
-          const rec=earnSorted[earnSorted.length-1]?.actual;
-          const old=earnSorted[earnSorted.length-1-years]?.actual;
-          if(rec==null||old==null) return null;
-          const rv2=typeof rec==='object'?rec.raw:rec;
-          const ov =typeof old==='object'?old.raw:old;
-          return cagr(ov,rv2,years);
-        }
-        function revCagr(years){
-          if(incSorted.length<years+1) return null;
-          const rv2=rv(incSorted[incSorted.length-1],'totalRevenue');
-          const ov =rv(incSorted[incSorted.length-1-years],'totalRevenue');
-          return cagr(ov,rv2,years);
-        }
-        eps3=epsCagr(3);
-        eps5=epsCagr(5)??epsCagr(Math.min(earnSorted.length-1,4));
-        rev3=revCagr(3);
-        rev5=revCagr(4)??revCagr(Math.min(incSorted.length-1,3));
-      }
-
-      // FCF display
-      let fcfHtml;
-      if(fcf==null) fcfHtml=`<span class="mb mb-n">—</span>`;
-      else if(fcf>0) fcfHtml=`<span class="fcf-pos">✓ $${fmtBig(fcf)}</span>`;
-      else fcfHtml=`<span class="fcf-neg">✗ -$${fmtBig(Math.abs(fcf))}</span>`;
-
-      // Industry tag
-      const indHtml = industry!='—'
-        ? `<span class="tk-tag" title="${industry}">${industry}</span>`
-        : `<span class="mb mb-n">—</span>`;
-
+    const d = allData[p.ticker];
+    if(!d||d.error){
       row.innerHTML=`
         <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
-        <td>${indHtml}</td>
-        <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
-        <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
-        <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<0.5, v=>v<1)}</td>
-        <td class="r">${fcfHtml}</td>
-        <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.15, v=>v>0)}</td>
-        <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.15, v=>v>0)}</td>
-        <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.10, v=>v>0)}</td>
-        <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.10, v=>v>0)}</td>`;
-    }catch(e){
-      if(!row) continue;
-      row.innerHTML=`
-        <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
-        <td colspan="9"><span style="font-size:.74rem;color:var(--muted)">Could not load — ${e.message||'API error'}</span></td>`;
+        <td colspan="9"><span style="font-size:.74rem;color:var(--muted)">${d?.error||'Not in tickers.txt — add it and re-run the workflow.'}</span></td>`;
+      continue;
     }
+
+    const pe   = d.trailingPE;
+    const peg  = d.pegRatio;
+    const deRaw= d.debtToEquity;
+    const de   = deRaw!=null ? deRaw/100 : null;  // Yahoo returns as % (e.g. 45 = 0.45)
+    const fcf  = d.freeCashflow;
+    const industry = d.industry||'—';
+    const eps3 = d.eps3y, eps5=d.eps5y, rev3=d.rev3y, rev5=d.rev5y;
+
+    let fcfHtml;
+    if(fcf==null) fcfHtml=`<span class="mb mb-n">—</span>`;
+    else if(fcf>0) fcfHtml=`<span class="fcf-pos">✓ $${fmtBig(fcf)}</span>`;
+    else           fcfHtml=`<span class="fcf-neg">✗ $${fmtBig(fcf)}</span>`;
+
+    const indHtml = industry&&industry!='—'
+      ? `<span class="tk-tag" title="${industry}">${industry}</span>`
+      : `<span class="mb mb-n">—</span>`;
+
+    row.innerHTML=`
+      <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
+      <td>${indHtml}</td>
+      <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
+      <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
+      <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<0.5, v=>v<1)}</td>
+      <td class="r">${fcfHtml}</td>
+      <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.15, v=>v>0)}</td>
+      <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.15, v=>v>0)}</td>
+      <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.10, v=>v>0)}</td>
+      <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.10, v=>v>0)}</td>`;
+  }
+
+  if(updated){
+    document.querySelector('.tab-hint').textContent=`Fundamental data · Last updated: ${updated}`;
   }
 }
 
