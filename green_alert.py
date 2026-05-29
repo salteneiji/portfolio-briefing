@@ -31,7 +31,7 @@ FUNDAMENTALS_URL = "https://salteneiji.github.io/portfolio-briefing/fundamentals
 # ──────────────────────────────────────────────────────────────────────────────
 
 CRITERIA = {
-    'trailingPE':    lambda v: v < 20,
+    'trailingPE':    lambda v: v < 50,
     'pegRatio':      lambda v: v < 1,
     'debtToEquity':  lambda v: v < 100,   # Yahoo stores as % e.g. 45 = D/E 0.45
     'freeCashflow':  lambda v: v > 0,
