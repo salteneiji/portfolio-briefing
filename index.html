@@ -34,7 +34,7 @@ input,select,button{font-family:inherit}
 ::-webkit-scrollbar-thumb{background:var(--borderh);border-radius:3px}
 
 /* CHART CARD */
-.chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:16px 20px 0;overflow:hidden}
+.chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:16px 20px 12px;overflow:hidden}
 .chart-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
 .chart-title{font-size:.82rem;font-weight:700;color:var(--text)}
 .chart-btns{display:flex;gap:4px}
@@ -231,10 +231,48 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
       <div class="fg"><label>Shares</label><input class="fi" id="m-shares" type="number" placeholder="0.0000" step="0.0001"/></div>
       <div class="fg"><label>Avg Price ($)</label><input class="fi" id="m-price" type="number" placeholder="0.00" step="0.01"/></div>
     </div>
-    <div class="fg"><label>Name (optional)</label><input class="fi" id="m-name" placeholder="Company name"/></div>
+    <div class="frow">
+      <div class="fg"><label>Name (optional)</label><input class="fi" id="m-name" placeholder="Company name"/></div>
+      <div class="fg"><label>Buy Date</label><input class="fi" id="m-buydate" type="date"/></div>
+    </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
       <button class="btn btn-primary" onclick="addHolding()">Add to Portfolio</button>
+    </div>
+  </div>
+</div>
+
+<!-- TRIM MODAL -->
+<div class="overlay" id="trim-modal" onclick="if(event.target===this)closeTrimModal()">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title" id="trim-title">Trim Position</div>
+      <button class="modal-x" onclick="closeTrimModal()">✕</button>
+    </div>
+    <div style="font-size:.78rem;color:var(--muted2);margin-bottom:12px" id="trim-info"></div>
+    <div class="frow">
+      <div class="fg"><label>Shares to Sell</label><input class="fi" id="trim-shares" type="number" placeholder="0.0000" step="0.0001" min="0.0001"/></div>
+      <div class="fg"><label>Sell Price ($)</label><input class="fi" id="trim-price" type="number" placeholder="0.00" step="0.01"/></div>
+    </div>
+    <div class="fg" style="margin-top:8px;padding:10px 12px;background:var(--card2);border-radius:8px;font-size:.78rem;color:var(--muted2)" id="trim-proceeds">Proceeds: —</div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeTrimModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmTrim()">Sell &amp; Add to Cash</button>
+    </div>
+  </div>
+</div>
+
+<!-- CASH MODAL -->
+<div class="overlay" id="cash-modal" onclick="if(event.target===this)closeCashModal()">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title">Edit Cash Balance</div>
+      <button class="modal-x" onclick="closeCashModal()">✕</button>
+    </div>
+    <div class="fg"><label>Cash Balance ($)</label><input class="fi" id="cash-inp" type="number" placeholder="0.00" step="0.01" min="0"/></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeCashModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCash()">Save</button>
     </div>
   </div>
 </div>
@@ -251,6 +289,10 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
       <div class="hstat"><div class="hstat-lbl">Cost Basis</div><div class="hstat-val" id="s-cost"><span class="sk" style="width:70px"></span></div></div>
       <div class="hstat"><div class="hstat-lbl">Today's Change</div><div class="hstat-val neu" id="s-today"><span class="sk" style="width:70px"></span></div></div>
       <div class="hstat"><div class="hstat-lbl">Positions</div><div class="hstat-val" id="s-count">—</div></div>
+      <div class="hstat" style="cursor:pointer" onclick="editCash()" title="Click to edit cash">
+        <div class="hstat-lbl">Cash 💵</div>
+        <div class="hstat-val" id="s-cash">$0.00</div>
+      </div>
     </div>
   </div>
 
@@ -280,7 +322,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         </div>
       </div>
       <div style="position:relative">
-        <canvas id="port-chart" height="160"></canvas>
+        <canvas id="port-chart" height="90"></canvas>
         <div id="port-chart-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted)">Loading chart…</div>
       </div>
       <div id="port-chart-stat" style="display:flex;gap:24px;padding:10px 16px 4px;font-size:.75rem;color:var(--muted2)"></div>
@@ -432,6 +474,56 @@ function getPortfolio(){ const s=localStorage.getItem('portfolio_v2'); return s?
 function savePortfolio(p){ localStorage.setItem('portfolio_v2',JSON.stringify(p)); }
 let portfolio = getPortfolio();
 
+// CASH STORAGE
+// ──────────────────────────────────────────────────────────────
+function getCash(){ return parseFloat(localStorage.getItem('cash_balance')||'0'); }
+function setCash(v){ localStorage.setItem('cash_balance',v.toFixed(2)); renderCash(); }
+function renderCash(){ document.getElementById('s-cash').textContent='$'+getCash().toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function editCash(){ document.getElementById('cash-inp').value=getCash().toFixed(2); document.getElementById('cash-modal').classList.add('open'); }
+function closeCashModal(){ document.getElementById('cash-modal').classList.remove('open'); }
+function saveCash(){ const v=parseFloat(document.getElementById('cash-inp').value); if(!isNaN(v)&&v>=0) setCash(v); closeCashModal(); }
+
+// TRIM MODAL
+// ──────────────────────────────────────────────────────────────
+let trimIdx = null;
+function openTrimModal(i){
+  trimIdx=i; const p=portfolio[i];
+  const curPrice=priceCache[p.ticker]?.price||p.avgPrice;
+  document.getElementById('trim-title').textContent=`Trim ${p.ticker}`;
+  document.getElementById('trim-info').textContent=`Holdings: ${p.shares.toFixed(4)} shares · Current price: $${curPrice.toFixed(2)}`;
+  document.getElementById('trim-shares').value='';
+  document.getElementById('trim-price').value=curPrice.toFixed(2);
+  document.getElementById('trim-proceeds').textContent='Proceeds: —';
+  document.getElementById('trim-modal').classList.add('open');
+  // Live proceeds calc
+  ['trim-shares','trim-price'].forEach(id=>{
+    document.getElementById(id).oninput=()=>{
+      const sh=parseFloat(document.getElementById('trim-shares').value);
+      const pr=parseFloat(document.getElementById('trim-price').value);
+      if(!isNaN(sh)&&!isNaN(pr)&&sh>0&&pr>0){
+        document.getElementById('trim-proceeds').textContent=`Proceeds: $${(sh*pr).toFixed(2)} → added to cash`;
+      } else {
+        document.getElementById('trim-proceeds').textContent='Proceeds: —';
+      }
+    };
+  });
+}
+function closeTrimModal(){ document.getElementById('trim-modal').classList.remove('open'); trimIdx=null; }
+function confirmTrim(){
+  if(trimIdx===null) return;
+  const p=portfolio[trimIdx];
+  const shares=parseFloat(document.getElementById('trim-shares').value);
+  const price=parseFloat(document.getElementById('trim-price').value);
+  if(isNaN(shares)||isNaN(price)||shares<=0||price<=0){ alert('Enter valid shares and price.'); return; }
+  if(shares>=p.shares){ alert(`You only have ${p.shares.toFixed(4)} shares. To sell all, use the ✕ remove button.`); return; }
+  const proceeds=shares*price;
+  portfolio[trimIdx].shares=parseFloat((p.shares-shares).toFixed(8));
+  savePortfolio(portfolio);
+  setCash(getCash()+proceeds);
+  closeTrimModal();
+  renderHoldings(); loadPrices();
+}
+
 // ──────────────────────────────────────────────────────────────
 // PROXY FETCH
 // ──────────────────────────────────────────────────────────────
@@ -574,13 +666,17 @@ function renderHoldings(){
       <td class="r hide-sm">
         <div style="font-size:.78rem;color:var(--muted2);font-variant-numeric:tabular-nums">${fmt(p.shares,4)} sh</div>
         <div style="font-size:.78rem;color:var(--muted2);font-variant-numeric:tabular-nums;margin-top:2px">@ $${fmt(p.avgPrice)}</div>
+        ${p.buyDate?`<div style="font-size:.7rem;color:var(--muted);margin-top:2px">Bought ${new Date(p.buyDate+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>`:''}
       </td>
       <td class="r"><div class="price">${value!=null?'$'+fmt(value):'<span class="sk" style="width:52px"></span>'}</div></td>
       <td class="r">
         <div class="mval ${pl==null?'neu':pl>0?'pos':'neg'}">${pl!=null?(pl>=0?'+':'-')+'$'+fmt(Math.abs(pl)):'—'}</div>
         <div class="msub">${plPct!=null?sign(plPct)+fmt(Math.abs(plPct))+'%':''}</div>
       </td>
-      <td style="text-align:center"><button class="btn-del" onclick="removeHolding(${i})">✕</button></td>`;
+      <td style="text-align:center;white-space:nowrap;display:flex;gap:4px;padding:8px 4px;border:none">
+        <button class="btn btn-ghost btn-sm" onclick="openTrimModal(${i})" title="Trim position">Trim</button>
+        <button class="btn-del" onclick="removeHolding(${i})">✕</button>
+      </td>`;
     tbody.appendChild(tr);
   });
   document.getElementById('s-count').textContent=portfolio.length;
@@ -648,17 +744,18 @@ function drawPie(slices){
 // MODAL
 // ──────────────────────────────────────────────────────────────
 function openModal(){ document.getElementById('modal').classList.add('open'); document.getElementById('m-ticker').focus(); }
-function closeModal(){ document.getElementById('modal').classList.remove('open'); ['m-ticker','m-shares','m-price','m-name'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; }); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); ['m-ticker','m-shares','m-price','m-name','m-buydate'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; }); }
 function addHolding(){
   const ticker=document.getElementById('m-ticker').value.trim().toUpperCase();
   const shares=parseFloat(document.getElementById('m-shares').value);
   const price=parseFloat(document.getElementById('m-price').value);
   const name=document.getElementById('m-name').value.trim()||ticker;
+  const buyDate=document.getElementById('m-buydate').value||null;
   if(!ticker||!shares||!price||isNaN(shares)||isNaN(price)){alert('Fill in ticker, shares, and average price.');return;}
   if(portfolio.find(p=>p.ticker===ticker)){alert(`${ticker} already in portfolio.`);return;}
-  portfolio.push({ticker,name,shares,avgPrice:price}); savePortfolio(portfolio);
+  portfolio.push({ticker,name,shares,avgPrice:price,buyDate}); savePortfolio(portfolio);
   fundLoaded=false; techLoaded=false; newsLoaded=false;
-  closeModal(); renderHoldings(); loadPrices();
+  closeModal(); renderHoldings(); loadPrices(); loadPortChart();
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -1013,7 +1110,7 @@ async function loadPortChart(){
         if(!res) return null;
         const timestamps = res.timestamp || [];
         const closes = res.indicators?.quote?.[0]?.close || [];
-        return { ticker: p.ticker, shares: p.shares, timestamps, closes };
+        return { ticker: p.ticker, shares: p.shares, buyDate: p.buyDate||null, timestamps, closes };
       } catch(e){ return null; }
     }));
 
@@ -1021,18 +1118,21 @@ async function loadPortChart(){
     const validResults = results.filter(r=>r&&r.timestamps.length);
     if(!validResults.length){ if(loading) loading.style.display='none'; return; }
 
-    // Find common dates across all holdings
-    const dateSets = validResults.map(r => new Set(r.timestamps.map(t => Math.floor(t/86400)*86400)));
-    const commonDates = [...dateSets[0]].filter(d => dateSets.every(s=>s.has(d))).sort((a,b)=>a-b);
+    // Collect all unique dates across all holdings, sorted ascending
+    const allDates = [...new Set(validResults.flatMap(r=>r.timestamps.map(t=>Math.floor(t/86400)*86400)))].sort((a,b)=>a-b);
 
-    // For each common date, sum portfolio value
-    const values = commonDates.map(date => {
+    // For each date, sum portfolio value — only include holding if date >= buyDate
+    const values = allDates.map(date => {
       return validResults.reduce((sum, r) => {
+        const buyTs = r.buyDate ? Math.floor(new Date(r.buyDate).getTime()/1000/86400)*86400 : 0;
+        if(date < buyTs) return sum; // not yet purchased
         const idx = r.timestamps.findIndex(t => Math.floor(t/86400)*86400 === date);
         const price = idx>=0 ? r.closes[idx] : null;
         return price!=null ? sum + r.shares * price : sum;
       }, 0);
-    });
+    }).filter(v=>v>0);
+
+    const commonDates = allDates.filter((_,i)=>values[i]>0);
 
     chartData = { dates: commonDates, values };
     drawPortChart(chartData);
@@ -1056,7 +1156,7 @@ function drawPortChart(data){
 
   const canvas = document.getElementById('port-chart');
   const dpr = window.devicePixelRatio||1;
-  const W = canvas.offsetWidth; const H = 160;
+  const W = canvas.offsetWidth; const H = 90;
   canvas.width = W*dpr; canvas.height = H*dpr;
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr,dpr);
@@ -1141,7 +1241,7 @@ function drawPortChart(data){
 async function loadAll(){
   fundLoaded=false; techLoaded=false; newsLoaded=false;
   chartData=null;
-  renderHoldings(); await loadPrices();
+  renderCash(); renderHoldings(); await loadPrices();
   loadPortChart();
 }
 loadAll();
