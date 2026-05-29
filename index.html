@@ -433,16 +433,54 @@ async function fetchHistory(ticker){
 }
 
 // ──────────────────────────────────────────────────────────────
-// FUNDAMENTALS FETCH
+// FUNDAMENTALS FETCH — multi-strategy with graceful fallback
 // ──────────────────────────────────────────────────────────────
 async function fetchFundamentals(ticker){
-  const mods = 'financialData,defaultKeyStatistics,summaryProfile,incomeStatementHistoryAnnual,earnings';
-  for(const host of ['query2','query1']){
+  // Strategy 1: quoteSummary with all modules (full data)
+  const modsAll = 'financialData,defaultKeyStatistics,summaryProfile,incomeStatementHistoryAnnual,earnings';
+  for(const [host,ver] of [['query2','v10'],['query1','v10'],['query2','v11'],['query1','v11']]){
     try{
-      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=${mods}`);
-      if(data?.quoteSummary?.result?.[0]) return data.quoteSummary.result[0];
+      const data = await proxyFetch(`https://${host}.finance.yahoo.com/${ver}/finance/quoteSummary/${ticker}?modules=${modsAll}&formatted=false`);
+      if(data?.quoteSummary?.result?.[0]){
+        console.log(`[fund] ${ticker} got full quoteSummary via ${host}/${ver}`);
+        return { _src:'qs', ...data.quoteSummary.result[0] };
+      }
     }catch(e){}
   }
+  // Strategy 2: quoteSummary with minimal modules only
+  const modsMin = 'financialData,defaultKeyStatistics,summaryProfile';
+  for(const host of ['query2','query1']){
+    try{
+      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=${modsMin}&formatted=false`);
+      if(data?.quoteSummary?.result?.[0]){
+        console.log(`[fund] ${ticker} got minimal quoteSummary via ${host}`);
+        return { _src:'qs_min', ...data.quoteSummary.result[0] };
+      }
+    }catch(e){}
+  }
+  // Strategy 3: v6/finance/quote — basic metrics, no multi-year growth
+  for(const host of ['query1','query2']){
+    try{
+      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v6/finance/quote?symbols=${ticker}&fields=trailingPE,forwardPE,pegRatio,epsTrailingTwelveMonths,epsForward,earningsGrowth,revenueGrowth,grossMargins,profitMargins,freeCashflow,debtToEquity,returnOnEquity,industry,sector`);
+      const q = data?.quoteResponse?.result?.[0];
+      if(q){
+        console.log(`[fund] ${ticker} got v6/quote via ${host}`);
+        return { _src:'v6', _v6: q };
+      }
+    }catch(e){}
+  }
+  // Strategy 4: v7/finance/quote
+  for(const host of ['query1','query2']){
+    try{
+      const data = await proxyFetch(`https://${host}.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`);
+      const q = data?.quoteResponse?.result?.[0];
+      if(q){
+        console.log(`[fund] ${ticker} got v7/quote via ${host}`);
+        return { _src:'v7', _v6: q };
+      }
+    }catch(e){}
+  }
+  console.warn(`[fund] ${ticker} all strategies failed`);
   return null;
 }
 
@@ -687,59 +725,59 @@ async function loadFundamentals(force=false){
     if(!row) continue;
     try{
       const d=await fetchFundamentals(p.ticker);
-      if(!d){ throw new Error('no data'); }
+      if(!d){ throw new Error('no data from any source'); }
 
-      const fd = d.financialData||{};
-      const ks = d.defaultKeyStatistics||{};
-      const sp = d.summaryProfile||{};
-      const earnHist = d.earnings?.earningsChart?.yearly||[];   // [{date,actual}] newest first? check order
-      const incHist  = d.incomeStatementHistoryAnnual?.incomeStatementHistory||[];
+      let pe,peg,de,fcf,industry,eps3,eps5,rev3,rev5;
 
-      // Sort earnings by date ascending (oldest first)
-      const earnSorted = [...earnHist].sort((a,b)=>a.date-b.date);
-      // incHist: each item has endDate.raw (timestamp) and totalRevenue.raw
-      const incSorted  = [...incHist].sort((a,b)=>(a.endDate?.raw||0)-(b.endDate?.raw||0));
+      if(d._src==='v6'||d._src==='v7'){
+        // v6/v7 quote fallback — basic metrics only
+        const q=d._v6||{};
+        pe  = q.trailingPE??null;
+        peg = q.pegRatio??null;
+        const deRaw = q.debtToEquity??null;
+        de  = deRaw!=null ? deRaw/100 : null;
+        fcf = q.freeCashflow??null;
+        industry = q.industry||q.sector||'—';
+        // growth from single-year fields only
+        eps3=null; eps5=null; rev3=null; rev5=null;
+      } else {
+        // Full or minimal quoteSummary
+        const fd = d.financialData||{};
+        const ks = d.defaultKeyStatistics||{};
+        const sp = d.summaryProfile||{};
+        const earnHist = d.earnings?.earningsChart?.yearly||[];
+        const incHist  = d.incomeStatementHistoryAnnual?.incomeStatementHistory||[];
 
-      // P/E
-      const pe  = rv(ks,'trailingPE');
-      const peg = rv(ks,'pegRatio');
+        const earnSorted=[...earnHist].sort((a,b)=>Number(a.date)-Number(b.date));
+        const incSorted =[...incHist].sort((a,b)=>(a.endDate?.raw||0)-(b.endDate?.raw||0));
 
-      // D/E — Yahoo returns as %, divide by 100 to get ratio
-      const deRaw = rv(fd,'debtToEquity');
-      const de    = deRaw!=null ? deRaw/100 : null;
+        pe  = rv(ks,'trailingPE');
+        peg = rv(ks,'pegRatio');
+        const deRaw = rv(fd,'debtToEquity');
+        de  = deRaw!=null ? deRaw/100 : null;
+        fcf = rv(fd,'freeCashflow');
+        industry = sp.industry||sp.sector||'—';
 
-      // Free Cash Flow
-      const fcf = rv(fd,'freeCashflow');
-
-      // Industry
-      const industry = sp.industry || sp.sector || '—';
-
-      // EPS CAGR — from earnSorted (annual EPS)
-      // earnSorted[0] = oldest, earnSorted[last] = most recent
-      function epsCagr(years){
-        if(earnSorted.length < years+1) return null;
-        const recent = earnSorted[earnSorted.length-1]?.actual;
-        const old    = earnSorted[earnSorted.length-1-years]?.actual;
-        if(recent==null||old==null) return null;
-        const rv2 = typeof recent==='object'?recent.raw:recent;
-        const ov  = typeof old==='object'?old.raw:old;
-        return cagr(ov, rv2, years);
+        function epsCagr(years){
+          if(earnSorted.length<years+1) return null;
+          const rec=earnSorted[earnSorted.length-1]?.actual;
+          const old=earnSorted[earnSorted.length-1-years]?.actual;
+          if(rec==null||old==null) return null;
+          const rv2=typeof rec==='object'?rec.raw:rec;
+          const ov =typeof old==='object'?old.raw:old;
+          return cagr(ov,rv2,years);
+        }
+        function revCagr(years){
+          if(incSorted.length<years+1) return null;
+          const rv2=rv(incSorted[incSorted.length-1],'totalRevenue');
+          const ov =rv(incSorted[incSorted.length-1-years],'totalRevenue');
+          return cagr(ov,rv2,years);
+        }
+        eps3=epsCagr(3);
+        eps5=epsCagr(5)??epsCagr(Math.min(earnSorted.length-1,4));
+        rev3=revCagr(3);
+        rev5=revCagr(4)??revCagr(Math.min(incSorted.length-1,3));
       }
-
-      // Rev CAGR — from incSorted, using totalRevenue
-      function revCagr(years){
-        if(incSorted.length < years+1) return null;
-        const recent = incSorted[incSorted.length-1];
-        const old    = incSorted[incSorted.length-1-years];
-        const rv2 = rv(recent,'totalRevenue');
-        const ov  = rv(old,'totalRevenue');
-        return cagr(ov, rv2, years);
-      }
-
-      const eps3 = epsCagr(3);
-      const eps5 = epsCagr(5) ?? epsCagr(earnSorted.length-1);
-      const rev3 = revCagr(3);
-      const rev5 = revCagr(4) ?? revCagr(incSorted.length-1); // use 4 if 5 not available
 
       // FCF display
       let fcfHtml;
