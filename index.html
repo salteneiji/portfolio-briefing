@@ -924,7 +924,7 @@ function renderFundRow(ticker, name, d, isExtra){
   return `<tr>
     <td><div class="tk">${ticker}</div><div class="tk-name">${name||''}</div></td>
     <td>${indHtml}</td>
-    <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
+    <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<50, v=>v<75)}</td>
     <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
     <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<1, v=>v<2)}</td>
     <td class="r">${fcfHtml}</td>
