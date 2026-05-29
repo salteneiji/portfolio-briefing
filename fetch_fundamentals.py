@@ -80,9 +80,11 @@ for sym in TICKERS:
             'grossMargins':  safe(info.get('grossMargins')),
             'profitMargins': safe(info.get('profitMargins')),
             'returnOnEquity':safe(info.get('returnOnEquity')),
-            'eps3y': None, 'eps5y': None,
-            'rev3y': None, 'rev5y': None,
-            'epsNextY': None, 'revNext5y': None,
+            'returnOnAssets':safe(info.get('returnOnAssets')),
+            'revenueGrowth': safe(info.get('revenueGrowth')),
+            'currentRatio':  safe(info.get('currentRatio')),
+            'eps3y': None, 'rev3y': None,
+            'epsNextY': None,
         }
 
         # ── Forward EPS growth (next 1Y) — use earningsGrowth from info ─────────
@@ -99,68 +101,32 @@ for sym in TICKERS:
         except Exception:
             pass
 
-        # ── Analyst long-term EPS growth estimate (next 5Y) ───────────────────
+        # ── Annual income statement for 3Y CAGR ───────────────────────────────
         try:
-            gt = t.growth_estimates
-            if gt is not None and not gt.empty:
-                # Look for the ticker column with '+5y' row
-                ticker_col = sym if sym in gt.columns else (gt.columns[0] if len(gt.columns) else None)
-                if ticker_col and '+5y' in gt.index:
-                    val = safe(gt.loc['+5y', ticker_col])
-                    rec['revNext5y'] = val
-        except Exception:
-            pass
-
-        # ── Annual income statement for CAGR ──────────────────────────────────
-        try:
-            import pandas as pd
-            fin = t.income_stmt   # TTM + up to 3 fiscal years (4 cols)
-
-            # Try to get fiscal-year-only data (may add an extra older year)
-            try:
-                fin_fy = t.get_income_stmt(freq='yearly', trailing=False)
-                if fin_fy is not None and not fin_fy.empty:
-                    fin = pd.concat([fin, fin_fy], axis=1)
-                    fin = fin.loc[:, ~fin.columns.duplicated()]
-            except Exception:
-                pass
-
+            fin = t.income_stmt
             if fin is not None and not fin.empty:
-                fin_asc = fin[sorted(fin.columns)]   # ascending date order
+                fin_asc = fin[sorted(fin.columns)]
 
-                # EPS CAGR
                 for eps_row in ['Basic EPS', 'Diluted EPS']:
                     if eps_row in fin_asc.index:
                         eps_vals = series_to_list(fin_asc.loc[eps_row])
                         eps_vals = [v for v in eps_vals if v is not None]
-                        n = len(eps_vals)
-                        if n >= 4:
+                        if len(eps_vals) >= 4:
                             rec['eps3y'] = cagr(eps_vals[-4], eps_vals[-1], 3)
-                        if n >= 5:
-                            rec['eps5y'] = cagr(eps_vals[-5], eps_vals[-1], 4)
-                        elif n >= 4:
-                            # Only 4 pts — use all of them as best proxy for 5Y
-                            rec['eps5y'] = cagr(eps_vals[0], eps_vals[-1], 3)
                         break
 
-                # Revenue CAGR
                 if 'Total Revenue' in fin_asc.index:
                     rev_vals = series_to_list(fin_asc.loc['Total Revenue'])
                     rev_vals = [v for v in rev_vals if v is not None]
-                    n = len(rev_vals)
-                    if n >= 4:
+                    if len(rev_vals) >= 4:
                         rec['rev3y'] = cagr(rev_vals[-4], rev_vals[-1], 3)
-                    if n >= 5:
-                        rec['rev5y'] = cagr(rev_vals[-5], rev_vals[-1], 4)
-                    elif n >= 4:
-                        rec['rev5y'] = cagr(rev_vals[0], rev_vals[-1], 3)
 
         except Exception as e:
             print(f"  Income stmt error: {e}")
 
         output[sym] = rec
         print(f"  PE={rec['trailingPE']}  PEG={rec['pegRatio']}  D/E={rec['debtToEquity']}  FCF={rec['freeCashflow']}")
-        print(f"  EPS 3Y={rec['eps3y']}  EPS 5Y={rec['eps5y']}  Rev 3Y={rec['rev3y']}  Rev 5Y={rec['rev5y']}")
+        print(f"  EPS 3Y={rec['eps3y']}  Rev 3Y={rec['rev3y']}  ROE={rec['returnOnEquity']}  GrossM={rec['grossMargins']}")
 
     except Exception as e:
         print(f"  ERROR: {e}")
