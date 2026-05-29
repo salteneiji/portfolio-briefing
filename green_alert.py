@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+"""
+Green Across the Board Alert — Telegram Bot
+Reads fundamentals.json from GitHub Pages and sends stocks that are
+green on every tracked metric. Runs daily via GitHub Actions.
+
+Green thresholds (matching index.html color rules):
+  P/E          < 20
+  PEG          < 1
+  D/E          < 1      (Yahoo returns x100, so raw < 100)
+  Free CF      > 0
+  EPS 3Y       > 20%
+  EPS 1Y Next  > 20%
+  Rev 3Y       > 20%
+  Rev TTM      > 20%
+  Gross Margin > 50%
+  ROE          > 15%
+  Current Ratio> 1.5
+"""
+
+import json
+import sys
+import urllib.parse
+import urllib.request
+from datetime import datetime
+
+# ── CONFIG ────────────────────────────────────────────────────────────────────
+BOT_TOKEN        = "8668525958:AAG7LRqZbNuDVUXPLeqQmkSa66hi-NgSzpQ"
+CHAT_ID          = "6050679787"
+FUNDAMENTALS_URL = "https://salteneiji.github.io/portfolio-briefing/fundamentals.json"
+# ──────────────────────────────────────────────────────────────────────────────
+
+CRITERIA = {
+    'trailingPE':    lambda v: v < 20,
+    'pegRatio':      lambda v: v < 1,
+    'debtToEquity':  lambda v: v < 100,   # Yahoo stores as % e.g. 45 = D/E 0.45
+    'freeCashflow':  lambda v: v > 0,
+    'eps3y':         lambda v: v > 0.20,
+    'epsNextY':      lambda v: v > 0.20,
+    'rev3y':         lambda v: v > 0.20,
+    'revenueGrowth': lambda v: v > 0.20,
+    'grossMargins':  lambda v: v > 0.50,
+    'returnOnEquity':lambda v: v > 0.15,
+    'currentRatio':  lambda v: v > 1.5,
+}
+
+LABELS = {
+    'trailingPE':    'P/E',
+    'pegRatio':      'PEG',
+    'debtToEquity':  'D/E',
+    'freeCashflow':  'FCF',
+    'eps3y':         'EPS 3Y',
+    'epsNextY':      'EPS 1Y Next',
+    'rev3y':         'Rev 3Y',
+    'revenueGrowth': 'Rev TTM',
+    'grossMargins':  'Gross Margin',
+    'returnOnEquity':'ROE',
+    'currentRatio':  'Current Ratio',
+}
+
+
+def log(msg):
+    print(msg, flush=True)
+
+
+def fetch_fundamentals():
+    log(f"Fetching {FUNDAMENTALS_URL} ...")
+    req = urllib.request.Request(FUNDAMENTALS_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())
+
+
+def is_green(data):
+    """Return True if all criteria pass for a ticker's data dict."""
+    for field, check in CRITERIA.items():
+        val = data.get(field)
+        if val is None:
+            return False   # missing data = not green
+        try:
+            if not check(float(val)):
+                return False
+        except (TypeError, ValueError):
+            return False
+    return True
+
+
+def esc(text):
+    for ch in r'\_*[]()~`>#+-=|{}.!':
+        text = str(text).replace(ch, '\\' + ch)
+    return text
+
+
+def send_telegram(message):
+    log("Sending Telegram message...")
+    url  = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id":    CHAT_ID,
+        "text":       message,
+        "parse_mode": "MarkdownV2",
+    }).encode()
+    req = urllib.request.Request(
+        url, data=data,
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        result = json.loads(resp.read())
+        if result.get("ok"):
+            log("✅ Sent.")
+        else:
+            log(f"Telegram error: {result}")
+            sys.exit(1)
+
+
+def main():
+    log("=== Green Across the Board Alert ===")
+
+    try:
+        fund = fetch_fundamentals()
+    except Exception as e:
+        send_telegram(f"⚠️ Could not fetch fundamentals\\.json: {esc(str(e))}")
+        sys.exit(1)
+
+    updated = fund.get('_updated', '')
+    tickers = [k for k in fund if not k.startswith('_')]
+
+    green_tickers = []
+    for ticker in tickers:
+        d = fund[ticker]
+        if isinstance(d, dict) and not d.get('error') and is_green(d):
+            green_tickers.append((ticker, d))
+
+    today = datetime.now().strftime("%A, %b %d %Y")
+    lines = [f"🟢 *Green Across the Board — {esc(today)}*\n"]
+
+    if not green_tickers:
+        lines.append("_No stocks met all criteria today\\._\n")
+    else:
+        lines.append(f"*{len(green_tickers)} stock{'s' if len(green_tickers)!=1 else ''}* passed all 11 criteria:\n")
+        for ticker, d in green_tickers:
+            pe  = f"PE={d['trailingPE']:.1f}" if d.get('trailingPE') else ''
+            peg = f"PEG={d['pegRatio']:.2f}"  if d.get('pegRatio')   else ''
+            eps = f"EPS3Y={d['eps3y']*100:.1f}%" if d.get('eps3y')   else ''
+            industry = esc(d.get('industry','')[:25])
+            lines.append(f"• *{esc(ticker)}*   {industry}   _{esc(pe)} · {esc(peg)} · {esc(eps)}_")
+
+    lines.append(f"\n_Criteria: P/E\\<20 · PEG\\<1 · D/E\\<1 · FCF\\>0 · EPS 3Y\\>20% · EPS Next\\>20% · Rev 3Y\\>20% · Rev TTM\\>20% · Gross Margin\\>50% · ROE\\>15% · Current Ratio\\>1\\.5_")
+
+    send_telegram("\n".join(lines))
+    log("=== Done ===")
+
+
+if __name__ == "__main__":
+    main()
