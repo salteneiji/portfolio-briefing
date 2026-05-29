@@ -2,7 +2,7 @@ name: Fetch Fundamentals
 
 on:
   schedule:
-    - cron: '30 4 * * 1-5'   # 8:30 AM UAE time (UTC+4), Mon–Fri
+    - cron: '0 13 * * 1-5'   # 5:00 PM UAE time (UTC+4), Mon–Fri — 30 min before US market open
   workflow_dispatch:           # manual trigger
 
 jobs:
