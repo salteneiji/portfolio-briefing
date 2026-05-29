@@ -1021,6 +1021,29 @@ async function loadFundamentals(force=false){
     return;
   }
 
+  // Sort by green metric count (descending)
+  function countGreen(d){
+    if(!d||d.error) return -1;
+    let n=0;
+    const pe=d.trailingPE, peg=d.pegRatio, de=d.debtToEquity!=null?d.debtToEquity/100:null;
+    const fcf=d.freeCashflow, eps3=d.eps3y, epsNext=d.epsNextY;
+    const rev3=d.rev3y, revG=d.revenueGrowth, grossM=d.grossMargins;
+    const roe=d.returnOnEquity, cur=d.currentRatio;
+    if(pe!=null && pe<50)      n++;
+    if(peg!=null && peg<1)     n++;
+    if(de!=null && de<1)       n++;
+    if(fcf!=null && fcf>0)     n++;
+    if(eps3!=null && eps3>0.20) n++;
+    if(epsNext!=null && epsNext>0.20) n++;
+    if(rev3!=null && rev3>0.20) n++;
+    if(revG!=null && revG>0.20) n++;
+    if(grossM!=null && grossM>0.50) n++;
+    if(roe!=null && roe>0.15)  n++;
+    if(cur!=null && cur>1.5)   n++;
+    return n;
+  }
+  allRows.sort((a,b)=>countGreen(allData[b.ticker])-countGreen(allData[a.ticker]));
+
   tbody.innerHTML = allRows.map(r=>renderFundRow(r.ticker, r.name, allData[r.ticker], r.isExtra)).join('');
 }
 
