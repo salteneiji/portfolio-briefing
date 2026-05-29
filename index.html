@@ -358,7 +358,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
     <!-- Portfolio Progress Chart -->
     <div class="chart-card" id="port-chart-card">
       <div class="chart-hdr">
-        <span class="chart-title">Portfolio Value</span>
+        <span class="chart-title">Portfolio Return (P&amp;L)</span>
         <div class="chart-btns">
           <button class="cbtn active" onclick="setChartRange('1M',this)">1M</button>
           <button class="cbtn" onclick="setChartRange('3M',this)">3M</button>
@@ -1267,7 +1267,9 @@ async function loadPortChart(){
         if(!res) return null;
         const timestamps = res.timestamp || [];
         const closes = res.indicators?.quote?.[0]?.close || [];
-        return { ticker: p.ticker, shares: p.shares, buyDate: p.buyDate||null, timestamps, closes };
+        // Pass all lots so we can compute per-lot P&L correctly
+        const lots = p.lots || [{shares:p.shares, avgPrice:p.avgPrice, buyDate:p.buyDate||null}];
+        return { ticker: p.ticker, lots, timestamps, closes };
       } catch(e){ return null; }
     }));
 
@@ -1278,20 +1280,28 @@ async function loadPortChart(){
     // Collect all unique dates across all holdings, sorted ascending
     const allDates = [...new Set(validResults.flatMap(r=>r.timestamps.map(t=>Math.floor(t/86400)*86400)))].sort((a,b)=>a-b);
 
-    // For each date, sum portfolio value — only include holding if date >= buyDate
-    const values = allDates.map(date => {
-      return validResults.reduce((sum, r) => {
-        const buyTs = r.buyDate ? Math.floor(new Date(r.buyDate).getTime()/1000/86400)*86400 : 0;
-        if(date < buyTs) return sum; // not yet purchased
+    // For each date, compute P&L = market value - cost basis (per active lot)
+    // New deposits show P&L=0 on buy date → no artificial spike
+    const pnlArr = allDates.map(date => {
+      let pnl = 0, hasAny = false;
+      validResults.forEach(r => {
         const idx = r.timestamps.findIndex(t => Math.floor(t/86400)*86400 === date);
         const price = idx>=0 ? r.closes[idx] : null;
-        return price!=null ? sum + r.shares * price : sum;
-      }, 0);
-    }).filter(v=>v>0);
+        if(price==null) return;
+        r.lots.forEach(lot => {
+          const buyTs = lot.buyDate ? Math.floor(new Date(lot.buyDate).getTime()/1000/86400)*86400 : 0;
+          if(date < buyTs) return; // lot not yet bought
+          pnl += lot.shares * (price - lot.avgPrice);
+          hasAny = true;
+        });
+      });
+      return hasAny ? pnl : null;
+    });
 
-    const commonDates = allDates.filter((_,i)=>values[i]>0);
+    const commonDates = allDates.filter((_,i)=>pnlArr[i]!=null);
+    const values = pnlArr.filter(v=>v!=null);
 
-    chartData = { dates: commonDates, values };
+    chartData = { dates: commonDates, values, isPnl: true };
     drawPortChart(chartData);
   } catch(e){ console.error('Chart error:', e); }
   if(loading) loading.style.display='none';
@@ -1339,6 +1349,13 @@ function drawPortChart(data){
     ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+cw,y); ctx.stroke();
   }
 
+  // Zero baseline
+  if(minV<0 && maxV>0){
+    const zeroY = toY(0);
+    ctx.beginPath(); ctx.moveTo(pad.l,zeroY); ctx.lineTo(pad.l+cw,zeroY);
+    ctx.strokeStyle='rgba(255,255,255,0.15)'; ctx.lineWidth=1; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
+  }
+
   // Gradient fill
   const grad = ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
   grad.addColorStop(0, isUp?'rgba(24,212,122,0.18)':'rgba(240,68,96,0.18)');
@@ -1382,14 +1399,16 @@ function drawPortChart(data){
     ctx.fillText(label, toX(idx), H-pad.b+14);
   }
 
-  // Stats
-  const startVal = values[0], endVal = values[values.length-1];
-  const change = endVal-startVal, pct = startVal>0?change/startVal*100:0;
-  const sign = change>=0?'+':'';
+  // Stats — P&L based
+  const curPnl = values[values.length-1];
+  const peakPnl = Math.max(...values);
+  const costBasis = portfolio.reduce((s,p)=>s+p.shares*p.avgPrice,0);
+  const pct = costBasis>0 ? curPnl/costBasis*100 : 0;
+  const sign = curPnl>=0?'+':'';
   document.getElementById('port-chart-stat').innerHTML=`
-    <span>Start <strong style="color:var(--text)">$${startVal.toFixed(2)}</strong></span>
-    <span>Current <strong style="color:var(--text)">$${endVal.toFixed(2)}</strong></span>
-    <span style="color:${change>=0?'var(--green)':'var(--red)'}"><strong>${sign}$${Math.abs(change).toFixed(2)} (${sign}${pct.toFixed(2)}%)</strong></span>
+    <span>Total P&amp;L <strong style="color:${curPnl>=0?'var(--green)':'var(--red)'}">${sign}$${Math.abs(curPnl).toFixed(2)}</strong></span>
+    <span>Return <strong style="color:${pct>=0?'var(--green)':'var(--red)'}">${sign}${pct.toFixed(2)}%</strong></span>
+    <span>Peak P&amp;L <strong style="color:var(--text)">+$${peakPnl.toFixed(2)}</strong></span>
   `;
 }
 
