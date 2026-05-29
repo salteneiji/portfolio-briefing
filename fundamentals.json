@@ -631,7 +631,7 @@
   "ADSK": {
     "industry": "Software - Application",
     "trailingPE": 46.070744,
-    "forwardPE": 17.074013,
+    "forwardPE": 16.977373,
     "pegRatio": 0.92,
     "debtToEquity": 89.787,
     "freeCashflow": 2787000064.0,
@@ -1430,7 +1430,7 @@
   "BSX": {
     "industry": "Medical Devices",
     "trailingPE": 20.548117,
-    "forwardPE": 13.111804,
+    "forwardPE": 13.1333685,
     "pegRatio": 0.61,
     "debtToEquity": 42.25,
     "freeCashflow": 2807124992.0,
@@ -1667,7 +1667,7 @@
   },
   "CFG": {
     "industry": "Banks - Regional",
-    "trailingPE": 14.930623,
+    "trailingPE": 14.789101,
     "forwardPE": 9.731932,
     "pegRatio": 1.65,
     "debtToEquity": null,
@@ -1905,7 +1905,7 @@
   },
   "COF": {
     "industry": "Credit Services",
-    "trailingPE": 58.080746,
+    "trailingPE": 57.544617,
     "forwardPE": 7.6998234,
     "pegRatio": 0.2,
     "debtToEquity": null,
@@ -1957,7 +1957,7 @@
   "COST": {
     "industry": "Discount Stores",
     "trailingPE": 51.806355,
-    "forwardPE": 44.14492,
+    "forwardPE": 43.91671,
     "pegRatio": 5.1,
     "debtToEquity": 60.257,
     "freeCashflow": 6690375168.0,
@@ -2161,7 +2161,7 @@
   "DAL": {
     "industry": "Airlines",
     "trailingPE": 12.0423355,
-    "forwardPE": 10.239078,
+    "forwardPE": 10.234453,
     "pegRatio": 0.21,
     "debtToEquity": 105.021,
     "freeCashflow": 3093374976.0,
@@ -2173,7 +2173,7 @@
     "currentRatio": 0.418,
     "eps3y": 0.55078,
     "rev3y": 0.07799,
-    "epsNextY": 0.17612
+    "epsNextY": 0.17665
   },
   "DE": {
     "industry": "Farm & Heavy Construction Machinery",
@@ -3555,7 +3555,7 @@
   "HPQ": {
     "industry": "Computer Hardware",
     "trailingPE": 9.262963,
-    "forwardPE": 8.361472,
+    "forwardPE": 8.371968,
     "pegRatio": 2.16,
     "debtToEquity": null,
     "freeCashflow": 3450874880.0,
@@ -4438,7 +4438,7 @@
   },
   "LKQ": {
     "industry": "Auto Parts",
-    "trailingPE": 13.713569,
+    "trailingPE": 13.645,
     "forwardPE": 8.209519,
     "pegRatio": 0.92,
     "debtToEquity": 80.678,
@@ -5153,7 +5153,7 @@
   "NDSN": {
     "industry": "Specialty Industrial Machinery",
     "trailingPE": 30.782051,
-    "forwardPE": 23.218876,
+    "forwardPE": 23.177372,
     "pegRatio": 1.93,
     "debtToEquity": 61.637,
     "freeCashflow": 574589504.0,
@@ -6343,7 +6343,7 @@
   "SWK": {
     "industry": "Tools & Accessories",
     "trailingPE": 32.4877,
-    "forwardPE": 12.791054,
+    "forwardPE": 12.782433,
     "pegRatio": 1.39,
     "debtToEquity": 77.606,
     "freeCashflow": 842187520.0,
@@ -6546,7 +6546,7 @@
   },
   "TFX": {
     "industry": "Medical Instruments & Supplies",
-    "trailingPE": 1852.2858,
+    "trailingPE": 2161.0,
     "forwardPE": 12.392559,
     "pegRatio": 0.16,
     "debtToEquity": 88.791,
@@ -6559,7 +6559,7 @@
     "currentRatio": 2.554,
     "eps3y": null,
     "rev3y": -0.10623,
-    "epsNextY": 148.46757
+    "epsNextY": 173.37883
   },
   "TGT": {
     "industry": "Discount Stores",
@@ -7669,7 +7669,7 @@
   "MDB": {
     "industry": "Software - Infrastructure",
     "trailingPE": null,
-    "forwardPE": 45.983177,
+    "forwardPE": 45.03655,
     "pegRatio": 1.67,
     "debtToEquity": 2.128,
     "freeCashflow": 463322496.0,
@@ -8672,7 +8672,7 @@
   "PATH": {
     "industry": "Software - Infrastructure",
     "trailingPE": 19.3,
-    "forwardPE": 12.868668,
+    "forwardPE": 12.854383,
     "pegRatio": 0.4,
     "debtToEquity": 3.901,
     "freeCashflow": 473554368.0,
@@ -8961,7 +8961,7 @@
   "IQ": {
     "industry": "Entertainment",
     "trailingPE": null,
-    "forwardPE": 13.667815,
+    "forwardPE": 13.65234,
     "pegRatio": 2.48,
     "debtToEquity": 109.205,
     "freeCashflow": 12666399744.0,
@@ -8995,7 +8995,7 @@
   "FUTU": {
     "industry": "Capital Markets",
     "trailingPE": 11.592265,
-    "forwardPE": 7.9972997,
+    "forwardPE": 8.192402,
     "pegRatio": null,
     "debtToEquity": 54.246,
     "freeCashflow": null,
@@ -10015,7 +10015,7 @@
   "BROS": {
     "industry": "Restaurants",
     "trailingPE": 88.37501,
-    "forwardPE": 45.489273,
+    "forwardPE": 45.406013,
     "pegRatio": 2.22,
     "debtToEquity": 126.055,
     "freeCashflow": 39701376.0,
@@ -10066,7 +10066,7 @@
   "TXRH": {
     "industry": "Restaurants",
     "trailingPE": 28.718153,
-    "forwardPE": 23.62139,
+    "forwardPE": 23.583055,
     "pegRatio": 2.33,
     "debtToEquity": 68.531,
     "freeCashflow": 190242128.0,
@@ -10845,7 +10845,7 @@
     "rev3y": 1.56454,
     "epsNextY": null
   },
-  "_updated": "2026-05-29T08:02:05Z",
+  "_updated": "2026-05-29T11:12:08Z",
   "_tickers": [
     "META",
     "ONTO",
