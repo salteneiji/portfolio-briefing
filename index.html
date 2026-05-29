@@ -371,6 +371,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
     <button class="tab" onclick="showTab('technicals',this)">Technicals</button>
     <button class="tab" onclick="showTab('alerts',this)">Alerts</button>
     <button class="tab" onclick="showTab('news',this)">News</button>
+    <button class="tab" onclick="showTab('ai',this)">✦ AI</button>
   </nav>
 
   <!-- HOLDINGS -->
@@ -516,6 +517,29 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
   <!-- NEWS -->
   <div class="tab-pane" id="tab-news">
     <div class="news-grid" id="news-grid"></div>
+  </div>
+
+  <!-- AI ANALYSIS -->
+  <div class="tab-pane" id="tab-ai">
+    <div style="max-width:720px;margin:0 auto">
+      <div style="display:flex;gap:10px;margin-bottom:20px">
+        <input class="fi" id="ai-ticker-inp" placeholder="Enter ticker e.g. NVDA, AAPL…" style="flex:1;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')runAI()"/>
+        <select class="fi" id="ai-mode" style="width:180px">
+          <option value="full">Full Breakdown</option>
+          <option value="bull">Bull Case</option>
+          <option value="bear">Bear Case</option>
+          <option value="valuation">Valuation</option>
+          <option value="risks">Risks</option>
+          <option value="compare">Compare to peers</option>
+        </select>
+        <button class="btn btn-primary" onclick="runAI()" id="ai-btn">Analyze</button>
+      </div>
+      <div id="ai-out" style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;min-height:120px;font-size:.88rem;line-height:1.7;color:var(--text);white-space:pre-wrap;display:none"></div>
+      <div id="ai-empty" style="text-align:center;padding:60px 0;color:var(--muted)">
+        <div style="font-size:2rem;margin-bottom:12px">✦</div>
+        <div style="font-size:.9rem">Enter a stock ticker and pick an analysis type</div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -1489,6 +1513,58 @@ async function loadAll(){
   loadPortChart();
 }
 loadAll();
+
+// ── AI Stock Analysis ─────────────────────────────────────────────────────
+const GROQ_KEY = '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';
+
+async function runAI(){
+  const ticker = document.getElementById('ai-ticker-inp').value.trim().toUpperCase();
+  const mode   = document.getElementById('ai-mode').value;
+  if(!ticker) return;
+
+  const prompts = {
+    full:      `Give me a full investment breakdown for ${ticker}. Cover: business model, recent financial performance, growth drivers, competitive moat, valuation, risks, and your overall view. Be concise but thorough.`,
+    bull:      `Give me the bull case for investing in ${ticker}. What are the strongest arguments for buying this stock? Include catalysts, growth opportunities, and why the upside could be significant.`,
+    bear:      `Give me the bear case for ${ticker}. What are the biggest risks and reasons this stock could underperform or decline? Be specific.`,
+    valuation: `Analyze the valuation of ${ticker}. Is it cheap, fair, or expensive? Compare to historical multiples and peers. What's a reasonable price target range and why?`,
+    risks:     `What are the top risks for ${ticker}? Cover business risks, competitive threats, macro risks, regulatory risks, and any red flags investors should watch.`,
+    compare:   `Compare ${ticker} to its main competitors. How does it stack up on growth, profitability, valuation, and competitive position? Who has the edge and why?`,
+  };
+
+  const btn = document.getElementById('ai-btn');
+  const out  = document.getElementById('ai-out');
+  const empty = document.getElementById('ai-empty');
+
+  btn.disabled = true;
+  btn.textContent = 'Analyzing…';
+  out.style.display = 'block';
+  empty.style.display = 'none';
+  out.textContent = '⏳ Thinking…';
+
+  try {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_KEY}` },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: 'You are a sharp, experienced equity analyst. Give clear, structured, and honest analysis. Use plain text with clear sections. No fluff.' },
+          { role: 'user',   content: prompts[mode] }
+        ],
+        temperature: 0.7,
+        max_tokens: 1200,
+      })
+    });
+    const data = await res.json();
+    if(data.error) throw new Error(data.error.message);
+    out.textContent = data.choices[0].message.content;
+  } catch(e) {
+    out.textContent = '❌ Error: ' + e.message;
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Analyze';
+}
 
 // ── Export / Import ───────────────────────────────────────────────────────
 function exportData(){
