@@ -82,7 +82,33 @@ for sym in TICKERS:
             'returnOnEquity':safe(info.get('returnOnEquity')),
             'eps3y': None, 'eps5y': None,
             'rev3y': None, 'rev5y': None,
+            'epsNextY': None, 'revNext5y': None,
         }
+
+        # ── Forward EPS growth (next 1Y) ──────────────────────────────────────
+        try:
+            fwd = safe(info.get('forwardEps'))
+            trail = safe(info.get('trailingEps'))
+            if fwd and trail and trail > 0:
+                rec['epsNextY'] = round(fwd / trail - 1, 5)
+        except Exception:
+            pass
+
+        # ── Analyst long-term growth estimate (next 5Y revenue) ───────────────
+        try:
+            gt = t.growth_estimates
+            if gt is not None and not gt.empty and '+5y' in gt.index:
+                row = gt.loc['+5y']
+                # row may have multiple columns (industry, sector, sp500, stock)
+                val = None
+                for col in row.index:
+                    v = safe(row[col])
+                    if v is not None:
+                        val = v
+                        break
+                rec['revNext5y'] = val
+        except Exception:
+            pass
 
         # ── Annual income statement for CAGR ──────────────────────────────────
         try:
