@@ -13,7 +13,7 @@
     "eps5y": 0.40587,
     "rev3y": 0.19894,
     "rev5y": 0.19894,
-    "epsNextY": 0.31451,
+    "epsNextY": 0.624,
     "revNext5y": null
   },
   "ONTO": {
@@ -30,7 +30,7 @@
     "eps5y": -0.14958,
     "rev3y": 3e-05,
     "rev5y": 3e-05,
-    "epsNextY": 3.41794,
+    "epsNextY": -0.485,
     "revNext5y": null
   },
   "SMH": {
@@ -64,7 +64,7 @@
     "eps5y": 2.037,
     "rev3y": 1.00045,
     "rev5y": 1.00045,
-    "epsNextY": 0.93836,
+    "epsNextY": 2.145,
     "revNext5y": null
   },
   "AAPL": {
@@ -81,7 +81,7 @@
     "eps5y": 0.06791,
     "rev3y": 0.01813,
     "rev5y": 0.01813,
-    "epsNextY": 0.15619,
+    "epsNextY": 0.218,
     "revNext5y": null
   },
   "MSFT": {
@@ -98,7 +98,7 @@
     "eps5y": 0.12197,
     "rev3y": 0.12423,
     "rev5y": 0.12423,
-    "epsNextY": 0.15243,
+    "epsNextY": 0.234,
     "revNext5y": null
   },
   "GOOGL": {
@@ -115,7 +115,7 @@
     "eps5y": 0.33456,
     "rev3y": 0.12512,
     "rev5y": 0.12512,
-    "epsNextY": 0.10523,
+    "epsNextY": 0.82,
     "revNext5y": null
   },
   "GOOG": {
@@ -132,7 +132,7 @@
     "eps5y": 0.33456,
     "rev3y": 0.12512,
     "rev5y": 0.12512,
-    "epsNextY": 0.10239,
+    "epsNextY": 0.82,
     "revNext5y": null
   },
   "AMZN": {
@@ -149,7 +149,7 @@
     "eps5y": null,
     "rev3y": 0.11731,
     "rev5y": 0.11731,
-    "epsNextY": 0.1385,
+    "epsNextY": 0.748,
     "revNext5y": null
   },
   "TSLA": {
@@ -166,7 +166,7 @@
     "eps5y": -0.33607,
     "rev3y": 0.05194,
     "rev5y": 0.05194,
-    "epsNextY": 1.26098,
+    "epsNextY": 0.083,
     "revNext5y": null
   },
   "AVGO": {
@@ -183,7 +183,7 @@
     "eps5y": 0.21404,
     "rev3y": 0.24378,
     "rev5y": 0.24378,
-    "epsNextY": 2.59305,
+    "epsNextY": 0.316,
     "revNext5y": null
   },
   "ORCL": {
@@ -200,7 +200,7 @@
     "eps5y": 0.21445,
     "rev3y": 0.10588,
     "rev5y": 0.10588,
-    "epsNextY": 0.4447,
+    "epsNextY": 0.245,
     "revNext5y": null
   },
   "CSCO": {
@@ -217,7 +217,7 @@
     "eps5y": -0.03287,
     "rev3y": 0.03192,
     "rev5y": 0.03192,
-    "epsNextY": 0.59081,
+    "epsNextY": 0.371,
     "revNext5y": null
   },
   "ADBE": {
@@ -234,13 +234,13 @@
     "eps5y": 0.18203,
     "rev3y": 0.10522,
     "rev5y": 0.10522,
-    "epsNextY": 0.53675,
+    "epsNextY": 0.111,
     "revNext5y": null
   },
   "CRM": {
     "industry": "Software - Application",
     "trailingPE": 20.413673,
-    "forwardPE": 11.416554,
+    "forwardPE": 11.38041,
     "pegRatio": 0.96,
     "debtToEquity": 29.947,
     "freeCashflow": 16366999552.0,
@@ -251,7 +251,7 @@
     "eps5y": 2.34362,
     "rev3y": 0.0982,
     "rev5y": 0.0982,
-    "epsNextY": 0.78808,
+    "epsNextY": 0.179,
     "revNext5y": null
   },
   "INTC": {
@@ -285,7 +285,7 @@
     "eps5y": 0.46453,
     "rev3y": 0.13644,
     "rev5y": 0.13644,
-    "epsNextY": 3.31985,
+    "epsNextY": 0.912,
     "revNext5y": null
   },
   "QCOM": {
@@ -302,7 +302,7 @@
     "eps5y": -0.24035,
     "rev3y": 0.00063,
     "rev5y": 0.00063,
-    "epsNextY": 0.14491,
+    "epsNextY": 1.73,
     "revNext5y": null
   },
   "TXN": {
@@ -319,7 +319,7 @@
     "eps5y": -0.16796,
     "rev3y": -0.04068,
     "rev5y": -0.04068,
-    "epsNextY": 0.60916,
+    "epsNextY": 0.313,
     "revNext5y": null
   },
   "MU": {
@@ -336,7 +336,7 @@
     "eps5y": -0.00688,
     "rev3y": 0.06713,
     "rev5y": 0.06713,
-    "epsNextY": 3.96129,
+    "epsNextY": 7.56,
     "revNext5y": null
   },
   "AMAT": {
@@ -353,7 +353,7 @@
     "eps5y": 0.05159,
     "rev3y": 0.03233,
     "rev5y": 0.03233,
-    "epsNextY": 0.524,
+    "epsNextY": 0.335,
     "revNext5y": null
   },
   "LRCX": {
@@ -370,7 +370,7 @@
     "eps5y": 0.082,
     "rev3y": 0.02286,
     "rev5y": 0.02286,
-    "epsNextY": 0.50423,
+    "epsNextY": 0.408,
     "revNext5y": null
   },
   "KLAC": {
@@ -387,7 +387,7 @@
     "eps5y": 0.148,
     "rev3y": 0.09686,
     "rev5y": 0.09686,
-    "epsNextY": 0.41312,
+    "epsNextY": 0.118,
     "revNext5y": null
   },
   "MCHP": {
@@ -421,7 +421,7 @@
     "eps5y": -0.09068,
     "rev3y": -0.02421,
     "rev5y": -0.02421,
-    "epsNextY": 0.68374,
+    "epsNextY": 1.307,
     "revNext5y": null
   },
   "MPWR": {
@@ -438,7 +438,7 @@
     "eps5y": 0.11361,
     "rev3y": 0.15861,
     "rev5y": 0.15861,
-    "epsNextY": 1.14654,
+    "epsNextY": 0.395,
     "revNext5y": null
   },
   "MRVL": {
@@ -446,16 +446,16 @@
     "trailingPE": 70.38831,
     "forwardPE": 37.029472,
     "pegRatio": 2.33,
-    "debtToEquity": 33.479,
-    "freeCashflow": 1442787456.0,
-    "grossMargins": 0.51023996,
-    "profitMargins": 0.32584,
-    "returnOnEquity": 0.19253999,
+    "debtToEquity": 27.236,
+    "freeCashflow": 2324512512.0,
+    "grossMargins": 0.51509,
+    "profitMargins": 0.28986,
+    "returnOnEquity": 0.16028,
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.1145,
     "rev5y": 0.1145,
-    "epsNextY": 0.90087,
+    "epsNextY": -0.804,
     "revNext5y": null
   },
   "A": {
@@ -472,7 +472,7 @@
     "eps5y": 0.03086,
     "rev3y": 0.00484,
     "rev5y": 0.00484,
-    "epsNextY": 0.32476,
+    "epsNextY": -0.036,
     "revNext5y": null
   },
   "AAL": {
@@ -506,7 +506,7 @@
     "eps5y": -0.55564,
     "rev3y": -0.02037,
     "rev5y": -0.02037,
-    "epsNextY": 2.56579,
+    "epsNextY": -0.025,
     "revNext5y": null
   },
   "ABBV": {
@@ -523,7 +523,7 @@
     "eps5y": -0.29243,
     "rev3y": 0.01753,
     "rev5y": 0.01753,
-    "epsNextY": 6.99496,
+    "epsNextY": -0.462,
     "revNext5y": null
   },
   "ABT": {
@@ -540,7 +540,7 @@
     "eps5y": -0.01984,
     "rev3y": 0.00513,
     "rev5y": 0.00513,
-    "epsNextY": 0.6978,
+    "epsNextY": -0.197,
     "revNext5y": null
   },
   "ACGL": {
@@ -557,7 +557,7 @@
     "eps5y": 0.44757,
     "rev3y": 0.2614,
     "rev5y": 0.2614,
-    "epsNextY": -0.23835,
+    "epsNextY": 0.946,
     "revNext5y": null
   },
   "ACN": {
@@ -574,7 +574,7 @@
     "eps5y": 0.04178,
     "rev3y": 0.04194,
     "rev5y": 0.04194,
-    "epsNextY": 0.22174,
+    "epsNextY": 0.04,
     "revNext5y": null
   },
   "ADI": {
@@ -591,7 +591,7 @@
     "eps5y": -0.04621,
     "rev3y": -0.02838,
     "rev5y": -0.02838,
-    "epsNextY": 1.20497,
+    "epsNextY": 1.105,
     "revNext5y": null
   },
   "ADM": {
@@ -608,7 +608,7 @@
     "eps5y": -0.34496,
     "rev3y": -0.07541,
     "rev5y": -0.07541,
-    "epsNextY": 1.31772,
+    "epsNextY": 0.009,
     "revNext5y": null
   },
   "ADP": {
@@ -625,7 +625,7 @@
     "eps5y": 0.12486,
     "rev3y": 0.07614,
     "rev5y": 0.07614,
-    "epsNextY": 0.13639,
+    "epsNextY": 0.105,
     "revNext5y": null
   },
   "ADSK": {
@@ -642,7 +642,7 @@
     "eps5y": 0.1149,
     "rev3y": 0.12918,
     "rev5y": 0.12918,
-    "epsNextY": 1.6983,
+    "epsNextY": 0.063,
     "revNext5y": null
   },
   "AEE": {
@@ -659,7 +659,7 @@
     "eps5y": 0.08951,
     "rev3y": 0.0341,
     "rev5y": 0.0341,
-    "epsNextY": 0.04403,
+    "epsNextY": 0.196,
     "revNext5y": null
   },
   "AEP": {
@@ -676,7 +676,7 @@
     "eps5y": 0.14104,
     "rev3y": 0.0366,
     "rev5y": 0.0366,
-    "epsNextY": 0.01375,
+    "epsNextY": 0.067,
     "revNext5y": null
   },
   "AES": {
@@ -693,7 +693,7 @@
     "eps5y": null,
     "rev3y": -0.01025,
     "rev5y": -0.01025,
-    "epsNextY": 0.24416,
+    "epsNextY": 9.511,
     "revNext5y": null
   },
   "AFL": {
@@ -710,7 +710,7 @@
     "eps5y": -0.00578,
     "rev3y": -0.03229,
     "rev5y": -0.03229,
-    "epsNextY": -0.13101,
+    "epsNextY": 38.6,
     "revNext5y": null
   },
   "AIG": {
@@ -727,7 +727,7 @@
     "eps5y": -0.25211,
     "rev3y": -0.03694,
     "rev5y": -0.03694,
-    "epsNextY": 0.56586,
+    "epsNextY": 0.216,
     "revNext5y": null
   },
   "AIZ": {
@@ -744,7 +744,7 @@
     "eps5y": 0.49887,
     "rev3y": 0.07927,
     "rev5y": 0.07927,
-    "epsNextY": 0.15107,
+    "epsNextY": 0.912,
     "revNext5y": null
   },
   "AJG": {
@@ -761,7 +761,7 @@
     "eps5y": 0.03245,
     "rev3y": 0.177,
     "rev5y": 0.177,
-    "epsNextY": 1.40293,
+    "epsNextY": 0.162,
     "revNext5y": null
   },
   "AKAM": {
@@ -778,7 +778,7 @@
     "eps5y": -0.01858,
     "rev3y": 0.05179,
     "rev5y": 0.05179,
-    "epsNextY": 1.42592,
+    "epsNextY": -0.134,
     "revNext5y": null
   },
   "ALB": {
@@ -812,7 +812,7 @@
     "eps5y": 0.07002,
     "rev3y": 0.02612,
     "rev5y": 0.02612,
-    "epsNextY": 1.08034,
+    "epsNextY": 0.239,
     "revNext5y": null
   },
   "ALL": {
@@ -829,7 +829,7 @@
     "eps5y": null,
     "rev3y": 0.09835,
     "rev5y": 0.09835,
-    "epsNextY": -0.41886,
+    "epsNextY": 3.384,
     "revNext5y": null
   },
   "ALLE": {
@@ -846,7 +846,7 @@
     "eps5y": 0.12884,
     "rev3y": 0.07523,
     "rev5y": 0.07523,
-    "epsNextY": 0.30394,
+    "epsNextY": -0.07,
     "revNext5y": null
   },
   "AME": {
@@ -863,7 +863,7 @@
     "eps5y": 0.08401,
     "rev3y": 0.06364,
     "rev5y": 0.06364,
-    "epsNextY": 0.32901,
+    "epsNextY": 0.145,
     "revNext5y": null
   },
   "AMGN": {
@@ -880,7 +880,7 @@
     "eps5y": 0.05568,
     "rev3y": 0.11766,
     "rev5y": 0.11766,
-    "epsNextY": 0.63376,
+    "epsNextY": 0.044,
     "revNext5y": null
   },
   "AMP": {
@@ -897,7 +897,7 @@
     "eps5y": 0.09211,
     "rev3y": 0.0903,
     "rev5y": 0.0903,
-    "epsNextY": 0.18775,
+    "epsNextY": 0.66,
     "revNext5y": null
   },
   "AMT": {
@@ -914,7 +914,7 @@
     "eps5y": 0.12202,
     "rev3y": 0.0334,
     "rev5y": 0.0334,
-    "epsNextY": 0.11389,
+    "epsNextY": 0.769,
     "revNext5y": null
   },
   "ANET": {
@@ -931,7 +931,7 @@
     "eps5y": 0.36273,
     "rev3y": 0.27147,
     "rev5y": 0.27147,
-    "epsNextY": 0.53432,
+    "epsNextY": 0.25,
     "revNext5y": null
   },
   "AON": {
@@ -948,7 +948,7 @@
     "eps5y": 0.11843,
     "rev3y": 0.11247,
     "rev5y": 0.11247,
-    "epsNextY": 0.17643,
+    "epsNextY": 0.271,
     "revNext5y": null
   },
   "AOS": {
@@ -965,7 +965,7 @@
     "eps5y": 0.35151,
     "rev3y": 0.00673,
     "rev5y": 0.00673,
-    "epsNextY": 0.11452,
+    "epsNextY": -0.105,
     "revNext5y": null
   },
   "APA": {
@@ -982,7 +982,7 @@
     "eps5y": -0.04283,
     "rev3y": -0.06959,
     "rev5y": -0.06959,
-    "epsNextY": -0.00289,
+    "epsNextY": 0.322,
     "revNext5y": null
   },
   "APD": {
@@ -1016,7 +1016,7 @@
     "eps5y": 0.30071,
     "rev3y": 0.22307,
     "rev5y": 0.22307,
-    "epsNextY": 0.61489,
+    "epsNextY": 0.241,
     "revNext5y": null
   },
   "APTV": {
@@ -1067,7 +1067,7 @@
     "eps5y": 0.10358,
     "rev3y": 0.03827,
     "rev5y": 0.03827,
-    "epsNextY": 0.1047,
+    "epsNextY": 0.145,
     "revNext5y": null
   },
   "AVB": {
@@ -1084,7 +1084,7 @@
     "eps5y": -0.03087,
     "rev3y": 0.05447,
     "rev5y": 0.05447,
-    "epsNextY": -0.39706,
+    "epsNextY": 0.403,
     "revNext5y": null
   },
   "AVY": {
@@ -1101,7 +1101,7 @@
     "eps5y": -0.02029,
     "rev3y": -0.00682,
     "rev5y": -0.00682,
-    "epsNextY": 0.25744,
+    "epsNextY": 0.043,
     "revNext5y": null
   },
   "AWK": {
@@ -1118,7 +1118,7 @@
     "eps5y": 0.08055,
     "rev3y": 0.1067,
     "rev5y": 0.1067,
-    "epsNextY": 0.16396,
+    "epsNextY": -0.048,
     "revNext5y": null
   },
   "AXON": {
@@ -1135,7 +1135,7 @@
     "eps5y": -0.08227,
     "rev3y": 0.32787,
     "rev5y": 0.32787,
-    "epsNextY": 3.29811,
+    "epsNextY": 0.898,
     "revNext5y": null
   },
   "AXP": {
@@ -1152,7 +1152,7 @@
     "eps5y": 0.16049,
     "rev3y": 0.10966,
     "rev5y": 0.10966,
-    "epsNextY": 0.25701,
+    "epsNextY": 0.176,
     "revNext5y": null
   },
   "AZO": {
@@ -1169,7 +1169,7 @@
     "eps5y": 0.07187,
     "rev3y": 0.05232,
     "rev5y": 0.05232,
-    "epsNextY": 0.22696,
+    "epsNextY": 0.077,
     "revNext5y": null
   },
   "BA": {
@@ -1203,7 +1203,7 @@
     "eps5y": 0.06339,
     "rev3y": 0.06003,
     "rev5y": 0.06003,
-    "epsNextY": 0.25297,
+    "epsNextY": 0.244,
     "revNext5y": null
   },
   "BALL": {
@@ -1220,7 +1220,7 @@
     "eps5y": 0.13625,
     "rev3y": -0.00529,
     "rev5y": -0.00529,
-    "epsNextY": 0.3178,
+    "epsNextY": 0.219,
     "revNext5y": null
   },
   "BAX": {
@@ -1254,7 +1254,7 @@
     "eps5y": -0.07095,
     "rev3y": -0.03433,
     "rev5y": -0.03433,
-    "epsNextY": 0.29599,
+    "epsNextY": 3.725,
     "revNext5y": null
   },
   "BDX": {
@@ -1288,7 +1288,7 @@
     "eps5y": -0.28883,
     "rev3y": 0.01957,
     "rev5y": 0.01957,
-    "epsNextY": 1.26111,
+    "epsNextY": 0.872,
     "revNext5y": null
   },
   "BIO": {
@@ -1322,7 +1322,7 @@
     "eps5y": -0.25035,
     "rev3y": -0.00935,
     "rev5y": -0.00935,
-    "epsNextY": 0.78237,
+    "epsNextY": 0.311,
     "revNext5y": null
   },
   "BK": {
@@ -1339,7 +1339,7 @@
     "eps5y": 0.36923,
     "rev3y": 0.06875,
     "rev5y": 0.06875,
-    "epsNextY": 0.19629,
+    "epsNextY": 0.418,
     "revNext5y": null
   },
   "BKR": {
@@ -1356,7 +1356,7 @@
     "eps5y": null,
     "rev3y": 0.09443,
     "rev5y": 0.09443,
-    "epsNextY": -0.11092,
+    "epsNextY": 1.325,
     "revNext5y": null
   },
   "BLK": {
@@ -1373,7 +1373,7 @@
     "eps5y": 0.01455,
     "rev3y": 0.10654,
     "rev5y": 0.10654,
-    "epsNextY": 0.5249,
+    "epsNextY": 0.459,
     "revNext5y": null
   },
   "BMY": {
@@ -1390,7 +1390,7 @@
     "eps5y": 0.05323,
     "rev3y": 0.01449,
     "rev5y": 0.01449,
-    "epsNextY": 0.72843,
+    "epsNextY": 0.092,
     "revNext5y": null
   },
   "BR": {
@@ -1407,7 +1407,7 @@
     "eps5y": 0.15778,
     "rev3y": 0.06463,
     "rev5y": 0.06463,
-    "epsNextY": 0.11417,
+    "epsNextY": 0.151,
     "revNext5y": null
   },
   "BRO": {
@@ -1424,7 +1424,7 @@
     "eps5y": 0.12293,
     "rev3y": 0.17385,
     "rev5y": 0.17385,
-    "epsNextY": 0.58459,
+    "epsNextY": -0.079,
     "revNext5y": null
   },
   "BSX": {
@@ -1441,7 +1441,7 @@
     "eps5y": 0.63311,
     "rev3y": 0.16542,
     "rev5y": 0.16542,
-    "epsNextY": 0.56715,
+    "epsNextY": 1.0,
     "revNext5y": null
   },
   "BX": {
@@ -1458,7 +1458,7 @@
     "eps5y": 0.17923,
     "rev3y": 0.20275,
     "rev5y": 0.20275,
-    "epsNextY": 0.93208,
+    "epsNextY": 0.039,
     "revNext5y": null
   },
   "BWA": {
@@ -1475,7 +1475,7 @@
     "eps5y": -0.31606,
     "rev3y": 0.04251,
     "rev5y": 0.04251,
-    "epsNextY": 2.40866,
+    "epsNextY": 0.611,
     "revNext5y": null
   },
   "CAG": {
@@ -1492,7 +1492,7 @@
     "eps5y": 0.09064,
     "rev3y": 0.00222,
     "rev5y": 0.00222,
-    "epsNextY": null,
+    "epsNextY": 0.39,
     "revNext5y": null
   },
   "CAH": {
@@ -1509,7 +1509,7 @@
     "eps5y": null,
     "rev3y": 0.07072,
     "rev5y": 0.07072,
-    "epsNextY": 0.82583,
+    "epsNextY": -0.195,
     "revNext5y": null
   },
   "CAT": {
@@ -1526,7 +1526,7 @@
     "eps5y": 0.1411,
     "rev3y": 0.04383,
     "rev5y": 0.04383,
-    "epsNextY": 0.51952,
+    "epsNextY": 0.302,
     "revNext5y": null
   },
   "CB": {
@@ -1543,7 +1543,7 @@
     "eps5y": 0.26072,
     "rev3y": 0.11562,
     "rev5y": 0.11562,
-    "epsNextY": 0.03482,
+    "epsNextY": 0.787,
     "revNext5y": null
   },
   "CBOE": {
@@ -1560,7 +1560,7 @@
     "eps5y": 0.68152,
     "rev3y": 0.05997,
     "rev5y": 0.05997,
-    "epsNextY": 0.24484,
+    "epsNextY": 0.544,
     "revNext5y": null
   },
   "CBRE": {
@@ -1577,7 +1577,7 @@
     "eps5y": -0.03813,
     "rev3y": 0.09568,
     "rev5y": 0.09568,
-    "epsNextY": 1.02625,
+    "epsNextY": 0.981,
     "revNext5y": null
   },
   "CDNS": {
@@ -1594,7 +1594,7 @@
     "eps5y": 0.09327,
     "rev3y": 0.14143,
     "rev5y": 0.14143,
-    "epsNextY": 1.18256,
+    "epsNextY": 0.23,
     "revNext5y": null
   },
   "CDW": {
@@ -1611,7 +1611,7 @@
     "eps5y": -0.00447,
     "rev3y": -0.01895,
     "rev5y": -0.01895,
-    "epsNextY": 0.40867,
+    "epsNextY": 0.077,
     "revNext5y": null
   },
   "CE": {
@@ -1645,7 +1645,7 @@
     "eps5y": null,
     "rev3y": 0.01469,
     "rev5y": 0.01469,
-    "epsNextY": 0.18082,
+    "epsNextY": 10.91,
     "revNext5y": null
   },
   "CF": {
@@ -1662,7 +1662,7 @@
     "eps5y": -0.18272,
     "rev3y": -0.14125,
     "rev5y": -0.14125,
-    "epsNextY": 4e-05,
+    "epsNextY": 1.151,
     "revNext5y": null
   },
   "CFG": {
@@ -1679,7 +1679,7 @@
     "eps5y": -0.01813,
     "rev3y": 0.00931,
     "rev5y": 0.00931,
-    "epsNextY": 0.53419,
+    "epsNextY": 0.468,
     "revNext5y": null
   },
   "CHD": {
@@ -1696,7 +1696,7 @@
     "eps5y": 0.21378,
     "rev3y": 0.04889,
     "rev5y": 0.04889,
-    "epsNextY": 0.31911,
+    "epsNextY": 0.022,
     "revNext5y": null
   },
   "CHRW": {
@@ -1713,7 +1713,7 @@
     "eps5y": -0.13269,
     "rev3y": -0.13054,
     "rev5y": -0.13054,
-    "epsNextY": 0.4827,
+    "epsNextY": 0.099,
     "revNext5y": null
   },
   "CI": {
@@ -1730,7 +1730,7 @@
     "eps5y": 0.72743,
     "rev3y": 0.15293,
     "rev5y": 0.15293,
-    "epsNextY": -0.70553,
+    "epsNextY": 0.291,
     "revNext5y": null
   },
   "CINF": {
@@ -1764,7 +1764,7 @@
     "eps5y": 0.07417,
     "rev3y": 0.04293,
     "rev5y": 0.04293,
-    "epsNextY": 0.56631,
+    "epsNextY": -0.059,
     "revNext5y": null
   },
   "CLX": {
@@ -1781,7 +1781,7 @@
     "eps5y": -0.26363,
     "rev3y": -0.00014,
     "rev5y": -0.00014,
-    "epsNextY": 0.02357,
+    "epsNextY": 0.027,
     "revNext5y": null
   },
   "CMA": {
@@ -1815,7 +1815,7 @@
     "eps5y": 0.14694,
     "rev3y": 0.09114,
     "rev5y": 0.09114,
-    "epsNextY": 0.10205,
+    "epsNextY": 0.213,
     "revNext5y": null
   },
   "CMG": {
@@ -1832,7 +1832,7 @@
     "eps5y": 0.21221,
     "rev3y": 0.11364,
     "rev5y": 0.11364,
-    "epsNextY": 0.24629,
+    "epsNextY": -0.179,
     "revNext5y": null
   },
   "CMI": {
@@ -1849,7 +1849,7 @@
     "eps5y": 0.107,
     "rev3y": 0.06246,
     "rev5y": 0.06246,
-    "epsNextY": 0.73363,
+    "epsNextY": -0.21,
     "revNext5y": null
   },
   "CMS": {
@@ -1866,7 +1866,7 @@
     "eps5y": 0.06844,
     "rev3y": -0.00222,
     "rev5y": -0.00222,
-    "epsNextY": 0.15576,
+    "epsNextY": 0.089,
     "revNext5y": null
   },
   "CNC": {
@@ -1883,7 +1883,7 @@
     "eps5y": null,
     "rev3y": 0.10453,
     "rev5y": 0.10453,
-    "epsNextY": null,
+    "epsNextY": 0.183,
     "revNext5y": null
   },
   "CNP": {
@@ -1900,7 +1900,7 @@
     "eps5y": 0.00208,
     "rev3y": 0.00129,
     "rev5y": 0.00129,
-    "epsNextY": 0.27726,
+    "epsNextY": 0.067,
     "revNext5y": null
   },
   "COF": {
@@ -1917,7 +1917,7 @@
     "eps5y": -0.39256,
     "rev3y": 0.15981,
     "rev5y": 0.15981,
-    "epsNextY": 6.54313,
+    "epsNextY": -0.032,
     "revNext5y": null
   },
   "COO": {
@@ -1934,7 +1934,7 @@
     "eps5y": -0.00732,
     "rev3y": 0.07346,
     "rev5y": 0.07346,
-    "epsNextY": 1.49657,
+    "epsNextY": 0.269,
     "revNext5y": null
   },
   "COP": {
@@ -1951,7 +1951,7 @@
     "eps5y": -0.24229,
     "rev3y": -0.09106,
     "rev5y": -0.09106,
-    "epsNextY": 0.56058,
+    "epsNextY": -0.202,
     "revNext5y": null
   },
   "COST": {
@@ -1968,7 +1968,7 @@
     "eps5y": 0.11467,
     "rev3y": 0.0664,
     "rev5y": 0.0664,
-    "epsNextY": 0.17355,
+    "epsNextY": 0.455,
     "revNext5y": null
   },
   "CPB": {
@@ -1985,7 +1985,7 @@
     "eps5y": -0.06984,
     "rev3y": 0.06192,
     "rev5y": 0.06192,
-    "epsNextY": 0.17023,
+    "epsNextY": -0.172,
     "revNext5y": null
   },
   "CPRT": {
@@ -2002,7 +2002,7 @@
     "eps5y": 0.1195,
     "rev3y": 0.09899,
     "rev5y": 0.09899,
-    "epsNextY": 0.06816,
+    "epsNextY": 0.023,
     "revNext5y": null
   },
   "CRL": {
@@ -2036,7 +2036,7 @@
     "eps5y": -0.08328,
     "rev3y": -0.01738,
     "rev5y": -0.01738,
-    "epsNextY": 0.32704,
+    "epsNextY": 0.265,
     "revNext5y": null
   },
   "CTLT": {
@@ -2070,7 +2070,7 @@
     "eps5y": 0.01119,
     "rev3y": 0.02803,
     "rev5y": 0.02803,
-    "epsNextY": 0.33626,
+    "epsNextY": 0.036,
     "revNext5y": null
   },
   "CTVA": {
@@ -2087,7 +2087,7 @@
     "eps5y": 0.00209,
     "rev3y": -0.00103,
     "rev5y": -0.00103,
-    "epsNextY": 1.21776,
+    "epsNextY": 0.121,
     "revNext5y": null
   },
   "CVS": {
@@ -2104,7 +2104,7 @@
     "eps5y": -0.24784,
     "rev3y": 0.07631,
     "rev5y": 0.07631,
-    "epsNextY": 2.66797,
+    "epsNextY": 0.631,
     "revNext5y": null
   },
   "CVX": {
@@ -2121,7 +2121,7 @@
     "eps5y": -0.28717,
     "rev3y": -0.07853,
     "rev5y": -0.07853,
-    "epsNextY": 1.16284,
+    "epsNextY": -0.445,
     "revNext5y": null
   },
   "CZR": {
@@ -2155,7 +2155,7 @@
     "eps5y": 0.42711,
     "rev3y": 0.05799,
     "rev5y": 0.05799,
-    "epsNextY": 0.1252,
+    "epsNextY": -0.102,
     "revNext5y": null
   },
   "DAL": {
@@ -2189,7 +2189,7 @@
     "eps5y": -0.07476,
     "rev3y": -0.04501,
     "rev5y": -0.04501,
-    "epsNextY": 0.29662,
+    "epsNextY": -0.085,
     "revNext5y": null
   },
   "DFS": {
@@ -2223,7 +2223,7 @@
     "eps5y": -0.2063,
     "rev3y": 0.04125,
     "rev5y": 0.04125,
-    "epsNextY": 0.16088,
+    "epsNextY": 1.219,
     "revNext5y": null
   },
   "DHI": {
@@ -2240,7 +2240,7 @@
     "eps5y": -0.11299,
     "rev3y": 0.00761,
     "rev5y": 0.00761,
-    "epsNextY": 0.13015,
+    "epsNextY": -0.132,
     "revNext5y": null
   },
   "DHR": {
@@ -2257,7 +2257,7 @@
     "eps5y": -0.19722,
     "rev3y": -0.02667,
     "rev5y": -0.02667,
-    "epsNextY": 0.7595,
+    "epsNextY": 0.098,
     "revNext5y": null
   },
   "DLR": {
@@ -2274,7 +2274,7 @@
     "eps5y": 0.4676,
     "rev3y": 0.09219,
     "rev5y": 0.09219,
-    "epsNextY": -0.24028,
+    "epsNextY": 0.676,
     "revNext5y": null
   },
   "DLTR": {
@@ -2308,7 +2308,7 @@
     "eps5y": 0.02269,
     "rev3y": 0.01045,
     "rev5y": 0.01045,
-    "epsNextY": 0.4493,
+    "epsNextY": 0.053,
     "revNext5y": null
   },
   "DOW": {
@@ -2342,7 +2342,7 @@
     "eps5y": 0.11883,
     "rev3y": 0.02876,
     "rev5y": 0.02876,
-    "epsNextY": 0.20471,
+    "epsNextY": -0.046,
     "revNext5y": null
   },
   "DRI": {
@@ -2359,7 +2359,7 @@
     "eps5y": 0.06179,
     "rev3y": 0.07839,
     "rev5y": 0.07839,
-    "epsNextY": 0.1985,
+    "epsNextY": -0.033,
     "revNext5y": null
   },
   "DVA": {
@@ -2376,7 +2376,7 @@
     "eps5y": 0.18602,
     "rev3y": 0.05526,
     "rev5y": 0.05526,
-    "epsNextY": 0.65367,
+    "epsNextY": 0.435,
     "revNext5y": null
   },
   "DVN": {
@@ -2393,7 +2393,7 @@
     "eps5y": -0.22988,
     "rev3y": -0.03571,
     "rev5y": -0.03571,
-    "epsNextY": 0.50111,
+    "epsNextY": -0.753,
     "revNext5y": null
   },
   "DXCM": {
@@ -2410,7 +2410,7 @@
     "eps5y": 0.34476,
     "rev3y": 0.17014,
     "rev5y": 0.17014,
-    "epsNextY": 0.31512,
+    "epsNextY": 0.922,
     "revNext5y": null
   },
   "EA": {
@@ -2427,7 +2427,7 @@
     "eps5y": 0.06974,
     "rev3y": 0.00469,
     "rev5y": 0.00469,
-    "epsNextY": 1.74366,
+    "epsNextY": 0.853,
     "revNext5y": null
   },
   "EBAY": {
@@ -2444,7 +2444,7 @@
     "eps5y": null,
     "rev3y": 0.04257,
     "rev5y": 0.04257,
-    "epsNextY": 0.55875,
+    "epsNextY": 0.071,
     "revNext5y": null
   },
   "ECL": {
@@ -2461,7 +2461,7 @@
     "eps5y": 0.24156,
     "rev3y": 0.04264,
     "rev5y": 0.04264,
-    "epsNextY": 0.2999,
+    "epsNextY": 0.078,
     "revNext5y": null
   },
   "ED": {
@@ -2478,7 +2478,7 @@
     "eps5y": 0.06543,
     "rev3y": 0.02587,
     "rev5y": 0.02587,
-    "epsNextY": 0.09434,
+    "epsNextY": 0.129,
     "revNext5y": null
   },
   "EFX": {
@@ -2495,7 +2495,7 @@
     "eps5y": -0.01972,
     "rev3y": 0.05848,
     "rev5y": 0.05848,
-    "epsNextY": 0.80598,
+    "epsNextY": 0.34,
     "revNext5y": null
   },
   "EIX": {
@@ -2512,7 +2512,7 @@
     "eps5y": 0.93031,
     "rev3y": 0.03905,
     "rev5y": 0.03905,
-    "epsNextY": -0.29206,
+    "epsNextY": -0.632,
     "revNext5y": null
   },
   "EL": {
@@ -2529,7 +2529,7 @@
     "eps5y": null,
     "rev3y": -0.06872,
     "rev5y": -0.06872,
-    "epsNextY": null,
+    "epsNextY": -0.455,
     "revNext5y": null
   },
   "ELV": {
@@ -2546,7 +2546,7 @@
     "eps5y": 0.00436,
     "rev3y": 0.08338,
     "rev5y": 0.08338,
-    "epsNextY": 0.2393,
+    "epsNextY": -0.168,
     "revNext5y": null
   },
   "EMN": {
@@ -2563,7 +2563,7 @@
     "eps5y": -0.13605,
     "rev3y": -0.06127,
     "rev5y": -0.06127,
-    "epsNextY": 1.02635,
+    "epsNextY": -0.408,
     "revNext5y": null
   },
   "EMR": {
@@ -2580,7 +2580,7 @@
     "eps5y": -0.09422,
     "rev3y": 0.09283,
     "rev5y": 0.09283,
-    "epsNextY": 0.6561,
+    "epsNextY": 0.279,
     "revNext5y": null
   },
   "ENPH": {
@@ -2614,7 +2614,7 @@
     "eps5y": -0.11679,
     "rev3y": -0.08514,
     "rev5y": -0.08514,
-    "epsNextY": 0.44155,
+    "epsNextY": 0.396,
     "revNext5y": null
   },
   "EQIX": {
@@ -2631,7 +2631,7 @@
     "eps5y": 0.21492,
     "rev3y": 0.08266,
     "rev5y": 0.08266,
-    "epsNextY": 0.33126,
+    "epsNextY": 0.2,
     "revNext5y": null
   },
   "EQR": {
@@ -2648,7 +2648,7 @@
     "eps5y": 0.12716,
     "rev3y": 0.04194,
     "rev5y": 0.04194,
-    "epsNextY": -0.3544,
+    "epsNextY": -0.646,
     "revNext5y": null
   },
   "EQT": {
@@ -2665,7 +2665,7 @@
     "eps5y": -0.11413,
     "rev3y": -0.11718,
     "rev5y": -0.11718,
-    "epsNextY": -0.12069,
+    "epsNextY": 4.9,
     "revNext5y": null
   },
   "ESS": {
@@ -2682,7 +2682,7 @@
     "eps5y": 0.18374,
     "rev3y": 0.0551,
     "rev5y": 0.0551,
-    "epsNextY": -0.33513,
+    "epsNextY": -0.478,
     "revNext5y": null
   },
   "ETSY": {
@@ -2716,7 +2716,7 @@
     "eps5y": 0.19314,
     "rev3y": 0.0977,
     "rev5y": 0.0977,
-    "epsNextY": 0.53983,
+    "epsNextY": -0.094,
     "revNext5y": null
   },
   "ETR": {
@@ -2733,7 +2733,7 @@
     "eps5y": 0.13808,
     "rev3y": -0.0202,
     "rev5y": -0.0202,
-    "epsNextY": 0.28183,
+    "epsNextY": 0.012,
     "revNext5y": null
   },
   "EVRG": {
@@ -2750,7 +2750,7 @@
     "eps5y": 0.04298,
     "rev3y": 0.0058,
     "rev5y": 0.0058,
-    "epsNextY": 0.21063,
+    "epsNextY": 0.185,
     "revNext5y": null
   },
   "EW": {
@@ -2767,7 +2767,7 @@
     "eps5y": -0.09226,
     "rev3y": 0.10772,
     "rev5y": 0.10772,
-    "epsNextY": 0.81906,
+    "epsNextY": 0.082,
     "revNext5y": null
   },
   "EXC": {
@@ -2784,7 +2784,7 @@
     "eps5y": 0.07868,
     "rev3y": 0.08336,
     "rev5y": 0.08336,
-    "epsNextY": 0.11261,
+    "epsNextY": -0.003,
     "revNext5y": null
   },
   "EXPE": {
@@ -2818,7 +2818,7 @@
     "eps5y": -0.1051,
     "rev3y": -0.13447,
     "rev5y": -0.13447,
-    "epsNextY": 0.10393,
+    "epsNextY": 0.163,
     "revNext5y": null
   },
   "EXR": {
@@ -2835,7 +2835,7 @@
     "eps5y": -0.10535,
     "rev3y": 0.20629,
     "rev5y": 0.20629,
-    "epsNextY": 0.07548,
+    "epsNextY": -0.106,
     "revNext5y": null
   },
   "F": {
@@ -2852,7 +2852,7 @@
     "eps5y": null,
     "rev3y": 0.05815,
     "rev5y": 0.05815,
-    "epsNextY": null,
+    "epsNextY": 4.308,
     "revNext5y": null
   },
   "FANG": {
@@ -2869,7 +2869,7 @@
     "eps5y": -0.3848,
     "rev3y": 0.15993,
     "rev5y": 0.15993,
-    "epsNextY": 16.91355,
+    "epsNextY": -0.984,
     "revNext5y": null
   },
   "FAST": {
@@ -2886,7 +2886,7 @@
     "eps5y": 0.05193,
     "rev3y": 0.05515,
     "rev5y": 0.05515,
-    "epsNextY": 0.21071,
+    "epsNextY": 0.138,
     "revNext5y": null
   },
   "FCX": {
@@ -2903,7 +2903,7 @@
     "eps5y": -0.14084,
     "rev3y": 0.04392,
     "rev5y": 0.04392,
-    "epsNextY": 0.97268,
+    "epsNextY": 1.531,
     "revNext5y": null
   },
   "FDS": {
@@ -2920,7 +2920,7 @@
     "eps5y": 0.14692,
     "rev3y": 0.07984,
     "rev5y": 0.07984,
-    "epsNextY": 0.24848,
+    "epsNextY": -0.045,
     "revNext5y": null
   },
   "FDX": {
@@ -2937,7 +2937,7 @@
     "eps5y": 0.05646,
     "rev3y": -0.02032,
     "rev5y": -0.02032,
-    "epsNextY": 0.19839,
+    "epsNextY": 0.173,
     "revNext5y": null
   },
   "FE": {
@@ -2954,7 +2954,7 @@
     "eps5y": 0.35593,
     "rev3y": 0.06595,
     "rev5y": 0.06595,
-    "epsNextY": 0.60155,
+    "epsNextY": 0.129,
     "revNext5y": null
   },
   "FICO": {
@@ -2971,7 +2971,7 @@
     "eps5y": 0.2333,
     "rev3y": 0.13068,
     "rev5y": 0.13068,
-    "epsNextY": 0.71924,
+    "epsNextY": 0.69,
     "revNext5y": null
   },
   "FI": {
@@ -3005,7 +3005,7 @@
     "eps5y": null,
     "rev3y": 0.0318,
     "rev5y": 0.0318,
-    "epsNextY": 0.32687,
+    "epsNextY": 30.406,
     "revNext5y": null
   },
   "FITB": {
@@ -3022,7 +3022,7 @@
     "eps5y": 0.01745,
     "rev3y": 0.02875,
     "rev5y": 0.02875,
-    "epsNextY": 0.65451,
+    "epsNextY": -0.789,
     "revNext5y": null
   },
   "FLT": {
@@ -3073,7 +3073,7 @@
     "eps5y": 0.33053,
     "rev3y": 0.05266,
     "rev5y": 0.05266,
-    "epsNextY": 0.49508,
+    "epsNextY": -0.493,
     "revNext5y": null
   },
   "FRT": {
@@ -3090,7 +3090,7 @@
     "eps5y": -0.00213,
     "rev3y": 0.05983,
     "rev5y": 0.05983,
-    "epsNextY": -0.46255,
+    "epsNextY": 1.525,
     "revNext5y": null
   },
   "FSLR": {
@@ -3107,7 +3107,7 @@
     "eps5y": null,
     "rev3y": 0.25837,
     "rev5y": 0.25837,
-    "epsNextY": 0.51529,
+    "epsNextY": 0.651,
     "revNext5y": null
   },
   "FTV": {
@@ -3124,7 +3124,7 @@
     "eps5y": -0.06372,
     "rev3y": -0.10625,
     "rev5y": -0.10625,
-    "epsNextY": 0.8918,
+    "epsNextY": -0.124,
     "revNext5y": null
   },
   "GD": {
@@ -3141,7 +3141,7 @@
     "eps5y": 0.08331,
     "rev3y": 0.10069,
     "rev5y": 0.10069,
-    "epsNextY": 0.14269,
+    "epsNextY": 0.12,
     "revNext5y": null
   },
   "GE": {
@@ -3158,7 +3158,7 @@
     "eps5y": 4.4737,
     "rev3y": 0.16315,
     "rev5y": 0.16315,
-    "epsNextY": 0.07786,
+    "epsNextY": -0.018,
     "revNext5y": null
   },
   "GEHC": {
@@ -3175,7 +3175,7 @@
     "eps5y": -0.00507,
     "rev3y": 0.0399,
     "rev5y": 0.0399,
-    "epsNextY": 0.28559,
+    "epsNextY": -0.309,
     "revNext5y": null
   },
   "GEN": {
@@ -3192,7 +3192,7 @@
     "eps5y": -0.1028,
     "rev3y": 0.14659,
     "rev5y": 0.14659,
-    "epsNextY": 1.09347,
+    "epsNextY": 2.652,
     "revNext5y": null
   },
   "GILD": {
@@ -3209,7 +3209,7 @@
     "eps5y": 0.23176,
     "rev3y": 0.02574,
     "rev5y": 0.02574,
-    "epsNextY": 0.30296,
+    "epsNextY": 0.548,
     "revNext5y": null
   },
   "GIS": {
@@ -3226,7 +3226,7 @@
     "eps5y": -0.02609,
     "rev3y": 0.00859,
     "rev5y": 0.00859,
-    "epsNextY": -0.21,
+    "epsNextY": -0.145,
     "revNext5y": null
   },
   "GL": {
@@ -3243,7 +3243,7 @@
     "eps5y": 0.2364,
     "rev3y": 0.04673,
     "rev5y": 0.04673,
-    "epsNextY": 0.15143,
+    "epsNextY": 0.126,
     "revNext5y": null
   },
   "GLW": {
@@ -3260,7 +3260,7 @@
     "eps5y": 0.06228,
     "rev3y": 0.03275,
     "rev5y": 0.03275,
-    "epsNextY": 1.02088,
+    "epsNextY": 1.389,
     "revNext5y": null
   },
   "GM": {
@@ -3277,7 +3277,7 @@
     "eps5y": -0.18582,
     "rev3y": 0.05686,
     "rev5y": 0.05686,
-    "epsNextY": 4.13395,
+    "epsNextY": -0.158,
     "revNext5y": null
   },
   "GNRC": {
@@ -3294,7 +3294,7 @@
     "eps5y": -0.21061,
     "rev3y": -0.02667,
     "rev5y": -0.02667,
-    "epsNextY": 2.45611,
+    "epsNextY": 0.699,
     "revNext5y": null
   },
   "GPC": {
@@ -3311,7 +3311,7 @@
     "eps5y": -0.61691,
     "rev3y": 0.0322,
     "rev5y": 0.0322,
-    "epsNextY": 17.60684,
+    "epsNextY": -0.021,
     "revNext5y": null
   },
   "GPN": {
@@ -3345,7 +3345,7 @@
     "eps5y": 0.1953,
     "rev3y": 0.07159,
     "rev5y": 0.07159,
-    "epsNextY": 0.19431,
+    "epsNextY": 0.242,
     "revNext5y": null
   },
   "GRMN": {
@@ -3362,7 +3362,7 @@
     "eps5y": 0.1957,
     "rev3y": 0.14236,
     "rev5y": 0.14236,
-    "epsNextY": 0.15223,
+    "epsNextY": 0.215,
     "revNext5y": null
   },
   "HAL": {
@@ -3379,7 +3379,7 @@
     "eps5y": -0.04827,
     "rev3y": 0.03008,
     "rev5y": 0.03008,
-    "epsNextY": 0.60743,
+    "epsNextY": 1.335,
     "revNext5y": null
   },
   "HAS": {
@@ -3396,7 +3396,7 @@
     "eps5y": null,
     "rev3y": -0.07063,
     "rev5y": -0.07063,
-    "epsNextY": null,
+    "epsNextY": 0.986,
     "revNext5y": null
   },
   "HCA": {
@@ -3413,7 +3413,7 @@
     "eps5y": 0.15842,
     "rev3y": 0.07869,
     "rev5y": 0.07869,
-    "epsNextY": 0.1419,
+    "epsNextY": 0.109,
     "revNext5y": null
   },
   "HD": {
@@ -3430,7 +3430,7 @@
     "eps5y": -0.05204,
     "rev3y": 0.01519,
     "rev5y": 0.01519,
-    "epsNextY": 0.14472,
+    "epsNextY": -0.043,
     "revNext5y": null
   },
   "HES": {
@@ -3464,7 +3464,7 @@
     "eps5y": 0.33383,
     "rev3y": 0.08703,
     "rev5y": 0.08703,
-    "epsNextY": 0.01432,
+    "epsNextY": 0.414,
     "revNext5y": null
   },
   "HII": {
@@ -3481,7 +3481,7 @@
     "eps5y": 0.02147,
     "rev3y": 0.05353,
     "rev5y": 0.05353,
-    "epsNextY": 0.32264,
+    "epsNextY": 0.0,
     "revNext5y": null
   },
   "HLT": {
@@ -3498,7 +3498,7 @@
     "eps5y": 0.10664,
     "rev3y": 0.11126,
     "rev5y": 0.11126,
-    "epsNextY": 0.59014,
+    "epsNextY": 0.35,
     "revNext5y": null
   },
   "HOLX": {
@@ -3515,7 +3515,7 @@
     "eps5y": -0.2156,
     "rev3y": -0.05525,
     "rev5y": -0.05525,
-    "epsNextY": 1.01701,
+    "epsNextY": -0.092,
     "revNext5y": null
   },
   "HON": {
@@ -3532,7 +3532,7 @@
     "eps5y": 0.00317,
     "rev3y": 0.01824,
     "rev5y": 0.01824,
-    "epsNextY": 0.82756,
+    "epsNextY": -0.419,
     "revNext5y": null
   },
   "HPE": {
@@ -3549,7 +3549,7 @@
     "eps5y": null,
     "rev3y": 0.0637,
     "rev5y": 0.0637,
-    "epsNextY": null,
+    "epsNextY": -0.303,
     "revNext5y": null
   },
   "HPQ": {
@@ -3566,7 +3566,7 @@
     "eps5y": -0.04753,
     "rev3y": -0.0421,
     "rev5y": -0.0421,
-    "epsNextY": 0.15486,
+    "epsNextY": -0.017,
     "revNext5y": null
   },
   "HRL": {
@@ -3575,15 +3575,15 @@
     "forwardPE": 15.0804205,
     "pegRatio": 1.59,
     "debtToEquity": 4.244,
-    "freeCashflow": 381509632.0,
-    "grossMargins": 0.15609999,
-    "profitMargins": 0.0403,
-    "returnOnEquity": 0.061160002,
+    "freeCashflow": 447511008.0,
+    "grossMargins": 0.15793,
+    "profitMargins": 0.03821,
+    "returnOnEquity": 0.05831,
     "eps3y": -0.22095,
     "eps5y": -0.22095,
     "rev3y": -0.00953,
     "rev5y": -0.00953,
-    "epsNextY": 0.75762,
+    "epsNextY": -0.051,
     "revNext5y": null
   },
   "HSIC": {
@@ -3600,7 +3600,7 @@
     "eps5y": -0.05912,
     "rev3y": 0.01396,
     "rev5y": 0.01396,
-    "epsNextY": 0.7849,
+    "epsNextY": 0.045,
     "revNext5y": null
   },
   "HST": {
@@ -3617,7 +3617,7 @@
     "eps5y": 0.07641,
     "rev3y": 0.07606,
     "rev5y": 0.07606,
-    "epsNextY": -0.31973,
+    "epsNextY": 1.053,
     "revNext5y": null
   },
   "HSY": {
@@ -3634,7 +3634,7 @@
     "eps5y": -0.18438,
     "rev3y": 0.03918,
     "rev5y": 0.03918,
-    "epsNextY": 0.84404,
+    "epsNextY": 0.936,
     "revNext5y": null
   },
   "HUBB": {
@@ -3651,7 +3651,7 @@
     "eps5y": 0.20562,
     "rev3y": 0.05709,
     "rev5y": 0.05709,
-    "epsNextY": 0.28684,
+    "epsNextY": 0.125,
     "revNext5y": null
   },
   "HUM": {
@@ -3668,7 +3668,7 @@
     "eps5y": -0.23677,
     "rev3y": 0.11767,
     "rev5y": 0.11767,
-    "epsNextY": 0.66047,
+    "epsNextY": -0.046,
     "revNext5y": null
   },
   "HBAN": {
@@ -3685,7 +3685,7 @@
     "eps5y": -0.01379,
     "rev3y": 0.03878,
     "rev5y": 0.03878,
-    "epsNextY": 0.46457,
+    "epsNextY": -0.265,
     "revNext5y": null
   },
   "HWM": {
@@ -3702,7 +3702,7 @@
     "eps5y": 0.49336,
     "rev3y": 0.13372,
     "rev5y": 0.13372,
-    "epsNextY": 0.39596,
+    "epsNextY": 0.714,
     "revNext5y": null
   },
   "IBM": {
@@ -3719,7 +3719,7 @@
     "eps5y": 0.84121,
     "rev3y": 0.03718,
     "rev5y": 0.03718,
-    "epsNextY": 0.18963,
+    "epsNextY": 0.142,
     "revNext5y": null
   },
   "ICE": {
@@ -3736,7 +3736,7 @@
     "eps5y": 0.30755,
     "rev3y": 0.09467,
     "rev5y": 0.09467,
-    "epsNextY": 0.27858,
+    "epsNextY": 0.797,
     "revNext5y": null
   },
   "IDXX": {
@@ -3753,7 +3753,7 @@
     "eps5y": 0.17492,
     "rev3y": 0.08522,
     "rev5y": 0.08522,
-    "epsNextY": 0.2162,
+    "epsNextY": 0.172,
     "revNext5y": null
   },
   "IEX": {
@@ -3770,7 +3770,7 @@
     "eps5y": -0.06091,
     "rev3y": 0.02808,
     "rev5y": 0.02808,
-    "epsNextY": 0.36491,
+    "epsNextY": 0.278,
     "revNext5y": null
   },
   "IFF": {
@@ -3804,7 +3804,7 @@
     "eps5y": null,
     "rev3y": -0.01784,
     "rev5y": -0.01784,
-    "epsNextY": 0.07622,
+    "epsNextY": 0.061,
     "revNext5y": null
   },
   "INCY": {
@@ -3821,7 +3821,7 @@
     "eps5y": 0.62704,
     "rev3y": 0.1484,
     "rev5y": 0.1484,
-    "epsNextY": 0.28073,
+    "epsNextY": 0.838,
     "revNext5y": null
   },
   "INTU": {
@@ -3838,7 +3838,7 @@
     "eps5y": 0.23259,
     "rev3y": 0.13953,
     "rev5y": 0.13953,
-    "epsNextY": 0.66418,
+    "epsNextY": 0.107,
     "revNext5y": null
   },
   "INVH": {
@@ -3855,7 +3855,7 @@
     "eps5y": 0.15074,
     "rev3y": 0.06837,
     "rev5y": 0.06837,
-    "epsNextY": -0.3008,
+    "epsNextY": -0.037,
     "revNext5y": null
   },
   "IP": {
@@ -3906,7 +3906,7 @@
     "eps5y": 0.10769,
     "rev3y": 0.04215,
     "rev5y": 0.04215,
-    "epsNextY": 0.76032,
+    "epsNextY": 0.15,
     "revNext5y": null
   },
   "IR": {
@@ -3923,7 +3923,7 @@
     "eps5y": -0.00676,
     "rev3y": 0.08948,
     "rev5y": 0.08948,
-    "epsNextY": 1.59865,
+    "epsNextY": 0.065,
     "revNext5y": null
   },
   "IRM": {
@@ -3940,7 +3940,7 @@
     "eps5y": -0.36569,
     "rev3y": 0.10585,
     "rev5y": 0.10585,
-    "epsNextY": 1.87496,
+    "epsNextY": 8.6,
     "revNext5y": null
   },
   "ISRG": {
@@ -3957,7 +3957,7 @@
     "eps5y": 0.29077,
     "rev3y": 0.17387,
     "rev5y": 0.17387,
-    "epsNextY": 0.43413,
+    "epsNextY": 0.188,
     "revNext5y": null
   },
   "IT": {
@@ -3974,7 +3974,7 @@
     "eps5y": -0.01341,
     "rev3y": 0.05867,
     "rev5y": 0.05867,
-    "epsNextY": 0.51548,
+    "epsNextY": 0.173,
     "revNext5y": null
   },
   "ITW": {
@@ -3991,7 +3991,7 @@
     "eps5y": 0.02391,
     "rev3y": 0.00234,
     "rev5y": 0.00234,
-    "epsNextY": 0.13432,
+    "epsNextY": 0.118,
     "revNext5y": null
   },
   "IVZ": {
@@ -4008,7 +4008,7 @@
     "eps5y": null,
     "rev3y": 0.01777,
     "rev5y": 0.01777,
-    "epsNextY": null,
+    "epsNextY": 0.35,
     "revNext5y": null
   },
   "J": {
@@ -4042,7 +4042,7 @@
     "eps5y": -0.12198,
     "rev3y": -0.06784,
     "rev5y": -0.06784,
-    "epsNextY": 0.41312,
+    "epsNextY": 0.274,
     "revNext5y": null
   },
   "JCI": {
@@ -4059,7 +4059,7 @@
     "eps5y": 0.31341,
     "rev3y": 0.04568,
     "rev5y": 0.04568,
-    "epsNextY": 0.74105,
+    "epsNextY": 0.389,
     "revNext5y": null
   },
   "JKHY": {
@@ -4076,7 +4076,7 @@
     "eps5y": 0.07909,
     "rev3y": 0.06928,
     "rev5y": 0.06928,
-    "epsNextY": -0.01367,
+    "epsNextY": 0.125,
     "revNext5y": null
   },
   "JNJ": {
@@ -4093,7 +4093,7 @@
     "eps5y": 0.17498,
     "rev3y": 0.05599,
     "rev5y": 0.05599,
-    "epsNextY": 0.47277,
+    "epsNextY": -0.529,
     "revNext5y": null
   },
   "JPM": {
@@ -4110,7 +4110,7 @@
     "eps5y": 0.18334,
     "rev3y": 0.12497,
     "rev5y": 0.12497,
-    "epsNextY": 0.12742,
+    "epsNextY": 0.172,
     "revNext5y": null
   },
   "JNPR": {
@@ -4161,7 +4161,7 @@
     "eps5y": 0.14848,
     "rev3y": 0.05706,
     "rev5y": 0.05706,
-    "epsNextY": 0.86998,
+    "epsNextY": -0.477,
     "revNext5y": null
   },
   "KEY": {
@@ -4178,7 +4178,7 @@
     "eps5y": -0.07609,
     "rev3y": 0.01214,
     "rev5y": 0.01214,
-    "epsNextY": 0.32275,
+    "epsNextY": 0.333,
     "revNext5y": null
   },
   "KEYS": {
@@ -4195,7 +4195,7 @@
     "eps5y": -0.0763,
     "rev3y": -0.00278,
     "rev5y": -0.00278,
-    "epsNextY": 0.90924,
+    "epsNextY": 0.356,
     "revNext5y": null
   },
   "KHC": {
@@ -4212,7 +4212,7 @@
     "eps5y": null,
     "rev3y": -0.01981,
     "rev5y": -0.01981,
-    "epsNextY": null,
+    "epsNextY": 0.136,
     "revNext5y": null
   },
   "KIM": {
@@ -4229,7 +4229,7 @@
     "eps5y": 0.72411,
     "rev3y": 0.07397,
     "rev5y": 0.07397,
-    "epsNextY": -0.00862,
+    "epsNextY": 0.294,
     "revNext5y": null
   },
   "KMB": {
@@ -4246,7 +4246,7 @@
     "eps5y": 0.02052,
     "rev3y": -0.06583,
     "rev5y": -0.06583,
-    "epsNextY": 0.46553,
+    "epsNextY": 0.179,
     "revNext5y": null
   },
   "KMI": {
@@ -4263,7 +4263,7 @@
     "eps5y": 0.06947,
     "rev3y": -0.04094,
     "rev5y": -0.04094,
-    "epsNextY": 0.02581,
+    "epsNextY": 0.36,
     "revNext5y": null
   },
   "KMX": {
@@ -4297,7 +4297,7 @@
     "eps5y": 0.11504,
     "rev3y": 0.03689,
     "rev5y": 0.03689,
-    "epsNextY": 0.09548,
+    "epsNextY": 0.182,
     "revNext5y": null
   },
   "KR": {
@@ -4314,7 +4314,7 @@
     "eps5y": -0.2063,
     "rev3y": -0.00139,
     "rev5y": -0.00139,
-    "epsNextY": 2.65335,
+    "epsNextY": 0.509,
     "revNext5y": null
   },
   "KVUE": {
@@ -4331,7 +4331,7 @@
     "eps5y": -0.11398,
     "rev3y": 0.00386,
     "rev5y": 0.00386,
-    "epsNextY": 0.47223,
+    "epsNextY": 0.469,
     "revNext5y": null
   },
   "L": {
@@ -4348,7 +4348,7 @@
     "eps5y": 0.33025,
     "rev3y": 0.08962,
     "rev5y": 0.08962,
-    "epsNextY": -0.63104,
+    "epsNextY": -0.063,
     "revNext5y": null
   },
   "LDOS": {
@@ -4365,7 +4365,7 @@
     "eps5y": 0.3127,
     "rev3y": 0.06058,
     "rev5y": 0.06058,
-    "epsNextY": 0.20616,
+    "epsNextY": -0.076,
     "revNext5y": null
   },
   "LEN": {
@@ -4382,7 +4382,7 @@
     "eps5y": -0.20262,
     "rev3y": 0.00508,
     "rev5y": 0.00508,
-    "epsNextY": 0.09207,
+    "epsNextY": -0.526,
     "revNext5y": null
   },
   "LH": {
@@ -4399,7 +4399,7 @@
     "eps5y": -0.09137,
     "rev3y": 0.05552,
     "rev5y": 0.05552,
-    "epsNextY": 0.72054,
+    "epsNextY": 0.329,
     "revNext5y": null
   },
   "LHX": {
@@ -4416,7 +4416,7 @@
     "eps5y": 0.15653,
     "rev3y": 0.08619,
     "rev5y": 0.08619,
-    "epsNextY": 0.48022,
+    "epsNextY": -0.061,
     "revNext5y": null
   },
   "LIN": {
@@ -4433,7 +4433,7 @@
     "eps5y": 0.20962,
     "rev3y": 0.00618,
     "rev5y": 0.00618,
-    "epsNextY": 0.30876,
+    "epsNextY": 0.134,
     "revNext5y": null
   },
   "LKQ": {
@@ -4450,7 +4450,7 @@
     "eps5y": -0.17151,
     "rev3y": 0.02185,
     "rev5y": 0.02185,
-    "epsNextY": 0.67045,
+    "epsNextY": -0.528,
     "revNext5y": null
   },
   "LLY": {
@@ -4467,7 +4467,7 @@
     "eps5y": 0.5197,
     "rev3y": 0.31687,
     "rev5y": 0.31687,
-    "epsNextY": 0.51776,
+    "epsNextY": 1.699,
     "revNext5y": null
   },
   "LMT": {
@@ -4484,7 +4484,7 @@
     "eps5y": -0.00277,
     "rev3y": 0.04384,
     "rev5y": 0.04384,
-    "epsNextY": 0.5555,
+    "epsNextY": -0.115,
     "revNext5y": null
   },
   "LOW": {
@@ -4501,7 +4501,7 @@
     "eps5y": 0.05184,
     "rev3y": -0.03846,
     "rev5y": -0.03846,
-    "epsNextY": 0.13165,
+    "epsNextY": -0.007,
     "revNext5y": null
   },
   "LULU": {
@@ -4518,7 +4518,7 @@
     "eps5y": 0.25583,
     "rev3y": 0.11035,
     "rev5y": 0.11035,
-    "epsNextY": -0.00479,
+    "epsNextY": -0.185,
     "revNext5y": null
   },
   "LUV": {
@@ -4552,7 +4552,7 @@
     "eps5y": -0.00699,
     "rev3y": 0.46855,
     "rev5y": 0.46855,
-    "epsNextY": 0.35766,
+    "epsNextY": 0.73,
     "revNext5y": null
   },
   "LW": {
@@ -4569,7 +4569,7 @@
     "eps5y": 0.22067,
     "rev3y": 0.16321,
     "rev5y": 0.16321,
-    "epsNextY": 0.40894,
+    "epsNextY": -0.622,
     "revNext5y": null
   },
   "LYB": {
@@ -4586,7 +4586,7 @@
     "eps5y": null,
     "rev3y": -0.15766,
     "rev5y": -0.15766,
-    "epsNextY": null,
+    "epsNextY": -0.295,
     "revNext5y": null
   },
   "LYV": {
@@ -4620,7 +4620,7 @@
     "eps5y": 0.17254,
     "rev3y": 0.13822,
     "rev5y": 0.13822,
-    "epsNextY": 0.31739,
+    "epsNextY": 0.212,
     "revNext5y": null
   },
   "MAA": {
@@ -4637,7 +4637,7 @@
     "eps5y": -0.1162,
     "rev3y": 0.03031,
     "rev5y": 0.03031,
-    "epsNextY": 0.17879,
+    "epsNextY": -0.315,
     "revNext5y": null
   },
   "MAR": {
@@ -4654,7 +4654,7 @@
     "eps5y": 0.09443,
     "rev3y": 0.08025,
     "rev5y": 0.08025,
-    "epsNextY": 0.36686,
+    "epsNextY": 0.017,
     "revNext5y": null
   },
   "MAS": {
@@ -4671,7 +4671,7 @@
     "eps5y": 0.01909,
     "rev3y": -0.04492,
     "rev5y": -0.04492,
-    "epsNextY": 0.16425,
+    "epsNextY": 0.2,
     "revNext5y": null
   },
   "MCD": {
@@ -4688,7 +4688,7 @@
     "eps5y": 0.12415,
     "rev3y": 0.05064,
     "rev5y": 0.05064,
-    "epsNextY": 0.18409,
+    "epsNextY": 0.069,
     "revNext5y": null
   },
   "MCK": {
@@ -4705,7 +4705,7 @@
     "eps5y": 0.15178,
     "rev3y": 0.13392,
     "rev5y": 0.13392,
-    "epsNextY": 0.31119,
+    "epsNextY": 0.372,
     "revNext5y": null
   },
   "MCO": {
@@ -4722,7 +4722,7 @@
     "eps5y": 0.22495,
     "rev3y": 0.12174,
     "rev5y": 0.12174,
-    "epsNextY": 0.33596,
+    "epsNextY": 0.078,
     "revNext5y": null
   },
   "MDT": {
@@ -4739,7 +4739,7 @@
     "eps5y": -0.01078,
     "rev3y": 0.0191,
     "rev5y": 0.0191,
-    "epsNextY": 0.69244,
+    "epsNextY": -0.118,
     "revNext5y": null
   },
   "MET": {
@@ -4756,7 +4756,7 @@
     "eps5y": 0.17021,
     "rev3y": 0.03921,
     "rev5y": 0.03921,
-    "epsNextY": 1.12658,
+    "epsNextY": 0.359,
     "revNext5y": null
   },
   "MGM": {
@@ -4773,7 +4773,7 @@
     "eps5y": -0.39746,
     "rev3y": 0.10136,
     "rev5y": 0.10136,
-    "epsNextY": 1.982,
+    "epsNextY": -0.059,
     "revNext5y": null
   },
   "MHK": {
@@ -4790,7 +4790,7 @@
     "eps5y": 1.46072,
     "rev3y": -0.02779,
     "rev5y": -0.02779,
-    "epsNextY": 0.48032,
+    "epsNextY": 0.652,
     "revNext5y": null
   },
   "MKC": {
@@ -4807,7 +4807,7 @@
     "eps5y": 0.04996,
     "rev3y": 0.02508,
     "rev5y": 0.02508,
-    "epsNextY": -0.4513,
+    "epsNextY": 5.283,
     "revNext5y": null
   },
   "MKTX": {
@@ -4824,7 +4824,7 @@
     "eps5y": -0.001,
     "rev3y": 0.05617,
     "rev5y": 0.05617,
-    "epsNextY": 0.06364,
+    "epsNextY": 4.5,
     "revNext5y": null
   },
   "MLM": {
@@ -4841,7 +4841,7 @@
     "eps5y": 0.10583,
     "rev3y": -0.0006,
     "rev5y": -0.0006,
-    "epsNextY": 0.44598,
+    "epsNextY": 12.208,
     "revNext5y": null
   },
   "MMC": {
@@ -4875,7 +4875,7 @@
     "eps5y": -0.16007,
     "rev3y": -0.0157,
     "rev5y": -0.0157,
-    "epsNextY": 0.81831,
+    "epsNextY": -0.397,
     "revNext5y": null
   },
   "MNST": {
@@ -4892,7 +4892,7 @@
     "eps5y": 0.19946,
     "rev3y": 0.09537,
     "rev5y": 0.09537,
-    "epsNextY": 0.26666,
+    "epsNextY": 0.289,
     "revNext5y": null
   },
   "MOH": {
@@ -4909,7 +4909,7 @@
     "eps5y": -0.12389,
     "rev3y": 0.12418,
     "rev5y": 0.12418,
-    "epsNextY": 1.45132,
+    "epsNextY": -0.95,
     "revNext5y": null
   },
   "MOS": {
@@ -4994,7 +4994,7 @@
     "eps5y": 0.18322,
     "rev3y": 0.09524,
     "rev5y": 0.09524,
-    "epsNextY": 0.13695,
+    "epsNextY": 0.319,
     "revNext5y": null
   },
   "MSCI": {
@@ -5011,7 +5011,7 @@
     "eps5y": 0.134,
     "rev3y": 0.11708,
     "rev5y": 0.11708,
-    "epsNextY": 0.28751,
+    "epsNextY": 0.491,
     "revNext5y": null
   },
   "MSI": {
@@ -5028,7 +5028,7 @@
     "eps5y": 0.16679,
     "rev3y": 0.08635,
     "rev5y": 0.08635,
-    "epsNextY": 0.49256,
+    "epsNextY": -0.138,
     "revNext5y": null
   },
   "MTB": {
@@ -5045,7 +5045,7 @@
     "eps5y": 0.13842,
     "rev3y": 0.06326,
     "rev5y": 0.06326,
-    "epsNextY": 0.17124,
+    "epsNextY": 0.244,
     "revNext5y": null
   },
   "MTD": {
@@ -5062,7 +5062,7 @@
     "eps5y": 0.02824,
     "rev3y": 0.00899,
     "rev5y": 0.00899,
-    "epsNextY": 0.20427,
+    "epsNextY": 0.067,
     "revNext5y": null
   },
   "NEM": {
@@ -5079,7 +5079,7 @@
     "eps5y": null,
     "rev3y": 0.23912,
     "rev5y": 0.23912,
-    "epsNextY": 0.48372,
+    "epsNextY": 0.786,
     "revNext5y": null
   },
   "NEE": {
@@ -5096,7 +5096,7 @@
     "eps5y": 0.1628,
     "rev3y": 0.09365,
     "rev5y": 0.09365,
-    "epsNextY": 0.11872,
+    "epsNextY": 1.6,
     "revNext5y": null
   },
   "NFLX": {
@@ -5113,7 +5113,7 @@
     "eps5y": 0.36699,
     "rev3y": 0.1264,
     "rev5y": 0.1264,
-    "epsNextY": 0.23964,
+    "epsNextY": 0.864,
     "revNext5y": null
   },
   "NI": {
@@ -5130,7 +5130,7 @@
     "eps5y": 0.02128,
     "rev3y": 0.04321,
     "rev5y": 0.04321,
-    "epsNextY": 0.11529,
+    "epsNextY": 0.06,
     "revNext5y": null
   },
   "NKE": {
@@ -5147,7 +5147,7 @@
     "eps5y": -0.17253,
     "rev3y": -0.00287,
     "rev5y": -0.00287,
-    "epsNextY": 0.1996,
+    "epsNextY": -0.348,
     "revNext5y": null
   },
   "NDSN": {
@@ -5164,7 +5164,7 @@
     "eps5y": -0.0129,
     "rev3y": 0.02527,
     "rev5y": 0.02527,
-    "epsNextY": 0.32573,
+    "epsNextY": 0.061,
     "revNext5y": null
   },
   "NSC": {
@@ -5181,7 +5181,7 @@
     "eps5y": -0.03705,
     "rev3y": -0.015,
     "rev5y": -0.015,
-    "epsNextY": 0.13808,
+    "epsNextY": -0.266,
     "revNext5y": null
   },
   "NTAP": {
@@ -5198,7 +5198,7 @@
     "eps5y": 0.11423,
     "rev3y": 0.01323,
     "rev5y": 0.01323,
-    "epsNextY": 0.34369,
+    "epsNextY": 0.16,
     "revNext5y": null
   },
   "NTRS": {
@@ -5215,7 +5215,7 @@
     "eps5y": 0.12539,
     "rev3y": 0.06148,
     "rev5y": 0.06148,
-    "epsNextY": 0.24301,
+    "epsNextY": 0.426,
     "revNext5y": null
   },
   "NUE": {
@@ -5232,7 +5232,7 @@
     "eps5y": -0.36115,
     "rev3y": -0.0784,
     "rev5y": -0.0784,
-    "epsNextY": 0.56749,
+    "epsNextY": 3.821,
     "revNext5y": null
   },
   "NVR": {
@@ -5249,7 +5249,7 @@
     "eps5y": -0.04184,
     "rev3y": -0.00625,
     "rev5y": -0.00625,
-    "epsNextY": 0.0264,
+    "epsNextY": -0.285,
     "revNext5y": null
   },
   "NWSA": {
@@ -5266,7 +5266,7 @@
     "eps5y": 0.25195,
     "rev3y": -0.06635,
     "rev5y": -0.06635,
-    "epsNextY": 0.63441,
+    "epsNextY": -0.104,
     "revNext5y": null
   },
   "O": {
@@ -5283,7 +5283,7 @@
     "eps5y": -0.06251,
     "rev3y": 0.19802,
     "rev5y": 0.19802,
-    "epsNextY": 0.41093,
+    "epsNextY": 0.179,
     "revNext5y": null
   },
   "ODFL": {
@@ -5300,7 +5300,7 @@
     "eps5y": -0.07447,
     "rev3y": -0.04244,
     "rev5y": -0.04244,
-    "epsNextY": 0.29279,
+    "epsNextY": -0.042,
     "revNext5y": null
   },
   "OKE": {
@@ -5317,7 +5317,7 @@
     "eps5y": 0.12145,
     "rev3y": 0.14527,
     "rev5y": 0.14527,
-    "epsNextY": 0.09775,
+    "epsNextY": 0.18,
     "revNext5y": null
   },
   "OMC": {
@@ -5334,7 +5334,7 @@
     "eps5y": null,
     "rev3y": 0.06523,
     "rev5y": 0.06523,
-    "epsNextY": null,
+    "epsNextY": -0.069,
     "revNext5y": null
   },
   "ON": {
@@ -5368,7 +5368,7 @@
     "eps5y": 0.09819,
     "rev3y": 0.07261,
     "rev5y": 0.07261,
-    "epsNextY": 0.17369,
+    "epsNextY": 0.161,
     "revNext5y": null
   },
   "OTIS": {
@@ -5385,7 +5385,7 @@
     "eps5y": 0.05708,
     "rev3y": 0.01785,
     "rev5y": 0.01785,
-    "epsNextY": 0.25461,
+    "epsNextY": 0.426,
     "revNext5y": null
   },
   "OXY": {
@@ -5402,7 +5402,7 @@
     "eps5y": -0.50262,
     "rev3y": -0.16155,
     "rev5y": -0.16155,
-    "epsNextY": 4.25926,
+    "epsNextY": 3.156,
     "revNext5y": null
   },
   "PANW": {
@@ -5419,7 +5419,7 @@
     "eps5y": null,
     "rev3y": 0.18788,
     "rev5y": 0.18788,
-    "epsNextY": 1.21106,
+    "epsNextY": 0.605,
     "revNext5y": null
   },
   "PAYX": {
@@ -5436,7 +5436,7 @@
     "eps5y": 0.06021,
     "rev3y": 0.06506,
     "rev5y": 0.06506,
-    "epsNextY": 0.30201,
+    "epsNextY": 0.091,
     "revNext5y": null
   },
   "PAYC": {
@@ -5453,7 +5453,7 @@
     "eps5y": 0.18709,
     "rev3y": 0.14266,
     "rev5y": 0.14266,
-    "epsNextY": 0.42204,
+    "epsNextY": 0.226,
     "revNext5y": null
   },
   "PCAR": {
@@ -5470,7 +5470,7 @@
     "eps5y": -0.07763,
     "rev3y": -0.00436,
     "rev5y": -0.00436,
-    "epsNextY": 0.44118,
+    "epsNextY": 0.197,
     "revNext5y": null
   },
   "PCG": {
@@ -5487,7 +5487,7 @@
     "eps5y": 0.09047,
     "rev3y": 0.04773,
     "rev5y": 0.04773,
-    "epsNextY": 0.41931,
+    "epsNextY": 0.398,
     "revNext5y": null
   },
   "PEG": {
@@ -5504,7 +5504,7 @@
     "eps5y": 0.27104,
     "rev3y": 0.07481,
     "rev5y": 0.07481,
-    "epsNextY": 0.03916,
+    "epsNextY": 0.254,
     "revNext5y": null
   },
   "PEP": {
@@ -5521,7 +5521,7 @@
     "eps5y": -0.02343,
     "rev3y": 0.02826,
     "rev5y": 0.02826,
-    "epsNextY": 0.43828,
+    "epsNextY": 0.278,
     "revNext5y": null
   },
   "PFE": {
@@ -5538,7 +5538,7 @@
     "eps5y": -0.3742,
     "rev3y": -0.14798,
     "rev5y": -0.14798,
-    "epsNextY": 1.16574,
+    "epsNextY": -0.101,
     "revNext5y": null
   },
   "PFG": {
@@ -5555,7 +5555,7 @@
     "eps5y": -0.3451,
     "rev3y": -0.03772,
     "rev5y": -0.03772,
-    "epsNextY": 0.4651,
+    "epsNextY": 8.19,
     "revNext5y": null
   },
   "PGR": {
@@ -5572,7 +5572,7 @@
     "eps5y": 1.53082,
     "rev3y": 0.20904,
     "rev5y": 0.20904,
-    "epsNextY": -0.17557,
+    "epsNextY": 0.098,
     "revNext5y": null
   },
   "PH": {
@@ -5589,7 +5589,7 @@
     "eps5y": 0.39032,
     "rev3y": 0.07763,
     "rev5y": 0.07763,
-    "epsNextY": 0.25471,
+    "epsNextY": -0.042,
     "revNext5y": null
   },
   "PHM": {
@@ -5606,7 +5606,7 @@
     "eps5y": 0.0042,
     "rev3y": 0.02655,
     "rev5y": 0.02655,
-    "epsNextY": 0.08059,
+    "epsNextY": -0.304,
     "revNext5y": null
   },
   "PKG": {
@@ -5623,7 +5623,7 @@
     "eps5y": -0.08064,
     "rev3y": 0.01971,
     "rev5y": 0.01971,
-    "epsNextY": 0.49072,
+    "epsNextY": -0.155,
     "revNext5y": null
   },
   "PLD": {
@@ -5640,7 +5640,7 @@
     "eps5y": -0.05779,
     "rev3y": 0.13741,
     "rev5y": 0.13741,
-    "epsNextY": -0.14626,
+    "epsNextY": 0.652,
     "revNext5y": null
   },
   "PM": {
@@ -5657,7 +5657,7 @@
     "eps5y": 0.07697,
     "rev3y": 0.0857,
     "rev5y": 0.0857,
-    "epsNextY": 0.28546,
+    "epsNextY": -0.093,
     "revNext5y": null
   },
   "PNC": {
@@ -5674,7 +5674,7 @@
     "eps5y": 0.06198,
     "rev3y": 0.03008,
     "rev5y": 0.03008,
-    "epsNextY": 0.22203,
+    "epsNextY": 0.177,
     "revNext5y": null
   },
   "POOL": {
@@ -5691,7 +5691,7 @@
     "eps5y": -0.16773,
     "rev3y": -0.05054,
     "rev5y": -0.05054,
-    "epsNextY": 0.10436,
+    "epsNextY": 0.021,
     "revNext5y": null
   },
   "PPG": {
@@ -5708,7 +5708,7 @@
     "eps5y": 0.1705,
     "rev3y": 0.00554,
     "rev5y": 0.00554,
-    "epsNextY": 0.24278,
+    "epsNextY": 0.042,
     "revNext5y": null
   },
   "PPL": {
@@ -5725,7 +5725,7 @@
     "eps5y": 0.16191,
     "rev3y": 0.04595,
     "rev5y": 0.04595,
-    "epsNextY": 0.2987,
+    "epsNextY": 0.073,
     "revNext5y": null
   },
   "PTC": {
@@ -5742,7 +5742,7 @@
     "eps5y": 0.3185,
     "rev3y": 0.12315,
     "rev5y": 0.12315,
-    "epsNextY": -0.16921,
+    "epsNextY": 2.689,
     "revNext5y": null
   },
   "PSA": {
@@ -5759,7 +5759,7 @@
     "eps5y": -0.27416,
     "rev3y": 0.04875,
     "rev5y": 0.04875,
-    "epsNextY": 0.04437,
+    "epsNextY": 0.328,
     "revNext5y": null
   },
   "PSX": {
@@ -5776,7 +5776,7 @@
     "eps5y": -0.22628,
     "rev3y": -0.07998,
     "rev5y": -0.07998,
-    "epsNextY": 0.68116,
+    "epsNextY": -0.568,
     "revNext5y": null
   },
   "PYPL": {
@@ -5793,7 +5793,7 @@
     "eps5y": 0.37507,
     "rev3y": 0.06427,
     "rev5y": 0.06427,
-    "epsNextY": 0.08382,
+    "epsNextY": -0.062,
     "revNext5y": null
   },
   "QRVO": {
@@ -5810,7 +5810,7 @@
     "eps5y": 0.52466,
     "rev3y": 0.01009,
     "rev5y": 0.01009,
-    "epsNextY": 1.16067,
+    "epsNextY": -0.056,
     "revNext5y": null
   },
   "RL": {
@@ -5827,7 +5827,7 @@
     "eps5y": 0.25938,
     "rev3y": 0.07989,
     "rev5y": 0.07989,
-    "epsNextY": 0.34656,
+    "epsNextY": 0.2,
     "revNext5y": null
   },
   "RCL": {
@@ -5844,7 +5844,7 @@
     "eps5y": null,
     "rev3y": 0.26593,
     "rev5y": 0.26593,
-    "epsNextY": 0.21989,
+    "epsNextY": 0.289,
     "revNext5y": null
   },
   "REG": {
@@ -5861,7 +5861,7 @@
     "eps5y": -0.00239,
     "rev3y": 0.0827,
     "rev5y": 0.0827,
-    "epsNextY": -0.13409,
+    "epsNextY": 0.172,
     "revNext5y": null
   },
   "REGN": {
@@ -5878,7 +5878,7 @@
     "eps5y": 0.02064,
     "rev3y": 0.0562,
     "rev5y": 0.0562,
-    "epsNextY": 0.31273,
+    "epsNextY": -0.072,
     "revNext5y": null
   },
   "RF": {
@@ -5895,7 +5895,7 @@
     "eps5y": 0.0029,
     "rev3y": 0.01652,
     "rev5y": 0.01652,
-    "epsNextY": 0.18466,
+    "epsNextY": 0.216,
     "revNext5y": null
   },
   "RJF": {
@@ -5912,7 +5912,7 @@
     "eps5y": 0.1372,
     "rev3y": 0.08453,
     "rev5y": 0.08453,
-    "epsNextY": 0.26443,
+    "epsNextY": 0.153,
     "revNext5y": null
   },
   "RMD": {
@@ -5929,7 +5929,7 @@
     "eps5y": 0.2851,
     "rev3y": 0.12879,
     "rev5y": 0.12879,
-    "epsNextY": 0.17625,
+    "epsNextY": 0.105,
     "revNext5y": null
   },
   "ROK": {
@@ -5946,7 +5946,7 @@
     "eps5y": -0.01219,
     "rev3y": 0.02438,
     "rev5y": 0.02438,
-    "epsNextY": 0.50544,
+    "epsNextY": 0.396,
     "revNext5y": null
   },
   "ROL": {
@@ -5963,7 +5963,7 @@
     "eps5y": 0.13272,
     "rev3y": 0.11739,
     "rev5y": 0.11739,
-    "epsNextY": 0.2823,
+    "epsNextY": 0.013,
     "revNext5y": null
   },
   "ROP": {
@@ -5980,7 +5980,7 @@
     "eps5y": -0.30675,
     "rev3y": 0.13732,
     "rev5y": 0.13732,
-    "epsNextY": 0.49159,
+    "epsNextY": 0.592,
     "revNext5y": null
   },
   "ROST": {
@@ -5997,7 +5997,7 @@
     "eps5y": 0.14817,
     "rev3y": 0.06762,
     "rev5y": 0.06762,
-    "epsNextY": 0.19622,
+    "epsNextY": 0.374,
     "revNext5y": null
   },
   "RSG": {
@@ -6014,7 +6014,7 @@
     "eps5y": 0.13434,
     "rev3y": 0.07085,
     "rev5y": 0.07085,
-    "epsNextY": 0.16647,
+    "epsNextY": 0.075,
     "revNext5y": null
   },
   "RTX": {
@@ -6031,7 +6031,7 @@
     "eps5y": 0.12561,
     "rev3y": 0.09723,
     "rev5y": 0.09723,
-    "epsNextY": 0.41805,
+    "epsNextY": 0.325,
     "revNext5y": null
   },
   "RVTY": {
@@ -6048,7 +6048,7 @@
     "eps5y": -0.23286,
     "rev3y": -0.04815,
     "rev5y": -0.04815,
-    "epsNextY": 1.79367,
+    "epsNextY": 0.035,
     "revNext5y": null
   },
   "SBAC": {
@@ -6065,7 +6065,7 @@
     "eps5y": 0.32041,
     "rev3y": 0.02249,
     "rev5y": 0.02249,
-    "epsNextY": -0.14592,
+    "epsNextY": -0.147,
     "revNext5y": null
   },
   "SBUX": {
@@ -6082,7 +6082,7 @@
     "eps5y": -0.17042,
     "rev3y": 0.0486,
     "rev5y": 0.0486,
-    "epsNextY": 1.31211,
+    "epsNextY": 0.326,
     "revNext5y": null
   },
   "SCHW": {
@@ -6099,7 +6099,7 @@
     "eps5y": 0.09882,
     "rev3y": 0.04834,
     "rev5y": 0.04834,
-    "epsNextY": 0.43517,
+    "epsNextY": 0.386,
     "revNext5y": null
   },
   "SEE": {
@@ -6133,7 +6133,7 @@
     "eps5y": 0.09818,
     "rev3y": 0.02101,
     "rev5y": 0.02101,
-    "epsNextY": 0.27453,
+    "epsNextY": 0.075,
     "revNext5y": null
   },
   "SJM": {
@@ -6167,7 +6167,7 @@
     "eps5y": -0.00692,
     "rev3y": 0.08326,
     "rev5y": 0.08326,
-    "epsNextY": 0.47438,
+    "epsNextY": -0.138,
     "revNext5y": null
   },
   "SNA": {
@@ -6184,7 +6184,7 @@
     "eps5y": 0.04429,
     "rev3y": 0.02114,
     "rev5y": 0.02114,
-    "epsNextY": 0.10111,
+    "epsNextY": 0.04,
     "revNext5y": null
   },
   "SNPS": {
@@ -6192,16 +6192,16 @@
     "trailingPE": 109.986275,
     "forwardPE": 27.941996,
     "pegRatio": 3.17,
-    "debtToEquity": 35.579,
-    "freeCashflow": 3096222464.0,
-    "grossMargins": 0.82024,
-    "profitMargins": 0.13756,
-    "returnOnEquity": 0.055430003,
+    "debtToEquity": 35.574,
+    "freeCashflow": 3538958592.0,
+    "grossMargins": 0.82598996,
+    "profitMargins": 0.089090005,
+    "returnOnEquity": 0.03824,
     "eps3y": 0.08077,
     "eps5y": 0.08077,
     "rev3y": 0.15187,
     "rev5y": 0.15187,
-    "epsNextY": 2.93624,
+    "epsNextY": -0.96,
     "revNext5y": null
   },
   "SO": {
@@ -6218,7 +6218,7 @@
     "eps5y": 0.06302,
     "rev3y": 0.00311,
     "rev5y": 0.00311,
-    "epsNextY": 0.25755,
+    "epsNextY": -0.008,
     "revNext5y": null
   },
   "SPGI": {
@@ -6235,7 +6235,7 @@
     "eps5y": 0.12694,
     "rev3y": 0.11108,
     "rev5y": 0.11108,
-    "epsNextY": 0.40268,
+    "epsNextY": 0.325,
     "revNext5y": null
   },
   "SPG": {
@@ -6252,7 +6252,7 @@
     "eps5y": 0.29531,
     "rev3y": 0.06348,
     "rev5y": 0.06348,
-    "epsNextY": -0.52088,
+    "epsNextY": 0.164,
     "revNext5y": null
   },
   "SRE": {
@@ -6269,7 +6269,7 @@
     "eps5y": -0.06133,
     "rev3y": -0.01731,
     "rev5y": -0.01731,
-    "epsNextY": 0.88335,
+    "epsNextY": 0.137,
     "revNext5y": null
   },
   "STT": {
@@ -6286,7 +6286,7 @@
     "eps5y": 0.09469,
     "rev3y": 0.04822,
     "rev5y": 0.04822,
-    "epsNextY": 0.40254,
+    "epsNextY": -0.241,
     "revNext5y": null
   },
   "STLD": {
@@ -6303,7 +6303,7 @@
     "eps5y": -0.27517,
     "rev3y": -0.06533,
     "rev5y": -0.06533,
-    "epsNextY": 0.82334,
+    "epsNextY": 0.931,
     "revNext5y": null
   },
   "STE": {
@@ -6320,7 +6320,7 @@
     "eps5y": 0.95295,
     "rev3y": 0.08934,
     "rev5y": 0.08934,
-    "epsNextY": 0.50685,
+    "epsNextY": 0.522,
     "revNext5y": null
   },
   "STX": {
@@ -6337,7 +6337,7 @@
     "eps5y": -0.33456,
     "rev3y": -0.07944,
     "rev5y": -0.07944,
-    "epsNextY": 1.50203,
+    "epsNextY": 1.083,
     "revNext5y": null
   },
   "SWK": {
@@ -6354,7 +6354,7 @@
     "eps5y": -0.28011,
     "rev3y": -0.0371,
     "rev5y": -0.0371,
-    "epsNextY": 1.53988,
+    "epsNextY": -0.348,
     "revNext5y": null
   },
   "SWKS": {
@@ -6371,7 +6371,7 @@
     "eps5y": -0.26713,
     "rev3y": -0.09345,
     "rev5y": -0.09345,
-    "epsNextY": 1.14416,
+    "epsNextY": -0.449,
     "revNext5y": null
   },
   "SYF": {
@@ -6388,7 +6388,7 @@
     "eps5y": 0.14861,
     "rev3y": 0.08669,
     "rev5y": 0.08669,
-    "epsNextY": 0.08529,
+    "epsNextY": 0.201,
     "revNext5y": null
   },
   "SYK": {
@@ -6405,7 +6405,7 @@
     "eps5y": 0.10868,
     "rev3y": 0.1083,
     "rev5y": 0.1083,
-    "epsNextY": 0.93429,
+    "epsNextY": 0.142,
     "revNext5y": null
   },
   "SYY": {
@@ -6422,7 +6422,7 @@
     "eps5y": 0.12029,
     "rev3y": 0.05837,
     "rev5y": 0.05837,
-    "epsNextY": 0.37619,
+    "epsNextY": -0.135,
     "revNext5y": null
   },
   "T": {
@@ -6439,7 +6439,7 @@
     "eps5y": null,
     "rev3y": 0.01337,
     "rev5y": 0.01337,
-    "epsNextY": -0.16014,
+    "epsNextY": -0.113,
     "revNext5y": null
   },
   "TAP": {
@@ -6456,7 +6456,7 @@
     "eps5y": null,
     "rev3y": 0.01352,
     "rev5y": 0.01352,
-    "epsNextY": null,
+    "epsNextY": 0.356,
     "revNext5y": null
   },
   "TDG": {
@@ -6473,7 +6473,7 @@
     "eps5y": 0.33775,
     "rev3y": 0.17606,
     "rev5y": 0.17606,
-    "epsNextY": 0.46461,
+    "epsNextY": 0.115,
     "revNext5y": null
   },
   "TDY": {
@@ -6490,7 +6490,7 @@
     "eps5y": 0.04815,
     "rev3y": 0.0386,
     "rev5y": 0.0386,
-    "epsNextY": 0.3213,
+    "epsNextY": 0.216,
     "revNext5y": null
   },
   "TEL": {
@@ -6507,7 +6507,7 @@
     "eps5y": -0.06231,
     "rev3y": 0.01969,
     "rev5y": 0.01969,
-    "epsNextY": 0.2921,
+    "epsNextY": 71.5,
     "revNext5y": null
   },
   "TER": {
@@ -6524,7 +6524,7 @@
     "eps5y": -0.08347,
     "rev3y": 0.00368,
     "rev5y": 0.00368,
-    "epsNextY": 0.76171,
+    "epsNextY": 3.148,
     "revNext5y": null
   },
   "TFC": {
@@ -6541,7 +6541,7 @@
     "eps5y": -0.0462,
     "rev3y": 0.00574,
     "rev5y": 0.00574,
-    "epsNextY": 0.26856,
+    "epsNextY": 0.253,
     "revNext5y": null
   },
   "TFX": {
@@ -6575,7 +6575,7 @@
     "eps5y": 0.1067,
     "rev3y": -0.01344,
     "rev5y": -0.01344,
-    "epsNextY": 0.17246,
+    "epsNextY": -0.247,
     "revNext5y": null
   },
   "TJX": {
@@ -6592,7 +6592,7 @@
     "eps5y": 0.17908,
     "rev3y": 0.0653,
     "rev5y": 0.0653,
-    "epsNextY": 0.12046,
+    "epsNextY": 0.293,
     "revNext5y": null
   },
   "TMUS": {
@@ -6609,7 +6609,7 @@
     "eps5y": 0.67627,
     "rev3y": 0.03534,
     "rev5y": 0.03534,
-    "epsNextY": 0.49919,
+    "epsNextY": -0.12,
     "revNext5y": null
   },
   "TMO": {
@@ -6626,7 +6626,7 @@
     "eps5y": 0.00038,
     "rev3y": -0.00266,
     "rev5y": -0.00266,
-    "epsNextY": 0.50239,
+    "epsNextY": 0.113,
     "revNext5y": null
   },
   "TRV": {
@@ -6643,7 +6643,7 @@
     "eps5y": 0.32699,
     "rev3y": 0.0979,
     "rev5y": 0.0979,
-    "epsNextY": -0.14833,
+    "epsNextY": 3.576,
     "revNext5y": null
   },
   "TRGP": {
@@ -6660,7 +6660,7 @@
     "eps5y": 0.29758,
     "rev3y": -0.06645,
     "rev5y": -0.06645,
-    "epsNextY": 0.25823,
+    "epsNextY": 1.429,
     "revNext5y": null
   },
   "TRMB": {
@@ -6677,7 +6677,7 @@
     "eps5y": -0.00742,
     "rev3y": -0.00814,
     "rev5y": -0.00814,
-    "epsNextY": 1.13012,
+    "epsNextY": 0.556,
     "revNext5y": null
   },
   "TSCO": {
@@ -6694,7 +6694,7 @@
     "eps5y": 0.01906,
     "rev3y": 0.03005,
     "rev5y": 0.03005,
-    "epsNextY": 0.13997,
+    "epsNextY": -0.081,
     "revNext5y": null
   },
   "TSN": {
@@ -6711,7 +6711,7 @@
     "eps5y": -0.46957,
     "rev3y": 0.0072,
     "rev5y": 0.0072,
-    "epsNextY": 2.58973,
+    "epsNextY": 36.022,
     "revNext5y": null
   },
   "TTWO": {
@@ -6745,7 +6745,7 @@
     "eps5y": 0.19472,
     "rev3y": 0.10064,
     "rev5y": 0.10064,
-    "epsNextY": 0.31667,
+    "epsNextY": -0.021,
     "revNext5y": null
   },
   "TSM": {
@@ -6762,7 +6762,7 @@
     "eps5y": 0.18646,
     "rev3y": 0.18938,
     "rev5y": 0.18938,
-    "epsNextY": 0.67095,
+    "epsNextY": 0.584,
     "revNext5y": null
   },
   "TXT": {
@@ -6779,7 +6779,7 @@
     "eps5y": 0.08128,
     "rev3y": 0.04768,
     "rev5y": 0.04768,
-    "epsNextY": 0.3925,
+    "epsNextY": 0.106,
     "revNext5y": null
   },
   "TYL": {
@@ -6796,7 +6796,7 @@
     "eps5y": 0.2283,
     "rev3y": 0.08025,
     "rev5y": 0.08025,
-    "epsNextY": 0.98065,
+    "epsNextY": 0.022,
     "revNext5y": null
   },
   "UAL": {
@@ -6813,7 +6813,7 @@
     "eps5y": 0.66288,
     "rev3y": 0.09529,
     "rev5y": 0.09529,
-    "epsNextY": 0.27168,
+    "epsNextY": 0.845,
     "revNext5y": null
   },
   "UDR": {
@@ -6830,7 +6830,7 @@
     "eps5y": 0.63193,
     "rev3y": 0.04111,
     "rev5y": 0.04111,
-    "epsNextY": -0.59184,
+    "epsNextY": 1.516,
     "revNext5y": null
   },
   "UHS": {
@@ -6847,7 +6847,7 @@
     "eps5y": 0.36394,
     "rev3y": 0.09026,
     "rev5y": 0.09026,
-    "epsNextY": 0.06414,
+    "epsNextY": 0.177,
     "revNext5y": null
   },
   "ULTA": {
@@ -6864,7 +6864,7 @@
     "eps5y": 0.12036,
     "rev3y": 0.06676,
     "rev5y": 0.06676,
-    "epsNextY": 0.23584,
+    "epsNextY": -0.054,
     "revNext5y": null
   },
   "UNH": {
@@ -6881,7 +6881,7 @@
     "eps5y": -0.14892,
     "rev3y": 0.11352,
     "rev5y": 0.11352,
-    "epsNextY": 0.57276,
+    "epsNextY": 0.007,
     "revNext5y": null
   },
   "UNP": {
@@ -6898,7 +6898,7 @@
     "eps5y": 0.02205,
     "rev3y": -0.00492,
     "rev5y": -0.00492,
-    "epsNextY": 0.12638,
+    "epsNextY": 0.062,
     "revNext5y": null
   },
   "UPS": {
@@ -6915,7 +6915,7 @@
     "eps5y": -0.2091,
     "rev3y": -0.0404,
     "rev5y": -0.0404,
-    "epsNextY": 0.29488,
+    "epsNextY": -0.272,
     "revNext5y": null
   },
   "URI": {
@@ -6932,7 +6932,7 @@
     "eps5y": 0.09159,
     "rev3y": 0.1141,
     "rev5y": 0.1141,
-    "epsNextY": 0.37558,
+    "epsNextY": 0.066,
     "revNext5y": null
   },
   "USB": {
@@ -6949,7 +6949,7 @@
     "eps5y": 0.0778,
     "rev3y": 0.05676,
     "rev5y": 0.05676,
-    "epsNextY": 0.18477,
+    "epsNextY": 0.148,
     "revNext5y": null
   },
   "V": {
@@ -6966,7 +6966,7 @@
     "eps5y": 0.13391,
     "rev3y": 0.10921,
     "rev5y": 0.10921,
-    "epsNextY": 0.29476,
+    "epsNextY": 0.355,
     "revNext5y": null
   },
   "VICI": {
@@ -6983,7 +6983,7 @@
     "eps5y": 0.27139,
     "rev3y": 0.1549,
     "rev5y": 0.1549,
-    "epsNextY": 0.00514,
+    "epsNextY": 0.601,
     "revNext5y": null
   },
   "VRSN": {
@@ -7000,7 +7000,7 @@
     "eps5y": 0.12269,
     "rev3y": 0.0515,
     "rev5y": 0.0515,
-    "epsNextY": 0.17574,
+    "epsNextY": 0.114,
     "revNext5y": null
   },
   "VRSK": {
@@ -7017,7 +7017,7 @@
     "eps5y": 0.02477,
     "rev3y": 0.0716,
     "rev5y": 0.0716,
-    "epsNextY": 0.31771,
+    "epsNextY": 0.048,
     "revNext5y": null
   },
   "VRTX": {
@@ -7034,7 +7034,7 @@
     "eps5y": 0.06029,
     "rev3y": 0.10352,
     "rev5y": 0.10352,
-    "epsNextY": 0.27504,
+    "epsNextY": 0.614,
     "revNext5y": null
   },
   "VTRS": {
@@ -7085,7 +7085,7 @@
     "eps5y": 0.23519,
     "rev3y": 0.02774,
     "rev5y": 0.02774,
-    "epsNextY": 0.28291,
+    "epsNextY": 0.297,
     "revNext5y": null
   },
   "VTR": {
@@ -7102,7 +7102,7 @@
     "eps5y": null,
     "rev3y": 0.1221,
     "rev5y": 0.1221,
-    "epsNextY": 0.5394,
+    "epsNextY": 0.1,
     "revNext5y": null
   },
   "VZ": {
@@ -7119,7 +7119,7 @@
     "eps5y": -0.07077,
     "rev3y": 0.00329,
     "rev5y": 0.00329,
-    "epsNextY": 0.28629,
+    "epsNextY": 0.043,
     "revNext5y": null
   },
   "WAB": {
@@ -7136,7 +7136,7 @@
     "eps5y": 0.25505,
     "rev3y": 0.10122,
     "rev5y": 0.10122,
-    "epsNextY": 0.71319,
+    "epsNextY": 0.128,
     "revNext5y": null
   },
   "WAT": {
@@ -7204,7 +7204,7 @@
     "eps5y": 0.03351,
     "rev3y": -0.20284,
     "rev5y": -0.20284,
-    "epsNextY": 0.0528,
+    "epsNextY": 4.829,
     "revNext5y": null
   },
   "WEC": {
@@ -7221,7 +7221,7 @@
     "eps5y": 0.02763,
     "rev3y": 0.00699,
     "rev5y": 0.00699,
-    "epsNextY": 0.22035,
+    "epsNextY": 0.079,
     "revNext5y": null
   },
   "WELL": {
@@ -7238,7 +7238,7 @@
     "eps5y": 0.65686,
     "rev3y": 0.22689,
     "rev5y": 0.22689,
-    "epsNextY": 0.63107,
+    "epsNextY": 1.579,
     "revNext5y": null
   },
   "WFC": {
@@ -7255,7 +7255,7 @@
     "eps5y": 0.25992,
     "rev3y": 0.04019,
     "rev5y": 0.04019,
-    "epsNextY": 0.22088,
+    "epsNextY": 0.151,
     "revNext5y": null
   },
   "WM": {
@@ -7272,7 +7272,7 @@
     "eps5y": 0.07429,
     "rev3y": 0.08563,
     "rev5y": 0.08563,
-    "epsNextY": 0.34015,
+    "epsNextY": 0.133,
     "revNext5y": null
   },
   "WMB": {
@@ -7289,7 +7289,7 @@
     "eps5y": 0.08401,
     "rev3y": 0.02909,
     "rev5y": 0.02909,
-    "epsNextY": 0.12557,
+    "epsNextY": 0.25,
     "revNext5y": null
   },
   "WMT": {
@@ -7306,7 +7306,7 @@
     "eps5y": 0.24205,
     "rev3y": 0.05272,
     "rev5y": 0.05272,
-    "epsNextY": 0.15804,
+    "epsNextY": 0.194,
     "revNext5y": null
   },
   "WRB": {
@@ -7323,7 +7323,7 @@
     "eps5y": 0.10431,
     "rev3y": 0.09282,
     "rev5y": 0.09282,
-    "epsNextY": 0.02265,
+    "epsNextY": 0.26,
     "revNext5y": null
   },
   "WST": {
@@ -7340,7 +7340,7 @@
     "eps5y": -0.04615,
     "rev3y": 0.02116,
     "rev5y": 0.02116,
-    "epsNextY": 0.27889,
+    "epsNextY": 0.561,
     "revNext5y": null
   },
   "WTW": {
@@ -7357,7 +7357,7 @@
     "eps5y": 0.21993,
     "rev3y": 0.0307,
     "rev5y": 0.0307,
-    "epsNextY": 0.30202,
+    "epsNextY": 0.33,
     "revNext5y": null
   },
   "WY": {
@@ -7374,7 +7374,7 @@
     "eps5y": -0.43762,
     "rev3y": -0.12149,
     "rev5y": -0.12149,
-    "epsNextY": 0.24464,
+    "epsNextY": 0.966,
     "revNext5y": null
   },
   "WYNN": {
@@ -7391,7 +7391,7 @@
     "eps5y": null,
     "rev3y": 0.23856,
     "rev5y": 0.23856,
-    "epsNextY": 0.55965,
+    "epsNextY": 0.509,
     "revNext5y": null
   },
   "XEL": {
@@ -7408,7 +7408,7 @@
     "eps5y": 0.02654,
     "rev3y": -0.01416,
     "rev5y": -0.01416,
-    "epsNextY": 0.30603,
+    "epsNextY": 0.06,
     "revNext5y": null
   },
   "XYL": {
@@ -7425,7 +7425,7 @@
     "eps5y": 0.25885,
     "rev3y": 0.17836,
     "rev5y": 0.17836,
-    "epsNextY": 0.51568,
+    "epsNextY": 0.145,
     "revNext5y": null
   },
   "YUM": {
@@ -7442,7 +7442,7 @@
     "eps5y": 0.06482,
     "rev3y": 0.06281,
     "rev5y": 0.06281,
-    "epsNextY": 0.20903,
+    "epsNextY": 0.722,
     "revNext5y": null
   },
   "ZBRA": {
@@ -7459,7 +7459,7 @@
     "eps5y": -0.02389,
     "rev3y": -0.02271,
     "rev5y": -0.02271,
-    "epsNextY": 1.50394,
+    "epsNextY": 0.038,
     "revNext5y": null
   },
   "ZBH": {
@@ -7476,7 +7476,7 @@
     "eps5y": 0.47917,
     "rev3y": 0.05854,
     "rev5y": 0.05854,
-    "epsNextY": 1.3307,
+    "epsNextY": 0.341,
     "revNext5y": null
   },
   "ZION": {
@@ -7493,7 +7493,7 @@
     "eps5y": 0.01193,
     "rev3y": 0.02406,
     "rev5y": 0.02406,
-    "epsNextY": 0.04003,
+    "epsNextY": 0.379,
     "revNext5y": null
   },
   "ZTS": {
@@ -7510,7 +7510,7 @@
     "eps5y": 0.10166,
     "rev3y": 0.05423,
     "rev5y": 0.05423,
-    "epsNextY": 0.21724,
+    "epsNextY": 0.06,
     "revNext5y": null
   },
   "ABNB": {
@@ -7527,7 +7527,7 @@
     "eps5y": 0.11346,
     "rev3y": 0.13378,
     "rev5y": 0.13378,
-    "epsNextY": 0.46366,
+    "epsNextY": 0.06,
     "revNext5y": null
   },
   "COIN": {
@@ -7561,7 +7561,7 @@
     "eps5y": null,
     "rev3y": 0.32917,
     "rev5y": 0.32917,
-    "epsNextY": 1.33065,
+    "epsNextY": 3.25,
     "revNext5y": null
   },
   "SNOW": {
@@ -7595,7 +7595,7 @@
     "eps5y": null,
     "rev3y": 0.2695,
     "rev5y": 0.2695,
-    "epsNextY": 6.48974,
+    "epsNextY": 1.04,
     "revNext5y": null
   },
   "NET": {
@@ -7663,7 +7663,7 @@
     "eps5y": null,
     "rev3y": 0.16251,
     "rev5y": 0.16251,
-    "epsNextY": 2.07015,
+    "epsNextY": 1.708,
     "revNext5y": null
   },
   "MDB": {
@@ -7680,7 +7680,7 @@
     "eps5y": null,
     "rev3y": 0.24263,
     "rev5y": 0.24263,
-    "epsNextY": null,
+    "epsNextY": 0.022,
     "revNext5y": null
   },
   "ZM": {
@@ -7697,7 +7697,7 @@
     "eps5y": 1.62351,
     "rev3y": 0.03487,
     "rev5y": 0.03487,
-    "epsNextY": -0.07323,
+    "epsNextY": 0.742,
     "revNext5y": null
   },
   "TWLO": {
@@ -7714,7 +7714,7 @@
     "eps5y": null,
     "rev3y": 0.09815,
     "rev5y": 0.09815,
-    "epsNextY": 9.00048,
+    "epsNextY": 3.75,
     "revNext5y": null
   },
   "SHOP": {
@@ -7765,7 +7765,7 @@
     "eps5y": null,
     "rev3y": 0.48787,
     "rev5y": 0.48787,
-    "epsNextY": 0.32434,
+    "epsNextY": 0.027,
     "revNext5y": null
   },
   "SOFI": {
@@ -7782,7 +7782,7 @@
     "eps5y": null,
     "rev3y": 0.3193,
     "rev5y": 0.3193,
-    "epsNextY": 0.73387,
+    "epsNextY": 1.012,
     "revNext5y": null
   },
   "AFRM": {
@@ -7799,7 +7799,7 @@
     "eps5y": null,
     "rev3y": 0.33695,
     "rev5y": 0.33695,
-    "epsNextY": 2.46652,
+    "epsNextY": 35.293,
     "revNext5y": null
   },
   "UPST": {
@@ -7969,7 +7969,7 @@
     "eps5y": null,
     "rev3y": 0.1554,
     "rev5y": 0.1554,
-    "epsNextY": -0.70318,
+    "epsNextY": 4.889,
     "revNext5y": null
   },
   "UBER": {
@@ -7986,7 +7986,7 @@
     "eps5y": null,
     "rev3y": 0.17731,
     "rev5y": 0.17731,
-    "epsNextY": 0.08443,
+    "epsNextY": -0.846,
     "revNext5y": null
   },
   "DASH": {
@@ -8003,7 +8003,7 @@
     "eps5y": null,
     "rev3y": 0.27726,
     "rev5y": 0.27726,
-    "epsNextY": 2.67205,
+    "epsNextY": -0.061,
     "revNext5y": null
   },
   "RBLX": {
@@ -8088,7 +8088,7 @@
     "eps5y": 0.65096,
     "rev3y": 0.07587,
     "rev5y": 0.07587,
-    "epsNextY": 2.77335,
+    "epsNextY": 0.61,
     "revNext5y": null
   },
   "W": {
@@ -8207,7 +8207,7 @@
     "eps5y": 1.02247,
     "rev3y": 0.22442,
     "rev5y": 0.22442,
-    "epsNextY": 1.55842,
+    "epsNextY": -0.2,
     "revNext5y": null
   },
   "TRADE": {
@@ -8292,7 +8292,7 @@
     "eps5y": 0.21877,
     "rev3y": 0.15452,
     "rev5y": 0.15452,
-    "epsNextY": 0.62716,
+    "epsNextY": -0.69,
     "revNext5y": null
   },
   "ASAN": {
@@ -8564,7 +8564,7 @@
     "eps5y": 0.47284,
     "rev3y": 0.61708,
     "rev5y": 0.61708,
-    "epsNextY": 0.69475,
+    "epsNextY": 3.26,
     "revNext5y": null
   },
   "ARM": {
@@ -8581,7 +8581,7 @@
     "eps5y": 0.18509,
     "rev3y": 0.22461,
     "rev5y": 0.22461,
-    "epsNextY": 2.6371,
+    "epsNextY": 0.479,
     "revNext5y": null
   },
   "ALAB": {
@@ -8598,7 +8598,7 @@
     "eps5y": null,
     "rev3y": 1.20176,
     "rev5y": 1.20176,
-    "epsNextY": 1.86169,
+    "epsNextY": 1.444,
     "revNext5y": null
   },
   "AI": {
@@ -8666,7 +8666,7 @@
     "eps5y": null,
     "rev3y": 0.09827,
     "rev5y": 0.09827,
-    "epsNextY": 0.64408,
+    "epsNextY": -0.606,
     "revNext5y": null
   },
   "PATH": {
@@ -8683,7 +8683,7 @@
     "eps5y": null,
     "rev3y": 0.15014,
     "rev5y": 0.15014,
-    "epsNextY": 0.49977,
+    "epsNextY": 1.057,
     "revNext5y": null
   },
   "NOW": {
@@ -8700,7 +8700,7 @@
     "eps5y": 0.73784,
     "rev3y": 0.22377,
     "rev5y": 0.22377,
-    "epsNextY": 1.97437,
+    "epsNextY": 0.023,
     "revNext5y": null
   },
   "WDAY": {
@@ -8717,7 +8717,7 @@
     "eps5y": null,
     "rev3y": 0.15397,
     "rev5y": 0.15397,
-    "epsNextY": 2.93035,
+    "epsNextY": 2.48,
     "revNext5y": null
   },
   "VEEV": {
@@ -8734,7 +8734,7 @@
     "eps5y": 0.20908,
     "rev3y": 0.1403,
     "rev5y": 0.1403,
-    "epsNextY": 0.81691,
+    "epsNextY": 0.232,
     "revNext5y": null
   },
   "ANSS": {
@@ -8768,7 +8768,7 @@
     "eps5y": 0.21092,
     "rev3y": 0.12128,
     "rev5y": 0.12128,
-    "epsNextY": 0.66543,
+    "epsNextY": -0.035,
     "revNext5y": null
   },
   "CPNG": {
@@ -8802,7 +8802,7 @@
     "eps5y": null,
     "rev3y": 0.22594,
     "rev5y": 0.22594,
-    "epsNextY": 1.04386,
+    "epsNextY": 0.031,
     "revNext5y": null
   },
   "MELI": {
@@ -8819,7 +8819,7 @@
     "eps5y": 0.60273,
     "rev3y": 0.38907,
     "rev5y": 0.38907,
-    "epsNextY": 0.565,
+    "epsNextY": -0.156,
     "revNext5y": null
   },
   "GRAB": {
@@ -8853,7 +8853,7 @@
     "eps5y": 0.18104,
     "rev3y": 0.05625,
     "rev5y": 0.05625,
-    "epsNextY": 0.42132,
+    "epsNextY": 1.041,
     "revNext5y": null
   },
   "JD": {
@@ -8870,7 +8870,7 @@
     "eps5y": 0.27554,
     "rev3y": 0.07757,
     "rev5y": 0.07757,
-    "epsNextY": 2.19778,
+    "epsNextY": -0.507,
     "revNext5y": null
   },
   "PDD": {
@@ -8887,7 +8887,7 @@
     "eps5y": 0.41021,
     "rev3y": 0.48996,
     "rev5y": 0.48996,
-    "epsNextY": 0.35742,
+    "epsNextY": -0.149,
     "revNext5y": null
   },
   "BIDU": {
@@ -8904,7 +8904,7 @@
     "eps5y": -0.11891,
     "rev3y": 0.01436,
     "rev5y": 0.01436,
-    "epsNextY": null,
+    "epsNextY": -0.593,
     "revNext5y": null
   },
   "TCOM": {
@@ -8921,7 +8921,7 @@
     "eps5y": 1.85729,
     "rev3y": 0.46035,
     "rev5y": 0.46035,
-    "epsNextY": -0.33201,
+    "epsNextY": 0.981,
     "revNext5y": null
   },
   "NTES": {
@@ -8938,7 +8938,7 @@
     "eps5y": 0.19345,
     "rev3y": 0.05287,
     "rev5y": 0.05287,
-    "epsNextY": 0.36192,
+    "epsNextY": 0.031,
     "revNext5y": null
   },
   "BILI": {
@@ -8989,7 +8989,7 @@
     "eps5y": 0.46286,
     "rev3y": 0.05102,
     "rev5y": 0.05102,
-    "epsNextY": 0.26091,
+    "epsNextY": -0.518,
     "revNext5y": null
   },
   "FUTU": {
@@ -8997,16 +8997,16 @@
     "trailingPE": 11.592265,
     "forwardPE": 7.9972997,
     "pegRatio": null,
-    "debtToEquity": 43.353,
+    "debtToEquity": 54.246,
     "freeCashflow": null,
-    "grossMargins": 0.94383,
-    "profitMargins": 0.53761,
-    "returnOnEquity": 0.33083,
+    "grossMargins": 0.94443,
+    "profitMargins": 0.45025003,
+    "returnOnEquity": 0.27836,
     "eps3y": 0.28197,
     "eps5y": 0.28197,
     "rev3y": 0.44235,
     "rev5y": 0.44235,
-    "epsNextY": 0.44952,
+    "epsNextY": -0.607,
     "revNext5y": null
   },
   "TIGR": {
@@ -9023,7 +9023,7 @@
     "eps5y": null,
     "rev3y": 0.3952,
     "rev5y": 0.3952,
-    "epsNextY": 0.2382,
+    "epsNextY": 0.664,
     "revNext5y": null
   },
   "ASML": {
@@ -9040,7 +9040,7 @@
     "eps5y": 0.17806,
     "rev3y": 0.15551,
     "rev5y": 0.15551,
-    "epsNextY": 0.58302,
+    "epsNextY": 0.192,
     "revNext5y": null
   },
   "SAP": {
@@ -9057,7 +9057,7 @@
     "eps5y": 0.4632,
     "rev3y": 0.07626,
     "rev5y": 0.07626,
-    "epsNextY": 0.35747,
+    "epsNextY": 0.093,
     "revNext5y": null
   },
   "NVO": {
@@ -9074,7 +9074,7 @@
     "eps5y": 0.2344,
     "rev3y": 0.20429,
     "rev5y": 0.20429,
-    "epsNextY": -0.2238,
+    "epsNextY": 0.671,
     "revNext5y": null
   },
   "SHEL": {
@@ -9091,7 +9091,7 @@
     "eps5y": -0.19275,
     "rev3y": -0.11213,
     "rev5y": -0.11213,
-    "epsNextY": 0.42353,
+    "epsNextY": 0.266,
     "revNext5y": null
   },
   "TTE": {
@@ -9108,7 +9108,7 @@
     "eps5y": -0.09619,
     "rev3y": -0.11528,
     "rev5y": -0.11528,
-    "epsNextY": 0.49322,
+    "epsNextY": 0.571,
     "revNext5y": null
   },
   "UL": {
@@ -9159,7 +9159,7 @@
     "eps5y": -0.14603,
     "rev3y": -0.00442,
     "rev5y": -0.00442,
-    "epsNextY": 0.5261,
+    "epsNextY": 0.029,
     "revNext5y": null
   },
   "RIO": {
@@ -9176,7 +9176,7 @@
     "eps5y": -0.07155,
     "rev3y": 0.01235,
     "rev5y": 0.01235,
-    "epsNextY": 0.45761,
+    "epsNextY": -0.056,
     "revNext5y": null
   },
   "BHP": {
@@ -9193,7 +9193,7 @@
     "eps5y": -0.33719,
     "rev3y": -0.07656,
     "rev5y": -0.07656,
-    "epsNextY": 0.32003,
+    "epsNextY": 0.275,
     "revNext5y": null
   },
   "VALE": {
@@ -9210,7 +9210,7 @@
     "eps5y": -0.48599,
     "rev3y": -0.04317,
     "rev5y": -0.04317,
-    "epsNextY": 2.01124,
+    "epsNextY": 0.22,
     "revNext5y": null
   },
   "INFY": {
@@ -9227,7 +9227,7 @@
     "eps5y": 0.02779,
     "rev3y": 0.03442,
     "rev5y": 0.03442,
-    "epsNextY": 0.08809,
+    "epsNextY": 0.118,
     "revNext5y": null
   },
   "WIT": {
@@ -9244,7 +9244,7 @@
     "eps5y": 0.06725,
     "rev3y": 0.04046,
     "rev5y": 0.04046,
-    "epsNextY": 0.18177,
+    "epsNextY": -0.016,
     "revNext5y": null
   },
   "HDB": {
@@ -9261,7 +9261,7 @@
     "eps5y": -0.13593,
     "rev3y": 0.32503,
     "rev5y": 0.32503,
-    "epsNextY": 0.05977,
+    "epsNextY": 0.075,
     "revNext5y": null
   },
   "IBN": {
@@ -9278,7 +9278,7 @@
     "eps5y": 0.15809,
     "rev3y": 0.1965,
     "rev5y": 0.1965,
-    "epsNextY": 0.24026,
+    "epsNextY": 0.084,
     "revNext5y": null
   },
   "WOLF": {
@@ -9346,7 +9346,7 @@
     "eps5y": 0.30594,
     "rev3y": 0.32344,
     "rev5y": 0.32344,
-    "epsNextY": 0.7201,
+    "epsNextY": -0.187,
     "revNext5y": null
   },
   "COHU": {
@@ -9414,7 +9414,7 @@
     "eps5y": 0.02501,
     "rev3y": 0.01625,
     "rev5y": 0.01625,
-    "epsNextY": 2.125,
+    "epsNextY": 2.25,
     "revNext5y": null
   },
   "ICHR": {
@@ -9448,7 +9448,7 @@
     "eps5y": -0.07629,
     "rev3y": 0.03486,
     "rev5y": 0.03486,
-    "epsNextY": 2.12018,
+    "epsNextY": 0.532,
     "revNext5y": null
   },
   "ENTG": {
@@ -9465,7 +9465,7 @@
     "eps5y": 0.01782,
     "rev3y": -0.00875,
     "rev5y": -0.00875,
-    "epsNextY": 1.6672,
+    "epsNextY": 0.463,
     "revNext5y": null
   },
   "CEVA": {
@@ -9499,7 +9499,7 @@
     "eps5y": -0.49115,
     "rev3y": -0.12015,
     "rev5y": -0.12015,
-    "epsNextY": 5.1062,
+    "epsNextY": -0.604,
     "revNext5y": null
   },
   "SLAB": {
@@ -9584,7 +9584,7 @@
     "eps5y": 0.36569,
     "rev3y": 0.01723,
     "rev5y": 0.01723,
-    "epsNextY": 0.19571,
+    "epsNextY": 0.199,
     "revNext5y": null
   },
   "RMBS": {
@@ -9601,7 +9601,7 @@
     "eps5y": null,
     "rev3y": 0.15877,
     "rev5y": 0.15877,
-    "epsNextY": 0.73122,
+    "epsNextY": -0.018,
     "revNext5y": null
   },
   "SITM": {
@@ -9626,16 +9626,16 @@
     "trailingPE": null,
     "forwardPE": 42.806664,
     "pegRatio": 1.21,
-    "debtToEquity": 85.819,
-    "freeCashflow": null,
-    "grossMargins": 0.52395,
-    "profitMargins": -0.030350002,
-    "returnOnEquity": -0.057919998,
+    "debtToEquity": 90.284,
+    "freeCashflow": 132511376.0,
+    "grossMargins": 0.52394,
+    "profitMargins": -0.03042,
+    "returnOnEquity": -0.05806,
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.11545,
     "rev5y": 0.11545,
-    "epsNextY": null,
+    "epsNextY": 0.227,
     "revNext5y": null
   },
   "BRKR": {
@@ -9652,7 +9652,7 @@
     "eps5y": null,
     "rev3y": 0.10737,
     "rev5y": 0.10737,
-    "epsNextY": null,
+    "epsNextY": -0.818,
     "revNext5y": null
   },
   "FARO": {
@@ -9703,7 +9703,7 @@
     "eps5y": 0.11376,
     "rev3y": 0.11059,
     "rev5y": 0.11059,
-    "epsNextY": 0.05503,
+    "epsNextY": 0.023,
     "revNext5y": null
   },
   "COHR": {
@@ -9737,7 +9737,7 @@
     "eps5y": -0.30452,
     "rev3y": -0.11118,
     "rev5y": -0.11118,
-    "epsNextY": 2.39916,
+    "epsNextY": -0.575,
     "revNext5y": null
   },
   "II": {
@@ -9771,7 +9771,7 @@
     "eps5y": 0.65517,
     "rev3y": 0.04292,
     "rev5y": 0.04292,
-    "epsNextY": 0.86242,
+    "epsNextY": 7.014,
     "revNext5y": null
   },
   "AEIS": {
@@ -9788,7 +9788,7 @@
     "eps5y": -0.09505,
     "rev3y": -0.00849,
     "rev5y": -0.00849,
-    "epsNextY": 1.43927,
+    "epsNextY": 1.448,
     "revNext5y": null
   },
   "AXTI": {
@@ -9822,7 +9822,7 @@
     "eps5y": 0.07198,
     "rev3y": 0.04141,
     "rev5y": 0.04141,
-    "epsNextY": 0.26054,
+    "epsNextY": 0.093,
     "revNext5y": null
   },
   "ATEN": {
@@ -9839,7 +9839,7 @@
     "eps5y": -0.02199,
     "rev3y": 0.01201,
     "rev5y": 0.01201,
-    "epsNextY": 0.93443,
+    "epsNextY": 0.294,
     "revNext5y": null
   },
   "ACLS": {
@@ -9856,7 +9856,7 @@
     "eps5y": 0.2803,
     "rev3y": -0.03023,
     "rev5y": -0.03023,
-    "epsNextY": 0.43975,
+    "epsNextY": -0.659,
     "revNext5y": null
   },
   "LASE": {
@@ -9890,7 +9890,7 @@
     "eps5y": 0.04896,
     "rev3y": 0.01805,
     "rev5y": 0.01805,
-    "epsNextY": 0.11057,
+    "epsNextY": -0.437,
     "revNext5y": null
   },
   "OSIS": {
@@ -9907,7 +9907,7 @@
     "eps5y": 0.09308,
     "rev3y": 0.1313,
     "rev5y": 0.1313,
-    "epsNextY": 0.30951,
+    "epsNextY": -0.029,
     "revNext5y": null
   },
   "SIMO": {
@@ -9924,7 +9924,7 @@
     "eps5y": -0.11141,
     "rev3y": -0.02172,
     "rev5y": -0.02172,
-    "epsNextY": 0.91509,
+    "epsNextY": 2.387,
     "revNext5y": null
   },
   "SIGI": {
@@ -9941,7 +9941,7 @@
     "eps5y": 0.28642,
     "rev3y": 0.1447,
     "rev5y": 0.1447,
-    "epsNextY": 0.21153,
+    "epsNextY": -0.102,
     "revNext5y": null
   },
   "SKYW": {
@@ -9958,7 +9958,7 @@
     "eps5y": 0.9465,
     "rev3y": 0.10535,
     "rev5y": 0.10535,
-    "epsNextY": 0.14928,
+    "epsNextY": 0.033,
     "revNext5y": null
   },
   "SKX": {
@@ -10026,7 +10026,7 @@
     "eps5y": null,
     "rev3y": 0.30387,
     "rev5y": 0.30387,
-    "epsNextY": 0.94277,
+    "epsNextY": -0.001,
     "revNext5y": null
   },
   "WING": {
@@ -10043,7 +10043,7 @@
     "eps5y": 0.52115,
     "rev3y": 0.24915,
     "rev5y": 0.24915,
-    "epsNextY": 0.38157,
+    "epsNextY": -0.667,
     "revNext5y": null
   },
   "QSR": {
@@ -10060,7 +10060,7 @@
     "eps5y": -0.10392,
     "rev3y": 0.13192,
     "rev5y": 0.13192,
-    "epsNextY": 0.42894,
+    "epsNextY": 1.0,
     "revNext5y": null
   },
   "TXRH": {
@@ -10077,7 +10077,7 @@
     "eps5y": 0.15263,
     "rev3y": 0.1355,
     "rev5y": 0.1355,
-    "epsNextY": 0.21577,
+    "epsNextY": 0.1,
     "revNext5y": null
   },
   "DINE": {
@@ -10128,7 +10128,7 @@
     "eps5y": 1.35488,
     "rev3y": 0.02906,
     "rev5y": 0.02906,
-    "epsNextY": 0.31103,
+    "epsNextY": -0.293,
     "revNext5y": null
   },
   "JACK": {
@@ -10162,7 +10162,7 @@
     "eps5y": 0.53879,
     "rev3y": 0.04337,
     "rev5y": 0.04337,
-    "epsNextY": 0.30475,
+    "epsNextY": 0.522,
     "revNext5y": null
   },
   "EAT": {
@@ -10179,7 +10179,7 @@
     "eps5y": 0.48616,
     "rev3y": 0.12277,
     "rev5y": 0.12277,
-    "epsNextY": 0.216,
+    "epsNextY": 0.121,
     "revNext5y": null
   },
   "PLAY": {
@@ -10213,7 +10213,7 @@
     "eps5y": null,
     "rev3y": 0.39342,
     "rev5y": 0.39342,
-    "epsNextY": 0.3252,
+    "epsNextY": 1.041,
     "revNext5y": null
   },
   "FAT": {
@@ -10264,7 +10264,7 @@
     "eps5y": null,
     "rev3y": 0.27878,
     "rev5y": 0.27878,
-    "epsNextY": 0.46112,
+    "epsNextY": -0.091,
     "revNext5y": null
   },
   "UAA": {
@@ -10315,7 +10315,7 @@
     "eps5y": -0.13233,
     "rev3y": -0.00647,
     "rev5y": -0.00647,
-    "epsNextY": 0.3489,
+    "epsNextY": -0.133,
     "revNext5y": null
   },
   "PVH": {
@@ -10383,7 +10383,7 @@
     "eps5y": null,
     "rev3y": 0.04361,
     "rev5y": 0.04361,
-    "epsNextY": null,
+    "epsNextY": -0.042,
     "revNext5y": null
   },
   "DECK": {
@@ -10400,7 +10400,7 @@
     "eps5y": 0.29389,
     "rev3y": 0.14691,
     "rev5y": 0.14691,
-    "epsNextY": 0.18325,
+    "epsNextY": -0.048,
     "revNext5y": null
   },
   "ONON": {
@@ -10417,7 +10417,7 @@
     "eps5y": 0.51022,
     "rev3y": 0.35107,
     "rev5y": 0.35107,
-    "epsNextY": 1.28825,
+    "epsNextY": 0.811,
     "revNext5y": null
   },
   "BIRD": {
@@ -10451,7 +10451,7 @@
     "eps5y": null,
     "rev3y": -0.11289,
     "rev5y": -0.11289,
-    "epsNextY": 0.42856,
+    "epsNextY": 0.641,
     "revNext5y": null
   },
   "SCVL": {
@@ -10485,10 +10485,10 @@
     "eps5y": 0.08963,
     "rev3y": 0.10785,
     "rev5y": 0.10785,
-    "epsNextY": 0.34757,
+    "epsNextY": 0.184,
     "revNext5y": null
   },
-  "_updated": "2026-05-29T05:42:04Z",
+  "_updated": "2026-05-29T05:57:10Z",
   "_tickers": [
     "META",
     "ONTO",
