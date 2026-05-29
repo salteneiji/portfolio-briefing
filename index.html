@@ -1470,7 +1470,7 @@ loadAll();
   }
 
   // Re-init when tab changes
-  document.querySelectorAll('.tab-btn').forEach(btn=>{
+  document.querySelectorAll('.tab').forEach(btn=>{
     btn.addEventListener('click', ()=>setTimeout(initSticky, 50));
   });
   setTimeout(initSticky, 300);
