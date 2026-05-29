@@ -18,7 +18,7 @@
     "industry": "Semiconductor Equipment & Materials",
     "trailingPE": 120.37674,
     "forwardPE": 27.247257,
-    "pegRatio": 1.28,
+    "pegRatio": 1.2,
     "debtToEquity": null,
     "freeCashflow": 197242256.0,
     "grossMargins": 0.54186,
@@ -76,7 +76,7 @@
   },
   "MSFT": {
     "industry": "Software - Infrastructure",
-    "trailingPE": 25.416073,
+    "trailingPE": 25.446363,
     "forwardPE": 22.080667,
     "pegRatio": 1.32,
     "debtToEquity": 30.271,
@@ -136,7 +136,7 @@
   },
   "TSLA": {
     "industry": "Auto Manufacturers",
-    "trailingPE": 401.9091,
+    "trailingPE": 398.2883,
     "forwardPE": 176.15721,
     "pegRatio": 6.09,
     "debtToEquity": 18.738,
@@ -976,7 +976,7 @@
   },
   "AWK": {
     "industry": "Utilities - Regulated Water",
-    "trailingPE": 21.926523,
+    "trailingPE": 21.693262,
     "forwardPE": 18.637476,
     "pegRatio": 2.23,
     "debtToEquity": 142.33,
@@ -1441,7 +1441,7 @@
   },
   "CEG": {
     "industry": "Utilities - Independent Power Producers",
-    "trailingPE": 24.853298,
+    "trailingPE": 24.874891,
     "forwardPE": 21.065775,
     "pegRatio": 3.74,
     "debtToEquity": 66.428,
@@ -1456,7 +1456,7 @@
   },
   "CF": {
     "industry": "Agricultural Inputs",
-    "trailingPE": 10.486049,
+    "trailingPE": 10.495495,
     "forwardPE": 10.495117,
     "pegRatio": 3.45,
     "debtToEquity": 43.847,
@@ -1591,7 +1591,7 @@
   },
   "CME": {
     "industry": "Financial Data & Stock Exchanges",
-    "trailingPE": 23.812878,
+    "trailingPE": 23.690863,
     "forwardPE": 21.497011,
     "pegRatio": 4.9,
     "debtToEquity": 14.059,
@@ -1636,7 +1636,7 @@
   },
   "CMS": {
     "industry": "Utilities - Regulated Electric",
-    "trailingPE": 20.553371,
+    "trailingPE": 20.268698,
     "forwardPE": 17.53709,
     "pegRatio": 2.87,
     "debtToEquity": 189.842,
@@ -1712,7 +1712,7 @@
   "COP": {
     "industry": "Oil & Gas E&P",
     "trailingPE": 19.48983,
-    "forwardPE": 12.5618305,
+    "forwardPE": 12.48884,
     "pegRatio": 0.98,
     "debtToEquity": 36.143,
     "freeCashflow": 5289124864.0,
@@ -1726,7 +1726,7 @@
   },
   "COST": {
     "industry": "Discount Stores",
-    "trailingPE": 52.077446,
+    "trailingPE": 51.806355,
     "forwardPE": 44.14492,
     "pegRatio": 5.1,
     "debtToEquity": 60.257,
@@ -1846,7 +1846,7 @@
   },
   "CVS": {
     "industry": "Healthcare Plans",
-    "trailingPE": 40.246754,
+    "trailingPE": 40.776318,
     "forwardPE": 11.116851,
     "pegRatio": 0.26,
     "debtToEquity": 100.912,
@@ -2491,7 +2491,7 @@
   },
   "EXR": {
     "industry": "REIT - Industrial",
-    "trailingPE": 32.47439,
+    "trailingPE": 32.766293,
     "forwardPE": 30.466705,
     "pegRatio": 6.24,
     "debtToEquity": 98.092,
@@ -2851,7 +2851,7 @@
   },
   "GL": {
     "industry": "Insurance - Life",
-    "trailingPE": 10.687283,
+    "trailingPE": 10.635546,
     "forwardPE": 9.236853,
     "pegRatio": 1.3,
     "debtToEquity": 53.588,
@@ -3076,7 +3076,7 @@
   },
   "HLT": {
     "industry": "Lodging",
-    "trailingPE": 51.377472,
+    "trailingPE": 51.534348,
     "forwardPE": 32.408707,
     "pegRatio": 1.67,
     "debtToEquity": null,
@@ -3453,7 +3453,7 @@
     "industry": "Specialty Industrial Machinery",
     "trailingPE": 47.966213,
     "forwardPE": 18.458138,
-    "pegRatio": 0.69,
+    "pegRatio": 0.68,
     "debtToEquity": 48.353,
     "freeCashflow": 1035425024.0,
     "grossMargins": 0.43222,
@@ -4171,7 +4171,7 @@
   },
   "MDT": {
     "industry": "Medical Devices",
-    "trailingPE": 21.227528,
+    "trailingPE": 21.108938,
     "forwardPE": 12.472479,
     "pegRatio": 1.32,
     "debtToEquity": 57.06,
@@ -4456,7 +4456,7 @@
   },
   "MTD": {
     "industry": "Diagnostics & Research",
-    "trailingPE": 25.707027,
+    "trailingPE": 27.325033,
     "forwardPE": 22.690207,
     "pegRatio": 2.44,
     "debtToEquity": null,
@@ -4471,7 +4471,7 @@
   },
   "NEM": {
     "industry": "Gold",
-    "trailingPE": 13.911311,
+    "trailingPE": 14.037614,
     "forwardPE": 9.461111,
     "pegRatio": 2.78,
     "debtToEquity": 15.762,
@@ -4531,7 +4531,7 @@
   },
   "NKE": {
     "industry": "Footwear & Accessories",
-    "trailingPE": 30.171972,
+    "trailingPE": 31.164473,
     "forwardPE": 25.979082,
     "pegRatio": 1.63,
     "debtToEquity": 79.333,
@@ -4606,7 +4606,7 @@
   },
   "NUE": {
     "industry": "Steel",
-    "trailingPE": 24.732143,
+    "trailingPE": 24.756704,
     "forwardPE": 15.793855,
     "pegRatio": 5.21,
     "debtToEquity": 31.595,
@@ -4681,7 +4681,7 @@
   },
   "OKE": {
     "industry": "Oil & Gas Midstream",
-    "trailingPE": 15.735985,
+    "trailingPE": 15.511585,
     "forwardPE": 14.130316,
     "pegRatio": 2.1,
     "debtToEquity": 149.644,
@@ -5131,7 +5131,7 @@
   },
   "RL": {
     "industry": "Apparel Manufacturing",
-    "trailingPE": 24.883892,
+    "trailingPE": 24.505617,
     "forwardPE": 18.198658,
     "pegRatio": 1.68,
     "debtToEquity": 105.913,
@@ -5176,7 +5176,7 @@
   },
   "REGN": {
     "industry": "Biotechnology",
-    "trailingPE": 15.18495,
+    "trailingPE": 15.173829,
     "forwardPE": 11.559019,
     "pegRatio": 1.08,
     "debtToEquity": 8.612,
@@ -5806,7 +5806,7 @@
   },
   "TJX": {
     "industry": "Apparel Retail",
-    "trailingPE": 30.610672,
+    "trailingPE": 30.134241,
     "forwardPE": 26.894453,
     "pegRatio": 3.34,
     "debtToEquity": 136.307,
@@ -6271,7 +6271,7 @@
   },
   "VZ": {
     "industry": "Telecom Services",
-    "trailingPE": 11.767157,
+    "trailingPE": 11.709756,
     "forwardPE": 9.10351,
     "pegRatio": 0.9,
     "debtToEquity": 192.045,
@@ -6557,7 +6557,7 @@
   "YUM": {
     "industry": "Restaurants",
     "trailingPE": 24.198387,
-    "forwardPE": 20.014301,
+    "forwardPE": 20.014702,
     "pegRatio": 1.86,
     "debtToEquity": null,
     "freeCashflow": 1261500032.0,
@@ -6857,7 +6857,7 @@
   "SOFI": {
     "industry": "Credit Services",
     "trailingPE": 37.71111,
-    "forwardPE": 21.876732,
+    "forwardPE": 21.749718,
     "pegRatio": 1.06,
     "debtToEquity": 17.724,
     "freeCashflow": null,
@@ -6964,11 +6964,11 @@
     "trailingPE": 97.125,
     "forwardPE": 17.985312,
     "pegRatio": 0.87,
-    "debtToEquity": 24.357,
-    "freeCashflow": -11210257408.0,
-    "grossMargins": 0.18685,
-    "profitMargins": 0.01001,
-    "returnOnEquity": 0.01577,
+    "debtToEquity": 25.122,
+    "freeCashflow": -15601390592.0,
+    "grossMargins": 0.15978,
+    "profitMargins": -0.0166,
+    "returnOnEquity": -0.02495,
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.35358,
@@ -7186,7 +7186,7 @@
   },
   "BILL": {
     "industry": "Software - Application",
-    "trailingPE": Infinity,
+    "trailingPE": null,
     "forwardPE": 10.514215,
     "pegRatio": 0.35,
     "debtToEquity": 49.592,
@@ -7382,7 +7382,7 @@
   "S": {
     "industry": "Software - Infrastructure",
     "trailingPE": null,
-    "forwardPE": 37.78966,
+    "forwardPE": 37.676674,
     "pegRatio": null,
     "debtToEquity": 1.044,
     "freeCashflow": 283892512.0,
@@ -7876,7 +7876,7 @@
   },
   "NTES": {
     "industry": "Electronic Gaming & Multimedia",
-    "trailingPE": 15.940873,
+    "trailingPE": 15.9,
     "forwardPE": 11.674678,
     "pegRatio": 1.32,
     "debtToEquity": 6.469,
@@ -7891,8 +7891,8 @@
   },
   "BILI": {
     "industry": "Internet Content & Information",
-    "trailingPE": 35.875,
-    "forwardPE": 12.77418,
+    "trailingPE": 35.142857,
+    "forwardPE": 12.759718,
     "pegRatio": 0.39,
     "debtToEquity": 61.288,
     "freeCashflow": null,
@@ -7936,7 +7936,7 @@
   },
   "FUTU": {
     "industry": "Capital Markets",
-    "trailingPE": 10.245118,
+    "trailingPE": 11.592265,
     "forwardPE": 7.9972997,
     "pegRatio": null,
     "debtToEquity": 43.353,
@@ -8972,7 +8972,7 @@
   "EAT": {
     "industry": "Restaurants",
     "trailingPE": 13.647174,
-    "forwardPE": 11.228162,
+    "forwardPE": 11.223004,
     "pegRatio": 0.89,
     "debtToEquity": 430.542,
     "freeCashflow": 317600000.0,
@@ -9254,7 +9254,7 @@
     "rev3y": 0.10785,
     "rev5y": 0.10785
   },
-  "_updated": "2026-05-29T04:52:16Z",
+  "_updated": "2026-05-29T05:24:18Z",
   "_tickers": [
     "META",
     "ONTO",
