@@ -319,11 +319,12 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <th class="r">D/E</th>
           <th class="r">Free Cash Flow</th>
           <th class="r hide-sm">EPS 3Y (Past)</th>
-          <th class="r hide-sm">EPS 4-5Y (Past)</th>
           <th class="r hide-sm">EPS 1Y (Next)</th>
           <th class="r hide-sm">Rev 3Y (Past)</th>
-          <th class="r">Rev 4-5Y (Past)</th>
-          <th class="r">Rev 5Y (Next)</th>
+          <th class="r hide-sm">Rev Growth TTM</th>
+          <th class="r hide-sm">Gross Margin</th>
+          <th class="r hide-sm">ROE</th>
+          <th class="r">Current Ratio</th>
           <th style="width:32px"></th>
         </tr></thead>
         <tbody id="fund-body"></tbody>
@@ -701,8 +702,12 @@ function renderFundRow(ticker, name, d, isExtra){
   const de   = deRaw!=null ? deRaw/100 : null;
   const fcf  = d?.freeCashflow ?? null;
   const industry = d?.industry||'—';
-  const eps3=d?.eps3y??null, eps5=d?.eps5y??null, rev3=d?.rev3y??null, rev5=d?.rev5y??null;
-  const epsNext=d?.epsNextY??null, revNext5=d?.revNext5y??null;
+  const eps3=d?.eps3y??null, rev3=d?.rev3y??null;
+  const epsNext=d?.epsNextY??null;
+  const revGrowth=d?.revenueGrowth??null;
+  const grossM=d?.grossMargins??null;
+  const roe=d?.returnOnEquity??null;
+  const curRatio=d?.currentRatio??null;
 
   let fcfHtml;
   if(fcf==null) fcfHtml=`<span class="mb mb-n">—</span>`;
@@ -720,7 +725,7 @@ function renderFundRow(ticker, name, d, isExtra){
   if(!d||d.error){
     return `<tr>
       <td><div class="tk">${ticker}</div><div class="tk-name">${name||''}</div></td>
-      <td colspan="11" style="font-size:.73rem;color:var(--muted)">
+      <td colspan="10" style="font-size:.73rem;color:var(--muted)">
         ${d?.error||'Not in tickers.txt yet — add it &amp; re-run the <em>Fetch Fundamentals</em> workflow'}
       </td>
       ${delBtn}
@@ -735,11 +740,12 @@ function renderFundRow(ticker, name, d, isExtra){
     <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<1, v=>v<2)}</td>
     <td class="r">${fcfHtml}</td>
     <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.20, v=>v>0)}</td>
-    <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.20, v=>v>0)}</td>
     <td class="r hide-sm">${mbadge(epsNext, pctFmt(epsNext), v=>v>0.20, v=>v>0)}</td>
     <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.20, v=>v>0)}</td>
-    <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.20, v=>v>0)}</td>
-    <td class="r">${mbadge(revNext5, pctFmt(revNext5), v=>v>0.20, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(revGrowth, pctFmt(revGrowth), v=>v>0.20, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(grossM, pctFmt(grossM,1), v=>v>0.50, v=>v>0.30)}</td>
+    <td class="r hide-sm">${mbadge(roe, pctFmt(roe,1), v=>v>0.15, v=>v>0)}</td>
+    <td class="r">${curRatio!=null ? mbadge(curRatio, fmt(curRatio,2)+'×', v=>v>1.5, v=>v>1) : '<span class="mb mb-n">—</span>'}</td>
     ${delBtn}
   </tr>`;
 }
