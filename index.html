@@ -302,7 +302,11 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
   <!-- FUNDAMENTALS -->
   <div class="tab-pane" id="tab-fundamentals">
     <div class="tab-toolbar">
-      <p class="tab-hint">Key fundamental metrics for your holdings. Growth rates are annual CAGRs.</p>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <input class="fi-sm" id="fund-inp" placeholder="Add ticker…" style="width:110px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')addFundTicker()"/>
+        <button class="btn btn-primary btn-sm" onclick="addFundTicker()">+ Track</button>
+        <p class="tab-hint" style="margin:0">Growth rates are annual CAGRs · add ticker to <code style="font-size:.7rem;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:4px">tickers.txt</code> &amp; re-run workflow to load data</p>
+      </div>
       <button class="btn btn-ghost btn-sm" onclick="loadFundamentals(true)">↻ Refresh</button>
     </div>
     <div class="tbl-wrap">
@@ -318,6 +322,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <th class="r hide-sm">EPS 5Y</th>
           <th class="r hide-sm">Rev 3Y</th>
           <th class="r">Rev 5Y</th>
+          <th style="width:32px"></th>
         </tr></thead>
         <tbody id="fund-body"></tbody>
       </table>
@@ -442,6 +447,24 @@ async function getFundamentalsJson(){
   if(!resp.ok) throw new Error(`fundamentals.json not found (${resp.status})`);
   _fundCache = await resp.json();
   return _fundCache;
+}
+
+// Extra tickers tracked in Fundamentals tab (beyond holdings)
+let fundTickers = JSON.parse(localStorage.getItem('fund_tickers')||'[]');
+function saveFundTickers(){ localStorage.setItem('fund_tickers',JSON.stringify(fundTickers)); }
+
+function addFundTicker(){
+  const t = document.getElementById('fund-inp').value.trim().toUpperCase();
+  if(!t) return;
+  if(!fundTickers.includes(t)) { fundTickers.push(t); saveFundTickers(); }
+  document.getElementById('fund-inp').value='';
+  loadFundamentals(true);
+}
+
+function removeFundTicker(ticker){
+  fundTickers = fundTickers.filter(t=>t!==ticker);
+  saveFundTickers();
+  loadFundamentals(true);
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -669,78 +692,90 @@ function mbadge(val, text, greenIf, amberIf){
   return `<span class="mb ${cls}">${text}</span>`;
 }
 
+function renderFundRow(ticker, name, d, isExtra){
+  const pe   = d?.trailingPE ?? null;
+  const peg  = d?.pegRatio ?? null;
+  const deRaw= d?.debtToEquity ?? null;
+  const de   = deRaw!=null ? deRaw/100 : null;
+  const fcf  = d?.freeCashflow ?? null;
+  const industry = d?.industry||'—';
+  const eps3=d?.eps3y??null, eps5=d?.eps5y??null, rev3=d?.rev3y??null, rev5=d?.rev5y??null;
+
+  let fcfHtml;
+  if(fcf==null) fcfHtml=`<span class="mb mb-n">—</span>`;
+  else if(fcf>0) fcfHtml=`<span class="fcf-pos">✓ $${fmtBig(fcf)}</span>`;
+  else           fcfHtml=`<span class="fcf-neg">✗ $${fmtBig(fcf)}</span>`;
+
+  const indHtml = industry&&industry!='—'
+    ? `<span class="tk-tag" title="${industry}">${industry}</span>`
+    : `<span class="mb mb-n">—</span>`;
+
+  const delBtn = isExtra
+    ? `<td style="text-align:center"><button class="btn-del" style="opacity:.7" onclick="removeFundTicker('${ticker}')" title="Stop tracking">✕</button></td>`
+    : `<td></td>`;
+
+  if(!d||d.error){
+    return `<tr>
+      <td><div class="tk">${ticker}</div><div class="tk-name">${name||''}</div></td>
+      <td colspan="9" style="font-size:.73rem;color:var(--muted)">
+        ${d?.error||'Not in tickers.txt yet — add it &amp; re-run the <em>Fetch Fundamentals</em> workflow'}
+      </td>
+      ${delBtn}
+    </tr>`;
+  }
+
+  return `<tr>
+    <td><div class="tk">${ticker}</div><div class="tk-name">${name||''}</div></td>
+    <td>${indHtml}</td>
+    <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
+    <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
+    <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<0.5, v=>v<1)}</td>
+    <td class="r">${fcfHtml}</td>
+    <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.15, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.15, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.10, v=>v>0)}</td>
+    <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.10, v=>v>0)}</td>
+    ${delBtn}
+  </tr>`;
+}
+
 async function loadFundamentals(force=false){
   if(fundLoaded&&!force) return;
   fundLoaded=true;
-  _fundCache=null; // clear cache on force refresh
+  if(force) _fundCache=null;
   const tbody=document.getElementById('fund-body');
-  tbody.innerHTML=portfolio.map(p=>`
-    <tr id="fr-${p.ticker}">
-      <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
-      ${Array(9).fill('<td><span class="sk" style="width:48px"></span></td>').join('')}
+
+  // Combined list: holdings first, then extra tracked tickers
+  const holdingTickers = portfolio.map(p=>p.ticker);
+  const extraTickers   = fundTickers.filter(t=>!holdingTickers.includes(t));
+  const allRows = [
+    ...portfolio.map(p=>({ticker:p.ticker, name:p.name||'', isExtra:false})),
+    ...extraTickers.map(t=>({ticker:t, name:'', isExtra:true})),
+  ];
+
+  // Skeleton
+  tbody.innerHTML = allRows.map(r=>`
+    <tr id="fr-${r.ticker}">
+      <td><div class="tk">${r.ticker}</div><div class="tk-name">${r.name}</div></td>
+      ${Array(10).fill('<td><span class="sk" style="width:44px"></span></td>').join('')}
     </tr>`).join('');
 
-  let allData;
+  let allData = {};
   try{
     allData = await getFundamentalsJson();
+    const updated = allData._updated ? new Date(allData._updated).toLocaleDateString() : '';
+    if(updated) document.querySelector('.tab-hint').textContent=`Fundamental data · Last updated: ${updated}`;
   }catch(e){
-    // fundamentals.json doesn't exist yet — show setup message
-    tbody.innerHTML=`<tr><td colspan="10">
+    tbody.innerHTML=`<tr><td colspan="11">
       <div class="empty" style="padding:32px">
         <strong style="color:var(--text)">fundamentals.json not generated yet.</strong><br><br>
-        Go to GitHub → Actions → <em>Fetch Fundamentals</em> → Run workflow.<br>
-        After it completes, click Refresh above.
+        GitHub → Actions → <em>Fetch Fundamentals</em> → Run workflow
       </div>
     </td></tr>`;
     return;
   }
 
-  const updated = allData._updated ? new Date(allData._updated).toLocaleDateString() : '';
-
-  for(const p of portfolio){
-    const row=document.getElementById(`fr-${p.ticker}`);
-    if(!row) continue;
-    const d = allData[p.ticker];
-    if(!d||d.error){
-      row.innerHTML=`
-        <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
-        <td colspan="9"><span style="font-size:.74rem;color:var(--muted)">${d?.error||'Not in tickers.txt — add it and re-run the workflow.'}</span></td>`;
-      continue;
-    }
-
-    const pe   = d.trailingPE;
-    const peg  = d.pegRatio;
-    const deRaw= d.debtToEquity;
-    const de   = deRaw!=null ? deRaw/100 : null;  // Yahoo returns as % (e.g. 45 = 0.45)
-    const fcf  = d.freeCashflow;
-    const industry = d.industry||'—';
-    const eps3 = d.eps3y, eps5=d.eps5y, rev3=d.rev3y, rev5=d.rev5y;
-
-    let fcfHtml;
-    if(fcf==null) fcfHtml=`<span class="mb mb-n">—</span>`;
-    else if(fcf>0) fcfHtml=`<span class="fcf-pos">✓ $${fmtBig(fcf)}</span>`;
-    else           fcfHtml=`<span class="fcf-neg">✗ $${fmtBig(fcf)}</span>`;
-
-    const indHtml = industry&&industry!='—'
-      ? `<span class="tk-tag" title="${industry}">${industry}</span>`
-      : `<span class="mb mb-n">—</span>`;
-
-    row.innerHTML=`
-      <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
-      <td>${indHtml}</td>
-      <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
-      <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
-      <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<0.5, v=>v<1)}</td>
-      <td class="r">${fcfHtml}</td>
-      <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.15, v=>v>0)}</td>
-      <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.15, v=>v>0)}</td>
-      <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.10, v=>v>0)}</td>
-      <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.10, v=>v>0)}</td>`;
-  }
-
-  if(updated){
-    document.querySelector('.tab-hint').textContent=`Fundamental data · Last updated: ${updated}`;
-  }
+  tbody.innerHTML = allRows.map(r=>renderFundRow(r.ticker, r.name, allData[r.ticker], r.isExtra)).join('');
 }
 
 // ──────────────────────────────────────────────────────────────
