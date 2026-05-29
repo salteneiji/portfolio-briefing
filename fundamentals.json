@@ -1,0 +1,53 @@
+{
+  "META": {
+    "industry": "Internet Content & Information",
+    "trailingPE": 23.093056,
+    "forwardPE": 17.56783,
+    "pegRatio": 0.92,
+    "debtToEquity": 35.608,
+    "freeCashflow": 25558249472.0,
+    "grossMargins": 0.81941,
+    "profitMargins": 0.32837,
+    "returnOnEquity": 0.32930002,
+    "eps3y": 0.40587,
+    "eps5y": 0.40587,
+    "rev3y": 0.19894,
+    "rev5y": 0.19894
+  },
+  "ONTO": {
+    "industry": "Semiconductor Equipment & Materials",
+    "trailingPE": 120.37674,
+    "forwardPE": 27.247257,
+    "pegRatio": 1.28,
+    "debtToEquity": null,
+    "freeCashflow": 197242256.0,
+    "grossMargins": 0.54186,
+    "profitMargins": 0.10325,
+    "returnOnEquity": 0.052529998,
+    "eps3y": -0.14958,
+    "eps5y": -0.14958,
+    "rev3y": 3e-05,
+    "rev5y": 3e-05
+  },
+  "SMH": {
+    "industry": "",
+    "trailingPE": 49.364075,
+    "forwardPE": null,
+    "pegRatio": null,
+    "debtToEquity": null,
+    "freeCashflow": null,
+    "grossMargins": null,
+    "profitMargins": null,
+    "returnOnEquity": null,
+    "eps3y": null,
+    "eps5y": null,
+    "rev3y": null,
+    "rev5y": null
+  },
+  "_updated": "2026-05-29T04:18:17Z",
+  "_tickers": [
+    "META",
+    "ONTO",
+    "SMH"
+  ]
+}
