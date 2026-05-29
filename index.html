@@ -535,16 +535,40 @@ const DEFAULT_PORTFOLIO = [
 
 // ──────────────────────────────────────────────────────────────
 // PORTFOLIO STORAGE
+// ── URL-hash storage (works across all devices/browsers) ──────────────────
+// All data lives in the URL hash as base64 JSON. Bookmark the URL = save data.
+function _readHash(){
+  try {
+    const h = location.hash.slice(1);
+    if(!h) return null;
+    return JSON.parse(atob(h));
+  } catch(e){ return null; }
+}
+function _writeHash(store){
+  const encoded = btoa(JSON.stringify(store));
+  history.replaceState(null,'','#'+encoded);
+  // Also write to localStorage as backup
+  try{ localStorage.setItem('pf_store', JSON.stringify(store)); }catch(e){}
+}
+function _getStore(){
+  // Priority: URL hash → localStorage backup → defaults
+  let s = _readHash();
+  if(!s) try{ s = JSON.parse(localStorage.getItem('pf_store')||'null'); }catch(e){}
+  return s || { portfolio: JSON.parse(JSON.stringify(DEFAULT_PORTFOLIO)), watchlist: [], alerts: [], cash: '0' };
+}
+function _saveStore(patch){
+  const s = _getStore();
+  Object.assign(s, patch);
+  _writeHash(s);
+}
+
 // ──────────────────────────────────────────────────────────────
 function getPortfolio(){
-  const s=localStorage.getItem('portfolio_v2');
-  const raw = s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_PORTFOLIO));
-  // Migrate old format (shares/avgPrice) to lots format
+  const raw = (_getStore().portfolio || JSON.parse(JSON.stringify(DEFAULT_PORTFOLIO)));
   return raw.map(p=>{
     if(!p.lots){
       p.lots=[{shares:p.shares, avgPrice:p.avgPrice, buyDate:p.buyDate||null}];
     }
-    // Always recompute shares/avgPrice from lots
     const totalShares = p.lots.reduce((s,l)=>s+l.shares,0);
     const totalCost   = p.lots.reduce((s,l)=>s+l.shares*l.avgPrice,0);
     p.shares   = totalShares;
@@ -553,13 +577,13 @@ function getPortfolio(){
     return p;
   });
 }
-function savePortfolio(p){ localStorage.setItem('portfolio_v2',JSON.stringify(p)); }
+function savePortfolio(p){ _saveStore({portfolio:p}); }
 let portfolio = getPortfolio();
 
 // CASH STORAGE
 // ──────────────────────────────────────────────────────────────
-function getCash(){ return parseFloat(localStorage.getItem('cash_balance')||'0'); }
-function setCash(v){ localStorage.setItem('cash_balance',v.toFixed(2)); renderCash(); }
+function getCash(){ return parseFloat(_getStore().cash||'0'); }
+function setCash(v){ _saveStore({cash:v.toFixed(2)}); renderCash(); }
 function renderCash(){ document.getElementById('s-cash').textContent='$'+getCash().toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
 function editCash(){ document.getElementById('cash-inp').value=getCash().toFixed(2); document.getElementById('cash-modal').classList.add('open'); }
 function closeCashModal(){ document.getElementById('cash-modal').classList.remove('open'); }
@@ -845,8 +869,8 @@ function addHolding(){
 // ──────────────────────────────────────────────────────────────
 // WATCHLIST
 // ──────────────────────────────────────────────────────────────
-let watchlist=JSON.parse(localStorage.getItem('watchlist_v3')||'[]');
-function saveWatchlist(){ localStorage.setItem('watchlist_v3',JSON.stringify(watchlist)); }
+let watchlist=(_getStore().watchlist||[]);
+function saveWatchlist(){ _saveStore({watchlist:watchlist}); }
 
 function renderWatchlist(){
   const tbody=document.getElementById('wl-body');
@@ -1092,8 +1116,8 @@ async function loadTechnicals(force=false){
 // ──────────────────────────────────────────────────────────────
 // ALERTS
 // ──────────────────────────────────────────────────────────────
-let alerts=JSON.parse(localStorage.getItem('alerts_v2')||'[]');
-function saveAlerts(){ localStorage.setItem('alerts_v2',JSON.stringify(alerts)); }
+let alerts=(_getStore().alerts||[]);
+function saveAlerts(){ _saveStore({alerts:alerts}); }
 function updateAlertTickers(){
   const sel=document.getElementById('al-ticker');
   if(sel) sel.innerHTML=portfolio.map(p=>`<option value="${p.ticker}">${p.ticker}</option>`).join('');
@@ -1445,24 +1469,11 @@ loadAll();
 
 // ── Export / Import ───────────────────────────────────────────────────────
 function exportData(){
-  const data = {
-    portfolio: JSON.parse(localStorage.getItem('portfolio')||'[]'),
-    watchlist: JSON.parse(localStorage.getItem('watchlist')||'[]'),
-    alerts:    JSON.parse(localStorage.getItem('alerts')||'[]'),
-    cash:      localStorage.getItem('cash_balance')||'0',
-  };
-  const text = JSON.stringify(data);
+  const url = location.href;
   if(navigator.clipboard){
-    navigator.clipboard.writeText(text).then(()=>alert('✅ Portfolio data copied to clipboard!\n\nNow paste it into Notes or iMessage and open it on your phone.'));
+    navigator.clipboard.writeText(url).then(()=>alert('✅ Your portfolio URL has been copied!\n\nPaste it into Notes or iMessage, then open it on your phone — all your data will be there.'));
   } else {
-    // Fallback: show in textarea
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80vw;height:40vh;z-index:9999;padding:12px;font-size:12px';
-    document.body.appendChild(ta);
-    ta.select();
-    alert('Select all and copy this text, then paste it on your phone.');
-    setTimeout(()=>ta.remove(), 15000);
+    prompt('Copy this URL and open it on your phone:', url);
   }
 }
 
