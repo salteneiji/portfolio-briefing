@@ -108,10 +108,13 @@ input,select,button{font-family:inherit}
 .tab-pane{display:none}.tab-pane.active{display:block}
 
 /* TABLE (shared) */
-.tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border);overflow-y:visible}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border)}
 .tbl{width:100%;border-collapse:collapse}
 .tbl thead tr{border-bottom:1px solid var(--border)}
-.tbl th{padding:10px 14px;text-align:left;font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;background:var(--surface);white-space:nowrap;position:sticky;top:56px;z-index:10}
+.tbl th{padding:10px 14px;text-align:left;font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;background:var(--surface);white-space:nowrap}
+.sticky-thead{position:fixed;top:56px;left:0;z-index:200;overflow:hidden;pointer-events:none;display:none;background:var(--surface);border-bottom:1px solid var(--border)}
+.sticky-thead table{border-collapse:collapse}
+.sticky-thead th{padding:10px 14px;text-align:left;font-size:.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;background:var(--surface);white-space:nowrap}
 .tbl th.r,.tbl td.r{text-align:right}
 .tbl tbody tr{border-bottom:1px solid var(--border);transition:background .14s}
 .tbl tbody tr:last-child{border-bottom:none}
@@ -1421,6 +1424,57 @@ async function loadAll(){
   loadPortChart();
 }
 loadAll();
+
+// ── Sticky table header ────────────────────────────────────────────────────
+(function(){
+  let stickyEl = null;
+
+  function initSticky(){
+    if(stickyEl){ stickyEl.remove(); stickyEl=null; }
+    const wrap = document.querySelector('.tab-pane.active .tbl-wrap');
+    if(!wrap) return;
+    const thead = wrap.querySelector('thead');
+    if(!thead) return;
+
+    // Create floating clone
+    stickyEl = document.createElement('div');
+    stickyEl.className = 'sticky-thead';
+    const tbl = document.createElement('table');
+    tbl.appendChild(thead.cloneNode(true));
+    stickyEl.appendChild(tbl);
+    document.body.appendChild(stickyEl);
+
+    function sync(){
+      const wrapRect = wrap.getBoundingClientRect();
+      const theadRect = thead.getBoundingClientRect();
+      const NAV_H = 56;
+      const show = theadRect.bottom < NAV_H && wrapRect.bottom > NAV_H + 30;
+      if(show){
+        // Match column widths
+        const origThs = thead.querySelectorAll('th');
+        const cloneThs = stickyEl.querySelectorAll('th');
+        origThs.forEach((th,i)=>{ if(cloneThs[i]) cloneThs[i].style.width = th.offsetWidth+'px'; });
+        // Sync horizontal scroll
+        stickyEl.scrollLeft = wrap.scrollLeft;
+        stickyEl.style.display = 'block';
+        stickyEl.style.width = wrapRect.width+'px';
+        stickyEl.style.left = wrapRect.left+'px';
+      } else {
+        stickyEl.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('scroll', sync, {passive:true});
+    wrap.addEventListener('scroll', ()=>{ if(stickyEl) stickyEl.scrollLeft=wrap.scrollLeft; }, {passive:true});
+    sync();
+  }
+
+  // Re-init when tab changes
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>setTimeout(initSticky, 50));
+  });
+  setTimeout(initSticky, 300);
+})();
 </script>
 </body>
 </html>
