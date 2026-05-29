@@ -768,7 +768,8 @@ async function loadFundamentals(force=false){
   }catch(e){
     tbody.innerHTML=`<tr><td colspan="11">
       <div class="empty" style="padding:32px">
-        <strong style="color:var(--text)">fundamentals.json not generated yet.</strong><br><br>
+        <strong style="color:var(--text)">fundamentals.json fetch error:</strong><br><br>
+        <code style="color:var(--amber);font-size:.8rem">${e.message}</code><br><br>
         GitHub → Actions → <em>Fetch Fundamentals</em> → Run workflow
       </div>
     </td></tr>`;
