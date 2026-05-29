@@ -732,14 +732,14 @@ function renderFundRow(ticker, name, d, isExtra){
     <td>${indHtml}</td>
     <td class="r">${mbadge(pe, pe!=null?fmt(pe,1)+'×':'—', v=>v<20, v=>v<40)}</td>
     <td class="r">${mbadge(peg, peg!=null?fmt(peg,2):'—', v=>v>0&&v<1, v=>v<2)}</td>
-    <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<0.5, v=>v<1)}</td>
+    <td class="r">${mbadge(de, de!=null?fmt(de,2)+'×':'—', v=>v<1, v=>v<2)}</td>
     <td class="r">${fcfHtml}</td>
-    <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.15, v=>v>0)}</td>
-    <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.15, v=>v>0)}</td>
-    <td class="r hide-sm">${mbadge(epsNext, pctFmt(epsNext), v=>v>0.15, v=>v>0)}</td>
-    <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.10, v=>v>0)}</td>
-    <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.10, v=>v>0)}</td>
-    <td class="r">${mbadge(revNext5, pctFmt(revNext5), v=>v>0.10, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(eps3, pctFmt(eps3), v=>v>0.20, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(eps5, pctFmt(eps5), v=>v>0.20, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(epsNext, pctFmt(epsNext), v=>v>0.20, v=>v>0)}</td>
+    <td class="r hide-sm">${mbadge(rev3, pctFmt(rev3), v=>v>0.20, v=>v>0)}</td>
+    <td class="r">${mbadge(rev5, pctFmt(rev5), v=>v>0.20, v=>v>0)}</td>
+    <td class="r">${mbadge(revNext5, pctFmt(revNext5), v=>v>0.20, v=>v>0)}</td>
     ${delBtn}
   </tr>`;
 }
