@@ -1,0 +1,21 @@
+name: Green Across the Board Alert
+
+on:
+  schedule:
+    - cron: '0 5 * * 1-5'   # 9:00 AM UAE time (UTC+4), Mon–Fri
+  workflow_dispatch:          # manual trigger
+
+jobs:
+  green-alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run green alert
+        run: python green_alert.py
