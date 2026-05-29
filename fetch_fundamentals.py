@@ -112,8 +112,18 @@ for sym in TICKERS:
             pass
 
         # ── Annual income statement for CAGR ──────────────────────────────────
+        # yfinance income_stmt gives 4 years. To get 5Y we fetch a 2nd batch
+        # using get_income_stmt if available, else fall back gracefully.
         try:
             fin = t.income_stmt          # columns = dates (newest first), rows = metrics
+            # Try to get more history (yfinance >=0.2.x supports trailing=False)
+            try:
+                fin_extra = t.get_income_stmt(freq='yearly', trailing=False)
+                if fin_extra is not None and not fin_extra.empty and len(fin_extra.columns) > len(fin.columns):
+                    fin = fin_extra
+            except Exception:
+                pass
+
             if fin is not None and not fin.empty:
                 fin_asc = fin[sorted(fin.columns)]   # ascending date order
 
@@ -122,22 +132,28 @@ for sym in TICKERS:
                     if eps_row in fin_asc.index:
                         eps_vals = series_to_list(fin_asc.loc[eps_row])
                         eps_vals = [v for v in eps_vals if v is not None]
-                        if len(eps_vals) >= 4:
+                        n = len(eps_vals)
+                        # 3Y: needs 4 data points (start + 3 years)
+                        if n >= 4:
                             rec['eps3y'] = cagr(eps_vals[-4], eps_vals[-1], 3)
-                        if len(eps_vals) >= 2:
-                            n = len(eps_vals) - 1
-                            rec['eps5y'] = cagr(eps_vals[0], eps_vals[-1], n)
+                        # 5Y: needs 6 data points (start + 5 years)
+                        if n >= 6:
+                            rec['eps5y'] = cagr(eps_vals[-6], eps_vals[-1], 5)
+                        elif n >= 5:
+                            rec['eps5y'] = cagr(eps_vals[-5], eps_vals[-1], 4)
                         break
 
                 # Revenue CAGR
                 if 'Total Revenue' in fin_asc.index:
                     rev_vals = series_to_list(fin_asc.loc['Total Revenue'])
                     rev_vals = [v for v in rev_vals if v is not None]
-                    if len(rev_vals) >= 4:
+                    n = len(rev_vals)
+                    if n >= 4:
                         rec['rev3y'] = cagr(rev_vals[-4], rev_vals[-1], 3)
-                    if len(rev_vals) >= 2:
-                        n = len(rev_vals) - 1
-                        rec['rev5y'] = cagr(rev_vals[0], rev_vals[-1], n)
+                    if n >= 6:
+                        rec['rev5y'] = cagr(rev_vals[-6], rev_vals[-1], 5)
+                    elif n >= 5:
+                        rec['rev5y'] = cagr(rev_vals[-5], rev_vals[-1], 4)
 
         except Exception as e:
             print(f"  Income stmt error: {e}")
