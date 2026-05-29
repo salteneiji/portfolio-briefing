@@ -12,7 +12,9 @@
     "eps3y": 0.40587,
     "eps5y": 0.40587,
     "rev3y": 0.19894,
-    "rev5y": 0.19894
+    "rev5y": 0.19894,
+    "epsNextY": 0.31451,
+    "revNext5y": null
   },
   "ONTO": {
     "industry": "Semiconductor Equipment & Materials",
@@ -27,7 +29,9 @@
     "eps3y": -0.14958,
     "eps5y": -0.14958,
     "rev3y": 3e-05,
-    "rev5y": 3e-05
+    "rev5y": 3e-05,
+    "epsNextY": 3.41794,
+    "revNext5y": null
   },
   "SMH": {
     "industry": "",
@@ -42,7 +46,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "NVDA": {
     "industry": "Semiconductors",
@@ -57,7 +63,9 @@
     "eps3y": 2.037,
     "eps5y": 2.037,
     "rev3y": 1.00045,
-    "rev5y": 1.00045
+    "rev5y": 1.00045,
+    "epsNextY": 0.93836,
+    "revNext5y": null
   },
   "AAPL": {
     "industry": "Consumer Electronics",
@@ -72,7 +80,9 @@
     "eps3y": 0.06791,
     "eps5y": 0.06791,
     "rev3y": 0.01813,
-    "rev5y": 0.01813
+    "rev5y": 0.01813,
+    "epsNextY": 0.15619,
+    "revNext5y": null
   },
   "MSFT": {
     "industry": "Software - Infrastructure",
@@ -87,7 +97,9 @@
     "eps3y": 0.12197,
     "eps5y": 0.12197,
     "rev3y": 0.12423,
-    "rev5y": 0.12423
+    "rev5y": 0.12423,
+    "epsNextY": 0.15243,
+    "revNext5y": null
   },
   "GOOGL": {
     "industry": "Internet Content & Information",
@@ -102,7 +114,9 @@
     "eps3y": 0.33456,
     "eps5y": 0.33456,
     "rev3y": 0.12512,
-    "rev5y": 0.12512
+    "rev5y": 0.12512,
+    "epsNextY": 0.10523,
+    "revNext5y": null
   },
   "GOOG": {
     "industry": "Internet Content & Information",
@@ -117,7 +131,9 @@
     "eps3y": 0.33456,
     "eps5y": 0.33456,
     "rev3y": 0.12512,
-    "rev5y": 0.12512
+    "rev5y": 0.12512,
+    "epsNextY": 0.10239,
+    "revNext5y": null
   },
   "AMZN": {
     "industry": "Internet Retail",
@@ -132,7 +148,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.11731,
-    "rev5y": 0.11731
+    "rev5y": 0.11731,
+    "epsNextY": 0.1385,
+    "revNext5y": null
   },
   "TSLA": {
     "industry": "Auto Manufacturers",
@@ -147,7 +165,9 @@
     "eps3y": -0.33607,
     "eps5y": -0.33607,
     "rev3y": 0.05194,
-    "rev5y": 0.05194
+    "rev5y": 0.05194,
+    "epsNextY": 1.26098,
+    "revNext5y": null
   },
   "AVGO": {
     "industry": "Semiconductors",
@@ -162,7 +182,9 @@
     "eps3y": 0.21404,
     "eps5y": 0.21404,
     "rev3y": 0.24378,
-    "rev5y": 0.24378
+    "rev5y": 0.24378,
+    "epsNextY": 2.59305,
+    "revNext5y": null
   },
   "ORCL": {
     "industry": "Software - Infrastructure",
@@ -177,7 +199,9 @@
     "eps3y": 0.21445,
     "eps5y": 0.21445,
     "rev3y": 0.10588,
-    "rev5y": 0.10588
+    "rev5y": 0.10588,
+    "epsNextY": 0.4447,
+    "revNext5y": null
   },
   "CSCO": {
     "industry": "Communication Equipment",
@@ -192,7 +216,9 @@
     "eps3y": -0.03287,
     "eps5y": -0.03287,
     "rev3y": 0.03192,
-    "rev5y": 0.03192
+    "rev5y": 0.03192,
+    "epsNextY": 0.59081,
+    "revNext5y": null
   },
   "ADBE": {
     "industry": "Software - Application",
@@ -207,7 +233,9 @@
     "eps3y": 0.18203,
     "eps5y": 0.18203,
     "rev3y": 0.10522,
-    "rev5y": 0.10522
+    "rev5y": 0.10522,
+    "epsNextY": 0.53675,
+    "revNext5y": null
   },
   "CRM": {
     "industry": "Software - Application",
@@ -222,7 +250,9 @@
     "eps3y": 2.34362,
     "eps5y": 2.34362,
     "rev3y": 0.0982,
-    "rev5y": 0.0982
+    "rev5y": 0.0982,
+    "epsNextY": 0.78808,
+    "revNext5y": null
   },
   "INTC": {
     "industry": "Semiconductors",
@@ -237,7 +267,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.05713,
-    "rev5y": -0.05713
+    "rev5y": -0.05713,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "AMD": {
     "industry": "Semiconductors",
@@ -252,7 +284,9 @@
     "eps3y": 0.46453,
     "eps5y": 0.46453,
     "rev3y": 0.13644,
-    "rev5y": 0.13644
+    "rev5y": 0.13644,
+    "epsNextY": 3.31985,
+    "revNext5y": null
   },
   "QCOM": {
     "industry": "Semiconductors",
@@ -267,7 +301,9 @@
     "eps3y": -0.24035,
     "eps5y": -0.24035,
     "rev3y": 0.00063,
-    "rev5y": 0.00063
+    "rev5y": 0.00063,
+    "epsNextY": 0.14491,
+    "revNext5y": null
   },
   "TXN": {
     "industry": "Semiconductors",
@@ -282,7 +318,9 @@
     "eps3y": -0.16796,
     "eps5y": -0.16796,
     "rev3y": -0.04068,
-    "rev5y": -0.04068
+    "rev5y": -0.04068,
+    "epsNextY": 0.60916,
+    "revNext5y": null
   },
   "MU": {
     "industry": "Semiconductors",
@@ -297,7 +335,9 @@
     "eps3y": -0.00688,
     "eps5y": -0.00688,
     "rev3y": 0.06713,
-    "rev5y": 0.06713
+    "rev5y": 0.06713,
+    "epsNextY": 3.96129,
+    "revNext5y": null
   },
   "AMAT": {
     "industry": "Semiconductor Equipment & Materials",
@@ -312,7 +352,9 @@
     "eps3y": 0.05159,
     "eps5y": 0.05159,
     "rev3y": 0.03233,
-    "rev5y": 0.03233
+    "rev5y": 0.03233,
+    "epsNextY": 0.524,
+    "revNext5y": null
   },
   "LRCX": {
     "industry": "Semiconductor Equipment & Materials",
@@ -327,7 +369,9 @@
     "eps3y": 0.082,
     "eps5y": 0.082,
     "rev3y": 0.02286,
-    "rev5y": 0.02286
+    "rev5y": 0.02286,
+    "epsNextY": 0.50423,
+    "revNext5y": null
   },
   "KLAC": {
     "industry": "Semiconductor Equipment & Materials",
@@ -342,7 +386,9 @@
     "eps3y": 0.148,
     "eps5y": 0.148,
     "rev3y": 0.09686,
-    "rev5y": 0.09686
+    "rev5y": 0.09686,
+    "epsNextY": 0.41312,
+    "revNext5y": null
   },
   "MCHP": {
     "industry": "Semiconductors",
@@ -357,7 +403,9 @@
     "eps3y": -0.6219,
     "eps5y": -0.6219,
     "rev3y": -0.17647,
-    "rev5y": -0.17647
+    "rev5y": -0.17647,
+    "epsNextY": 17.59673,
+    "revNext5y": null
   },
   "NXPI": {
     "industry": "Semiconductors",
@@ -372,7 +420,9 @@
     "eps3y": -0.09068,
     "eps5y": -0.09068,
     "rev3y": -0.02421,
-    "rev5y": -0.02421
+    "rev5y": -0.02421,
+    "epsNextY": 0.68374,
+    "revNext5y": null
   },
   "MPWR": {
     "industry": "Semiconductors",
@@ -387,7 +437,9 @@
     "eps3y": 0.11361,
     "eps5y": 0.11361,
     "rev3y": 0.15861,
-    "rev5y": 0.15861
+    "rev5y": 0.15861,
+    "epsNextY": 1.14654,
+    "revNext5y": null
   },
   "MRVL": {
     "industry": "Semiconductors",
@@ -402,7 +454,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.1145,
-    "rev5y": 0.1145
+    "rev5y": 0.1145,
+    "epsNextY": 0.90087,
+    "revNext5y": null
   },
   "A": {
     "industry": "Diagnostics & Research",
@@ -417,7 +471,9 @@
     "eps3y": 0.03086,
     "eps5y": 0.03086,
     "rev3y": 0.00484,
-    "rev5y": 0.00484
+    "rev5y": 0.00484,
+    "epsNextY": 0.32476,
+    "revNext5y": null
   },
   "AAL": {
     "industry": "Airlines",
@@ -432,7 +488,9 @@
     "eps3y": -0.05273,
     "eps5y": -0.05273,
     "rev3y": 0.03714,
-    "rev5y": 0.03714
+    "rev5y": 0.03714,
+    "epsNextY": 6.189,
+    "revNext5y": null
   },
   "AAP": {
     "industry": "Auto Parts",
@@ -447,7 +505,9 @@
     "eps3y": -0.55564,
     "eps5y": -0.55564,
     "rev3y": -0.02037,
-    "rev5y": -0.02037
+    "rev5y": -0.02037,
+    "epsNextY": 2.56579,
+    "revNext5y": null
   },
   "ABBV": {
     "industry": "Drug Manufacturers - General",
@@ -462,7 +522,9 @@
     "eps3y": -0.29243,
     "eps5y": -0.29243,
     "rev3y": 0.01753,
-    "rev5y": 0.01753
+    "rev5y": 0.01753,
+    "epsNextY": 6.99496,
+    "revNext5y": null
   },
   "ABT": {
     "industry": "Medical Devices",
@@ -477,7 +539,9 @@
     "eps3y": -0.01984,
     "eps5y": -0.01984,
     "rev3y": 0.00513,
-    "rev5y": 0.00513
+    "rev5y": 0.00513,
+    "epsNextY": 0.6978,
+    "revNext5y": null
   },
   "ACGL": {
     "industry": "Insurance - Diversified",
@@ -492,7 +556,9 @@
     "eps3y": 0.44757,
     "eps5y": 0.44757,
     "rev3y": 0.2614,
-    "rev5y": 0.2614
+    "rev5y": 0.2614,
+    "epsNextY": -0.23835,
+    "revNext5y": null
   },
   "ACN": {
     "industry": "Information Technology Services",
@@ -507,7 +573,9 @@
     "eps3y": 0.04178,
     "eps5y": 0.04178,
     "rev3y": 0.04194,
-    "rev5y": 0.04194
+    "rev5y": 0.04194,
+    "epsNextY": 0.22174,
+    "revNext5y": null
   },
   "ADI": {
     "industry": "Semiconductors",
@@ -522,7 +590,9 @@
     "eps3y": -0.04621,
     "eps5y": -0.04621,
     "rev3y": -0.02838,
-    "rev5y": -0.02838
+    "rev5y": -0.02838,
+    "epsNextY": 1.20497,
+    "revNext5y": null
   },
   "ADM": {
     "industry": "Farm Products",
@@ -537,7 +607,9 @@
     "eps3y": -0.34496,
     "eps5y": -0.34496,
     "rev3y": -0.07541,
-    "rev5y": -0.07541
+    "rev5y": -0.07541,
+    "epsNextY": 1.31772,
+    "revNext5y": null
   },
   "ADP": {
     "industry": "Software - Application",
@@ -552,7 +624,9 @@
     "eps3y": 0.12486,
     "eps5y": 0.12486,
     "rev3y": 0.07614,
-    "rev5y": 0.07614
+    "rev5y": 0.07614,
+    "epsNextY": 0.13639,
+    "revNext5y": null
   },
   "ADSK": {
     "industry": "Software - Application",
@@ -567,7 +641,9 @@
     "eps3y": 0.1149,
     "eps5y": 0.1149,
     "rev3y": 0.12918,
-    "rev5y": 0.12918
+    "rev5y": 0.12918,
+    "epsNextY": 1.6983,
+    "revNext5y": null
   },
   "AEE": {
     "industry": "Utilities - Regulated Electric",
@@ -582,7 +658,9 @@
     "eps3y": 0.08951,
     "eps5y": 0.08951,
     "rev3y": 0.0341,
-    "rev5y": 0.0341
+    "rev5y": 0.0341,
+    "epsNextY": 0.04403,
+    "revNext5y": null
   },
   "AEP": {
     "industry": "Utilities - Regulated Electric",
@@ -597,7 +675,9 @@
     "eps3y": 0.14104,
     "eps5y": 0.14104,
     "rev3y": 0.0366,
-    "rev5y": 0.0366
+    "rev5y": 0.0366,
+    "epsNextY": 0.01375,
+    "revNext5y": null
   },
   "AES": {
     "industry": "Utilities - Diversified",
@@ -612,7 +692,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.01025,
-    "rev5y": -0.01025
+    "rev5y": -0.01025,
+    "epsNextY": 0.24416,
+    "revNext5y": null
   },
   "AFL": {
     "industry": "Insurance - Life",
@@ -627,7 +709,9 @@
     "eps3y": -0.00578,
     "eps5y": -0.00578,
     "rev3y": -0.03229,
-    "rev5y": -0.03229
+    "rev5y": -0.03229,
+    "epsNextY": -0.13101,
+    "revNext5y": null
   },
   "AIG": {
     "industry": "Insurance - Diversified",
@@ -642,7 +726,9 @@
     "eps3y": -0.25211,
     "eps5y": -0.25211,
     "rev3y": -0.03694,
-    "rev5y": -0.03694
+    "rev5y": -0.03694,
+    "epsNextY": 0.56586,
+    "revNext5y": null
   },
   "AIZ": {
     "industry": "Insurance - Property & Casualty",
@@ -657,7 +743,9 @@
     "eps3y": 0.49887,
     "eps5y": 0.49887,
     "rev3y": 0.07927,
-    "rev5y": 0.07927
+    "rev5y": 0.07927,
+    "epsNextY": 0.15107,
+    "revNext5y": null
   },
   "AJG": {
     "industry": "Insurance Brokers",
@@ -672,7 +760,9 @@
     "eps3y": 0.03245,
     "eps5y": 0.03245,
     "rev3y": 0.177,
-    "rev5y": 0.177
+    "rev5y": 0.177,
+    "epsNextY": 1.40293,
+    "revNext5y": null
   },
   "AKAM": {
     "industry": "Software - Infrastructure",
@@ -687,7 +777,9 @@
     "eps3y": -0.01858,
     "eps5y": -0.01858,
     "rev3y": 0.05179,
-    "rev5y": 0.05179
+    "rev5y": 0.05179,
+    "epsNextY": 1.42592,
+    "revNext5y": null
   },
   "ALB": {
     "industry": "Specialty Chemicals",
@@ -702,7 +794,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.11102,
-    "rev5y": -0.11102
+    "rev5y": -0.11102,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ALGN": {
     "industry": "Medical Instruments & Supplies",
@@ -717,7 +811,9 @@
     "eps3y": 0.07002,
     "eps5y": 0.07002,
     "rev3y": 0.02612,
-    "rev5y": 0.02612
+    "rev5y": 0.02612,
+    "epsNextY": 1.08034,
+    "revNext5y": null
   },
   "ALL": {
     "industry": "Insurance - Property & Casualty",
@@ -732,7 +828,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.09835,
-    "rev5y": 0.09835
+    "rev5y": 0.09835,
+    "epsNextY": -0.41886,
+    "revNext5y": null
   },
   "ALLE": {
     "industry": "Security & Protection Services",
@@ -747,7 +845,9 @@
     "eps3y": 0.12884,
     "eps5y": 0.12884,
     "rev3y": 0.07523,
-    "rev5y": 0.07523
+    "rev5y": 0.07523,
+    "epsNextY": 0.30394,
+    "revNext5y": null
   },
   "AME": {
     "industry": "Specialty Industrial Machinery",
@@ -762,7 +862,9 @@
     "eps3y": 0.08401,
     "eps5y": 0.08401,
     "rev3y": 0.06364,
-    "rev5y": 0.06364
+    "rev5y": 0.06364,
+    "epsNextY": 0.32901,
+    "revNext5y": null
   },
   "AMGN": {
     "industry": "Drug Manufacturers - General",
@@ -777,7 +879,9 @@
     "eps3y": 0.05568,
     "eps5y": 0.05568,
     "rev3y": 0.11766,
-    "rev5y": 0.11766
+    "rev5y": 0.11766,
+    "epsNextY": 0.63376,
+    "revNext5y": null
   },
   "AMP": {
     "industry": "Asset Management",
@@ -792,7 +896,9 @@
     "eps3y": 0.09211,
     "eps5y": 0.09211,
     "rev3y": 0.0903,
-    "rev5y": 0.0903
+    "rev5y": 0.0903,
+    "epsNextY": 0.18775,
+    "revNext5y": null
   },
   "AMT": {
     "industry": "REIT - Specialty",
@@ -807,7 +913,9 @@
     "eps3y": 0.12202,
     "eps5y": 0.12202,
     "rev3y": 0.0334,
-    "rev5y": 0.0334
+    "rev5y": 0.0334,
+    "epsNextY": 0.11389,
+    "revNext5y": null
   },
   "ANET": {
     "industry": "Computer Hardware",
@@ -822,7 +930,9 @@
     "eps3y": 0.36273,
     "eps5y": 0.36273,
     "rev3y": 0.27147,
-    "rev5y": 0.27147
+    "rev5y": 0.27147,
+    "epsNextY": 0.53432,
+    "revNext5y": null
   },
   "AON": {
     "industry": "Insurance Brokers",
@@ -837,7 +947,9 @@
     "eps3y": 0.11843,
     "eps5y": 0.11843,
     "rev3y": 0.11247,
-    "rev5y": 0.11247
+    "rev5y": 0.11247,
+    "epsNextY": 0.17643,
+    "revNext5y": null
   },
   "AOS": {
     "industry": "Specialty Industrial Machinery",
@@ -852,7 +964,9 @@
     "eps3y": 0.35151,
     "eps5y": 0.35151,
     "rev3y": 0.00673,
-    "rev5y": 0.00673
+    "rev5y": 0.00673,
+    "epsNextY": 0.11452,
+    "revNext5y": null
   },
   "APA": {
     "industry": "Oil & Gas E&P",
@@ -867,7 +981,9 @@
     "eps3y": -0.04283,
     "eps5y": -0.04283,
     "rev3y": -0.06959,
-    "rev5y": -0.06959
+    "rev5y": -0.06959,
+    "epsNextY": -0.00289,
+    "revNext5y": null
   },
   "APD": {
     "industry": "Specialty Chemicals",
@@ -882,7 +998,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.01767,
-    "rev5y": -0.01767
+    "rev5y": -0.01767,
+    "epsNextY": 0.49837,
+    "revNext5y": null
   },
   "APH": {
     "industry": "Electronic Components",
@@ -897,7 +1015,9 @@
     "eps3y": 0.30071,
     "eps5y": 0.30071,
     "rev3y": 0.22307,
-    "rev5y": 0.22307
+    "rev5y": 0.22307,
+    "epsNextY": 0.61489,
+    "revNext5y": null
   },
   "APTV": {
     "industry": "Auto Parts",
@@ -912,7 +1032,9 @@
     "eps3y": -0.26584,
     "eps5y": -0.26584,
     "rev3y": 0.05263,
-    "rev5y": 0.05263
+    "rev5y": 0.05263,
+    "epsNextY": 3.05639,
+    "revNext5y": null
   },
   "ARE": {
     "industry": "REIT - Office",
@@ -927,7 +1049,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.04565,
-    "rev5y": 0.04565
+    "rev5y": 0.04565,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ATO": {
     "industry": "Utilities - Regulated Gas",
@@ -942,7 +1066,9 @@
     "eps3y": 0.10358,
     "eps5y": 0.10358,
     "rev3y": 0.03827,
-    "rev5y": 0.03827
+    "rev5y": 0.03827,
+    "epsNextY": 0.1047,
+    "revNext5y": null
   },
   "AVB": {
     "industry": "REIT - Residential",
@@ -957,7 +1083,9 @@
     "eps3y": -0.03087,
     "eps5y": -0.03087,
     "rev3y": 0.05447,
-    "rev5y": 0.05447
+    "rev5y": 0.05447,
+    "epsNextY": -0.39706,
+    "revNext5y": null
   },
   "AVY": {
     "industry": "Packaging & Containers",
@@ -972,7 +1100,9 @@
     "eps3y": -0.02029,
     "eps5y": -0.02029,
     "rev3y": -0.00682,
-    "rev5y": -0.00682
+    "rev5y": -0.00682,
+    "epsNextY": 0.25744,
+    "revNext5y": null
   },
   "AWK": {
     "industry": "Utilities - Regulated Water",
@@ -987,7 +1117,9 @@
     "eps3y": 0.08055,
     "eps5y": 0.08055,
     "rev3y": 0.1067,
-    "rev5y": 0.1067
+    "rev5y": 0.1067,
+    "epsNextY": 0.16396,
+    "revNext5y": null
   },
   "AXON": {
     "industry": "Aerospace & Defense",
@@ -1002,7 +1134,9 @@
     "eps3y": -0.08227,
     "eps5y": -0.08227,
     "rev3y": 0.32787,
-    "rev5y": 0.32787
+    "rev5y": 0.32787,
+    "epsNextY": 3.29811,
+    "revNext5y": null
   },
   "AXP": {
     "industry": "Credit Services",
@@ -1017,7 +1151,9 @@
     "eps3y": 0.16049,
     "eps5y": 0.16049,
     "rev3y": 0.10966,
-    "rev5y": 0.10966
+    "rev5y": 0.10966,
+    "epsNextY": 0.25701,
+    "revNext5y": null
   },
   "AZO": {
     "industry": "Auto Parts",
@@ -1032,7 +1168,9 @@
     "eps3y": 0.07187,
     "eps5y": 0.07187,
     "rev3y": 0.05232,
-    "rev5y": 0.05232
+    "rev5y": 0.05232,
+    "epsNextY": 0.22696,
+    "revNext5y": null
   },
   "BA": {
     "industry": "Aerospace & Defense",
@@ -1047,7 +1185,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.10333,
-    "rev5y": 0.10333
+    "rev5y": 0.10333,
+    "epsNextY": 0.64623,
+    "revNext5y": null
   },
   "BAC": {
     "industry": "Banks - Diversified",
@@ -1062,7 +1202,9 @@
     "eps3y": 0.06339,
     "eps5y": 0.06339,
     "rev3y": 0.06003,
-    "rev5y": 0.06003
+    "rev5y": 0.06003,
+    "epsNextY": 0.25297,
+    "revNext5y": null
   },
   "BALL": {
     "industry": "Packaging & Containers",
@@ -1077,7 +1219,9 @@
     "eps3y": 0.13625,
     "eps5y": 0.13625,
     "rev3y": -0.00529,
-    "rev5y": -0.00529
+    "rev5y": -0.00529,
+    "epsNextY": 0.3178,
+    "revNext5y": null
   },
   "BAX": {
     "industry": "Medical Instruments & Supplies",
@@ -1092,7 +1236,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.03789,
-    "rev5y": 0.03789
+    "rev5y": 0.03789,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BBY": {
     "industry": "Specialty Retail",
@@ -1107,7 +1253,9 @@
     "eps3y": -0.07095,
     "eps5y": -0.07095,
     "rev3y": -0.03433,
-    "rev5y": -0.03433
+    "rev5y": -0.03433,
+    "epsNextY": 0.29599,
+    "revNext5y": null
   },
   "BDX": {
     "industry": "Medical Instruments & Supplies",
@@ -1122,7 +1270,9 @@
     "eps3y": -0.00565,
     "eps5y": -0.00565,
     "rev3y": 0.04993,
-    "rev5y": 0.04993
+    "rev5y": 0.04993,
+    "epsNextY": 1.34007,
+    "revNext5y": null
   },
   "BEN": {
     "industry": "Asset Management",
@@ -1137,7 +1287,9 @@
     "eps3y": -0.28883,
     "eps5y": -0.28883,
     "rev3y": 0.01957,
-    "rev5y": 0.01957
+    "rev5y": 0.01957,
+    "epsNextY": 1.26111,
+    "revNext5y": null
   },
   "BIO": {
     "industry": "Medical Devices",
@@ -1152,7 +1304,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.02676,
-    "rev5y": -0.02676
+    "rev5y": -0.02676,
+    "epsNextY": 0.61762,
+    "revNext5y": null
   },
   "BIIB": {
     "industry": "Drug Manufacturers - General",
@@ -1167,7 +1321,9 @@
     "eps3y": -0.25035,
     "eps5y": -0.25035,
     "rev3y": -0.00935,
-    "rev5y": -0.00935
+    "rev5y": -0.00935,
+    "epsNextY": 0.78237,
+    "revNext5y": null
   },
   "BK": {
     "industry": "Banks - Diversified",
@@ -1182,7 +1338,9 @@
     "eps3y": 0.36923,
     "eps5y": 0.36923,
     "rev3y": 0.06875,
-    "rev5y": 0.06875
+    "rev5y": 0.06875,
+    "epsNextY": 0.19629,
+    "revNext5y": null
   },
   "BKR": {
     "industry": "Oil & Gas Equipment & Services",
@@ -1197,7 +1355,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.09443,
-    "rev5y": 0.09443
+    "rev5y": 0.09443,
+    "epsNextY": -0.11092,
+    "revNext5y": null
   },
   "BLK": {
     "industry": "Asset Management",
@@ -1212,7 +1372,9 @@
     "eps3y": 0.01455,
     "eps5y": 0.01455,
     "rev3y": 0.10654,
-    "rev5y": 0.10654
+    "rev5y": 0.10654,
+    "epsNextY": 0.5249,
+    "revNext5y": null
   },
   "BMY": {
     "industry": "Drug Manufacturers - General",
@@ -1227,7 +1389,9 @@
     "eps3y": 0.05323,
     "eps5y": 0.05323,
     "rev3y": 0.01449,
-    "rev5y": 0.01449
+    "rev5y": 0.01449,
+    "epsNextY": 0.72843,
+    "revNext5y": null
   },
   "BR": {
     "industry": "Information Technology Services",
@@ -1242,7 +1406,9 @@
     "eps3y": 0.15778,
     "eps5y": 0.15778,
     "rev3y": 0.06463,
-    "rev5y": 0.06463
+    "rev5y": 0.06463,
+    "epsNextY": 0.11417,
+    "revNext5y": null
   },
   "BRO": {
     "industry": "Insurance Brokers",
@@ -1257,7 +1423,9 @@
     "eps3y": 0.12293,
     "eps5y": 0.12293,
     "rev3y": 0.17385,
-    "rev5y": 0.17385
+    "rev5y": 0.17385,
+    "epsNextY": 0.58459,
+    "revNext5y": null
   },
   "BSX": {
     "industry": "Medical Devices",
@@ -1272,7 +1440,9 @@
     "eps3y": 0.63311,
     "eps5y": 0.63311,
     "rev3y": 0.16542,
-    "rev5y": 0.16542
+    "rev5y": 0.16542,
+    "epsNextY": 0.56715,
+    "revNext5y": null
   },
   "BX": {
     "industry": "Asset Management",
@@ -1287,7 +1457,9 @@
     "eps3y": 0.17923,
     "eps5y": 0.17923,
     "rev3y": 0.20275,
-    "rev5y": 0.20275
+    "rev5y": 0.20275,
+    "epsNextY": 0.93208,
+    "revNext5y": null
   },
   "BWA": {
     "industry": "Auto Parts",
@@ -1302,7 +1474,9 @@
     "eps3y": -0.31606,
     "eps5y": -0.31606,
     "rev3y": 0.04251,
-    "rev5y": 0.04251
+    "rev5y": 0.04251,
+    "epsNextY": 2.40866,
+    "revNext5y": null
   },
   "CAG": {
     "industry": "Packaged Foods",
@@ -1317,7 +1491,9 @@
     "eps3y": 0.09064,
     "eps5y": 0.09064,
     "rev3y": 0.00222,
-    "rev5y": 0.00222
+    "rev5y": 0.00222,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CAH": {
     "industry": "Medical Distribution",
@@ -1332,7 +1508,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.07072,
-    "rev5y": 0.07072
+    "rev5y": 0.07072,
+    "epsNextY": 0.82583,
+    "revNext5y": null
   },
   "CAT": {
     "industry": "Farm & Heavy Construction Machinery",
@@ -1347,7 +1525,9 @@
     "eps3y": 0.1411,
     "eps5y": 0.1411,
     "rev3y": 0.04383,
-    "rev5y": 0.04383
+    "rev5y": 0.04383,
+    "epsNextY": 0.51952,
+    "revNext5y": null
   },
   "CB": {
     "industry": "Insurance - Property & Casualty",
@@ -1362,7 +1542,9 @@
     "eps3y": 0.26072,
     "eps5y": 0.26072,
     "rev3y": 0.11562,
-    "rev5y": 0.11562
+    "rev5y": 0.11562,
+    "epsNextY": 0.03482,
+    "revNext5y": null
   },
   "CBOE": {
     "industry": "Financial Data & Stock Exchanges",
@@ -1377,7 +1559,9 @@
     "eps3y": 0.68152,
     "eps5y": 0.68152,
     "rev3y": 0.05997,
-    "rev5y": 0.05997
+    "rev5y": 0.05997,
+    "epsNextY": 0.24484,
+    "revNext5y": null
   },
   "CBRE": {
     "industry": "Real Estate Services",
@@ -1392,7 +1576,9 @@
     "eps3y": -0.03813,
     "eps5y": -0.03813,
     "rev3y": 0.09568,
-    "rev5y": 0.09568
+    "rev5y": 0.09568,
+    "epsNextY": 1.02625,
+    "revNext5y": null
   },
   "CDNS": {
     "industry": "Software - Application",
@@ -1407,7 +1593,9 @@
     "eps3y": 0.09327,
     "eps5y": 0.09327,
     "rev3y": 0.14143,
-    "rev5y": 0.14143
+    "rev5y": 0.14143,
+    "epsNextY": 1.18256,
+    "revNext5y": null
   },
   "CDW": {
     "industry": "Information Technology Services",
@@ -1422,7 +1610,9 @@
     "eps3y": -0.00447,
     "eps5y": -0.00447,
     "rev3y": -0.01895,
-    "rev5y": -0.01895
+    "rev5y": -0.01895,
+    "epsNextY": 0.40867,
+    "revNext5y": null
   },
   "CE": {
     "industry": "Chemicals",
@@ -1437,7 +1627,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.00447,
-    "rev5y": -0.00447
+    "rev5y": -0.00447,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CEG": {
     "industry": "Utilities - Independent Power Producers",
@@ -1452,7 +1644,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.01469,
-    "rev5y": 0.01469
+    "rev5y": 0.01469,
+    "epsNextY": 0.18082,
+    "revNext5y": null
   },
   "CF": {
     "industry": "Agricultural Inputs",
@@ -1467,7 +1661,9 @@
     "eps3y": -0.18272,
     "eps5y": -0.18272,
     "rev3y": -0.14125,
-    "rev5y": -0.14125
+    "rev5y": -0.14125,
+    "epsNextY": 4e-05,
+    "revNext5y": null
   },
   "CFG": {
     "industry": "Banks - Regional",
@@ -1482,7 +1678,9 @@
     "eps3y": -0.01813,
     "eps5y": -0.01813,
     "rev3y": 0.00931,
-    "rev5y": 0.00931
+    "rev5y": 0.00931,
+    "epsNextY": 0.53419,
+    "revNext5y": null
   },
   "CHD": {
     "industry": "Household & Personal Products",
@@ -1497,7 +1695,9 @@
     "eps3y": 0.21378,
     "eps5y": 0.21378,
     "rev3y": 0.04889,
-    "rev5y": 0.04889
+    "rev5y": 0.04889,
+    "epsNextY": 0.31911,
+    "revNext5y": null
   },
   "CHRW": {
     "industry": "Integrated Freight & Logistics",
@@ -1512,7 +1712,9 @@
     "eps3y": -0.13269,
     "eps5y": -0.13269,
     "rev3y": -0.13054,
-    "rev5y": -0.13054
+    "rev5y": -0.13054,
+    "epsNextY": 0.4827,
+    "revNext5y": null
   },
   "CI": {
     "industry": "Healthcare Plans",
@@ -1527,7 +1729,9 @@
     "eps3y": 0.72743,
     "eps5y": 0.72743,
     "rev3y": 0.15293,
-    "rev5y": 0.15293
+    "rev5y": 0.15293,
+    "epsNextY": -0.70553,
+    "revNext5y": null
   },
   "CINF": {
     "industry": "Insurance - Property & Casualty",
@@ -1542,7 +1746,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.24388,
-    "rev5y": 0.24388
+    "rev5y": 0.24388,
+    "epsNextY": -0.47496,
+    "revNext5y": null
   },
   "CL": {
     "industry": "Household & Personal Products",
@@ -1557,7 +1763,9 @@
     "eps3y": 0.07417,
     "eps5y": 0.07417,
     "rev3y": 0.04293,
-    "rev5y": 0.04293
+    "rev5y": 0.04293,
+    "epsNextY": 0.56631,
+    "revNext5y": null
   },
   "CLX": {
     "industry": "Household & Personal Products",
@@ -1572,7 +1780,9 @@
     "eps3y": -0.26363,
     "eps5y": -0.26363,
     "rev3y": -0.00014,
-    "rev5y": -0.00014
+    "rev5y": -0.00014,
+    "epsNextY": 0.02357,
+    "revNext5y": null
   },
   "CMA": {
     "industry": "",
@@ -1587,7 +1797,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CME": {
     "industry": "Financial Data & Stock Exchanges",
@@ -1602,12 +1814,14 @@
     "eps3y": 0.14694,
     "eps5y": 0.14694,
     "rev3y": 0.09114,
-    "rev5y": 0.09114
+    "rev5y": 0.09114,
+    "epsNextY": 0.10205,
+    "revNext5y": null
   },
   "CMG": {
     "industry": "Restaurants",
     "trailingPE": 29.743116,
-    "forwardPE": 23.89305,
+    "forwardPE": 23.86526,
     "pegRatio": 1.76,
     "debtToEquity": 217.885,
     "freeCashflow": 1087909760.0,
@@ -1617,7 +1831,9 @@
     "eps3y": 0.21221,
     "eps5y": 0.21221,
     "rev3y": 0.11364,
-    "rev5y": 0.11364
+    "rev5y": 0.11364,
+    "epsNextY": 0.24629,
+    "revNext5y": null
   },
   "CMI": {
     "industry": "Specialty Industrial Machinery",
@@ -1632,7 +1848,9 @@
     "eps3y": 0.107,
     "eps5y": 0.107,
     "rev3y": 0.06246,
-    "rev5y": 0.06246
+    "rev5y": 0.06246,
+    "epsNextY": 0.73363,
+    "revNext5y": null
   },
   "CMS": {
     "industry": "Utilities - Regulated Electric",
@@ -1647,7 +1865,9 @@
     "eps3y": 0.06844,
     "eps5y": 0.06844,
     "rev3y": -0.00222,
-    "rev5y": -0.00222
+    "rev5y": -0.00222,
+    "epsNextY": 0.15576,
+    "revNext5y": null
   },
   "CNC": {
     "industry": "Healthcare Plans",
@@ -1662,7 +1882,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.10453,
-    "rev5y": 0.10453
+    "rev5y": 0.10453,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CNP": {
     "industry": "Utilities - Regulated Electric",
@@ -1677,7 +1899,9 @@
     "eps3y": 0.00208,
     "eps5y": 0.00208,
     "rev3y": 0.00129,
-    "rev5y": 0.00129
+    "rev5y": 0.00129,
+    "epsNextY": 0.27726,
+    "revNext5y": null
   },
   "COF": {
     "industry": "Credit Services",
@@ -1692,7 +1916,9 @@
     "eps3y": -0.39256,
     "eps5y": -0.39256,
     "rev3y": 0.15981,
-    "rev5y": 0.15981
+    "rev5y": 0.15981,
+    "epsNextY": 6.54313,
+    "revNext5y": null
   },
   "COO": {
     "industry": "Medical Instruments & Supplies",
@@ -1707,7 +1933,9 @@
     "eps3y": -0.00732,
     "eps5y": -0.00732,
     "rev3y": 0.07346,
-    "rev5y": 0.07346
+    "rev5y": 0.07346,
+    "epsNextY": 1.49657,
+    "revNext5y": null
   },
   "COP": {
     "industry": "Oil & Gas E&P",
@@ -1722,7 +1950,9 @@
     "eps3y": -0.24229,
     "eps5y": -0.24229,
     "rev3y": -0.09106,
-    "rev5y": -0.09106
+    "rev5y": -0.09106,
+    "epsNextY": 0.56058,
+    "revNext5y": null
   },
   "COST": {
     "industry": "Discount Stores",
@@ -1737,7 +1967,9 @@
     "eps3y": 0.11467,
     "eps5y": 0.11467,
     "rev3y": 0.0664,
-    "rev5y": 0.0664
+    "rev5y": 0.0664,
+    "epsNextY": 0.17355,
+    "revNext5y": null
   },
   "CPB": {
     "industry": "Packaged Foods",
@@ -1752,7 +1984,9 @@
     "eps3y": -0.06984,
     "eps5y": -0.06984,
     "rev3y": 0.06192,
-    "rev5y": 0.06192
+    "rev5y": 0.06192,
+    "epsNextY": 0.17023,
+    "revNext5y": null
   },
   "CPRT": {
     "industry": "Specialty Business Services",
@@ -1767,7 +2001,9 @@
     "eps3y": 0.1195,
     "eps5y": 0.1195,
     "rev3y": 0.09899,
-    "rev5y": 0.09899
+    "rev5y": 0.09899,
+    "epsNextY": 0.06816,
+    "revNext5y": null
   },
   "CRL": {
     "industry": "Diagnostics & Research",
@@ -1782,7 +2018,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.00329,
-    "rev5y": 0.00329
+    "rev5y": 0.00329,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CSX": {
     "industry": "Railroads",
@@ -1797,7 +2035,9 @@
     "eps3y": -0.08328,
     "eps5y": -0.08328,
     "rev3y": -0.01738,
-    "rev5y": -0.01738
+    "rev5y": -0.01738,
+    "epsNextY": 0.32704,
+    "revNext5y": null
   },
   "CTLT": {
     "industry": "",
@@ -1812,7 +2052,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CTSH": {
     "industry": "Information Technology Services",
@@ -1827,7 +2069,9 @@
     "eps3y": 0.01119,
     "eps5y": 0.01119,
     "rev3y": 0.02803,
-    "rev5y": 0.02803
+    "rev5y": 0.02803,
+    "epsNextY": 0.33626,
+    "revNext5y": null
   },
   "CTVA": {
     "industry": "Agricultural Inputs",
@@ -1842,7 +2086,9 @@
     "eps3y": 0.00209,
     "eps5y": 0.00209,
     "rev3y": -0.00103,
-    "rev5y": -0.00103
+    "rev5y": -0.00103,
+    "epsNextY": 1.21776,
+    "revNext5y": null
   },
   "CVS": {
     "industry": "Healthcare Plans",
@@ -1857,7 +2103,9 @@
     "eps3y": -0.24784,
     "eps5y": -0.24784,
     "rev3y": 0.07631,
-    "rev5y": 0.07631
+    "rev5y": 0.07631,
+    "epsNextY": 2.66797,
+    "revNext5y": null
   },
   "CVX": {
     "industry": "Oil & Gas Integrated",
@@ -1872,7 +2120,9 @@
     "eps3y": -0.28717,
     "eps5y": -0.28717,
     "rev3y": -0.07853,
-    "rev5y": -0.07853
+    "rev5y": -0.07853,
+    "epsNextY": 1.16284,
+    "revNext5y": null
   },
   "CZR": {
     "industry": "Resorts & Casinos",
@@ -1887,7 +2137,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.02008,
-    "rev5y": 0.02008
+    "rev5y": 0.02008,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "D": {
     "industry": "Utilities - Regulated Electric",
@@ -1902,7 +2154,9 @@
     "eps3y": 0.42711,
     "eps5y": 0.42711,
     "rev3y": 0.05799,
-    "rev5y": 0.05799
+    "rev5y": 0.05799,
+    "epsNextY": 0.1252,
+    "revNext5y": null
   },
   "DAL": {
     "industry": "Airlines",
@@ -1917,7 +2171,9 @@
     "eps3y": 0.55078,
     "eps5y": 0.55078,
     "rev3y": 0.07799,
-    "rev5y": 0.07799
+    "rev5y": 0.07799,
+    "epsNextY": 0.17612,
+    "revNext5y": null
   },
   "DE": {
     "industry": "Farm & Heavy Construction Machinery",
@@ -1932,7 +2188,9 @@
     "eps3y": -0.07476,
     "eps5y": -0.07476,
     "rev3y": -0.04501,
-    "rev5y": -0.04501
+    "rev5y": -0.04501,
+    "epsNextY": 0.29662,
+    "revNext5y": null
   },
   "DFS": {
     "industry": "",
@@ -1947,7 +2205,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DG": {
     "industry": "Discount Stores",
@@ -1962,7 +2222,9 @@
     "eps3y": -0.2063,
     "eps5y": -0.2063,
     "rev3y": 0.04125,
-    "rev5y": 0.04125
+    "rev5y": 0.04125,
+    "epsNextY": 0.16088,
+    "revNext5y": null
   },
   "DHI": {
     "industry": "Residential Construction",
@@ -1977,7 +2239,9 @@
     "eps3y": -0.11299,
     "eps5y": -0.11299,
     "rev3y": 0.00761,
-    "rev5y": 0.00761
+    "rev5y": 0.00761,
+    "epsNextY": 0.13015,
+    "revNext5y": null
   },
   "DHR": {
     "industry": "Diagnostics & Research",
@@ -1992,7 +2256,9 @@
     "eps3y": -0.19722,
     "eps5y": -0.19722,
     "rev3y": -0.02667,
-    "rev5y": -0.02667
+    "rev5y": -0.02667,
+    "epsNextY": 0.7595,
+    "revNext5y": null
   },
   "DLR": {
     "industry": "REIT - Specialty",
@@ -2007,7 +2273,9 @@
     "eps3y": 0.4676,
     "eps5y": 0.4676,
     "rev3y": 0.09219,
-    "rev5y": 0.09219
+    "rev5y": 0.09219,
+    "epsNextY": -0.24028,
+    "revNext5y": null
   },
   "DLTR": {
     "industry": "Discount Stores",
@@ -2022,7 +2290,9 @@
     "eps3y": -0.04885,
     "eps5y": -0.04885,
     "rev3y": 0.07996,
-    "rev5y": 0.07996
+    "rev5y": 0.07996,
+    "epsNextY": 0.18443,
+    "revNext5y": null
   },
   "DOV": {
     "industry": "Specialty Industrial Machinery",
@@ -2037,7 +2307,9 @@
     "eps3y": 0.02269,
     "eps5y": 0.02269,
     "rev3y": 0.01045,
-    "rev5y": 0.01045
+    "rev5y": 0.01045,
+    "epsNextY": 0.4493,
+    "revNext5y": null
   },
   "DOW": {
     "industry": "Chemicals",
@@ -2052,7 +2324,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.11108,
-    "rev5y": -0.11108
+    "rev5y": -0.11108,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DPZ": {
     "industry": "Restaurants",
@@ -2067,7 +2341,9 @@
     "eps3y": 0.11883,
     "eps5y": 0.11883,
     "rev3y": 0.02876,
-    "rev5y": 0.02876
+    "rev5y": 0.02876,
+    "epsNextY": 0.20471,
+    "revNext5y": null
   },
   "DRI": {
     "industry": "Restaurants",
@@ -2082,7 +2358,9 @@
     "eps3y": 0.06179,
     "eps5y": 0.06179,
     "rev3y": 0.07839,
-    "rev5y": 0.07839
+    "rev5y": 0.07839,
+    "epsNextY": 0.1985,
+    "revNext5y": null
   },
   "DVA": {
     "industry": "Medical Care Facilities",
@@ -2097,7 +2375,9 @@
     "eps3y": 0.18602,
     "eps5y": 0.18602,
     "rev3y": 0.05526,
-    "rev5y": 0.05526
+    "rev5y": 0.05526,
+    "epsNextY": 0.65367,
+    "revNext5y": null
   },
   "DVN": {
     "industry": "Oil & Gas E&P",
@@ -2112,7 +2392,9 @@
     "eps3y": -0.22988,
     "eps5y": -0.22988,
     "rev3y": -0.03571,
-    "rev5y": -0.03571
+    "rev5y": -0.03571,
+    "epsNextY": 0.50111,
+    "revNext5y": null
   },
   "DXCM": {
     "industry": "Medical Devices",
@@ -2127,7 +2409,9 @@
     "eps3y": 0.34476,
     "eps5y": 0.34476,
     "rev3y": 0.17014,
-    "rev5y": 0.17014
+    "rev5y": 0.17014,
+    "epsNextY": 0.31512,
+    "revNext5y": null
   },
   "EA": {
     "industry": "Electronic Gaming & Multimedia",
@@ -2142,7 +2426,9 @@
     "eps3y": 0.06974,
     "eps5y": 0.06974,
     "rev3y": 0.00469,
-    "rev5y": 0.00469
+    "rev5y": 0.00469,
+    "epsNextY": 1.74366,
+    "revNext5y": null
   },
   "EBAY": {
     "industry": "Internet Retail",
@@ -2157,7 +2443,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.04257,
-    "rev5y": 0.04257
+    "rev5y": 0.04257,
+    "epsNextY": 0.55875,
+    "revNext5y": null
   },
   "ECL": {
     "industry": "Specialty Chemicals",
@@ -2172,7 +2460,9 @@
     "eps3y": 0.24156,
     "eps5y": 0.24156,
     "rev3y": 0.04264,
-    "rev5y": 0.04264
+    "rev5y": 0.04264,
+    "epsNextY": 0.2999,
+    "revNext5y": null
   },
   "ED": {
     "industry": "Utilities - Regulated Electric",
@@ -2187,7 +2477,9 @@
     "eps3y": 0.06543,
     "eps5y": 0.06543,
     "rev3y": 0.02587,
-    "rev5y": 0.02587
+    "rev5y": 0.02587,
+    "epsNextY": 0.09434,
+    "revNext5y": null
   },
   "EFX": {
     "industry": "Consulting Services",
@@ -2202,7 +2494,9 @@
     "eps3y": -0.01972,
     "eps5y": -0.01972,
     "rev3y": 0.05848,
-    "rev5y": 0.05848
+    "rev5y": 0.05848,
+    "epsNextY": 0.80598,
+    "revNext5y": null
   },
   "EIX": {
     "industry": "Utilities - Regulated Electric",
@@ -2217,7 +2511,9 @@
     "eps3y": 0.93031,
     "eps5y": 0.93031,
     "rev3y": 0.03905,
-    "rev5y": 0.03905
+    "rev5y": 0.03905,
+    "epsNextY": -0.29206,
+    "revNext5y": null
   },
   "EL": {
     "industry": "Household & Personal Products",
@@ -2232,7 +2528,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.06872,
-    "rev5y": -0.06872
+    "rev5y": -0.06872,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ELV": {
     "industry": "Healthcare Plans",
@@ -2247,7 +2545,9 @@
     "eps3y": 0.00436,
     "eps5y": 0.00436,
     "rev3y": 0.08338,
-    "rev5y": 0.08338
+    "rev5y": 0.08338,
+    "epsNextY": 0.2393,
+    "revNext5y": null
   },
   "EMN": {
     "industry": "Specialty Chemicals",
@@ -2262,7 +2562,9 @@
     "eps3y": -0.13605,
     "eps5y": -0.13605,
     "rev3y": -0.06127,
-    "rev5y": -0.06127
+    "rev5y": -0.06127,
+    "epsNextY": 1.02635,
+    "revNext5y": null
   },
   "EMR": {
     "industry": "Specialty Industrial Machinery",
@@ -2277,7 +2579,9 @@
     "eps3y": -0.09422,
     "eps5y": -0.09422,
     "rev3y": 0.09283,
-    "rev5y": 0.09283
+    "rev5y": 0.09283,
+    "epsNextY": 0.6561,
+    "revNext5y": null
   },
   "ENPH": {
     "industry": "Solar",
@@ -2292,7 +2596,9 @@
     "eps3y": -0.23621,
     "eps5y": -0.23621,
     "rev3y": -0.14185,
-    "rev5y": -0.14185
+    "rev5y": -0.14185,
+    "epsNextY": 1.41511,
+    "revNext5y": null
   },
   "EOG": {
     "industry": "Oil & Gas E&P",
@@ -2307,7 +2613,9 @@
     "eps3y": -0.11679,
     "eps5y": -0.11679,
     "rev3y": -0.08514,
-    "rev5y": -0.08514
+    "rev5y": -0.08514,
+    "epsNextY": 0.44155,
+    "revNext5y": null
   },
   "EQIX": {
     "industry": "REIT - Specialty",
@@ -2322,7 +2630,9 @@
     "eps3y": 0.21492,
     "eps5y": 0.21492,
     "rev3y": 0.08266,
-    "rev5y": 0.08266
+    "rev5y": 0.08266,
+    "epsNextY": 0.33126,
+    "revNext5y": null
   },
   "EQR": {
     "industry": "REIT - Residential",
@@ -2337,7 +2647,9 @@
     "eps3y": 0.12716,
     "eps5y": 0.12716,
     "rev3y": 0.04194,
-    "rev5y": 0.04194
+    "rev5y": 0.04194,
+    "epsNextY": -0.3544,
+    "revNext5y": null
   },
   "EQT": {
     "industry": "Oil & Gas E&P",
@@ -2352,7 +2664,9 @@
     "eps3y": -0.11413,
     "eps5y": -0.11413,
     "rev3y": -0.11718,
-    "rev5y": -0.11718
+    "rev5y": -0.11718,
+    "epsNextY": -0.12069,
+    "revNext5y": null
   },
   "ESS": {
     "industry": "REIT - Residential",
@@ -2367,7 +2681,9 @@
     "eps3y": 0.18374,
     "eps5y": 0.18374,
     "rev3y": 0.0551,
-    "rev5y": 0.0551
+    "rev5y": 0.0551,
+    "epsNextY": -0.33513,
+    "revNext5y": null
   },
   "ETSY": {
     "industry": "Internet Retail",
@@ -2382,7 +2698,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.03964,
-    "rev5y": 0.03964
+    "rev5y": 0.03964,
+    "epsNextY": 1.50761,
+    "revNext5y": null
   },
   "ETN": {
     "industry": "Specialty Industrial Machinery",
@@ -2397,7 +2715,9 @@
     "eps3y": 0.19314,
     "eps5y": 0.19314,
     "rev3y": 0.0977,
-    "rev5y": 0.0977
+    "rev5y": 0.0977,
+    "epsNextY": 0.53983,
+    "revNext5y": null
   },
   "ETR": {
     "industry": "Utilities - Regulated Electric",
@@ -2412,7 +2732,9 @@
     "eps3y": 0.13808,
     "eps5y": 0.13808,
     "rev3y": -0.0202,
-    "rev5y": -0.0202
+    "rev5y": -0.0202,
+    "epsNextY": 0.28183,
+    "revNext5y": null
   },
   "EVRG": {
     "industry": "Utilities - Regulated Electric",
@@ -2427,7 +2749,9 @@
     "eps3y": 0.04298,
     "eps5y": 0.04298,
     "rev3y": 0.0058,
-    "rev5y": 0.0058
+    "rev5y": 0.0058,
+    "epsNextY": 0.21063,
+    "revNext5y": null
   },
   "EW": {
     "industry": "Medical Devices",
@@ -2442,7 +2766,9 @@
     "eps3y": -0.09226,
     "eps5y": -0.09226,
     "rev3y": 0.10772,
-    "rev5y": 0.10772
+    "rev5y": 0.10772,
+    "epsNextY": 0.81906,
+    "revNext5y": null
   },
   "EXC": {
     "industry": "Utilities - Regulated Electric",
@@ -2457,7 +2783,9 @@
     "eps3y": 0.07868,
     "eps5y": 0.07868,
     "rev3y": 0.08336,
-    "rev5y": 0.08336
+    "rev5y": 0.08336,
+    "epsNextY": 0.11261,
+    "revNext5y": null
   },
   "EXPE": {
     "industry": "Travel Services",
@@ -2472,7 +2800,9 @@
     "eps3y": 0.66396,
     "eps5y": 0.66396,
     "rev3y": 0.08088,
-    "rev5y": 0.08088
+    "rev5y": 0.08088,
+    "epsNextY": 1.04224,
+    "revNext5y": null
   },
   "EXPD": {
     "industry": "Integrated Freight & Logistics",
@@ -2487,7 +2817,9 @@
     "eps3y": -0.1051,
     "eps5y": -0.1051,
     "rev3y": -0.13447,
-    "rev5y": -0.13447
+    "rev5y": -0.13447,
+    "epsNextY": 0.10393,
+    "revNext5y": null
   },
   "EXR": {
     "industry": "REIT - Industrial",
@@ -2502,7 +2834,9 @@
     "eps3y": -0.10535,
     "eps5y": -0.10535,
     "rev3y": 0.20629,
-    "rev5y": 0.20629
+    "rev5y": 0.20629,
+    "epsNextY": 0.07548,
+    "revNext5y": null
   },
   "F": {
     "industry": "Auto Manufacturers",
@@ -2517,7 +2851,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.05815,
-    "rev5y": 0.05815
+    "rev5y": 0.05815,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FANG": {
     "industry": "Oil & Gas E&P",
@@ -2532,7 +2868,9 @@
     "eps3y": -0.3848,
     "eps5y": -0.3848,
     "rev3y": 0.15993,
-    "rev5y": 0.15993
+    "rev5y": 0.15993,
+    "epsNextY": 16.91355,
+    "revNext5y": null
   },
   "FAST": {
     "industry": "Industrial Distribution",
@@ -2547,7 +2885,9 @@
     "eps3y": 0.05193,
     "eps5y": 0.05193,
     "rev3y": 0.05515,
-    "rev5y": 0.05515
+    "rev5y": 0.05515,
+    "epsNextY": 0.21071,
+    "revNext5y": null
   },
   "FCX": {
     "industry": "Copper",
@@ -2562,7 +2902,9 @@
     "eps3y": -0.14084,
     "eps5y": -0.14084,
     "rev3y": 0.04392,
-    "rev5y": 0.04392
+    "rev5y": 0.04392,
+    "epsNextY": 0.97268,
+    "revNext5y": null
   },
   "FDS": {
     "industry": "Financial Data & Stock Exchanges",
@@ -2577,7 +2919,9 @@
     "eps3y": 0.14692,
     "eps5y": 0.14692,
     "rev3y": 0.07984,
-    "rev5y": 0.07984
+    "rev5y": 0.07984,
+    "epsNextY": 0.24848,
+    "revNext5y": null
   },
   "FDX": {
     "industry": "Integrated Freight & Logistics",
@@ -2592,7 +2936,9 @@
     "eps3y": 0.05646,
     "eps5y": 0.05646,
     "rev3y": -0.02032,
-    "rev5y": -0.02032
+    "rev5y": -0.02032,
+    "epsNextY": 0.19839,
+    "revNext5y": null
   },
   "FE": {
     "industry": "Utilities - Regulated Electric",
@@ -2607,7 +2953,9 @@
     "eps3y": 0.35593,
     "eps5y": 0.35593,
     "rev3y": 0.06595,
-    "rev5y": 0.06595
+    "rev5y": 0.06595,
+    "epsNextY": 0.60155,
+    "revNext5y": null
   },
   "FICO": {
     "industry": "Software - Application",
@@ -2622,7 +2970,9 @@
     "eps3y": 0.2333,
     "eps5y": 0.2333,
     "rev3y": 0.13068,
-    "rev5y": 0.13068
+    "rev5y": 0.13068,
+    "epsNextY": 0.71924,
+    "revNext5y": null
   },
   "FI": {
     "industry": "",
@@ -2637,7 +2987,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FIS": {
     "industry": "Information Technology Services",
@@ -2652,7 +3004,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.0318,
-    "rev5y": 0.0318
+    "rev5y": 0.0318,
+    "epsNextY": 0.32687,
+    "revNext5y": null
   },
   "FITB": {
     "industry": "Banks - Regional",
@@ -2667,7 +3021,9 @@
     "eps3y": 0.01745,
     "eps5y": 0.01745,
     "rev3y": 0.02875,
-    "rev5y": 0.02875
+    "rev5y": 0.02875,
+    "epsNextY": 0.65451,
+    "revNext5y": null
   },
   "FLT": {
     "industry": "",
@@ -2682,7 +3038,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FMC": {
     "industry": "Agricultural Inputs",
@@ -2697,7 +3055,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.1577,
-    "rev5y": -0.1577
+    "rev5y": -0.1577,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FOXA": {
     "industry": "Entertainment",
@@ -2712,7 +3072,9 @@
     "eps3y": 0.33053,
     "eps5y": 0.33053,
     "rev3y": 0.05266,
-    "rev5y": 0.05266
+    "rev5y": 0.05266,
+    "epsNextY": 0.49508,
+    "revNext5y": null
   },
   "FRT": {
     "industry": "REIT - Retail",
@@ -2727,7 +3089,9 @@
     "eps3y": -0.00213,
     "eps5y": -0.00213,
     "rev3y": 0.05983,
-    "rev5y": 0.05983
+    "rev5y": 0.05983,
+    "epsNextY": -0.46255,
+    "revNext5y": null
   },
   "FSLR": {
     "industry": "Solar",
@@ -2742,7 +3106,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.25837,
-    "rev5y": 0.25837
+    "rev5y": 0.25837,
+    "epsNextY": 0.51529,
+    "revNext5y": null
   },
   "FTV": {
     "industry": "Scientific & Technical Instruments",
@@ -2757,7 +3123,9 @@
     "eps3y": -0.06372,
     "eps5y": -0.06372,
     "rev3y": -0.10625,
-    "rev5y": -0.10625
+    "rev5y": -0.10625,
+    "epsNextY": 0.8918,
+    "revNext5y": null
   },
   "GD": {
     "industry": "Aerospace & Defense",
@@ -2772,7 +3140,9 @@
     "eps3y": 0.08331,
     "eps5y": 0.08331,
     "rev3y": 0.10069,
-    "rev5y": 0.10069
+    "rev5y": 0.10069,
+    "epsNextY": 0.14269,
+    "revNext5y": null
   },
   "GE": {
     "industry": "Aerospace & Defense",
@@ -2787,7 +3157,9 @@
     "eps3y": 4.4737,
     "eps5y": 4.4737,
     "rev3y": 0.16315,
-    "rev5y": 0.16315
+    "rev5y": 0.16315,
+    "epsNextY": 0.07786,
+    "revNext5y": null
   },
   "GEHC": {
     "industry": "Medical Devices",
@@ -2802,7 +3174,9 @@
     "eps3y": -0.00507,
     "eps5y": -0.00507,
     "rev3y": 0.0399,
-    "rev5y": 0.0399
+    "rev5y": 0.0399,
+    "epsNextY": 0.28559,
+    "revNext5y": null
   },
   "GEN": {
     "industry": "Software - Infrastructure",
@@ -2817,7 +3191,9 @@
     "eps3y": -0.1028,
     "eps5y": -0.1028,
     "rev3y": 0.14659,
-    "rev5y": 0.14659
+    "rev5y": 0.14659,
+    "epsNextY": 1.09347,
+    "revNext5y": null
   },
   "GILD": {
     "industry": "Drug Manufacturers - General",
@@ -2832,7 +3208,9 @@
     "eps3y": 0.23176,
     "eps5y": 0.23176,
     "rev3y": 0.02574,
-    "rev5y": 0.02574
+    "rev5y": 0.02574,
+    "epsNextY": 0.30296,
+    "revNext5y": null
   },
   "GIS": {
     "industry": "Packaged Foods",
@@ -2847,7 +3225,9 @@
     "eps3y": -0.02609,
     "eps5y": -0.02609,
     "rev3y": 0.00859,
-    "rev5y": 0.00859
+    "rev5y": 0.00859,
+    "epsNextY": -0.21,
+    "revNext5y": null
   },
   "GL": {
     "industry": "Insurance - Life",
@@ -2862,7 +3242,9 @@
     "eps3y": 0.2364,
     "eps5y": 0.2364,
     "rev3y": 0.04673,
-    "rev5y": 0.04673
+    "rev5y": 0.04673,
+    "epsNextY": 0.15143,
+    "revNext5y": null
   },
   "GLW": {
     "industry": "Electronic Components",
@@ -2877,7 +3259,9 @@
     "eps3y": 0.06228,
     "eps5y": 0.06228,
     "rev3y": 0.03275,
-    "rev5y": 0.03275
+    "rev5y": 0.03275,
+    "epsNextY": 1.02088,
+    "revNext5y": null
   },
   "GM": {
     "industry": "Auto Manufacturers",
@@ -2892,7 +3276,9 @@
     "eps3y": -0.18582,
     "eps5y": -0.18582,
     "rev3y": 0.05686,
-    "rev5y": 0.05686
+    "rev5y": 0.05686,
+    "epsNextY": 4.13395,
+    "revNext5y": null
   },
   "GNRC": {
     "industry": "Specialty Industrial Machinery",
@@ -2907,7 +3293,9 @@
     "eps3y": -0.21061,
     "eps5y": -0.21061,
     "rev3y": -0.02667,
-    "rev5y": -0.02667
+    "rev5y": -0.02667,
+    "epsNextY": 2.45611,
+    "revNext5y": null
   },
   "GPC": {
     "industry": "Auto Parts",
@@ -2922,7 +3310,9 @@
     "eps3y": -0.61691,
     "eps5y": -0.61691,
     "rev3y": 0.0322,
-    "rev5y": 0.0322
+    "rev5y": 0.0322,
+    "epsNextY": 17.60684,
+    "revNext5y": null
   },
   "GPN": {
     "industry": "Specialty Business Services",
@@ -2937,7 +3327,9 @@
     "eps3y": 1.41712,
     "eps5y": 1.41712,
     "rev3y": -0.04957,
-    "rev5y": -0.04957
+    "rev5y": -0.04957,
+    "epsNextY": 4.95456,
+    "revNext5y": null
   },
   "GS": {
     "industry": "Capital Markets",
@@ -2952,7 +3344,9 @@
     "eps3y": 0.1953,
     "eps5y": 0.1953,
     "rev3y": 0.07159,
-    "rev5y": 0.07159
+    "rev5y": 0.07159,
+    "epsNextY": 0.19431,
+    "revNext5y": null
   },
   "GRMN": {
     "industry": "Scientific & Technical Instruments",
@@ -2967,7 +3361,9 @@
     "eps3y": 0.1957,
     "eps5y": 0.1957,
     "rev3y": 0.14236,
-    "rev5y": 0.14236
+    "rev5y": 0.14236,
+    "epsNextY": 0.15223,
+    "revNext5y": null
   },
   "HAL": {
     "industry": "Oil & Gas Equipment & Services",
@@ -2982,7 +3378,9 @@
     "eps3y": -0.04827,
     "eps5y": -0.04827,
     "rev3y": 0.03008,
-    "rev5y": 0.03008
+    "rev5y": 0.03008,
+    "epsNextY": 0.60743,
+    "revNext5y": null
   },
   "HAS": {
     "industry": "Leisure",
@@ -2997,7 +3395,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.07063,
-    "rev5y": -0.07063
+    "rev5y": -0.07063,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "HCA": {
     "industry": "Medical Care Facilities",
@@ -3012,7 +3412,9 @@
     "eps3y": 0.15842,
     "eps5y": 0.15842,
     "rev3y": 0.07869,
-    "rev5y": 0.07869
+    "rev5y": 0.07869,
+    "epsNextY": 0.1419,
+    "revNext5y": null
   },
   "HD": {
     "industry": "Home Improvement Retail",
@@ -3027,7 +3429,9 @@
     "eps3y": -0.05204,
     "eps5y": -0.05204,
     "rev3y": 0.01519,
-    "rev5y": 0.01519
+    "rev5y": 0.01519,
+    "epsNextY": 0.14472,
+    "revNext5y": null
   },
   "HES": {
     "industry": "",
@@ -3042,7 +3446,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "HIG": {
     "industry": "Insurance - Diversified",
@@ -3057,7 +3463,9 @@
     "eps3y": 0.33383,
     "eps5y": 0.33383,
     "rev3y": 0.08703,
-    "rev5y": 0.08703
+    "rev5y": 0.08703,
+    "epsNextY": 0.01432,
+    "revNext5y": null
   },
   "HII": {
     "industry": "Aerospace & Defense",
@@ -3072,7 +3480,9 @@
     "eps3y": 0.02147,
     "eps5y": 0.02147,
     "rev3y": 0.05353,
-    "rev5y": 0.05353
+    "rev5y": 0.05353,
+    "epsNextY": 0.32264,
+    "revNext5y": null
   },
   "HLT": {
     "industry": "Lodging",
@@ -3087,7 +3497,9 @@
     "eps3y": 0.10664,
     "eps5y": 0.10664,
     "rev3y": 0.11126,
-    "rev5y": 0.11126
+    "rev5y": 0.11126,
+    "epsNextY": 0.59014,
+    "revNext5y": null
   },
   "HOLX": {
     "industry": "Medical Instruments & Supplies",
@@ -3102,7 +3514,9 @@
     "eps3y": -0.2156,
     "eps5y": -0.2156,
     "rev3y": -0.05525,
-    "rev5y": -0.05525
+    "rev5y": -0.05525,
+    "epsNextY": 1.01701,
+    "revNext5y": null
   },
   "HON": {
     "industry": "Conglomerates",
@@ -3117,7 +3531,9 @@
     "eps3y": 0.00317,
     "eps5y": 0.00317,
     "rev3y": 0.01824,
-    "rev5y": 0.01824
+    "rev5y": 0.01824,
+    "epsNextY": 0.82756,
+    "revNext5y": null
   },
   "HPE": {
     "industry": "Communication Equipment",
@@ -3132,7 +3548,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.0637,
-    "rev5y": 0.0637
+    "rev5y": 0.0637,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "HPQ": {
     "industry": "Computer Hardware",
@@ -3147,7 +3565,9 @@
     "eps3y": -0.04753,
     "eps5y": -0.04753,
     "rev3y": -0.0421,
-    "rev5y": -0.0421
+    "rev5y": -0.0421,
+    "epsNextY": 0.15486,
+    "revNext5y": null
   },
   "HRL": {
     "industry": "Packaged Foods",
@@ -3162,7 +3582,9 @@
     "eps3y": -0.22095,
     "eps5y": -0.22095,
     "rev3y": -0.00953,
-    "rev5y": -0.00953
+    "rev5y": -0.00953,
+    "epsNextY": 0.75762,
+    "revNext5y": null
   },
   "HSIC": {
     "industry": "Medical Distribution",
@@ -3177,7 +3599,9 @@
     "eps3y": -0.05912,
     "eps5y": -0.05912,
     "rev3y": 0.01396,
-    "rev5y": 0.01396
+    "rev5y": 0.01396,
+    "epsNextY": 0.7849,
+    "revNext5y": null
   },
   "HST": {
     "industry": "REIT - Hotel & Motel",
@@ -3192,7 +3616,9 @@
     "eps3y": 0.07641,
     "eps5y": 0.07641,
     "rev3y": 0.07606,
-    "rev5y": 0.07606
+    "rev5y": 0.07606,
+    "epsNextY": -0.31973,
+    "revNext5y": null
   },
   "HSY": {
     "industry": "Confectioners",
@@ -3207,7 +3633,9 @@
     "eps3y": -0.18438,
     "eps5y": -0.18438,
     "rev3y": 0.03918,
-    "rev5y": 0.03918
+    "rev5y": 0.03918,
+    "epsNextY": 0.84404,
+    "revNext5y": null
   },
   "HUBB": {
     "industry": "Electrical Equipment & Parts",
@@ -3222,7 +3650,9 @@
     "eps3y": 0.20562,
     "eps5y": 0.20562,
     "rev3y": 0.05709,
-    "rev5y": 0.05709
+    "rev5y": 0.05709,
+    "epsNextY": 0.28684,
+    "revNext5y": null
   },
   "HUM": {
     "industry": "Healthcare Plans",
@@ -3237,7 +3667,9 @@
     "eps3y": -0.23677,
     "eps5y": -0.23677,
     "rev3y": 0.11767,
-    "rev5y": 0.11767
+    "rev5y": 0.11767,
+    "epsNextY": 0.66047,
+    "revNext5y": null
   },
   "HBAN": {
     "industry": "Banks - Regional",
@@ -3252,7 +3684,9 @@
     "eps3y": -0.01379,
     "eps5y": -0.01379,
     "rev3y": 0.03878,
-    "rev5y": 0.03878
+    "rev5y": 0.03878,
+    "epsNextY": 0.46457,
+    "revNext5y": null
   },
   "HWM": {
     "industry": "Aerospace & Defense",
@@ -3267,7 +3701,9 @@
     "eps3y": 0.49336,
     "eps5y": 0.49336,
     "rev3y": 0.13372,
-    "rev5y": 0.13372
+    "rev5y": 0.13372,
+    "epsNextY": 0.39596,
+    "revNext5y": null
   },
   "IBM": {
     "industry": "Information Technology Services",
@@ -3282,7 +3718,9 @@
     "eps3y": 0.84121,
     "eps5y": 0.84121,
     "rev3y": 0.03718,
-    "rev5y": 0.03718
+    "rev5y": 0.03718,
+    "epsNextY": 0.18963,
+    "revNext5y": null
   },
   "ICE": {
     "industry": "Financial Data & Stock Exchanges",
@@ -3297,7 +3735,9 @@
     "eps3y": 0.30755,
     "eps5y": 0.30755,
     "rev3y": 0.09467,
-    "rev5y": 0.09467
+    "rev5y": 0.09467,
+    "epsNextY": 0.27858,
+    "revNext5y": null
   },
   "IDXX": {
     "industry": "Diagnostics & Research",
@@ -3312,7 +3752,9 @@
     "eps3y": 0.17492,
     "eps5y": 0.17492,
     "rev3y": 0.08522,
-    "rev5y": 0.08522
+    "rev5y": 0.08522,
+    "epsNextY": 0.2162,
+    "revNext5y": null
   },
   "IEX": {
     "industry": "Specialty Industrial Machinery",
@@ -3327,7 +3769,9 @@
     "eps3y": -0.06091,
     "eps5y": -0.06091,
     "rev3y": 0.02808,
-    "rev5y": 0.02808
+    "rev5y": 0.02808,
+    "epsNextY": 0.36491,
+    "revNext5y": null
   },
   "IFF": {
     "industry": "Specialty Chemicals",
@@ -3342,7 +3786,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.04339,
-    "rev5y": -0.04339
+    "rev5y": -0.04339,
+    "epsNextY": 0.4881,
+    "revNext5y": null
   },
   "ILMN": {
     "industry": "Diagnostics & Research",
@@ -3357,7 +3803,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.01784,
-    "rev5y": -0.01784
+    "rev5y": -0.01784,
+    "epsNextY": 0.07622,
+    "revNext5y": null
   },
   "INCY": {
     "industry": "Biotechnology",
@@ -3372,7 +3820,9 @@
     "eps3y": 0.62704,
     "eps5y": 0.62704,
     "rev3y": 0.1484,
-    "rev5y": 0.1484
+    "rev5y": 0.1484,
+    "epsNextY": 0.28073,
+    "revNext5y": null
   },
   "INTU": {
     "industry": "Software - Application",
@@ -3387,7 +3837,9 @@
     "eps3y": 0.23259,
     "eps5y": 0.23259,
     "rev3y": 0.13953,
-    "rev5y": 0.13953
+    "rev5y": 0.13953,
+    "epsNextY": 0.66418,
+    "revNext5y": null
   },
   "INVH": {
     "industry": "REIT - Residential",
@@ -3402,7 +3854,9 @@
     "eps3y": 0.15074,
     "eps5y": 0.15074,
     "rev3y": 0.06837,
-    "rev5y": 0.06837
+    "rev5y": 0.06837,
+    "epsNextY": -0.3008,
+    "revNext5y": null
   },
   "IP": {
     "industry": "Packaging & Containers",
@@ -3417,7 +3871,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.03753,
-    "rev5y": 0.03753
+    "rev5y": 0.03753,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "IPG": {
     "industry": "",
@@ -3432,7 +3888,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "IQV": {
     "industry": "Diagnostics & Research",
@@ -3447,7 +3905,9 @@
     "eps3y": 0.10769,
     "eps5y": 0.10769,
     "rev3y": 0.04215,
-    "rev5y": 0.04215
+    "rev5y": 0.04215,
+    "epsNextY": 0.76032,
+    "revNext5y": null
   },
   "IR": {
     "industry": "Specialty Industrial Machinery",
@@ -3462,7 +3922,9 @@
     "eps3y": -0.00676,
     "eps5y": -0.00676,
     "rev3y": 0.08948,
-    "rev5y": 0.08948
+    "rev5y": 0.08948,
+    "epsNextY": 1.59865,
+    "revNext5y": null
   },
   "IRM": {
     "industry": "REIT - Specialty",
@@ -3477,7 +3939,9 @@
     "eps3y": -0.36569,
     "eps5y": -0.36569,
     "rev3y": 0.10585,
-    "rev5y": 0.10585
+    "rev5y": 0.10585,
+    "epsNextY": 1.87496,
+    "revNext5y": null
   },
   "ISRG": {
     "industry": "Medical Instruments & Supplies",
@@ -3492,7 +3956,9 @@
     "eps3y": 0.29077,
     "eps5y": 0.29077,
     "rev3y": 0.17387,
-    "rev5y": 0.17387
+    "rev5y": 0.17387,
+    "epsNextY": 0.43413,
+    "revNext5y": null
   },
   "IT": {
     "industry": "Information Technology Services",
@@ -3507,7 +3973,9 @@
     "eps3y": -0.01341,
     "eps5y": -0.01341,
     "rev3y": 0.05867,
-    "rev5y": 0.05867
+    "rev5y": 0.05867,
+    "epsNextY": 0.51548,
+    "revNext5y": null
   },
   "ITW": {
     "industry": "Specialty Industrial Machinery",
@@ -3522,7 +3990,9 @@
     "eps3y": 0.02391,
     "eps5y": 0.02391,
     "rev3y": 0.00234,
-    "rev5y": 0.00234
+    "rev5y": 0.00234,
+    "epsNextY": 0.13432,
+    "revNext5y": null
   },
   "IVZ": {
     "industry": "Asset Management",
@@ -3537,7 +4007,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.01777,
-    "rev5y": 0.01777
+    "rev5y": 0.01777,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "J": {
     "industry": "Engineering & Construction",
@@ -3552,7 +4024,9 @@
     "eps3y": -0.21864,
     "eps5y": -0.21864,
     "rev3y": 0.07134,
-    "rev5y": 0.07134
+    "rev5y": 0.07134,
+    "epsNextY": 1.44786,
+    "revNext5y": null
   },
   "JBHT": {
     "industry": "Integrated Freight & Logistics",
@@ -3567,7 +4041,9 @@
     "eps3y": -0.12198,
     "eps5y": -0.12198,
     "rev3y": -0.06784,
-    "rev5y": -0.06784
+    "rev5y": -0.06784,
+    "epsNextY": 0.41312,
+    "revNext5y": null
   },
   "JCI": {
     "industry": "Building Products & Equipment",
@@ -3582,7 +4058,9 @@
     "eps3y": 0.31341,
     "eps5y": 0.31341,
     "rev3y": 0.04568,
-    "rev5y": 0.04568
+    "rev5y": 0.04568,
+    "epsNextY": 0.74105,
+    "revNext5y": null
   },
   "JKHY": {
     "industry": "Information Technology Services",
@@ -3597,7 +4075,9 @@
     "eps3y": 0.07909,
     "eps5y": 0.07909,
     "rev3y": 0.06928,
-    "rev5y": 0.06928
+    "rev5y": 0.06928,
+    "epsNextY": -0.01367,
+    "revNext5y": null
   },
   "JNJ": {
     "industry": "Drug Manufacturers - General",
@@ -3612,7 +4092,9 @@
     "eps3y": 0.17498,
     "eps5y": 0.17498,
     "rev3y": 0.05599,
-    "rev5y": 0.05599
+    "rev5y": 0.05599,
+    "epsNextY": 0.47277,
+    "revNext5y": null
   },
   "JPM": {
     "industry": "Banks - Diversified",
@@ -3627,7 +4109,9 @@
     "eps3y": 0.18334,
     "eps5y": 0.18334,
     "rev3y": 0.12497,
-    "rev5y": 0.12497
+    "rev5y": 0.12497,
+    "epsNextY": 0.12742,
+    "revNext5y": null
   },
   "JNPR": {
     "industry": "",
@@ -3642,7 +4126,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "K": {
     "industry": "",
@@ -3657,7 +4143,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "KDP": {
     "industry": "Beverages - Non-Alcoholic",
@@ -3672,7 +4160,9 @@
     "eps3y": 0.14848,
     "eps5y": 0.14848,
     "rev3y": 0.05706,
-    "rev5y": 0.05706
+    "rev5y": 0.05706,
+    "epsNextY": 0.86998,
+    "revNext5y": null
   },
   "KEY": {
     "industry": "Banks - Regional",
@@ -3687,7 +4177,9 @@
     "eps3y": -0.07609,
     "eps5y": -0.07609,
     "rev3y": 0.01214,
-    "rev5y": 0.01214
+    "rev5y": 0.01214,
+    "epsNextY": 0.32275,
+    "revNext5y": null
   },
   "KEYS": {
     "industry": "Scientific & Technical Instruments",
@@ -3702,7 +4194,9 @@
     "eps3y": -0.0763,
     "eps5y": -0.0763,
     "rev3y": -0.00278,
-    "rev5y": -0.00278
+    "rev5y": -0.00278,
+    "epsNextY": 0.90924,
+    "revNext5y": null
   },
   "KHC": {
     "industry": "Packaged Foods",
@@ -3717,7 +4211,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.01981,
-    "rev5y": -0.01981
+    "rev5y": -0.01981,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "KIM": {
     "industry": "REIT - Retail",
@@ -3732,7 +4228,9 @@
     "eps3y": 0.72411,
     "eps5y": 0.72411,
     "rev3y": 0.07397,
-    "rev5y": 0.07397
+    "rev5y": 0.07397,
+    "epsNextY": -0.00862,
+    "revNext5y": null
   },
   "KMB": {
     "industry": "Household & Personal Products",
@@ -3747,7 +4245,9 @@
     "eps3y": 0.02052,
     "eps5y": 0.02052,
     "rev3y": -0.06583,
-    "rev5y": -0.06583
+    "rev5y": -0.06583,
+    "epsNextY": 0.46553,
+    "revNext5y": null
   },
   "KMI": {
     "industry": "Oil & Gas Midstream",
@@ -3762,7 +4262,9 @@
     "eps3y": 0.06947,
     "eps5y": 0.06947,
     "rev3y": -0.04094,
-    "rev5y": -0.04094
+    "rev5y": -0.04094,
+    "epsNextY": 0.02581,
+    "revNext5y": null
   },
   "KMX": {
     "industry": "Auto & Truck Dealerships",
@@ -3777,7 +4279,9 @@
     "eps3y": -0.18027,
     "eps5y": -0.18027,
     "rev3y": -0.04468,
-    "rev5y": -0.04468
+    "rev5y": -0.04468,
+    "epsNextY": 0.63699,
+    "revNext5y": null
   },
   "KO": {
     "industry": "Beverages - Non-Alcoholic",
@@ -3792,7 +4296,9 @@
     "eps3y": 0.11504,
     "eps5y": 0.11504,
     "rev3y": 0.03689,
-    "rev5y": 0.03689
+    "rev5y": 0.03689,
+    "epsNextY": 0.09548,
+    "revNext5y": null
   },
   "KR": {
     "industry": "Grocery Stores",
@@ -3807,7 +4313,9 @@
     "eps3y": -0.2063,
     "eps5y": -0.2063,
     "rev3y": -0.00139,
-    "rev5y": -0.00139
+    "rev5y": -0.00139,
+    "epsNextY": 2.65335,
+    "revNext5y": null
   },
   "KVUE": {
     "industry": "Household & Personal Products",
@@ -3822,7 +4330,9 @@
     "eps3y": -0.11398,
     "eps5y": -0.11398,
     "rev3y": 0.00386,
-    "rev5y": 0.00386
+    "rev5y": 0.00386,
+    "epsNextY": 0.47223,
+    "revNext5y": null
   },
   "L": {
     "industry": "Insurance - Property & Casualty",
@@ -3837,7 +4347,9 @@
     "eps3y": 0.33025,
     "eps5y": 0.33025,
     "rev3y": 0.08962,
-    "rev5y": 0.08962
+    "rev5y": 0.08962,
+    "epsNextY": -0.63104,
+    "revNext5y": null
   },
   "LDOS": {
     "industry": "Information Technology Services",
@@ -3852,7 +4364,9 @@
     "eps3y": 0.3127,
     "eps5y": 0.3127,
     "rev3y": 0.06058,
-    "rev5y": 0.06058
+    "rev5y": 0.06058,
+    "epsNextY": 0.20616,
+    "revNext5y": null
   },
   "LEN": {
     "industry": "Residential Construction",
@@ -3867,7 +4381,9 @@
     "eps3y": -0.20262,
     "eps5y": -0.20262,
     "rev3y": 0.00508,
-    "rev5y": 0.00508
+    "rev5y": 0.00508,
+    "epsNextY": 0.09207,
+    "revNext5y": null
   },
   "LH": {
     "industry": "Diagnostics & Research",
@@ -3882,7 +4398,9 @@
     "eps3y": -0.09137,
     "eps5y": -0.09137,
     "rev3y": 0.05552,
-    "rev5y": 0.05552
+    "rev5y": 0.05552,
+    "epsNextY": 0.72054,
+    "revNext5y": null
   },
   "LHX": {
     "industry": "Aerospace & Defense",
@@ -3897,7 +4415,9 @@
     "eps3y": 0.15653,
     "eps5y": 0.15653,
     "rev3y": 0.08619,
-    "rev5y": 0.08619
+    "rev5y": 0.08619,
+    "epsNextY": 0.48022,
+    "revNext5y": null
   },
   "LIN": {
     "industry": "Specialty Chemicals",
@@ -3912,7 +4432,9 @@
     "eps3y": 0.20962,
     "eps5y": 0.20962,
     "rev3y": 0.00618,
-    "rev5y": 0.00618
+    "rev5y": 0.00618,
+    "epsNextY": 0.30876,
+    "revNext5y": null
   },
   "LKQ": {
     "industry": "Auto Parts",
@@ -3927,7 +4449,9 @@
     "eps3y": -0.17151,
     "eps5y": -0.17151,
     "rev3y": 0.02185,
-    "rev5y": 0.02185
+    "rev5y": 0.02185,
+    "epsNextY": 0.67045,
+    "revNext5y": null
   },
   "LLY": {
     "industry": "Drug Manufacturers - General",
@@ -3942,7 +4466,9 @@
     "eps3y": 0.5197,
     "eps5y": 0.5197,
     "rev3y": 0.31687,
-    "rev5y": 0.31687
+    "rev5y": 0.31687,
+    "epsNextY": 0.51776,
+    "revNext5y": null
   },
   "LMT": {
     "industry": "Aerospace & Defense",
@@ -3957,7 +4483,9 @@
     "eps3y": -0.00277,
     "eps5y": -0.00277,
     "rev3y": 0.04384,
-    "rev5y": 0.04384
+    "rev5y": 0.04384,
+    "epsNextY": 0.5555,
+    "revNext5y": null
   },
   "LOW": {
     "industry": "Home Improvement Retail",
@@ -3972,7 +4500,9 @@
     "eps3y": 0.05184,
     "eps5y": 0.05184,
     "rev3y": -0.03846,
-    "rev5y": -0.03846
+    "rev5y": -0.03846,
+    "epsNextY": 0.13165,
+    "revNext5y": null
   },
   "LULU": {
     "industry": "Apparel Retail",
@@ -3987,7 +4517,9 @@
     "eps3y": 0.25583,
     "eps5y": 0.25583,
     "rev3y": 0.11035,
-    "rev5y": 0.11035
+    "rev5y": 0.11035,
+    "epsNextY": -0.00479,
+    "revNext5y": null
   },
   "LUV": {
     "industry": "Airlines",
@@ -4002,7 +4534,9 @@
     "eps3y": -0.03412,
     "eps5y": -0.03412,
     "rev3y": 0.05625,
-    "rev5y": 0.05625
+    "rev5y": 0.05625,
+    "epsNextY": 2.01857,
+    "revNext5y": null
   },
   "LVS": {
     "industry": "Resorts & Casinos",
@@ -4017,7 +4551,9 @@
     "eps3y": -0.00699,
     "eps5y": -0.00699,
     "rev3y": 0.46855,
-    "rev5y": 0.46855
+    "rev5y": 0.46855,
+    "epsNextY": 0.35766,
+    "revNext5y": null
   },
   "LW": {
     "industry": "Packaged Foods",
@@ -4032,7 +4568,9 @@
     "eps3y": 0.22067,
     "eps5y": 0.22067,
     "rev3y": 0.16321,
-    "rev5y": 0.16321
+    "rev5y": 0.16321,
+    "epsNextY": 0.40894,
+    "revNext5y": null
   },
   "LYB": {
     "industry": "Specialty Chemicals",
@@ -4047,7 +4585,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.15766,
-    "rev5y": -0.15766
+    "rev5y": -0.15766,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "LYV": {
     "industry": "Entertainment",
@@ -4062,7 +4602,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.14745,
-    "rev5y": 0.14745
+    "rev5y": 0.14745,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MA": {
     "industry": "Credit Services",
@@ -4077,7 +4619,9 @@
     "eps3y": 0.17254,
     "eps5y": 0.17254,
     "rev3y": 0.13822,
-    "rev5y": 0.13822
+    "rev5y": 0.13822,
+    "epsNextY": 0.31739,
+    "revNext5y": null
   },
   "MAA": {
     "industry": "REIT - Residential",
@@ -4092,7 +4636,9 @@
     "eps3y": -0.1162,
     "eps5y": -0.1162,
     "rev3y": 0.03031,
-    "rev5y": 0.03031
+    "rev5y": 0.03031,
+    "epsNextY": 0.17879,
+    "revNext5y": null
   },
   "MAR": {
     "industry": "Lodging",
@@ -4107,7 +4653,9 @@
     "eps3y": 0.09443,
     "eps5y": 0.09443,
     "rev3y": 0.08025,
-    "rev5y": 0.08025
+    "rev5y": 0.08025,
+    "epsNextY": 0.36686,
+    "revNext5y": null
   },
   "MAS": {
     "industry": "Building Products & Equipment",
@@ -4122,7 +4670,9 @@
     "eps3y": 0.01909,
     "eps5y": 0.01909,
     "rev3y": -0.04492,
-    "rev5y": -0.04492
+    "rev5y": -0.04492,
+    "epsNextY": 0.16425,
+    "revNext5y": null
   },
   "MCD": {
     "industry": "Restaurants",
@@ -4137,7 +4687,9 @@
     "eps3y": 0.12415,
     "eps5y": 0.12415,
     "rev3y": 0.05064,
-    "rev5y": 0.05064
+    "rev5y": 0.05064,
+    "epsNextY": 0.18409,
+    "revNext5y": null
   },
   "MCK": {
     "industry": "Medical Distribution",
@@ -4152,7 +4704,9 @@
     "eps3y": 0.15178,
     "eps5y": 0.15178,
     "rev3y": 0.13392,
-    "rev5y": 0.13392
+    "rev5y": 0.13392,
+    "epsNextY": 0.31119,
+    "revNext5y": null
   },
   "MCO": {
     "industry": "Financial Data & Stock Exchanges",
@@ -4167,7 +4721,9 @@
     "eps3y": 0.22495,
     "eps5y": 0.22495,
     "rev3y": 0.12174,
-    "rev5y": 0.12174
+    "rev5y": 0.12174,
+    "epsNextY": 0.33596,
+    "revNext5y": null
   },
   "MDT": {
     "industry": "Medical Devices",
@@ -4182,7 +4738,9 @@
     "eps3y": -0.01078,
     "eps5y": -0.01078,
     "rev3y": 0.0191,
-    "rev5y": 0.0191
+    "rev5y": 0.0191,
+    "epsNextY": 0.69244,
+    "revNext5y": null
   },
   "MET": {
     "industry": "Insurance - Life",
@@ -4197,7 +4755,9 @@
     "eps3y": 0.17021,
     "eps5y": 0.17021,
     "rev3y": 0.03921,
-    "rev5y": 0.03921
+    "rev5y": 0.03921,
+    "epsNextY": 1.12658,
+    "revNext5y": null
   },
   "MGM": {
     "industry": "Resorts & Casinos",
@@ -4212,7 +4772,9 @@
     "eps3y": -0.39746,
     "eps5y": -0.39746,
     "rev3y": 0.10136,
-    "rev5y": 0.10136
+    "rev5y": 0.10136,
+    "epsNextY": 1.982,
+    "revNext5y": null
   },
   "MHK": {
     "industry": "Furnishings, Fixtures & Appliances",
@@ -4227,7 +4789,9 @@
     "eps3y": 1.46072,
     "eps5y": 1.46072,
     "rev3y": -0.02779,
-    "rev5y": -0.02779
+    "rev5y": -0.02779,
+    "epsNextY": 0.48032,
+    "revNext5y": null
   },
   "MKC": {
     "industry": "Packaged Foods",
@@ -4242,7 +4806,9 @@
     "eps3y": 0.04996,
     "eps5y": 0.04996,
     "rev3y": 0.02508,
-    "rev5y": 0.02508
+    "rev5y": 0.02508,
+    "epsNextY": -0.4513,
+    "revNext5y": null
   },
   "MKTX": {
     "industry": "Capital Markets",
@@ -4257,7 +4823,9 @@
     "eps3y": -0.001,
     "eps5y": -0.001,
     "rev3y": 0.05617,
-    "rev5y": 0.05617
+    "rev5y": 0.05617,
+    "epsNextY": 0.06364,
+    "revNext5y": null
   },
   "MLM": {
     "industry": "Building Materials",
@@ -4272,7 +4840,9 @@
     "eps3y": 0.10583,
     "eps5y": 0.10583,
     "rev3y": -0.0006,
-    "rev5y": -0.0006
+    "rev5y": -0.0006,
+    "epsNextY": 0.44598,
+    "revNext5y": null
   },
   "MMC": {
     "industry": "",
@@ -4287,7 +4857,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MMM": {
     "industry": "Conglomerates",
@@ -4302,7 +4874,9 @@
     "eps3y": -0.16007,
     "eps5y": -0.16007,
     "rev3y": -0.0157,
-    "rev5y": -0.0157
+    "rev5y": -0.0157,
+    "epsNextY": 0.81831,
+    "revNext5y": null
   },
   "MNST": {
     "industry": "Beverages - Non-Alcoholic",
@@ -4317,7 +4891,9 @@
     "eps3y": 0.19946,
     "eps5y": 0.19946,
     "rev3y": 0.09537,
-    "rev5y": 0.09537
+    "rev5y": 0.09537,
+    "epsNextY": 0.26666,
+    "revNext5y": null
   },
   "MOH": {
     "industry": "Healthcare Plans",
@@ -4332,7 +4908,9 @@
     "eps3y": -0.12389,
     "eps5y": -0.12389,
     "rev3y": 0.12418,
-    "rev5y": 0.12418
+    "rev5y": 0.12418,
+    "epsNextY": 1.45132,
+    "revNext5y": null
   },
   "MOS": {
     "industry": "Agricultural Inputs",
@@ -4347,7 +4925,9 @@
     "eps3y": -0.45612,
     "eps5y": -0.45612,
     "rev3y": -0.14265,
-    "rev5y": -0.14265
+    "rev5y": -0.14265,
+    "epsNextY": 12.99143,
+    "revNext5y": null
   },
   "MRNA": {
     "industry": "Biotechnology",
@@ -4362,7 +4942,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.53303,
-    "rev5y": -0.53303
+    "rev5y": -0.53303,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MRK": {
     "industry": "Drug Manufacturers - General",
@@ -4377,7 +4959,9 @@
     "eps3y": 0.08407,
     "eps5y": 0.08407,
     "rev3y": 0.03122,
-    "rev5y": 0.03122
+    "rev5y": 0.03122,
+    "epsNextY": 1.69407,
+    "revNext5y": null
   },
   "MRO": {
     "industry": "",
@@ -4392,7 +4976,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MS": {
     "industry": "Capital Markets",
@@ -4407,7 +4993,9 @@
     "eps3y": 0.18322,
     "eps5y": 0.18322,
     "rev3y": 0.09524,
-    "rev5y": 0.09524
+    "rev5y": 0.09524,
+    "epsNextY": 0.13695,
+    "revNext5y": null
   },
   "MSCI": {
     "industry": "Financial Data & Stock Exchanges",
@@ -4422,7 +5010,9 @@
     "eps3y": 0.134,
     "eps5y": 0.134,
     "rev3y": 0.11708,
-    "rev5y": 0.11708
+    "rev5y": 0.11708,
+    "epsNextY": 0.28751,
+    "revNext5y": null
   },
   "MSI": {
     "industry": "Communication Equipment",
@@ -4437,7 +5027,9 @@
     "eps3y": 0.16679,
     "eps5y": 0.16679,
     "rev3y": 0.08635,
-    "rev5y": 0.08635
+    "rev5y": 0.08635,
+    "epsNextY": 0.49256,
+    "revNext5y": null
   },
   "MTB": {
     "industry": "Banks - Regional",
@@ -4452,7 +5044,9 @@
     "eps3y": 0.13842,
     "eps5y": 0.13842,
     "rev3y": 0.06326,
-    "rev5y": 0.06326
+    "rev5y": 0.06326,
+    "epsNextY": 0.17124,
+    "revNext5y": null
   },
   "MTD": {
     "industry": "Diagnostics & Research",
@@ -4467,7 +5061,9 @@
     "eps3y": 0.02824,
     "eps5y": 0.02824,
     "rev3y": 0.00899,
-    "rev5y": 0.00899
+    "rev5y": 0.00899,
+    "epsNextY": 0.20427,
+    "revNext5y": null
   },
   "NEM": {
     "industry": "Gold",
@@ -4482,7 +5078,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.23912,
-    "rev5y": 0.23912
+    "rev5y": 0.23912,
+    "epsNextY": 0.48372,
+    "revNext5y": null
   },
   "NEE": {
     "industry": "Utilities - Regulated Electric",
@@ -4497,7 +5095,9 @@
     "eps3y": 0.1628,
     "eps5y": 0.1628,
     "rev3y": 0.09365,
-    "rev5y": 0.09365
+    "rev5y": 0.09365,
+    "epsNextY": 0.11872,
+    "revNext5y": null
   },
   "NFLX": {
     "industry": "Entertainment",
@@ -4512,7 +5112,9 @@
     "eps3y": 0.36699,
     "eps5y": 0.36699,
     "rev3y": 0.1264,
-    "rev5y": 0.1264
+    "rev5y": 0.1264,
+    "epsNextY": 0.23964,
+    "revNext5y": null
   },
   "NI": {
     "industry": "Utilities - Regulated Gas",
@@ -4527,7 +5129,9 @@
     "eps3y": 0.02128,
     "eps5y": 0.02128,
     "rev3y": 0.04321,
-    "rev5y": 0.04321
+    "rev5y": 0.04321,
+    "epsNextY": 0.11529,
+    "revNext5y": null
   },
   "NKE": {
     "industry": "Footwear & Accessories",
@@ -4542,7 +5146,9 @@
     "eps3y": -0.17253,
     "eps5y": -0.17253,
     "rev3y": -0.00287,
-    "rev5y": -0.00287
+    "rev5y": -0.00287,
+    "epsNextY": 0.1996,
+    "revNext5y": null
   },
   "NDSN": {
     "industry": "Specialty Industrial Machinery",
@@ -4557,7 +5163,9 @@
     "eps3y": -0.0129,
     "eps5y": -0.0129,
     "rev3y": 0.02527,
-    "rev5y": 0.02527
+    "rev5y": 0.02527,
+    "epsNextY": 0.32573,
+    "revNext5y": null
   },
   "NSC": {
     "industry": "Railroads",
@@ -4572,7 +5180,9 @@
     "eps3y": -0.03705,
     "eps5y": -0.03705,
     "rev3y": -0.015,
-    "rev5y": -0.015
+    "rev5y": -0.015,
+    "epsNextY": 0.13808,
+    "revNext5y": null
   },
   "NTAP": {
     "industry": "Software - Infrastructure",
@@ -4587,7 +5197,9 @@
     "eps3y": 0.11423,
     "eps5y": 0.11423,
     "rev3y": 0.01323,
-    "rev5y": 0.01323
+    "rev5y": 0.01323,
+    "epsNextY": 0.34369,
+    "revNext5y": null
   },
   "NTRS": {
     "industry": "Asset Management",
@@ -4602,7 +5214,9 @@
     "eps3y": 0.12539,
     "eps5y": 0.12539,
     "rev3y": 0.06148,
-    "rev5y": 0.06148
+    "rev5y": 0.06148,
+    "epsNextY": 0.24301,
+    "revNext5y": null
   },
   "NUE": {
     "industry": "Steel",
@@ -4617,7 +5231,9 @@
     "eps3y": -0.36115,
     "eps5y": -0.36115,
     "rev3y": -0.0784,
-    "rev5y": -0.0784
+    "rev5y": -0.0784,
+    "epsNextY": 0.56749,
+    "revNext5y": null
   },
   "NVR": {
     "industry": "Residential Construction",
@@ -4632,7 +5248,9 @@
     "eps3y": -0.04184,
     "eps5y": -0.04184,
     "rev3y": -0.00625,
-    "rev5y": -0.00625
+    "rev5y": -0.00625,
+    "epsNextY": 0.0264,
+    "revNext5y": null
   },
   "NWSA": {
     "industry": "Entertainment",
@@ -4647,7 +5265,9 @@
     "eps3y": 0.25195,
     "eps5y": 0.25195,
     "rev3y": -0.06635,
-    "rev5y": -0.06635
+    "rev5y": -0.06635,
+    "epsNextY": 0.63441,
+    "revNext5y": null
   },
   "O": {
     "industry": "REIT - Retail",
@@ -4662,7 +5282,9 @@
     "eps3y": -0.06251,
     "eps5y": -0.06251,
     "rev3y": 0.19802,
-    "rev5y": 0.19802
+    "rev5y": 0.19802,
+    "epsNextY": 0.41093,
+    "revNext5y": null
   },
   "ODFL": {
     "industry": "Trucking",
@@ -4677,7 +5299,9 @@
     "eps3y": -0.07447,
     "eps5y": -0.07447,
     "rev3y": -0.04244,
-    "rev5y": -0.04244
+    "rev5y": -0.04244,
+    "epsNextY": 0.29279,
+    "revNext5y": null
   },
   "OKE": {
     "industry": "Oil & Gas Midstream",
@@ -4692,7 +5316,9 @@
     "eps3y": 0.12145,
     "eps5y": 0.12145,
     "rev3y": 0.14527,
-    "rev5y": 0.14527
+    "rev5y": 0.14527,
+    "epsNextY": 0.09775,
+    "revNext5y": null
   },
   "OMC": {
     "industry": "Advertising Agencies",
@@ -4707,7 +5333,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.06523,
-    "rev5y": 0.06523
+    "rev5y": 0.06523,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ON": {
     "industry": "Semiconductors",
@@ -4722,7 +5350,9 @@
     "eps3y": -0.59576,
     "eps5y": -0.59576,
     "rev3y": -0.10369,
-    "rev5y": -0.10369
+    "rev5y": -0.10369,
+    "epsNextY": 2.12571,
+    "revNext5y": null
   },
   "ORLY": {
     "industry": "Auto Parts",
@@ -4737,7 +5367,9 @@
     "eps3y": 0.09819,
     "eps5y": 0.09819,
     "rev3y": 0.07261,
-    "rev5y": 0.07261
+    "rev5y": 0.07261,
+    "epsNextY": 0.17369,
+    "revNext5y": null
   },
   "OTIS": {
     "industry": "Specialty Industrial Machinery",
@@ -4752,7 +5384,9 @@
     "eps3y": 0.05708,
     "eps5y": 0.05708,
     "rev3y": 0.01785,
-    "rev5y": 0.01785
+    "rev5y": 0.01785,
+    "epsNextY": 0.25461,
+    "revNext5y": null
   },
   "OXY": {
     "industry": "Oil & Gas E&P",
@@ -4767,7 +5401,9 @@
     "eps3y": -0.50262,
     "eps5y": -0.50262,
     "rev3y": -0.16155,
-    "rev5y": -0.16155
+    "rev5y": -0.16155,
+    "epsNextY": 4.25926,
+    "revNext5y": null
   },
   "PANW": {
     "industry": "Software - Infrastructure",
@@ -4782,7 +5418,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.18788,
-    "rev5y": 0.18788
+    "rev5y": 0.18788,
+    "epsNextY": 1.21106,
+    "revNext5y": null
   },
   "PAYX": {
     "industry": "Software - Application",
@@ -4797,7 +5435,9 @@
     "eps3y": 0.06021,
     "eps5y": 0.06021,
     "rev3y": 0.06506,
-    "rev5y": 0.06506
+    "rev5y": 0.06506,
+    "epsNextY": 0.30201,
+    "revNext5y": null
   },
   "PAYC": {
     "industry": "Software - Application",
@@ -4812,7 +5452,9 @@
     "eps3y": 0.18709,
     "eps5y": 0.18709,
     "rev3y": 0.14266,
-    "rev5y": 0.14266
+    "rev5y": 0.14266,
+    "epsNextY": 0.42204,
+    "revNext5y": null
   },
   "PCAR": {
     "industry": "Farm & Heavy Construction Machinery",
@@ -4827,7 +5469,9 @@
     "eps3y": -0.07763,
     "eps5y": -0.07763,
     "rev3y": -0.00436,
-    "rev5y": -0.00436
+    "rev5y": -0.00436,
+    "epsNextY": 0.44118,
+    "revNext5y": null
   },
   "PCG": {
     "industry": "Utilities - Regulated Electric",
@@ -4842,7 +5486,9 @@
     "eps3y": 0.09047,
     "eps5y": 0.09047,
     "rev3y": 0.04773,
-    "rev5y": 0.04773
+    "rev5y": 0.04773,
+    "epsNextY": 0.41931,
+    "revNext5y": null
   },
   "PEG": {
     "industry": "Utilities - Regulated Electric",
@@ -4857,7 +5503,9 @@
     "eps3y": 0.27104,
     "eps5y": 0.27104,
     "rev3y": 0.07481,
-    "rev5y": 0.07481
+    "rev5y": 0.07481,
+    "epsNextY": 0.03916,
+    "revNext5y": null
   },
   "PEP": {
     "industry": "Beverages - Non-Alcoholic",
@@ -4872,7 +5520,9 @@
     "eps3y": -0.02343,
     "eps5y": -0.02343,
     "rev3y": 0.02826,
-    "rev5y": 0.02826
+    "rev5y": 0.02826,
+    "epsNextY": 0.43828,
+    "revNext5y": null
   },
   "PFE": {
     "industry": "Drug Manufacturers - General",
@@ -4887,7 +5537,9 @@
     "eps3y": -0.3742,
     "eps5y": -0.3742,
     "rev3y": -0.14798,
-    "rev5y": -0.14798
+    "rev5y": -0.14798,
+    "epsNextY": 1.16574,
+    "revNext5y": null
   },
   "PFG": {
     "industry": "Asset Management",
@@ -4902,7 +5554,9 @@
     "eps3y": -0.3451,
     "eps5y": -0.3451,
     "rev3y": -0.03772,
-    "rev5y": -0.03772
+    "rev5y": -0.03772,
+    "epsNextY": 0.4651,
+    "revNext5y": null
   },
   "PGR": {
     "industry": "Insurance - Property & Casualty",
@@ -4917,7 +5571,9 @@
     "eps3y": 1.53082,
     "eps5y": 1.53082,
     "rev3y": 0.20904,
-    "rev5y": 0.20904
+    "rev5y": 0.20904,
+    "epsNextY": -0.17557,
+    "revNext5y": null
   },
   "PH": {
     "industry": "Specialty Industrial Machinery",
@@ -4932,7 +5588,9 @@
     "eps3y": 0.39032,
     "eps5y": 0.39032,
     "rev3y": 0.07763,
-    "rev5y": 0.07763
+    "rev5y": 0.07763,
+    "epsNextY": 0.25471,
+    "revNext5y": null
   },
   "PHM": {
     "industry": "Residential Construction",
@@ -4947,7 +5605,9 @@
     "eps3y": 0.0042,
     "eps5y": 0.0042,
     "rev3y": 0.02655,
-    "rev5y": 0.02655
+    "rev5y": 0.02655,
+    "epsNextY": 0.08059,
+    "revNext5y": null
   },
   "PKG": {
     "industry": "Packaging & Containers",
@@ -4962,7 +5622,9 @@
     "eps3y": -0.08064,
     "eps5y": -0.08064,
     "rev3y": 0.01971,
-    "rev5y": 0.01971
+    "rev5y": 0.01971,
+    "epsNextY": 0.49072,
+    "revNext5y": null
   },
   "PLD": {
     "industry": "REIT - Industrial",
@@ -4977,7 +5639,9 @@
     "eps3y": -0.05779,
     "eps5y": -0.05779,
     "rev3y": 0.13741,
-    "rev5y": 0.13741
+    "rev5y": 0.13741,
+    "epsNextY": -0.14626,
+    "revNext5y": null
   },
   "PM": {
     "industry": "Tobacco",
@@ -4992,7 +5656,9 @@
     "eps3y": 0.07697,
     "eps5y": 0.07697,
     "rev3y": 0.0857,
-    "rev5y": 0.0857
+    "rev5y": 0.0857,
+    "epsNextY": 0.28546,
+    "revNext5y": null
   },
   "PNC": {
     "industry": "Banks - Regional",
@@ -5007,7 +5673,9 @@
     "eps3y": 0.06198,
     "eps5y": 0.06198,
     "rev3y": 0.03008,
-    "rev5y": 0.03008
+    "rev5y": 0.03008,
+    "epsNextY": 0.22203,
+    "revNext5y": null
   },
   "POOL": {
     "industry": "Industrial Distribution",
@@ -5022,7 +5690,9 @@
     "eps3y": -0.16773,
     "eps5y": -0.16773,
     "rev3y": -0.05054,
-    "rev5y": -0.05054
+    "rev5y": -0.05054,
+    "epsNextY": 0.10436,
+    "revNext5y": null
   },
   "PPG": {
     "industry": "Specialty Chemicals",
@@ -5037,7 +5707,9 @@
     "eps3y": 0.1705,
     "eps5y": 0.1705,
     "rev3y": 0.00554,
-    "rev5y": 0.00554
+    "rev5y": 0.00554,
+    "epsNextY": 0.24278,
+    "revNext5y": null
   },
   "PPL": {
     "industry": "Utilities - Regulated Electric",
@@ -5052,7 +5724,9 @@
     "eps3y": 0.16191,
     "eps5y": 0.16191,
     "rev3y": 0.04595,
-    "rev5y": 0.04595
+    "rev5y": 0.04595,
+    "epsNextY": 0.2987,
+    "revNext5y": null
   },
   "PTC": {
     "industry": "Software - Application",
@@ -5067,7 +5741,9 @@
     "eps3y": 0.3185,
     "eps5y": 0.3185,
     "rev3y": 0.12315,
-    "rev5y": 0.12315
+    "rev5y": 0.12315,
+    "epsNextY": -0.16921,
+    "revNext5y": null
   },
   "PSA": {
     "industry": "REIT - Industrial",
@@ -5082,7 +5758,9 @@
     "eps3y": -0.27416,
     "eps5y": -0.27416,
     "rev3y": 0.04875,
-    "rev5y": 0.04875
+    "rev5y": 0.04875,
+    "epsNextY": 0.04437,
+    "revNext5y": null
   },
   "PSX": {
     "industry": "Oil & Gas Refining & Marketing",
@@ -5097,7 +5775,9 @@
     "eps3y": -0.22628,
     "eps5y": -0.22628,
     "rev3y": -0.07998,
-    "rev5y": -0.07998
+    "rev5y": -0.07998,
+    "epsNextY": 0.68116,
+    "revNext5y": null
   },
   "PYPL": {
     "industry": "Credit Services",
@@ -5112,7 +5792,9 @@
     "eps3y": 0.37507,
     "eps5y": 0.37507,
     "rev3y": 0.06427,
-    "rev5y": 0.06427
+    "rev5y": 0.06427,
+    "epsNextY": 0.08382,
+    "revNext5y": null
   },
   "QRVO": {
     "industry": "Semiconductors",
@@ -5127,7 +5809,9 @@
     "eps3y": 0.52466,
     "eps5y": 0.52466,
     "rev3y": 0.01009,
-    "rev5y": 0.01009
+    "rev5y": 0.01009,
+    "epsNextY": 1.16067,
+    "revNext5y": null
   },
   "RL": {
     "industry": "Apparel Manufacturing",
@@ -5142,7 +5826,9 @@
     "eps3y": 0.25938,
     "eps5y": 0.25938,
     "rev3y": 0.07989,
-    "rev5y": 0.07989
+    "rev5y": 0.07989,
+    "epsNextY": 0.34656,
+    "revNext5y": null
   },
   "RCL": {
     "industry": "Travel Services",
@@ -5157,7 +5843,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.26593,
-    "rev5y": 0.26593
+    "rev5y": 0.26593,
+    "epsNextY": 0.21989,
+    "revNext5y": null
   },
   "REG": {
     "industry": "REIT - Retail",
@@ -5172,7 +5860,9 @@
     "eps3y": -0.00239,
     "eps5y": -0.00239,
     "rev3y": 0.0827,
-    "rev5y": 0.0827
+    "rev5y": 0.0827,
+    "epsNextY": -0.13409,
+    "revNext5y": null
   },
   "REGN": {
     "industry": "Biotechnology",
@@ -5187,7 +5877,9 @@
     "eps3y": 0.02064,
     "eps5y": 0.02064,
     "rev3y": 0.0562,
-    "rev5y": 0.0562
+    "rev5y": 0.0562,
+    "epsNextY": 0.31273,
+    "revNext5y": null
   },
   "RF": {
     "industry": "Banks - Regional",
@@ -5202,7 +5894,9 @@
     "eps3y": 0.0029,
     "eps5y": 0.0029,
     "rev3y": 0.01652,
-    "rev5y": 0.01652
+    "rev5y": 0.01652,
+    "epsNextY": 0.18466,
+    "revNext5y": null
   },
   "RJF": {
     "industry": "Asset Management",
@@ -5217,7 +5911,9 @@
     "eps3y": 0.1372,
     "eps5y": 0.1372,
     "rev3y": 0.08453,
-    "rev5y": 0.08453
+    "rev5y": 0.08453,
+    "epsNextY": 0.26443,
+    "revNext5y": null
   },
   "RMD": {
     "industry": "Medical Instruments & Supplies",
@@ -5232,7 +5928,9 @@
     "eps3y": 0.2851,
     "eps5y": 0.2851,
     "rev3y": 0.12879,
-    "rev5y": 0.12879
+    "rev5y": 0.12879,
+    "epsNextY": 0.17625,
+    "revNext5y": null
   },
   "ROK": {
     "industry": "Specialty Industrial Machinery",
@@ -5247,7 +5945,9 @@
     "eps3y": -0.01219,
     "eps5y": -0.01219,
     "rev3y": 0.02438,
-    "rev5y": 0.02438
+    "rev5y": 0.02438,
+    "epsNextY": 0.50544,
+    "revNext5y": null
   },
   "ROL": {
     "industry": "Personal Services",
@@ -5262,7 +5962,9 @@
     "eps3y": 0.13272,
     "eps5y": 0.13272,
     "rev3y": 0.11739,
-    "rev5y": 0.11739
+    "rev5y": 0.11739,
+    "epsNextY": 0.2823,
+    "revNext5y": null
   },
   "ROP": {
     "industry": "Software - Application",
@@ -5277,7 +5979,9 @@
     "eps3y": -0.30675,
     "eps5y": -0.30675,
     "rev3y": 0.13732,
-    "rev5y": 0.13732
+    "rev5y": 0.13732,
+    "epsNextY": 0.49159,
+    "revNext5y": null
   },
   "ROST": {
     "industry": "Apparel Retail",
@@ -5292,7 +5996,9 @@
     "eps3y": 0.14817,
     "eps5y": 0.14817,
     "rev3y": 0.06762,
-    "rev5y": 0.06762
+    "rev5y": 0.06762,
+    "epsNextY": 0.19622,
+    "revNext5y": null
   },
   "RSG": {
     "industry": "Waste Management",
@@ -5307,7 +6013,9 @@
     "eps3y": 0.13434,
     "eps5y": 0.13434,
     "rev3y": 0.07085,
-    "rev5y": 0.07085
+    "rev5y": 0.07085,
+    "epsNextY": 0.16647,
+    "revNext5y": null
   },
   "RTX": {
     "industry": "Aerospace & Defense",
@@ -5322,7 +6030,9 @@
     "eps3y": 0.12561,
     "eps5y": 0.12561,
     "rev3y": 0.09723,
-    "rev5y": 0.09723
+    "rev5y": 0.09723,
+    "epsNextY": 0.41805,
+    "revNext5y": null
   },
   "RVTY": {
     "industry": "Diagnostics & Research",
@@ -5337,7 +6047,9 @@
     "eps3y": -0.23286,
     "eps5y": -0.23286,
     "rev3y": -0.04815,
-    "rev5y": -0.04815
+    "rev5y": -0.04815,
+    "epsNextY": 1.79367,
+    "revNext5y": null
   },
   "SBAC": {
     "industry": "REIT - Specialty",
@@ -5352,7 +6064,9 @@
     "eps3y": 0.32041,
     "eps5y": 0.32041,
     "rev3y": 0.02249,
-    "rev5y": 0.02249
+    "rev5y": 0.02249,
+    "epsNextY": -0.14592,
+    "revNext5y": null
   },
   "SBUX": {
     "industry": "Restaurants",
@@ -5367,7 +6081,9 @@
     "eps3y": -0.17042,
     "eps5y": -0.17042,
     "rev3y": 0.0486,
-    "rev5y": 0.0486
+    "rev5y": 0.0486,
+    "epsNextY": 1.31211,
+    "revNext5y": null
   },
   "SCHW": {
     "industry": "Capital Markets",
@@ -5382,7 +6098,9 @@
     "eps3y": 0.09882,
     "eps5y": 0.09882,
     "rev3y": 0.04834,
-    "rev5y": 0.04834
+    "rev5y": 0.04834,
+    "epsNextY": 0.43517,
+    "revNext5y": null
   },
   "SEE": {
     "industry": "Packaging & Containers",
@@ -5397,7 +6115,9 @@
     "eps3y": 0.00688,
     "eps5y": 0.00688,
     "rev3y": -0.01695,
-    "rev5y": -0.01695
+    "rev5y": -0.01695,
+    "epsNextY": 0.24476,
+    "revNext5y": null
   },
   "SHW": {
     "industry": "Specialty Chemicals",
@@ -5412,7 +6132,9 @@
     "eps3y": 0.09818,
     "eps5y": 0.09818,
     "rev3y": 0.02101,
-    "rev5y": 0.02101
+    "rev5y": 0.02101,
+    "epsNextY": 0.27453,
+    "revNext5y": null
   },
   "SJM": {
     "industry": "Packaged Foods",
@@ -5427,7 +6149,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.02943,
-    "rev5y": 0.02943
+    "rev5y": 0.02943,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SLB": {
     "industry": "Oil & Gas Equipment & Services",
@@ -5442,7 +6166,9 @@
     "eps3y": -0.00692,
     "eps5y": -0.00692,
     "rev3y": 0.08326,
-    "rev5y": 0.08326
+    "rev5y": 0.08326,
+    "epsNextY": 0.47438,
+    "revNext5y": null
   },
   "SNA": {
     "industry": "Tools & Accessories",
@@ -5457,7 +6183,9 @@
     "eps3y": 0.04429,
     "eps5y": 0.04429,
     "rev3y": 0.02114,
-    "rev5y": 0.02114
+    "rev5y": 0.02114,
+    "epsNextY": 0.10111,
+    "revNext5y": null
   },
   "SNPS": {
     "industry": "Software - Infrastructure",
@@ -5472,7 +6200,9 @@
     "eps3y": 0.08077,
     "eps5y": 0.08077,
     "rev3y": 0.15187,
-    "rev5y": 0.15187
+    "rev5y": 0.15187,
+    "epsNextY": 2.93624,
+    "revNext5y": null
   },
   "SO": {
     "industry": "Utilities - Regulated Electric",
@@ -5487,7 +6217,9 @@
     "eps3y": 0.06302,
     "eps5y": 0.06302,
     "rev3y": 0.00311,
-    "rev5y": 0.00311
+    "rev5y": 0.00311,
+    "epsNextY": 0.25755,
+    "revNext5y": null
   },
   "SPGI": {
     "industry": "Financial Data & Stock Exchanges",
@@ -5502,7 +6234,9 @@
     "eps3y": 0.12694,
     "eps5y": 0.12694,
     "rev3y": 0.11108,
-    "rev5y": 0.11108
+    "rev5y": 0.11108,
+    "epsNextY": 0.40268,
+    "revNext5y": null
   },
   "SPG": {
     "industry": "REIT - Retail",
@@ -5517,7 +6251,9 @@
     "eps3y": 0.29531,
     "eps5y": 0.29531,
     "rev3y": 0.06348,
-    "rev5y": 0.06348
+    "rev5y": 0.06348,
+    "epsNextY": -0.52088,
+    "revNext5y": null
   },
   "SRE": {
     "industry": "Utilities - Diversified",
@@ -5532,7 +6268,9 @@
     "eps3y": -0.06133,
     "eps5y": -0.06133,
     "rev3y": -0.01731,
-    "rev5y": -0.01731
+    "rev5y": -0.01731,
+    "epsNextY": 0.88335,
+    "revNext5y": null
   },
   "STT": {
     "industry": "Asset Management",
@@ -5547,7 +6285,9 @@
     "eps3y": 0.09469,
     "eps5y": 0.09469,
     "rev3y": 0.04822,
-    "rev5y": 0.04822
+    "rev5y": 0.04822,
+    "epsNextY": 0.40254,
+    "revNext5y": null
   },
   "STLD": {
     "industry": "Steel",
@@ -5562,7 +6302,9 @@
     "eps3y": -0.27517,
     "eps5y": -0.27517,
     "rev3y": -0.06533,
-    "rev5y": -0.06533
+    "rev5y": -0.06533,
+    "epsNextY": 0.82334,
+    "revNext5y": null
   },
   "STE": {
     "industry": "Medical Devices",
@@ -5577,7 +6319,9 @@
     "eps3y": 0.95295,
     "eps5y": 0.95295,
     "rev3y": 0.08934,
-    "rev5y": 0.08934
+    "rev5y": 0.08934,
+    "epsNextY": 0.50685,
+    "revNext5y": null
   },
   "STX": {
     "industry": "Computer Hardware",
@@ -5592,7 +6336,9 @@
     "eps3y": -0.33456,
     "eps5y": -0.33456,
     "rev3y": -0.07944,
-    "rev5y": -0.07944
+    "rev5y": -0.07944,
+    "epsNextY": 1.50203,
+    "revNext5y": null
   },
   "SWK": {
     "industry": "Tools & Accessories",
@@ -5607,7 +6353,9 @@
     "eps3y": -0.28011,
     "eps5y": -0.28011,
     "rev3y": -0.0371,
-    "rev5y": -0.0371
+    "rev5y": -0.0371,
+    "epsNextY": 1.53988,
+    "revNext5y": null
   },
   "SWKS": {
     "industry": "Semiconductors",
@@ -5622,7 +6370,9 @@
     "eps3y": -0.26713,
     "eps5y": -0.26713,
     "rev3y": -0.09345,
-    "rev5y": -0.09345
+    "rev5y": -0.09345,
+    "epsNextY": 1.14416,
+    "revNext5y": null
   },
   "SYF": {
     "industry": "Credit Services",
@@ -5637,7 +6387,9 @@
     "eps3y": 0.14861,
     "eps5y": 0.14861,
     "rev3y": 0.08669,
-    "rev5y": 0.08669
+    "rev5y": 0.08669,
+    "epsNextY": 0.08529,
+    "revNext5y": null
   },
   "SYK": {
     "industry": "Medical Devices",
@@ -5652,7 +6404,9 @@
     "eps3y": 0.10868,
     "eps5y": 0.10868,
     "rev3y": 0.1083,
-    "rev5y": 0.1083
+    "rev5y": 0.1083,
+    "epsNextY": 0.93429,
+    "revNext5y": null
   },
   "SYY": {
     "industry": "Food Distribution",
@@ -5667,7 +6421,9 @@
     "eps3y": 0.12029,
     "eps5y": 0.12029,
     "rev3y": 0.05837,
-    "rev5y": 0.05837
+    "rev5y": 0.05837,
+    "epsNextY": 0.37619,
+    "revNext5y": null
   },
   "T": {
     "industry": "Telecom Services",
@@ -5682,7 +6438,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.01337,
-    "rev5y": 0.01337
+    "rev5y": 0.01337,
+    "epsNextY": -0.16014,
+    "revNext5y": null
   },
   "TAP": {
     "industry": "Beverages - Brewers",
@@ -5697,7 +6455,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.01352,
-    "rev5y": 0.01352
+    "rev5y": 0.01352,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "TDG": {
     "industry": "Aerospace & Defense",
@@ -5712,7 +6472,9 @@
     "eps3y": 0.33775,
     "eps5y": 0.33775,
     "rev3y": 0.17606,
-    "rev5y": 0.17606
+    "rev5y": 0.17606,
+    "epsNextY": 0.46461,
+    "revNext5y": null
   },
   "TDY": {
     "industry": "Scientific & Technical Instruments",
@@ -5727,7 +6489,9 @@
     "eps3y": 0.04815,
     "eps5y": 0.04815,
     "rev3y": 0.0386,
-    "rev5y": 0.0386
+    "rev5y": 0.0386,
+    "epsNextY": 0.3213,
+    "revNext5y": null
   },
   "TEL": {
     "industry": "Electronic Components",
@@ -5742,7 +6506,9 @@
     "eps3y": -0.06231,
     "eps5y": -0.06231,
     "rev3y": 0.01969,
-    "rev5y": 0.01969
+    "rev5y": 0.01969,
+    "epsNextY": 0.2921,
+    "revNext5y": null
   },
   "TER": {
     "industry": "Semiconductor Equipment & Materials",
@@ -5757,7 +6523,9 @@
     "eps3y": -0.08347,
     "eps5y": -0.08347,
     "rev3y": 0.00368,
-    "rev5y": 0.00368
+    "rev5y": 0.00368,
+    "epsNextY": 0.76171,
+    "revNext5y": null
   },
   "TFC": {
     "industry": "Banks - Regional",
@@ -5772,7 +6540,9 @@
     "eps3y": -0.0462,
     "eps5y": -0.0462,
     "rev3y": 0.00574,
-    "rev5y": 0.00574
+    "rev5y": 0.00574,
+    "epsNextY": 0.26856,
+    "revNext5y": null
   },
   "TFX": {
     "industry": "Medical Instruments & Supplies",
@@ -5787,7 +6557,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.10623,
-    "rev5y": -0.10623
+    "rev5y": -0.10623,
+    "epsNextY": 148.46757,
+    "revNext5y": null
   },
   "TGT": {
     "industry": "Discount Stores",
@@ -5802,7 +6574,9 @@
     "eps3y": 0.1067,
     "eps5y": 0.1067,
     "rev3y": -0.01344,
-    "rev5y": -0.01344
+    "rev5y": -0.01344,
+    "epsNextY": 0.17246,
+    "revNext5y": null
   },
   "TJX": {
     "industry": "Apparel Retail",
@@ -5817,7 +6591,9 @@
     "eps3y": 0.17908,
     "eps5y": 0.17908,
     "rev3y": 0.0653,
-    "rev5y": 0.0653
+    "rev5y": 0.0653,
+    "epsNextY": 0.12046,
+    "revNext5y": null
   },
   "TMUS": {
     "industry": "Telecom Services",
@@ -5832,7 +6608,9 @@
     "eps3y": 0.67627,
     "eps5y": 0.67627,
     "rev3y": 0.03534,
-    "rev5y": 0.03534
+    "rev5y": 0.03534,
+    "epsNextY": 0.49919,
+    "revNext5y": null
   },
   "TMO": {
     "industry": "Diagnostics & Research",
@@ -5847,7 +6625,9 @@
     "eps3y": 0.00038,
     "eps5y": 0.00038,
     "rev3y": -0.00266,
-    "rev5y": -0.00266
+    "rev5y": -0.00266,
+    "epsNextY": 0.50239,
+    "revNext5y": null
   },
   "TRV": {
     "industry": "Insurance - Property & Casualty",
@@ -5862,7 +6642,9 @@
     "eps3y": 0.32699,
     "eps5y": 0.32699,
     "rev3y": 0.0979,
-    "rev5y": 0.0979
+    "rev5y": 0.0979,
+    "epsNextY": -0.14833,
+    "revNext5y": null
   },
   "TRGP": {
     "industry": "Oil & Gas Midstream",
@@ -5877,7 +6659,9 @@
     "eps3y": 0.29758,
     "eps5y": 0.29758,
     "rev3y": -0.06645,
-    "rev5y": -0.06645
+    "rev5y": -0.06645,
+    "epsNextY": 0.25823,
+    "revNext5y": null
   },
   "TRMB": {
     "industry": "Scientific & Technical Instruments",
@@ -5892,7 +6676,9 @@
     "eps3y": -0.00742,
     "eps5y": -0.00742,
     "rev3y": -0.00814,
-    "rev5y": -0.00814
+    "rev5y": -0.00814,
+    "epsNextY": 1.13012,
+    "revNext5y": null
   },
   "TSCO": {
     "industry": "Specialty Retail",
@@ -5907,7 +6693,9 @@
     "eps3y": 0.01906,
     "eps5y": 0.01906,
     "rev3y": 0.03005,
-    "rev5y": 0.03005
+    "rev5y": 0.03005,
+    "epsNextY": 0.13997,
+    "revNext5y": null
   },
   "TSN": {
     "industry": "Farm Products",
@@ -5922,7 +6710,9 @@
     "eps3y": -0.46957,
     "eps5y": -0.46957,
     "rev3y": 0.0072,
-    "rev5y": 0.0072
+    "rev5y": 0.0072,
+    "epsNextY": 2.58973,
+    "revNext5y": null
   },
   "TTWO": {
     "industry": "Electronic Gaming & Multimedia",
@@ -5937,7 +6727,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.07555,
-    "rev5y": 0.07555
+    "rev5y": 0.07555,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "TT": {
     "industry": "Building Products & Equipment",
@@ -5952,7 +6744,9 @@
     "eps3y": 0.19472,
     "eps5y": 0.19472,
     "rev3y": 0.10064,
-    "rev5y": 0.10064
+    "rev5y": 0.10064,
+    "epsNextY": 0.31667,
+    "revNext5y": null
   },
   "TSM": {
     "industry": "Semiconductors",
@@ -5967,7 +6761,9 @@
     "eps3y": 0.18646,
     "eps5y": 0.18646,
     "rev3y": 0.18938,
-    "rev5y": 0.18938
+    "rev5y": 0.18938,
+    "epsNextY": 0.67095,
+    "revNext5y": null
   },
   "TXT": {
     "industry": "Aerospace & Defense",
@@ -5982,7 +6778,9 @@
     "eps3y": 0.08128,
     "eps5y": 0.08128,
     "rev3y": 0.04768,
-    "rev5y": 0.04768
+    "rev5y": 0.04768,
+    "epsNextY": 0.3925,
+    "revNext5y": null
   },
   "TYL": {
     "industry": "Software - Application",
@@ -5997,7 +6795,9 @@
     "eps3y": 0.2283,
     "eps5y": 0.2283,
     "rev3y": 0.08025,
-    "rev5y": 0.08025
+    "rev5y": 0.08025,
+    "epsNextY": 0.98065,
+    "revNext5y": null
   },
   "UAL": {
     "industry": "Airlines",
@@ -6012,7 +6812,9 @@
     "eps3y": 0.66288,
     "eps5y": 0.66288,
     "rev3y": 0.09529,
-    "rev5y": 0.09529
+    "rev5y": 0.09529,
+    "epsNextY": 0.27168,
+    "revNext5y": null
   },
   "UDR": {
     "industry": "REIT - Residential",
@@ -6027,7 +6829,9 @@
     "eps3y": 0.63193,
     "eps5y": 0.63193,
     "rev3y": 0.04111,
-    "rev5y": 0.04111
+    "rev5y": 0.04111,
+    "epsNextY": -0.59184,
+    "revNext5y": null
   },
   "UHS": {
     "industry": "Medical Care Facilities",
@@ -6042,7 +6846,9 @@
     "eps3y": 0.36394,
     "eps5y": 0.36394,
     "rev3y": 0.09026,
-    "rev5y": 0.09026
+    "rev5y": 0.09026,
+    "epsNextY": 0.06414,
+    "revNext5y": null
   },
   "ULTA": {
     "industry": "Specialty Retail",
@@ -6057,7 +6863,9 @@
     "eps3y": 0.12036,
     "eps5y": 0.12036,
     "rev3y": 0.06676,
-    "rev5y": 0.06676
+    "rev5y": 0.06676,
+    "epsNextY": 0.23584,
+    "revNext5y": null
   },
   "UNH": {
     "industry": "Healthcare Plans",
@@ -6072,7 +6880,9 @@
     "eps3y": -0.14892,
     "eps5y": -0.14892,
     "rev3y": 0.11352,
-    "rev5y": 0.11352
+    "rev5y": 0.11352,
+    "epsNextY": 0.57276,
+    "revNext5y": null
   },
   "UNP": {
     "industry": "Railroads",
@@ -6087,7 +6897,9 @@
     "eps3y": 0.02205,
     "eps5y": 0.02205,
     "rev3y": -0.00492,
-    "rev5y": -0.00492
+    "rev5y": -0.00492,
+    "epsNextY": 0.12638,
+    "revNext5y": null
   },
   "UPS": {
     "industry": "Integrated Freight & Logistics",
@@ -6102,7 +6914,9 @@
     "eps3y": -0.2091,
     "eps5y": -0.2091,
     "rev3y": -0.0404,
-    "rev5y": -0.0404
+    "rev5y": -0.0404,
+    "epsNextY": 0.29488,
+    "revNext5y": null
   },
   "URI": {
     "industry": "Rental & Leasing Services",
@@ -6117,7 +6931,9 @@
     "eps3y": 0.09159,
     "eps5y": 0.09159,
     "rev3y": 0.1141,
-    "rev5y": 0.1141
+    "rev5y": 0.1141,
+    "epsNextY": 0.37558,
+    "revNext5y": null
   },
   "USB": {
     "industry": "Banks - Regional",
@@ -6132,7 +6948,9 @@
     "eps3y": 0.0778,
     "eps5y": 0.0778,
     "rev3y": 0.05676,
-    "rev5y": 0.05676
+    "rev5y": 0.05676,
+    "epsNextY": 0.18477,
+    "revNext5y": null
   },
   "V": {
     "industry": "Credit Services",
@@ -6147,7 +6965,9 @@
     "eps3y": 0.13391,
     "eps5y": 0.13391,
     "rev3y": 0.10921,
-    "rev5y": 0.10921
+    "rev5y": 0.10921,
+    "epsNextY": 0.29476,
+    "revNext5y": null
   },
   "VICI": {
     "industry": "REIT - Diversified",
@@ -6162,7 +6982,9 @@
     "eps3y": 0.27139,
     "eps5y": 0.27139,
     "rev3y": 0.1549,
-    "rev5y": 0.1549
+    "rev5y": 0.1549,
+    "epsNextY": 0.00514,
+    "revNext5y": null
   },
   "VRSN": {
     "industry": "Software - Infrastructure",
@@ -6177,7 +6999,9 @@
     "eps3y": 0.12269,
     "eps5y": 0.12269,
     "rev3y": 0.0515,
-    "rev5y": 0.0515
+    "rev5y": 0.0515,
+    "epsNextY": 0.17574,
+    "revNext5y": null
   },
   "VRSK": {
     "industry": "Consulting Services",
@@ -6192,7 +7016,9 @@
     "eps3y": 0.02477,
     "eps5y": 0.02477,
     "rev3y": 0.0716,
-    "rev5y": 0.0716
+    "rev5y": 0.0716,
+    "epsNextY": 0.31771,
+    "revNext5y": null
   },
   "VRTX": {
     "industry": "Biotechnology",
@@ -6207,7 +7033,9 @@
     "eps3y": 0.06029,
     "eps5y": 0.06029,
     "rev3y": 0.10352,
-    "rev5y": 0.10352
+    "rev5y": 0.10352,
+    "epsNextY": 0.27504,
+    "revNext5y": null
   },
   "VTRS": {
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -6222,7 +7050,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.04197,
-    "rev5y": -0.04197
+    "rev5y": -0.04197,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "VLO": {
     "industry": "Oil & Gas Refining & Marketing",
@@ -6237,11 +7067,13 @@
     "eps3y": -0.36127,
     "eps5y": -0.36127,
     "rev3y": -0.11397,
-    "rev5y": -0.11397
+    "rev5y": -0.11397,
+    "epsNextY": 0.46,
+    "revNext5y": null
   },
   "VMC": {
     "industry": "Building Materials",
-    "trailingPE": 32.674145,
+    "trailingPE": 32.790287,
     "forwardPE": 25.559326,
     "pegRatio": 2.96,
     "debtToEquity": 61.249,
@@ -6252,7 +7084,9 @@
     "eps3y": 0.23519,
     "eps5y": 0.23519,
     "rev3y": 0.02774,
-    "rev5y": 0.02774
+    "rev5y": 0.02774,
+    "epsNextY": 0.28291,
+    "revNext5y": null
   },
   "VTR": {
     "industry": "REIT - Healthcare Facilities",
@@ -6267,7 +7101,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.1221,
-    "rev5y": 0.1221
+    "rev5y": 0.1221,
+    "epsNextY": 0.5394,
+    "revNext5y": null
   },
   "VZ": {
     "industry": "Telecom Services",
@@ -6282,7 +7118,9 @@
     "eps3y": -0.07077,
     "eps5y": -0.07077,
     "rev3y": 0.00329,
-    "rev5y": 0.00329
+    "rev5y": 0.00329,
+    "epsNextY": 0.28629,
+    "revNext5y": null
   },
   "WAB": {
     "industry": "Railroads",
@@ -6297,7 +7135,9 @@
     "eps3y": 0.25505,
     "eps5y": 0.25505,
     "rev3y": 0.10122,
-    "rev5y": 0.10122
+    "rev5y": 0.10122,
+    "epsNextY": 0.71319,
+    "revNext5y": null
   },
   "WAT": {
     "industry": "Diagnostics & Research",
@@ -6312,7 +7152,9 @@
     "eps3y": -0.02909,
     "eps5y": -0.02909,
     "rev3y": 0.02123,
-    "rev5y": 0.02123
+    "rev5y": 0.02123,
+    "epsNextY": 1.09101,
+    "revNext5y": null
   },
   "WBA": {
     "industry": "",
@@ -6327,7 +7169,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "WBD": {
     "industry": "Entertainment",
@@ -6342,7 +7186,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.03318,
-    "rev5y": 0.03318
+    "rev5y": 0.03318,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "WDC": {
     "industry": "Computer Hardware",
@@ -6357,7 +7203,9 @@
     "eps3y": 0.03351,
     "eps5y": 0.03351,
     "rev3y": -0.20284,
-    "rev5y": -0.20284
+    "rev5y": -0.20284,
+    "epsNextY": 0.0528,
+    "revNext5y": null
   },
   "WEC": {
     "industry": "Utilities - Regulated Electric",
@@ -6372,11 +7220,13 @@
     "eps3y": 0.02763,
     "eps5y": 0.02763,
     "rev3y": 0.00699,
-    "rev5y": 0.00699
+    "rev5y": 0.00699,
+    "epsNextY": 0.22035,
+    "revNext5y": null
   },
   "WELL": {
     "industry": "REIT - Healthcare Facilities",
-    "trailingPE": 101.10096,
+    "trailingPE": 102.08253,
     "forwardPE": 62.58631,
     "pegRatio": 3.66,
     "debtToEquity": 44.486,
@@ -6387,7 +7237,9 @@
     "eps3y": 0.65686,
     "eps5y": 0.65686,
     "rev3y": 0.22689,
-    "rev5y": 0.22689
+    "rev5y": 0.22689,
+    "epsNextY": 0.63107,
+    "revNext5y": null
   },
   "WFC": {
     "industry": "Banks - Diversified",
@@ -6402,7 +7254,9 @@
     "eps3y": 0.25992,
     "eps5y": 0.25992,
     "rev3y": 0.04019,
-    "rev5y": 0.04019
+    "rev5y": 0.04019,
+    "epsNextY": 0.22088,
+    "revNext5y": null
   },
   "WM": {
     "industry": "Waste Management",
@@ -6417,7 +7271,9 @@
     "eps3y": 0.07429,
     "eps5y": 0.07429,
     "rev3y": 0.08563,
-    "rev5y": 0.08563
+    "rev5y": 0.08563,
+    "epsNextY": 0.34015,
+    "revNext5y": null
   },
   "WMB": {
     "industry": "Oil & Gas Midstream",
@@ -6432,7 +7288,9 @@
     "eps3y": 0.08401,
     "eps5y": 0.08401,
     "rev3y": 0.02909,
-    "rev5y": 0.02909
+    "rev5y": 0.02909,
+    "epsNextY": 0.12557,
+    "revNext5y": null
   },
   "WMT": {
     "industry": "Discount Stores",
@@ -6447,7 +7305,9 @@
     "eps3y": 0.24205,
     "eps5y": 0.24205,
     "rev3y": 0.05272,
-    "rev5y": 0.05272
+    "rev5y": 0.05272,
+    "epsNextY": 0.15804,
+    "revNext5y": null
   },
   "WRB": {
     "industry": "Insurance - Property & Casualty",
@@ -6462,7 +7322,9 @@
     "eps3y": 0.10431,
     "eps5y": 0.10431,
     "rev3y": 0.09282,
-    "rev5y": 0.09282
+    "rev5y": 0.09282,
+    "epsNextY": 0.02265,
+    "revNext5y": null
   },
   "WST": {
     "industry": "Medical Instruments & Supplies",
@@ -6477,7 +7339,9 @@
     "eps3y": -0.04615,
     "eps5y": -0.04615,
     "rev3y": 0.02116,
-    "rev5y": 0.02116
+    "rev5y": 0.02116,
+    "epsNextY": 0.27889,
+    "revNext5y": null
   },
   "WTW": {
     "industry": "Insurance Brokers",
@@ -6492,7 +7356,9 @@
     "eps3y": 0.21993,
     "eps5y": 0.21993,
     "rev3y": 0.0307,
-    "rev5y": 0.0307
+    "rev5y": 0.0307,
+    "epsNextY": 0.30202,
+    "revNext5y": null
   },
   "WY": {
     "industry": "REIT - Specialty",
@@ -6507,7 +7373,9 @@
     "eps3y": -0.43762,
     "eps5y": -0.43762,
     "rev3y": -0.12149,
-    "rev5y": -0.12149
+    "rev5y": -0.12149,
+    "epsNextY": 0.24464,
+    "revNext5y": null
   },
   "WYNN": {
     "industry": "Resorts & Casinos",
@@ -6522,7 +7390,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.23856,
-    "rev5y": 0.23856
+    "rev5y": 0.23856,
+    "epsNextY": 0.55965,
+    "revNext5y": null
   },
   "XEL": {
     "industry": "Utilities - Regulated Electric",
@@ -6537,7 +7407,9 @@
     "eps3y": 0.02654,
     "eps5y": 0.02654,
     "rev3y": -0.01416,
-    "rev5y": -0.01416
+    "rev5y": -0.01416,
+    "epsNextY": 0.30603,
+    "revNext5y": null
   },
   "XYL": {
     "industry": "Specialty Industrial Machinery",
@@ -6552,7 +7424,9 @@
     "eps3y": 0.25885,
     "eps5y": 0.25885,
     "rev3y": 0.17836,
-    "rev5y": 0.17836
+    "rev5y": 0.17836,
+    "epsNextY": 0.51568,
+    "revNext5y": null
   },
   "YUM": {
     "industry": "Restaurants",
@@ -6567,7 +7441,9 @@
     "eps3y": 0.06482,
     "eps5y": 0.06482,
     "rev3y": 0.06281,
-    "rev5y": 0.06281
+    "rev5y": 0.06281,
+    "epsNextY": 0.20903,
+    "revNext5y": null
   },
   "ZBRA": {
     "industry": "Communication Equipment",
@@ -6582,7 +7458,9 @@
     "eps3y": -0.02389,
     "eps5y": -0.02389,
     "rev3y": -0.02271,
-    "rev5y": -0.02271
+    "rev5y": -0.02271,
+    "epsNextY": 1.50394,
+    "revNext5y": null
   },
   "ZBH": {
     "industry": "Medical Devices",
@@ -6597,7 +7475,9 @@
     "eps3y": 0.47917,
     "eps5y": 0.47917,
     "rev3y": 0.05854,
-    "rev5y": 0.05854
+    "rev5y": 0.05854,
+    "epsNextY": 1.3307,
+    "revNext5y": null
   },
   "ZION": {
     "industry": "Banks - Regional",
@@ -6612,7 +7492,9 @@
     "eps3y": 0.01193,
     "eps5y": 0.01193,
     "rev3y": 0.02406,
-    "rev5y": 0.02406
+    "rev5y": 0.02406,
+    "epsNextY": 0.04003,
+    "revNext5y": null
   },
   "ZTS": {
     "industry": "Drug Manufacturers - Specialty & Generic",
@@ -6627,7 +7509,9 @@
     "eps3y": 0.10166,
     "eps5y": 0.10166,
     "rev3y": 0.05423,
-    "rev5y": 0.05423
+    "rev5y": 0.05423,
+    "epsNextY": 0.21724,
+    "revNext5y": null
   },
   "ABNB": {
     "industry": "Travel Services",
@@ -6642,7 +7526,9 @@
     "eps3y": 0.11346,
     "eps5y": 0.11346,
     "rev3y": 0.13378,
-    "rev5y": 0.13378
+    "rev5y": 0.13378,
+    "epsNextY": 0.46366,
+    "revNext5y": null
   },
   "COIN": {
     "industry": "Financial Data & Stock Exchanges",
@@ -6657,11 +7543,13 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.31003,
-    "rev5y": 0.31003
+    "rev5y": 0.31003,
+    "epsNextY": 0.82155,
+    "revNext5y": null
   },
   "PLTR": {
     "industry": "Software - Infrastructure",
-    "trailingPE": 149.3125,
+    "trailingPE": 161.05618,
     "forwardPE": 69.10349,
     "pegRatio": 1.9,
     "debtToEquity": 2.477,
@@ -6672,7 +7560,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.32917,
-    "rev5y": 0.32917
+    "rev5y": 0.32917,
+    "epsNextY": 1.33065,
+    "revNext5y": null
   },
   "SNOW": {
     "industry": "Software - Application",
@@ -6687,7 +7577,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.31377,
-    "rev5y": 0.31377
+    "rev5y": 0.31377,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DDOG": {
     "industry": "Software - Application",
@@ -6702,7 +7594,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.2695,
-    "rev5y": 0.2695
+    "rev5y": 0.2695,
+    "epsNextY": 6.48974,
+    "revNext5y": null
   },
   "NET": {
     "industry": "Software - Infrastructure",
@@ -6717,7 +7611,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.3051,
-    "rev5y": 0.3051
+    "rev5y": 0.3051,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ZS": {
     "industry": "Software - Infrastructure",
@@ -6732,7 +7628,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.34815,
-    "rev5y": 0.34815
+    "rev5y": 0.34815,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CRWD": {
     "industry": "Software - Infrastructure",
@@ -6747,7 +7645,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.29007,
-    "rev5y": 0.29007
+    "rev5y": 0.29007,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "OKTA": {
     "industry": "Software - Infrastructure",
@@ -6762,7 +7662,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.16251,
-    "rev5y": 0.16251
+    "rev5y": 0.16251,
+    "epsNextY": 2.07015,
+    "revNext5y": null
   },
   "MDB": {
     "industry": "Software - Infrastructure",
@@ -6777,7 +7679,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.24263,
-    "rev5y": 0.24263
+    "rev5y": 0.24263,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ZM": {
     "industry": "Software - Application",
@@ -6792,7 +7696,9 @@
     "eps3y": 1.62351,
     "eps5y": 1.62351,
     "rev3y": 0.03487,
-    "rev5y": 0.03487
+    "rev5y": 0.03487,
+    "epsNextY": -0.07323,
+    "revNext5y": null
   },
   "TWLO": {
     "industry": "Software - Infrastructure",
@@ -6807,7 +7713,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.09815,
-    "rev5y": 0.09815
+    "rev5y": 0.09815,
+    "epsNextY": 9.00048,
+    "revNext5y": null
   },
   "SHOP": {
     "industry": "Software - Application",
@@ -6822,7 +7730,9 @@
     "eps3y": -0.12625,
     "eps5y": -0.12625,
     "rev3y": 0.27313,
-    "rev5y": 0.27313
+    "rev5y": 0.27313,
+    "epsNextY": 1.28608,
+    "revNext5y": null
   },
   "SQ": {
     "industry": "",
@@ -6837,7 +7747,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "HOOD": {
     "industry": "Capital Markets",
@@ -6852,7 +7764,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.48787,
-    "rev5y": 0.48787
+    "rev5y": 0.48787,
+    "epsNextY": 0.32434,
+    "revNext5y": null
   },
   "SOFI": {
     "industry": "Credit Services",
@@ -6867,7 +7781,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.3193,
-    "rev5y": 0.3193
+    "rev5y": 0.3193,
+    "epsNextY": 0.73387,
+    "revNext5y": null
   },
   "AFRM": {
     "industry": "Credit Services",
@@ -6882,7 +7798,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.33695,
-    "rev5y": 0.33695
+    "rev5y": 0.33695,
+    "epsNextY": 2.46652,
+    "revNext5y": null
   },
   "UPST": {
     "industry": "Credit Services",
@@ -6897,7 +7815,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.0692,
-    "rev5y": 0.0692
+    "rev5y": 0.0692,
+    "epsNextY": 7.28173,
+    "revNext5y": null
   },
   "LCID": {
     "industry": "Auto Manufacturers",
@@ -6912,7 +7832,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.30569,
-    "rev5y": 0.30569
+    "rev5y": 0.30569,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "RIVN": {
     "industry": "Auto Manufacturers",
@@ -6927,7 +7849,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.48111,
-    "rev5y": 0.48111
+    "rev5y": 0.48111,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "NIO": {
     "industry": "Auto Manufacturers",
@@ -6942,7 +7866,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.21095,
-    "rev5y": 0.21095
+    "rev5y": 0.21095,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "XPEV": {
     "industry": "Auto Manufacturers",
@@ -6957,7 +7883,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.41893,
-    "rev5y": 0.41893
+    "rev5y": 0.41893,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "LI": {
     "industry": "Auto Manufacturers",
@@ -6972,7 +7900,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.35358,
-    "rev5y": 0.35358
+    "rev5y": 0.35358,
+    "epsNextY": 4.40024,
+    "revNext5y": null
   },
   "ROKU": {
     "industry": "Entertainment",
@@ -6987,7 +7917,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.14856,
-    "rev5y": 0.14856
+    "rev5y": 0.14856,
+    "epsNextY": 1.61829,
+    "revNext5y": null
   },
   "PINS": {
     "industry": "Internet Content & Information",
@@ -7002,7 +7934,9 @@
     "eps3y": 0.77494,
     "eps5y": 0.77494,
     "rev3y": 0.14634,
-    "rev5y": 0.14634
+    "rev5y": 0.14634,
+    "epsNextY": 3.68217,
+    "revNext5y": null
   },
   "SNAP": {
     "industry": "Internet Content & Information",
@@ -7017,7 +7951,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.08829,
-    "rev5y": 0.08829
+    "rev5y": 0.08829,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "LYFT": {
     "industry": "Software - Application",
@@ -7032,7 +7968,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.1554,
-    "rev5y": 0.1554
+    "rev5y": 0.1554,
+    "epsNextY": -0.70318,
+    "revNext5y": null
   },
   "UBER": {
     "industry": "Software - Application",
@@ -7047,7 +7985,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.17731,
-    "rev5y": 0.17731
+    "rev5y": 0.17731,
+    "epsNextY": 0.08443,
+    "revNext5y": null
   },
   "DASH": {
     "industry": "Internet Retail",
@@ -7062,7 +8002,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.27726,
-    "rev5y": 0.27726
+    "rev5y": 0.27726,
+    "epsNextY": 2.67205,
+    "revNext5y": null
   },
   "RBLX": {
     "industry": "Electronic Gaming & Multimedia",
@@ -7077,7 +8019,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.30019,
-    "rev5y": 0.30019
+    "rev5y": 0.30019,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MSTR": {
     "industry": "Software - Application",
@@ -7092,7 +8036,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.01493,
-    "rev5y": -0.01493
+    "rev5y": -0.01493,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DKNG": {
     "industry": "Gambling",
@@ -7107,7 +8053,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.39288,
-    "rev5y": 0.39288
+    "rev5y": 0.39288,
+    "epsNextY": 18.02022,
+    "revNext5y": null
   },
   "PENN": {
     "industry": "Resorts & Casinos",
@@ -7122,7 +8070,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.02831,
-    "rev5y": 0.02831
+    "rev5y": 0.02831,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CHWY": {
     "industry": "Internet Retail",
@@ -7137,7 +8087,9 @@
     "eps3y": 0.65096,
     "eps5y": 0.65096,
     "rev3y": 0.07587,
-    "rev5y": 0.07587
+    "rev5y": 0.07587,
+    "epsNextY": 2.77335,
+    "revNext5y": null
   },
   "W": {
     "industry": "Internet Retail",
@@ -7152,7 +8104,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.00648,
-    "rev5y": 0.00648
+    "rev5y": 0.00648,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CARVANA": {
     "industry": "",
@@ -7167,7 +8121,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SMAR": {
     "industry": "",
@@ -7182,7 +8138,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BILL": {
     "industry": "Software - Application",
@@ -7197,7 +8155,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.31584,
-    "rev5y": 0.31584
+    "rev5y": 0.31584,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "HUBS": {
     "industry": "Software - Application",
@@ -7212,7 +8172,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.21846,
-    "rev5y": 0.21846
+    "rev5y": 0.21846,
+    "epsNextY": 7.17477,
+    "revNext5y": null
   },
   "GTLB": {
     "industry": "Software - Infrastructure",
@@ -7227,7 +8189,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.31058,
-    "rev5y": 0.31058
+    "rev5y": 0.31058,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "TTD": {
     "industry": "Advertising Agencies",
@@ -7242,7 +8206,9 @@
     "eps3y": 1.02247,
     "eps5y": 1.02247,
     "rev3y": 0.22442,
-    "rev5y": 0.22442
+    "rev5y": 0.22442,
+    "epsNextY": 1.55842,
+    "revNext5y": null
   },
   "TRADE": {
     "industry": "",
@@ -7257,7 +8223,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "APPS": {
     "industry": "Software - Application",
@@ -7272,7 +8240,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.05317,
-    "rev5y": -0.05317
+    "rev5y": -0.05317,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MTTR": {
     "industry": "",
@@ -7287,7 +8257,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "U": {
     "industry": "Software - Application",
@@ -7302,7 +8274,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.09964,
-    "rev5y": 0.09964
+    "rev5y": 0.09964,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DOCS": {
     "industry": "Health Information Services",
@@ -7317,7 +8291,9 @@
     "eps3y": 0.21877,
     "eps5y": 0.21877,
     "rev3y": 0.15452,
-    "rev5y": 0.15452
+    "rev5y": 0.15452,
+    "epsNextY": 0.62716,
+    "revNext5y": null
   },
   "ASAN": {
     "industry": "Software - Application",
@@ -7332,7 +8308,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.13059,
-    "rev5y": 0.13059
+    "rev5y": 0.13059,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FROG": {
     "industry": "Software - Application",
@@ -7347,7 +8325,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.23838,
-    "rev5y": 0.23838
+    "rev5y": 0.23838,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BRZE": {
     "industry": "Software - Application",
@@ -7362,7 +8342,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.27587,
-    "rev5y": 0.27587
+    "rev5y": 0.27587,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CFLT": {
     "industry": "",
@@ -7377,7 +8359,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "S": {
     "industry": "Software - Infrastructure",
@@ -7392,7 +8376,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.33358,
-    "rev5y": 0.33358
+    "rev5y": 0.33358,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "AIOT": {
     "industry": "Software - Infrastructure",
@@ -7407,7 +8393,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.42243,
-    "rev5y": 0.42243
+    "rev5y": 0.42243,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "IONQ": {
     "industry": "Computer Hardware",
@@ -7422,7 +8410,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 1.26893,
-    "rev5y": 1.26893
+    "rev5y": 1.26893,
+    "epsNextY": -3.67285,
+    "revNext5y": null
   },
   "RGTI": {
     "industry": "Computer Hardware",
@@ -7437,7 +8427,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.18518,
-    "rev5y": -0.18518
+    "rev5y": -0.18518,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "QBTS": {
     "industry": "Computer Hardware",
@@ -7452,7 +8444,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.50777,
-    "rev5y": 0.50777
+    "rev5y": 0.50777,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ARQQ": {
     "industry": "Software - Infrastructure",
@@ -7467,7 +8461,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.58114,
-    "rev5y": -0.58114
+    "rev5y": -0.58114,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "RKLB": {
     "industry": "Aerospace & Defense",
@@ -7482,7 +8478,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.41816,
-    "rev5y": 0.41816
+    "rev5y": 0.41816,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ASTS": {
     "industry": "Communication Equipment",
@@ -7497,7 +8495,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.72463,
-    "rev5y": 0.72463
+    "rev5y": 0.72463,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "JOBY": {
     "industry": "Airports & Air Services",
@@ -7512,7 +8512,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ACHR": {
     "industry": "Aerospace & Defense",
@@ -7527,7 +8529,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "LILM": {
     "industry": "",
@@ -7542,7 +8546,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SMCI": {
     "industry": "Computer Hardware",
@@ -7557,7 +8563,9 @@
     "eps3y": 0.47284,
     "eps5y": 0.47284,
     "rev3y": 0.61708,
-    "rev5y": 0.61708
+    "rev5y": 0.61708,
+    "epsNextY": 0.69475,
+    "revNext5y": null
   },
   "ARM": {
     "industry": "Semiconductors",
@@ -7572,7 +8580,9 @@
     "eps3y": 0.18509,
     "eps5y": 0.18509,
     "rev3y": 0.22461,
-    "rev5y": 0.22461
+    "rev5y": 0.22461,
+    "epsNextY": 2.6371,
+    "revNext5y": null
   },
   "ALAB": {
     "industry": "Semiconductors",
@@ -7587,7 +8597,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 1.20176,
-    "rev5y": 1.20176
+    "rev5y": 1.20176,
+    "epsNextY": 1.86169,
+    "revNext5y": null
   },
   "AI": {
     "industry": "Software - Infrastructure",
@@ -7602,7 +8614,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.15461,
-    "rev5y": 0.15461
+    "rev5y": 0.15461,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SOUN": {
     "industry": "Software - Application",
@@ -7617,7 +8631,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.75727,
-    "rev5y": 0.75727
+    "rev5y": 0.75727,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BBAI": {
     "industry": "Information Technology Services",
@@ -7632,7 +8648,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.06263,
-    "rev5y": -0.06263
+    "rev5y": -0.06263,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "PEGA": {
     "industry": "Software - Application",
@@ -7647,7 +8665,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.09827,
-    "rev5y": 0.09827
+    "rev5y": 0.09827,
+    "epsNextY": 0.64408,
+    "revNext5y": null
   },
   "PATH": {
     "industry": "Software - Infrastructure",
@@ -7662,7 +8682,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.15014,
-    "rev5y": 0.15014
+    "rev5y": 0.15014,
+    "epsNextY": 0.49977,
+    "revNext5y": null
   },
   "NOW": {
     "industry": "Software - Application",
@@ -7677,11 +8699,13 @@
     "eps3y": 0.73784,
     "eps5y": 0.73784,
     "rev3y": 0.22377,
-    "rev5y": 0.22377
+    "rev5y": 0.22377,
+    "epsNextY": 1.97437,
+    "revNext5y": null
   },
   "WDAY": {
     "industry": "Software - Application",
-    "trailingPE": 38.808956,
+    "trailingPE": 40.501556,
     "forwardPE": 10.304816,
     "pegRatio": 0.51,
     "debtToEquity": 56.936,
@@ -7692,7 +8716,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.15397,
-    "rev5y": 0.15397
+    "rev5y": 0.15397,
+    "epsNextY": 2.93035,
+    "revNext5y": null
   },
   "VEEV": {
     "industry": "Health Information Services",
@@ -7707,7 +8733,9 @@
     "eps3y": 0.20908,
     "eps5y": 0.20908,
     "rev3y": 0.1403,
-    "rev5y": 0.1403
+    "rev5y": 0.1403,
+    "epsNextY": 0.81691,
+    "revNext5y": null
   },
   "ANSS": {
     "industry": "",
@@ -7722,7 +8750,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MANH": {
     "industry": "Software - Application",
@@ -7737,7 +8767,9 @@
     "eps3y": 0.21092,
     "eps5y": 0.21092,
     "rev3y": 0.12128,
-    "rev5y": 0.12128
+    "rev5y": 0.12128,
+    "epsNextY": 0.66543,
+    "revNext5y": null
   },
   "CPNG": {
     "industry": "Internet Retail",
@@ -7752,7 +8784,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.18826,
-    "rev5y": 0.18826
+    "rev5y": 0.18826,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SE": {
     "industry": "Internet Retail",
@@ -7767,7 +8801,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.22594,
-    "rev5y": 0.22594
+    "rev5y": 0.22594,
+    "epsNextY": 1.04386,
+    "revNext5y": null
   },
   "MELI": {
     "industry": "Internet Retail",
@@ -7782,7 +8818,9 @@
     "eps3y": 0.60273,
     "eps5y": 0.60273,
     "rev3y": 0.38907,
-    "rev5y": 0.38907
+    "rev5y": 0.38907,
+    "epsNextY": 0.565,
+    "revNext5y": null
   },
   "GRAB": {
     "industry": "Software - Application",
@@ -7797,7 +8835,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.32983,
-    "rev5y": 0.32983
+    "rev5y": 0.32983,
+    "epsNextY": 2.43325,
+    "revNext5y": null
   },
   "BABA": {
     "industry": "Internet Retail",
@@ -7812,7 +8852,9 @@
     "eps3y": 0.18104,
     "eps5y": 0.18104,
     "rev3y": 0.05625,
-    "rev5y": 0.05625
+    "rev5y": 0.05625,
+    "epsNextY": 0.42132,
+    "revNext5y": null
   },
   "JD": {
     "industry": "Internet Retail",
@@ -7827,7 +8869,9 @@
     "eps3y": 0.27554,
     "eps5y": 0.27554,
     "rev3y": 0.07757,
-    "rev5y": 0.07757
+    "rev5y": 0.07757,
+    "epsNextY": 2.19778,
+    "revNext5y": null
   },
   "PDD": {
     "industry": "Internet Retail",
@@ -7842,7 +8886,9 @@
     "eps3y": 0.41021,
     "eps5y": 0.41021,
     "rev3y": 0.48996,
-    "rev5y": 0.48996
+    "rev5y": 0.48996,
+    "epsNextY": 0.35742,
+    "revNext5y": null
   },
   "BIDU": {
     "industry": "Internet Content & Information",
@@ -7857,7 +8903,9 @@
     "eps3y": -0.11891,
     "eps5y": -0.11891,
     "rev3y": 0.01436,
-    "rev5y": 0.01436
+    "rev5y": 0.01436,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "TCOM": {
     "industry": "Travel Services",
@@ -7872,7 +8920,9 @@
     "eps3y": 1.85729,
     "eps5y": 1.85729,
     "rev3y": 0.46035,
-    "rev5y": 0.46035
+    "rev5y": 0.46035,
+    "epsNextY": -0.33201,
+    "revNext5y": null
   },
   "NTES": {
     "industry": "Electronic Gaming & Multimedia",
@@ -7887,7 +8937,9 @@
     "eps3y": 0.19345,
     "eps5y": 0.19345,
     "rev3y": 0.05287,
-    "rev5y": 0.05287
+    "rev5y": 0.05287,
+    "epsNextY": 0.36192,
+    "revNext5y": null
   },
   "BILI": {
     "industry": "Internet Content & Information",
@@ -7902,7 +8954,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.11489,
-    "rev5y": 0.11489
+    "rev5y": 0.11489,
+    "epsNextY": 1.7542,
+    "revNext5y": null
   },
   "IQ": {
     "industry": "Entertainment",
@@ -7917,7 +8971,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.02001,
-    "rev5y": -0.02001
+    "rev5y": -0.02001,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "TME": {
     "industry": "Internet Content & Information",
@@ -7932,7 +8988,9 @@
     "eps3y": 0.46286,
     "eps5y": 0.46286,
     "rev3y": 0.05102,
-    "rev5y": 0.05102
+    "rev5y": 0.05102,
+    "epsNextY": 0.26091,
+    "revNext5y": null
   },
   "FUTU": {
     "industry": "Capital Markets",
@@ -7947,7 +9005,9 @@
     "eps3y": 0.28197,
     "eps5y": 0.28197,
     "rev3y": 0.44235,
-    "rev5y": 0.44235
+    "rev5y": 0.44235,
+    "epsNextY": 0.44952,
+    "revNext5y": null
   },
   "TIGR": {
     "industry": "Capital Markets",
@@ -7962,7 +9022,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.3952,
-    "rev5y": 0.3952
+    "rev5y": 0.3952,
+    "epsNextY": 0.2382,
+    "revNext5y": null
   },
   "ASML": {
     "industry": "Semiconductor Equipment & Materials",
@@ -7977,7 +9039,9 @@
     "eps3y": 0.17806,
     "eps5y": 0.17806,
     "rev3y": 0.15551,
-    "rev5y": 0.15551
+    "rev5y": 0.15551,
+    "epsNextY": 0.58302,
+    "revNext5y": null
   },
   "SAP": {
     "industry": "Software - Application",
@@ -7992,7 +9056,9 @@
     "eps3y": 0.4632,
     "eps5y": 0.4632,
     "rev3y": 0.07626,
-    "rev5y": 0.07626
+    "rev5y": 0.07626,
+    "epsNextY": 0.35747,
+    "revNext5y": null
   },
   "NVO": {
     "industry": "Drug Manufacturers - General",
@@ -8007,7 +9073,9 @@
     "eps3y": 0.2344,
     "eps5y": 0.2344,
     "rev3y": 0.20429,
-    "rev5y": 0.20429
+    "rev5y": 0.20429,
+    "epsNextY": -0.2238,
+    "revNext5y": null
   },
   "SHEL": {
     "industry": "Oil & Gas Integrated",
@@ -8022,7 +9090,9 @@
     "eps3y": -0.19275,
     "eps5y": -0.19275,
     "rev3y": -0.11213,
-    "rev5y": -0.11213
+    "rev5y": -0.11213,
+    "epsNextY": 0.42353,
+    "revNext5y": null
   },
   "TTE": {
     "industry": "Oil & Gas Integrated",
@@ -8037,7 +9107,9 @@
     "eps3y": -0.09619,
     "eps5y": -0.09619,
     "rev3y": -0.11528,
-    "rev5y": -0.11528
+    "rev5y": -0.11528,
+    "epsNextY": 0.49322,
+    "revNext5y": null
   },
   "UL": {
     "industry": "Household & Personal Products",
@@ -8052,7 +9124,9 @@
     "eps3y": 0.0866,
     "eps5y": 0.0866,
     "rev3y": -0.0562,
-    "rev5y": -0.0562
+    "rev5y": -0.0562,
+    "epsNextY": 0.29688,
+    "revNext5y": null
   },
   "BTI": {
     "industry": "Tobacco",
@@ -8067,7 +9141,9 @@
     "eps3y": 0.06169,
     "eps5y": 0.06169,
     "rev3y": -0.02528,
-    "rev5y": -0.02528
+    "rev5y": -0.02528,
+    "epsNextY": 0.13446,
+    "revNext5y": null
   },
   "DEO": {
     "industry": "Beverages - Wineries & Distilleries",
@@ -8082,7 +9158,9 @@
     "eps3y": -0.14603,
     "eps5y": -0.14603,
     "rev3y": -0.00442,
-    "rev5y": -0.00442
+    "rev5y": -0.00442,
+    "epsNextY": 0.5261,
+    "revNext5y": null
   },
   "RIO": {
     "industry": "Other Industrial Metals & Mining",
@@ -8097,7 +9175,9 @@
     "eps3y": -0.07155,
     "eps5y": -0.07155,
     "rev3y": 0.01235,
-    "rev5y": 0.01235
+    "rev5y": 0.01235,
+    "epsNextY": 0.45761,
+    "revNext5y": null
   },
   "BHP": {
     "industry": "Other Industrial Metals & Mining",
@@ -8112,7 +9192,9 @@
     "eps3y": -0.33719,
     "eps5y": -0.33719,
     "rev3y": -0.07656,
-    "rev5y": -0.07656
+    "rev5y": -0.07656,
+    "epsNextY": 0.32003,
+    "revNext5y": null
   },
   "VALE": {
     "industry": "Other Industrial Metals & Mining",
@@ -8127,7 +9209,9 @@
     "eps3y": -0.48599,
     "eps5y": -0.48599,
     "rev3y": -0.04317,
-    "rev5y": -0.04317
+    "rev5y": -0.04317,
+    "epsNextY": 2.01124,
+    "revNext5y": null
   },
   "INFY": {
     "industry": "Information Technology Services",
@@ -8142,7 +9226,9 @@
     "eps3y": 0.02779,
     "eps5y": 0.02779,
     "rev3y": 0.03442,
-    "rev5y": 0.03442
+    "rev5y": 0.03442,
+    "epsNextY": 0.08809,
+    "revNext5y": null
   },
   "WIT": {
     "industry": "Information Technology Services",
@@ -8157,7 +9243,9 @@
     "eps3y": 0.06725,
     "eps5y": 0.06725,
     "rev3y": 0.04046,
-    "rev5y": 0.04046
+    "rev5y": 0.04046,
+    "epsNextY": 0.18177,
+    "revNext5y": null
   },
   "HDB": {
     "industry": "Banks - Regional",
@@ -8172,7 +9260,9 @@
     "eps3y": -0.13593,
     "eps5y": -0.13593,
     "rev3y": 0.32503,
-    "rev5y": 0.32503
+    "rev5y": 0.32503,
+    "epsNextY": 0.05977,
+    "revNext5y": null
   },
   "IBN": {
     "industry": "Banks - Regional",
@@ -8187,7 +9277,9 @@
     "eps3y": 0.15809,
     "eps5y": 0.15809,
     "rev3y": 0.1965,
-    "rev5y": 0.1965
+    "rev5y": 0.1965,
+    "epsNextY": 0.24026,
+    "revNext5y": null
   },
   "WOLF": {
     "industry": "Semiconductors",
@@ -8202,7 +9294,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ENVX": {
     "industry": "Electrical Equipment & Parts",
@@ -8217,7 +9311,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.72475,
-    "rev5y": 0.72475
+    "rev5y": 0.72475,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "AEHR": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8232,7 +9328,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.05076,
-    "rev5y": 0.05076
+    "rev5y": 0.05076,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ACMR": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8247,7 +9345,9 @@
     "eps3y": 0.30594,
     "eps5y": 0.30594,
     "rev3y": 0.32344,
-    "rev5y": 0.32344
+    "rev5y": 0.32344,
+    "epsNextY": 0.7201,
+    "revNext5y": null
   },
   "COHU": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8262,7 +9362,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.17707,
-    "rev5y": -0.17707
+    "rev5y": -0.17707,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "UCTT": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8277,7 +9379,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.04716,
-    "rev5y": -0.04716
+    "rev5y": -0.04716,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "KLIC": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8292,7 +9396,9 @@
     "eps3y": -0.91783,
     "eps5y": -0.91783,
     "rev3y": -0.2423,
-    "rev5y": -0.2423
+    "rev5y": -0.2423,
+    "epsNextY": 3.11327,
+    "revNext5y": null
   },
   "FORM": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8307,7 +9413,9 @@
     "eps3y": 0.02501,
     "eps5y": 0.02501,
     "rev3y": 0.01625,
-    "rev5y": 0.01625
+    "rev5y": 0.01625,
+    "epsNextY": 2.125,
+    "revNext5y": null
   },
   "ICHR": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8322,7 +9430,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.09537,
-    "rev5y": -0.09537
+    "rev5y": -0.09537,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "MKSI": {
     "industry": "Scientific & Technical Instruments",
@@ -8337,7 +9447,9 @@
     "eps3y": -0.07629,
     "eps5y": -0.07629,
     "rev3y": 0.03486,
-    "rev5y": 0.03486
+    "rev5y": 0.03486,
+    "epsNextY": 2.12018,
+    "revNext5y": null
   },
   "ENTG": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8352,7 +9464,9 @@
     "eps3y": 0.01782,
     "eps5y": 0.01782,
     "rev3y": -0.00875,
-    "rev5y": -0.00875
+    "rev5y": -0.00875,
+    "epsNextY": 1.6672,
+    "revNext5y": null
   },
   "CEVA": {
     "industry": "Semiconductors",
@@ -8367,7 +9481,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.03134,
-    "rev5y": -0.03134
+    "rev5y": -0.03134,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "POWI": {
     "industry": "Semiconductors",
@@ -8382,7 +9498,9 @@
     "eps3y": -0.49115,
     "eps5y": -0.49115,
     "rev3y": -0.12015,
-    "rev5y": -0.12015
+    "rev5y": -0.12015,
+    "epsNextY": 5.1062,
+    "revNext5y": null
   },
   "SLAB": {
     "industry": "Semiconductors",
@@ -8397,7 +9515,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.08491,
-    "rev5y": -0.08491
+    "rev5y": -0.08491,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DIOD": {
     "industry": "Semiconductors",
@@ -8412,7 +9532,9 @@
     "eps3y": -0.41949,
     "eps5y": -0.41949,
     "rev3y": -0.09516,
-    "rev5y": -0.09516
+    "rev5y": -0.09516,
+    "epsNextY": 1.6973,
+    "revNext5y": null
   },
   "ALGM": {
     "industry": "Semiconductors",
@@ -8427,7 +9549,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.02947,
-    "rev5y": -0.02947
+    "rev5y": -0.02947,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "AMBA": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8442,7 +9566,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.04989,
-    "rev5y": 0.04989
+    "rev5y": 0.04989,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CRUS": {
     "industry": "Semiconductors",
@@ -8457,7 +9583,9 @@
     "eps3y": 0.36569,
     "eps5y": 0.36569,
     "rev3y": 0.01723,
-    "rev5y": 0.01723
+    "rev5y": 0.01723,
+    "epsNextY": 0.19571,
+    "revNext5y": null
   },
   "RMBS": {
     "industry": "Semiconductors",
@@ -8472,7 +9600,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.15877,
-    "rev5y": 0.15877
+    "rev5y": 0.15877,
+    "epsNextY": 0.73122,
+    "revNext5y": null
   },
   "SITM": {
     "industry": "Semiconductors",
@@ -8487,7 +9617,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.04824,
-    "rev5y": 0.04824
+    "rev5y": 0.04824,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SMTC": {
     "industry": "Semiconductors",
@@ -8502,7 +9634,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.11545,
-    "rev5y": 0.11545
+    "rev5y": 0.11545,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BRKR": {
     "industry": "Medical Devices",
@@ -8517,7 +9651,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.10737,
-    "rev5y": 0.10737
+    "rev5y": 0.10737,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FARO": {
     "industry": "",
@@ -8532,7 +9668,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "IIVI": {
     "industry": "",
@@ -8547,7 +9685,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "IPAR": {
     "industry": "Household & Personal Products",
@@ -8562,7 +9702,9 @@
     "eps3y": 0.11376,
     "eps5y": 0.11376,
     "rev3y": 0.11059,
-    "rev5y": 0.11059
+    "rev5y": 0.11059,
+    "epsNextY": 0.05503,
+    "revNext5y": null
   },
   "COHR": {
     "industry": "Scientific & Technical Instruments",
@@ -8577,7 +9719,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.20549,
-    "rev5y": 0.20549
+    "rev5y": 0.20549,
+    "epsNextY": 2.83682,
+    "revNext5y": null
   },
   "IPGP": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8592,7 +9736,9 @@
     "eps3y": -0.30452,
     "eps5y": -0.30452,
     "rev3y": -0.11118,
-    "rev5y": -0.11118
+    "rev5y": -0.11118,
+    "epsNextY": 2.39916,
+    "revNext5y": null
   },
   "II": {
     "industry": "",
@@ -8607,7 +9753,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "VICR": {
     "industry": "Electronic Components",
@@ -8622,7 +9770,9 @@
     "eps3y": 0.65517,
     "eps5y": 0.65517,
     "rev3y": 0.04292,
-    "rev5y": 0.04292
+    "rev5y": 0.04292,
+    "epsNextY": 0.86242,
+    "revNext5y": null
   },
   "AEIS": {
     "industry": "Electrical Equipment & Parts",
@@ -8637,7 +9787,9 @@
     "eps3y": -0.09505,
     "eps5y": -0.09505,
     "rev3y": -0.00849,
-    "rev5y": -0.00849
+    "rev5y": -0.00849,
+    "epsNextY": 1.43927,
+    "revNext5y": null
   },
   "AXTI": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8652,7 +9804,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.1446,
-    "rev5y": -0.1446
+    "rev5y": -0.1446,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "ATMU": {
     "industry": "Auto Parts",
@@ -8667,7 +9821,9 @@
     "eps3y": 0.07198,
     "eps5y": 0.07198,
     "rev3y": 0.04141,
-    "rev5y": 0.04141
+    "rev5y": 0.04141,
+    "epsNextY": 0.26054,
+    "revNext5y": null
   },
   "ATEN": {
     "industry": "Software - Infrastructure",
@@ -8682,7 +9838,9 @@
     "eps3y": -0.02199,
     "eps5y": -0.02199,
     "rev3y": 0.01201,
-    "rev5y": 0.01201
+    "rev5y": 0.01201,
+    "epsNextY": 0.93443,
+    "revNext5y": null
   },
   "ACLS": {
     "industry": "Semiconductor Equipment & Materials",
@@ -8697,7 +9855,9 @@
     "eps3y": 0.2803,
     "eps5y": 0.2803,
     "rev3y": -0.03023,
-    "rev5y": -0.03023
+    "rev5y": -0.03023,
+    "epsNextY": 0.43975,
+    "revNext5y": null
   },
   "LASE": {
     "industry": "Specialty Industrial Machinery",
@@ -8712,7 +9872,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.28823,
-    "rev5y": 0.28823
+    "rev5y": 0.28823,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "OLED": {
     "industry": "Electronic Components",
@@ -8727,7 +9889,9 @@
     "eps3y": 0.04896,
     "eps5y": 0.04896,
     "rev3y": 0.01805,
-    "rev5y": 0.01805
+    "rev5y": 0.01805,
+    "epsNextY": 0.11057,
+    "revNext5y": null
   },
   "OSIS": {
     "industry": "Electronic Components",
@@ -8742,7 +9906,9 @@
     "eps3y": 0.09308,
     "eps5y": 0.09308,
     "rev3y": 0.1313,
-    "rev5y": 0.1313
+    "rev5y": 0.1313,
+    "epsNextY": 0.30951,
+    "revNext5y": null
   },
   "SIMO": {
     "industry": "Semiconductors",
@@ -8757,11 +9923,13 @@
     "eps3y": -0.11141,
     "eps5y": -0.11141,
     "rev3y": -0.02172,
-    "rev5y": -0.02172
+    "rev5y": -0.02172,
+    "epsNextY": 0.91509,
+    "revNext5y": null
   },
   "SIGI": {
     "industry": "Insurance - Property & Casualty",
-    "trailingPE": 12.174337,
+    "trailingPE": 11.941176,
     "forwardPE": 9.856317,
     "pegRatio": 0.28,
     "debtToEquity": 25.128,
@@ -8772,7 +9940,9 @@
     "eps3y": 0.28642,
     "eps5y": 0.28642,
     "rev3y": 0.1447,
-    "rev5y": 0.1447
+    "rev5y": 0.1447,
+    "epsNextY": 0.21153,
+    "revNext5y": null
   },
   "SKYW": {
     "industry": "Airlines",
@@ -8787,7 +9957,9 @@
     "eps3y": 0.9465,
     "eps5y": 0.9465,
     "rev3y": 0.10535,
-    "rev5y": 0.10535
+    "rev5y": 0.10535,
+    "epsNextY": 0.14928,
+    "revNext5y": null
   },
   "SKX": {
     "industry": "",
@@ -8802,7 +9974,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "SHAK": {
     "industry": "Restaurants",
@@ -8817,7 +9991,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.17083,
-    "rev5y": 0.17083
+    "rev5y": 0.17083,
+    "epsNextY": 0.65663,
+    "revNext5y": null
   },
   "DNUT": {
     "industry": "Grocery Stores",
@@ -8832,13 +10008,15 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.00159,
-    "rev5y": -0.00159
+    "rev5y": -0.00159,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BROS": {
     "industry": "Restaurants",
     "trailingPE": 88.37501,
     "forwardPE": 45.489273,
-    "pegRatio": 2.1,
+    "pegRatio": 2.22,
     "debtToEquity": 126.055,
     "freeCashflow": 39701376.0,
     "grossMargins": 0.25261998,
@@ -8847,7 +10025,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.30387,
-    "rev5y": 0.30387
+    "rev5y": 0.30387,
+    "epsNextY": 0.94277,
+    "revNext5y": null
   },
   "WING": {
     "industry": "Restaurants",
@@ -8862,7 +10042,9 @@
     "eps3y": 0.52115,
     "eps5y": 0.52115,
     "rev3y": 0.24915,
-    "rev5y": 0.24915
+    "rev5y": 0.24915,
+    "epsNextY": 0.38157,
+    "revNext5y": null
   },
   "QSR": {
     "industry": "Restaurants",
@@ -8877,7 +10059,9 @@
     "eps3y": -0.10392,
     "eps5y": -0.10392,
     "rev3y": 0.13192,
-    "rev5y": 0.13192
+    "rev5y": 0.13192,
+    "epsNextY": 0.42894,
+    "revNext5y": null
   },
   "TXRH": {
     "industry": "Restaurants",
@@ -8892,7 +10076,9 @@
     "eps3y": 0.15263,
     "eps5y": 0.15263,
     "rev3y": 0.1355,
-    "rev5y": 0.1355
+    "rev5y": 0.1355,
+    "epsNextY": 0.21577,
+    "revNext5y": null
   },
   "DINE": {
     "industry": "",
@@ -8907,7 +10093,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "RUTH": {
     "industry": "",
@@ -8922,7 +10110,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "BJRI": {
     "industry": "Restaurants",
@@ -8937,7 +10127,9 @@
     "eps3y": 1.35488,
     "eps5y": 1.35488,
     "rev3y": 0.02906,
-    "rev5y": 0.02906
+    "rev5y": 0.02906,
+    "epsNextY": 0.31103,
+    "revNext5y": null
   },
   "JACK": {
     "industry": "Restaurants",
@@ -8952,7 +10144,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.00063,
-    "rev5y": -0.00063
+    "rev5y": -0.00063,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "CAKE": {
     "industry": "Restaurants",
@@ -8967,7 +10161,9 @@
     "eps3y": 0.53879,
     "eps5y": 0.53879,
     "rev3y": 0.04337,
-    "rev5y": 0.04337
+    "rev5y": 0.04337,
+    "epsNextY": 0.30475,
+    "revNext5y": null
   },
   "EAT": {
     "industry": "Restaurants",
@@ -8982,7 +10178,9 @@
     "eps3y": 0.48616,
     "eps5y": 0.48616,
     "rev3y": 0.12277,
-    "rev5y": 0.12277
+    "rev5y": 0.12277,
+    "epsNextY": 0.216,
+    "revNext5y": null
   },
   "PLAY": {
     "industry": "Entertainment",
@@ -8997,7 +10195,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.02295,
-    "rev5y": 0.02295
+    "rev5y": 0.02295,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DAVE": {
     "industry": "Software - Application",
@@ -9012,7 +10212,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.39342,
-    "rev5y": 0.39342
+    "rev5y": 0.39342,
+    "epsNextY": 0.3252,
+    "revNext5y": null
   },
   "FAT": {
     "industry": "",
@@ -9027,7 +10229,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "FRSH": {
     "industry": "Software - Application",
@@ -9042,7 +10246,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.18981,
-    "rev5y": 0.18981
+    "rev5y": 0.18981,
+    "epsNextY": 0.31623,
+    "revNext5y": null
   },
   "CAVA": {
     "industry": "Restaurants",
@@ -9057,7 +10263,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.27878,
-    "rev5y": 0.27878
+    "rev5y": 0.27878,
+    "epsNextY": 0.46112,
+    "revNext5y": null
   },
   "UAA": {
     "industry": "Apparel Manufacturing",
@@ -9072,7 +10280,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.05597,
-    "rev5y": -0.05597
+    "rev5y": -0.05597,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "UA": {
     "industry": "Apparel Manufacturing",
@@ -9087,7 +10297,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.05597,
-    "rev5y": -0.05597
+    "rev5y": -0.05597,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "COLM": {
     "industry": "Apparel Manufacturing",
@@ -9102,7 +10314,9 @@
     "eps3y": -0.13233,
     "eps5y": -0.13233,
     "rev3y": -0.00647,
-    "rev5y": -0.00647
+    "rev5y": -0.00647,
+    "epsNextY": 0.3489,
+    "revNext5y": null
   },
   "PVH": {
     "industry": "Apparel Manufacturing",
@@ -9117,7 +10331,9 @@
     "eps3y": -0.44198,
     "eps5y": -0.44198,
     "rev3y": -0.00274,
-    "rev5y": -0.00274
+    "rev5y": -0.00274,
+    "epsNextY": 25.37275,
+    "revNext5y": null
   },
   "HBI": {
     "industry": "",
@@ -9132,11 +10348,13 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": null,
-    "rev5y": null
+    "rev5y": null,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "VFC": {
     "industry": "Apparel Manufacturing",
-    "trailingPE": 27.166666,
+    "trailingPE": 28.015627,
     "forwardPE": 12.924759,
     "pegRatio": 0.17,
     "debtToEquity": 269.388,
@@ -9147,7 +10365,9 @@
     "eps3y": 0.27992,
     "eps5y": 0.27992,
     "rev3y": -0.04676,
-    "rev5y": -0.04676
+    "rev5y": -0.04676,
+    "epsNextY": 1.16759,
+    "revNext5y": null
   },
   "CROX": {
     "industry": "Footwear & Accessories",
@@ -9162,7 +10382,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": 0.04361,
-    "rev5y": 0.04361
+    "rev5y": 0.04361,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "DECK": {
     "industry": "Footwear & Accessories",
@@ -9177,7 +10399,9 @@
     "eps3y": 0.29389,
     "eps5y": 0.29389,
     "rev3y": 0.14691,
-    "rev5y": 0.14691
+    "rev5y": 0.14691,
+    "epsNextY": 0.18325,
+    "revNext5y": null
   },
   "ONON": {
     "industry": "Footwear & Accessories",
@@ -9192,7 +10416,9 @@
     "eps3y": 0.51022,
     "eps5y": 0.51022,
     "rev3y": 0.35107,
-    "rev5y": 0.35107
+    "rev5y": 0.35107,
+    "epsNextY": 1.28825,
+    "revNext5y": null
   },
   "BIRD": {
     "industry": "Apparel Retail",
@@ -9207,7 +10433,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.19998,
-    "rev5y": -0.19998
+    "rev5y": -0.19998,
+    "epsNextY": null,
+    "revNext5y": null
   },
   "WWW": {
     "industry": "Footwear & Accessories",
@@ -9222,7 +10450,9 @@
     "eps3y": null,
     "eps5y": null,
     "rev3y": -0.11289,
-    "rev5y": -0.11289
+    "rev5y": -0.11289,
+    "epsNextY": 0.42856,
+    "revNext5y": null
   },
   "SCVL": {
     "industry": "Apparel Retail",
@@ -9237,7 +10467,9 @@
     "eps3y": -0.21839,
     "eps5y": -0.21839,
     "rev3y": -0.03471,
-    "rev5y": -0.03471
+    "rev5y": -0.03471,
+    "epsNextY": 0.36543,
+    "revNext5y": null
   },
   "BOOT": {
     "industry": "Apparel Retail",
@@ -9252,9 +10484,11 @@
     "eps3y": 0.08963,
     "eps5y": 0.08963,
     "rev3y": 0.10785,
-    "rev5y": 0.10785
+    "rev5y": 0.10785,
+    "epsNextY": 0.34757,
+    "revNext5y": null
   },
-  "_updated": "2026-05-29T05:24:18Z",
+  "_updated": "2026-05-29T05:42:04Z",
   "_tickers": [
     "META",
     "ONTO",
