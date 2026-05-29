@@ -85,28 +85,29 @@ for sym in TICKERS:
             'epsNextY': None, 'revNext5y': None,
         }
 
-        # ── Forward EPS growth (next 1Y) ──────────────────────────────────────
+        # ── Forward EPS growth (next 1Y) — use earningsGrowth from info ─────────
         try:
-            fwd = safe(info.get('forwardEps'))
-            trail = safe(info.get('trailingEps'))
-            if fwd and trail and trail > 0:
-                rec['epsNextY'] = round(fwd / trail - 1, 5)
+            eg = safe(info.get('earningsGrowth'))   # Yahoo: forward YoY EPS growth estimate
+            if eg is not None:
+                rec['epsNextY'] = eg
+            else:
+                # fallback: forwardEps vs trailingEps
+                fwd = safe(info.get('forwardEps'))
+                trail = safe(info.get('trailingEps'))
+                if fwd is not None and trail and trail > 0:
+                    rec['epsNextY'] = round(fwd / trail - 1, 5)
         except Exception:
             pass
 
-        # ── Analyst long-term growth estimate (next 5Y revenue) ───────────────
+        # ── Analyst long-term EPS growth estimate (next 5Y) ───────────────────
         try:
             gt = t.growth_estimates
-            if gt is not None and not gt.empty and '+5y' in gt.index:
-                row = gt.loc['+5y']
-                # row may have multiple columns (industry, sector, sp500, stock)
-                val = None
-                for col in row.index:
-                    v = safe(row[col])
-                    if v is not None:
-                        val = v
-                        break
-                rec['revNext5y'] = val
+            if gt is not None and not gt.empty:
+                # Look for the ticker column with '+5y' row
+                ticker_col = sym if sym in gt.columns else (gt.columns[0] if len(gt.columns) else None)
+                if ticker_col and '+5y' in gt.index:
+                    val = safe(gt.loc['+5y', ticker_col])
+                    rec['revNext5y'] = val
         except Exception:
             pass
 
