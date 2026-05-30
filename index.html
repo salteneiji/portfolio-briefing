@@ -376,6 +376,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
     <button class="tab" onclick="showTab('alerts',this)">Alerts</button>
     <button class="tab" onclick="showTab('news',this)">News</button>
     <button class="tab" onclick="showTab('score',this)">🏆 Score</button>
+    <button class="tab" onclick="showTab('leaderboard',this)">🥇 Leaderboard</button>
     <button class="tab" onclick="showTab('ai',this)">✦ AI</button>
   </nav>
 
@@ -623,7 +624,33 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div id="sc-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="sc-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="sc-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="saveToLeaderboard()">💾 Save to Leaderboard</button>
       </div>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD TAB -->
+  <div class="tab-pane" id="tab-leaderboard">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div style="font-size:1rem;font-weight:700">🥇 Stock Leaderboard</div>
+        <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="clearLeaderboard()">Clear All</button>
+      </div>
+      <div id="sc-leaderboard-empty" style="text-align:center;padding:60px 0;color:var(--muted);font-size:.88rem">No stocks scored yet. Go to 🏆 Score, score a stock, and hit <strong>Save to Leaderboard</strong>.</div>
+      <table id="sc-leaderboard-tbl" style="display:none;width:100%;border-collapse:collapse;font-size:.84rem">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border)">
+            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">#</th>
+            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Ticker</th>
+            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Type</th>
+            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Score</th>
+            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Grade</th>
+            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Scored On</th>
+            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600"></th>
+          </tr>
+        </thead>
+        <tbody id="sc-leaderboard-body"></tbody>
+      </table>
     </div>
   </div>
 
@@ -1745,6 +1772,7 @@ function calcScore(){
   const color=total>=75?'var(--green)':total>=55?'var(--amber)':'var(--red)';
 
   const ticker=document.getElementById('sc-ticker').value||'—';
+  window._lastScore={ticker:ticker.toUpperCase(),type,typeLbl:SC_TYPE_LABELS[type],total,grade};
   document.getElementById('sc-ticker-lbl').textContent=ticker;
   document.getElementById('sc-type-lbl').textContent=SC_TYPE_LABELS[type];
   document.getElementById('sc-score-lbl').style.color=color;
@@ -1785,9 +1813,99 @@ function clearScore(){
   const h=document.getElementById('sc-up'); if(h) h.value='';
   document.getElementById('sc-result').style.display='none';
   document.getElementById('sc-ticker').value='';
+  window._lastScore=null;
+}
+
+// ── Leaderboard ───────────────────────────────────────────────────────────────
+function getLeaderboard(){ return _getStore().leaderboard||[]; }
+function saveLeaderboard(lb){ _saveStore({leaderboard:lb}); }
+
+const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
+  'sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm',
+  'sc-epsty','sc-epsqq','sc-revqq',
+  'sc-epsny','sc-epsn5','sc-epsnq',
+  'sc-de','sc-ltde','sc-cr','sc-qr',
+  'sc-gm','sc-om','sc-roe','sc-roa',
+  'sc-rec','sc-price','sc-target','sc-rsi','sc-sr'];
+
+function saveToLeaderboard(){
+  const r=window._lastScore;
+  if(!r){ alert('Score a stock first.'); return; }
+  const lb=getLeaderboard();
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  // Capture all current input values
+  const inputs={};
+  SC_ALL_INPUTS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el && el.value!=='') inputs[id]=el.value;
+  });
+  const idx=lb.findIndex(e=>e.ticker===r.ticker);
+  const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,date:dateStr,ts:now.getTime(),inputs};
+  if(idx>=0) lb[idx]=entry; else lb.push(entry);
+  saveLeaderboard(lb);
+  renderLeaderboard();
+  const btn=event.target; btn.textContent='✅ Saved!'; setTimeout(()=>btn.textContent='💾 Save to Leaderboard',1500);
+}
+
+function renderLeaderboard(){
+  const lb=getLeaderboard();
+  const empty=document.getElementById('sc-leaderboard-empty');
+  const tbl=document.getElementById('sc-leaderboard-tbl');
+  const tbody=document.getElementById('sc-leaderboard-body');
+  if(!lb.length){ empty.style.display=''; tbl.style.display='none'; return; }
+  empty.style.display='none'; tbl.style.display='';
+  const sorted=[...lb].sort((a,b)=>b.total-a.total);
+  tbody.innerHTML=sorted.map((e,i)=>{
+    const color=e.total>=75?'var(--green)':e.total>=55?'var(--amber)':'var(--red)';
+    return `<tr style="border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''" onclick="loadLeaderboardEntry('${e.ticker}')">
+      <td style="padding:10px 12px;color:var(--muted)">${i+1}</td>
+      <td style="padding:10px 12px;font-weight:800">${e.ticker}</td>
+      <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.typeLbl||''}</td>
+      <td style="padding:10px 12px;text-align:center;font-weight:800;color:${color}">${e.total}/100</td>
+      <td style="padding:10px 12px;text-align:center;font-weight:700;color:${color}">${e.grade}</td>
+      <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.date||''}</td>
+      <td style="padding:10px 12px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function loadLeaderboardEntry(ticker){
+  const lb=getLeaderboard();
+  const e=lb.find(x=>x.ticker===ticker);
+  if(!e) return;
+  // Switch to Score tab
+  const scoreBtn=document.querySelector('.tab[onclick*="score"]');
+  showTab('score', scoreBtn);
+  // Populate fields
+  document.getElementById('sc-ticker').value=e.ticker;
+  document.getElementById('sc-type').value=e.type||'growth';
+  updateWeightHints();
+  // Restore all inputs
+  SC_ALL_INPUTS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
+  });
+  calcUpside();
+  // Re-run the score so badges light up
+  calcScore();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function deleteLeaderboardEntry(ticker){
+  const lb=getLeaderboard().filter(e=>e.ticker!==ticker);
+  saveLeaderboard(lb);
+  renderLeaderboard();
+}
+
+function clearLeaderboard(){
+  if(!confirm('Clear all leaderboard entries?')) return;
+  saveLeaderboard([]);
+  renderLeaderboard();
 }
 
 setTimeout(updateWeightHints, 100);
+setTimeout(renderLeaderboard, 150);
 
 const GROQ_KEY = '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';
 
