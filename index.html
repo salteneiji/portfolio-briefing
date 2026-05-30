@@ -1817,8 +1817,8 @@ function clearScore(){
 }
 
 // ── Leaderboard ───────────────────────────────────────────────────────────────
-function getLeaderboard(){ return _getStore().leaderboard||[]; }
-function saveLeaderboard(lb){ _saveStore({leaderboard:lb}); }
+function getLeaderboard(){ try{ return JSON.parse(localStorage.getItem('pf_leaderboard')||'[]'); }catch(e){ return []; } }
+function saveLeaderboard(lb){ try{ localStorage.setItem('pf_leaderboard',JSON.stringify(lb)); }catch(e){} }
 
 const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm',
@@ -1829,24 +1829,32 @@ const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-rec','sc-price','sc-target','sc-rsi','sc-sr'];
 
 function saveToLeaderboard(btn){
-  const r=window._lastScore;
-  if(!r){ alert('Score a stock first.'); return; }
-  const lb=getLeaderboard();
-  const now=new Date();
-  const dateStr=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
-  // Capture all current input values
-  const inputs={};
-  SC_ALL_INPUTS.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el && el.value!=='') inputs[id]=el.value;
-  });
-  const idx=lb.findIndex(e=>e.ticker===r.ticker);
-  const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,date:dateStr,ts:now.getTime(),inputs};
-  if(idx>=0) lb[idx]=entry; else lb.push(entry);
-  saveLeaderboard(lb);
-  renderLeaderboard();
-  if(btn){ btn.textContent='✅ Saved!'; setTimeout(()=>btn.textContent='💾 Save to Leaderboard',1500); }
+  try {
+    const r=window._lastScore;
+    if(!r){ alert('Score a stock first — hit the Score It button before saving.'); return; }
+    const lb=getLeaderboard();
+    const now=new Date();
+    const dateStr=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+    const inputs={};
+    SC_ALL_INPUTS.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el && el.value!=='') inputs[id]=el.value;
+    });
+    const idx=lb.findIndex(e=>e.ticker===r.ticker);
+    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,date:dateStr,ts:now.getTime(),inputs};
+    if(idx>=0) lb[idx]=entry; else lb.push(entry);
+    saveLeaderboard(lb);
+    renderLeaderboard();
+    // Switch to leaderboard tab
+    const lbBtn=document.querySelector('.tab[onclick*="leaderboard"]');
+    showTab('leaderboard', lbBtn);
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(e) {
+    alert('Save failed: '+e.message);
+    console.error(e);
+  }
 }
+
 
 function renderLeaderboard(){
   const lb=getLeaderboard();
