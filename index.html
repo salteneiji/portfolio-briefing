@@ -596,7 +596,8 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🎯 Analyst & Market Signals</div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
             <div class="sc-row"><label>Recom. (1–5)</label><input class="fi-sm sc-inp" id="sc-rec" type="number" step="0.01" placeholder="e.g. 1.59"/><span class="sc-badge" id="scb-rec"></span></div>
-            <div class="sc-row"><label>Target Upside %</label><input class="fi-sm sc-inp" id="sc-up" type="number" step="0.1" placeholder="e.g. 32.6"/><span class="sc-badge" id="scb-up"></span></div>
+            <div class="sc-row"><label>Current Price</label><input class="fi-sm sc-inp" id="sc-price" type="number" step="0.01" placeholder="e.g. 40.82" oninput="calcUpside()"/><span></span></div>
+            <div class="sc-row"><label>Target Price</label><input class="fi-sm sc-inp" id="sc-target" type="number" step="0.01" placeholder="e.g. 54.12" oninput="calcUpside()"/><span class="sc-badge" id="scb-up"></span></div>
             <div class="sc-row"><label>RSI (14)</label><input class="fi-sm sc-inp" id="sc-rsi" type="number" step="0.1" placeholder="e.g. 67.25"/><span class="sc-badge" id="scb-rsi"></span></div>
             <div class="sc-row"><label>Short Ratio</label><input class="fi-sm sc-inp" id="sc-sr" type="number" step="0.01" placeholder="e.g. 2.15"/><span class="sc-badge" id="scb-sr"></span></div>
           </div>
@@ -1732,9 +1733,30 @@ function calcScore(){
   document.getElementById('sc-result').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
+function calcUpside(){
+  const price  = parseFloat(document.getElementById('sc-price').value);
+  const target = parseFloat(document.getElementById('sc-target').value);
+  const badge  = document.getElementById('scb-up');
+  if(!isNaN(price) && !isNaN(target) && price > 0){
+    const upside = ((target/price - 1)*100).toFixed(1);
+    // Store computed upside in a hidden input for scoring
+    let hidden = document.getElementById('sc-up');
+    if(!hidden){ hidden = document.createElement('input'); hidden.id='sc-up'; hidden.type='hidden'; document.body.appendChild(hidden); }
+    hidden.value = upside;
+    badge.textContent = upside + '%';
+    const s = computeMetricScore('sc-up');
+    if(s!=null){ badge.style.background=badgeBg(s); badge.style.color=badgeColor(s); }
+  } else {
+    document.getElementById('sc-up') && (document.getElementById('sc-up').value='');
+    badge.textContent='';
+    badge.style.background='';
+  }
+}
+
 function clearScore(){
   document.querySelectorAll('.sc-inp').forEach(el=>el.value='');
   document.querySelectorAll('.sc-badge').forEach(el=>{el.textContent='';el.style.background='';});
+  const h=document.getElementById('sc-up'); if(h) h.value='';
   document.getElementById('sc-result').style.display='none';
   document.getElementById('sc-ticker').value='';
 }
