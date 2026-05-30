@@ -527,55 +527,67 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
 
   <!-- SCORE TAB -->
   <div class="tab-pane" id="tab-score">
-    <div style="max-width:760px;margin:0 auto">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+    <div style="max-width:800px;margin:0 auto">
+
+      <!-- TOOLBAR -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
         <input class="fi" id="sc-ticker" placeholder="Ticker (e.g. ONON)" style="width:120px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"/>
+        <select class="fi" id="sc-type" style="width:190px" onchange="updateWeightHints()">
+          <option value="growth">🚀 Tech / Growth</option>
+          <option value="financial">🏦 Financial (Banks)</option>
+          <option value="industrial">🏭 Industrial / Value</option>
+          <option value="healthcare">💊 Healthcare / Biotech</option>
+          <option value="consumer">🛍️ Consumer</option>
+        </select>
         <button class="btn btn-primary" onclick="calcScore()">Score It</button>
         <button class="btn btn-ghost" onclick="clearScore()">Clear</button>
-        <span style="font-size:.73rem;color:var(--muted)">Enter values from Finviz · leave blank if unavailable</span>
+        <span style="font-size:.73rem;color:var(--muted)">Enter values from Finviz · blank = skipped</span>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" id="sc-form">
+      <!-- WEIGHT HINT BAR -->
+      <div id="sc-weight-hint" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;font-size:.68rem"></div>
 
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" id="sc-form">
         <!-- VALUATION -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">💎 Valuation</div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">💎 Valuation <span class="sc-wt" id="wt-val"></span></div>
           <div class="sc-row"><label>PEG</label><input class="fi-sm sc-inp" id="sc-peg" type="number" step="0.01" placeholder="e.g. 0.46"/><span class="sc-badge" id="scb-peg"></span></div>
           <div class="sc-row"><label>Forward P/E</label><input class="fi-sm sc-inp" id="sc-fpe" type="number" step="0.01" placeholder="e.g. 18.5"/><span class="sc-badge" id="scb-fpe"></span></div>
-          <div class="sc-row"><label>P/S</label><input class="fi-sm sc-inp" id="sc-ps" type="number" step="0.01" placeholder="e.g. 3.47"/><span class="sc-badge" id="scb-ps"></span></div>
+          <div class="sc-row"><label>P/FCF</label><input class="fi-sm sc-inp" id="sc-pfcf" type="number" step="0.01" placeholder="e.g. 36.48"/><span class="sc-badge" id="scb-pfcf"></span></div>
+          <div class="sc-row"><label>EV/EBITDA</label><input class="fi-sm sc-inp" id="sc-ev" type="number" step="0.01" placeholder="e.g. 18.84"/><span class="sc-badge" id="scb-ev"></span></div>
           <div class="sc-row"><label>P/B</label><input class="fi-sm sc-inp" id="sc-pb" type="number" step="0.01" placeholder="e.g. 6.17"/><span class="sc-badge" id="scb-pb"></span></div>
           <div class="sc-row"><label>52W Position %</label><input class="fi-sm sc-inp" id="sc-52w" type="number" step="0.1" placeholder="e.g. 29.96"/><span class="sc-badge" id="scb-52w"></span></div>
         </div>
 
         <!-- HISTORICAL GROWTH -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📜 Historical Growth</div>
-          <div class="sc-row"><label>EPS Past 3Y %</label><input class="fi-sm sc-inp" id="sc-eps3" type="number" step="0.1" placeholder="e.g. 57.45"/><span class="sc-badge" id="scb-eps3"></span></div>
-          <div class="sc-row"><label>EPS Past 5Y %</label><input class="fi-sm sc-inp" id="sc-eps5" type="number" step="0.1" placeholder="e.g. 51.61"/><span class="sc-badge" id="scb-eps5"></span></div>
-          <div class="sc-row"><label>Sales Past 5Y %</label><input class="fi-sm sc-inp" id="sc-rev5" type="number" step="0.1" placeholder="e.g. 41.55"/><span class="sc-badge" id="scb-rev5"></span></div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📜 Historical Growth <span class="sc-wt" id="wt-hist"></span></div>
+          <div class="sc-row"><label>EPS past 3Y %</label><input class="fi-sm sc-inp" id="sc-eps3" type="number" step="0.1" placeholder="e.g. 57.45"/><span class="sc-badge" id="scb-eps3"></span></div>
+          <div class="sc-row"><label>EPS past 5Y %</label><input class="fi-sm sc-inp" id="sc-eps5" type="number" step="0.1" placeholder="e.g. 51.61"/><span class="sc-badge" id="scb-eps5"></span></div>
+          <div class="sc-row"><label>Sales past 5Y %</label><input class="fi-sm sc-inp" id="sc-rev5" type="number" step="0.1" placeholder="e.g. 41.55"/><span class="sc-badge" id="scb-rev5"></span></div>
           <div class="sc-row"><label>EPS Y/Y TTM %</label><input class="fi-sm sc-inp" id="sc-epsttm" type="number" step="0.1" placeholder="e.g. 32.77"/><span class="sc-badge" id="scb-epsttm"></span></div>
           <div class="sc-row"><label>Sales TTM %</label><input class="fi-sm sc-inp" id="sc-revttm" type="number" step="0.1" placeholder="e.g. 36"/><span class="sc-badge" id="scb-revttm"></span></div>
         </div>
 
         <!-- CURRENT MOMENTUM -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">⚡ Current Momentum</div>
-          <div class="sc-row"><label>EPS This Year %</label><input class="fi-sm sc-inp" id="sc-epsty" type="number" step="0.1" placeholder="e.g. 75.29"/><span class="sc-badge" id="scb-epsty"></span></div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">⚡ Current Momentum <span class="sc-wt" id="wt-mom"></span></div>
+          <div class="sc-row"><label>EPS this Y %</label><input class="fi-sm sc-inp" id="sc-epsty" type="number" step="0.1" placeholder="e.g. 75.29"/><span class="sc-badge" id="scb-epsty"></span></div>
           <div class="sc-row"><label>EPS Q/Q %</label><input class="fi-sm sc-inp" id="sc-epsqq" type="number" step="0.1" placeholder="e.g. 107.83"/><span class="sc-badge" id="scb-epsqq"></span></div>
           <div class="sc-row"><label>Sales Q/Q %</label><input class="fi-sm sc-inp" id="sc-revqq" type="number" step="0.1" placeholder="e.g. 31.34"/><span class="sc-badge" id="scb-revqq"></span></div>
         </div>
 
         <!-- FORWARD GROWTH -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🚀 Forward Growth</div>
-          <div class="sc-row"><label>EPS Next Year %</label><input class="fi-sm sc-inp" id="sc-epsny" type="number" step="0.1" placeholder="e.g. 23.28"/><span class="sc-badge" id="scb-epsny"></span></div>
-          <div class="sc-row"><label>EPS Next 5Y %</label><input class="fi-sm sc-inp" id="sc-epsn5" type="number" step="0.1" placeholder="e.g. 39.97"/><span class="sc-badge" id="scb-epsn5"></span></div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🚀 Forward Growth <span class="sc-wt" id="wt-fwd"></span></div>
+          <div class="sc-row"><label>EPS next Y %</label><input class="fi-sm sc-inp" id="sc-epsny" type="number" step="0.1" placeholder="e.g. 23.28"/><span class="sc-badge" id="scb-epsny"></span></div>
+          <div class="sc-row"><label>EPS next 5Y %</label><input class="fi-sm sc-inp" id="sc-epsn5" type="number" step="0.1" placeholder="e.g. 39.97"/><span class="sc-badge" id="scb-epsn5"></span></div>
           <div class="sc-row"><label>Sales next Y %</label><input class="fi-sm sc-inp" id="sc-epsnq" type="number" step="0.1" placeholder="e.g. 18.5"/><span class="sc-badge" id="scb-epsnq"></span></div>
         </div>
 
         <!-- FINANCIAL HEALTH -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🏦 Financial Health</div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🏦 Financial Health <span class="sc-wt" id="wt-health"></span></div>
           <div class="sc-row"><label>Debt/Eq</label><input class="fi-sm sc-inp" id="sc-de" type="number" step="0.01" placeholder="e.g. 0.34"/><span class="sc-badge" id="scb-de"></span></div>
           <div class="sc-row"><label>LT Debt/Eq</label><input class="fi-sm sc-inp" id="sc-ltde" type="number" step="0.01" placeholder="e.g. 0.26"/><span class="sc-badge" id="scb-ltde"></span></div>
           <div class="sc-row"><label>Current Ratio</label><input class="fi-sm sc-inp" id="sc-cr" type="number" step="0.01" placeholder="e.g. 2.98"/><span class="sc-badge" id="scb-cr"></span></div>
@@ -584,7 +596,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
 
         <!-- PROFITABILITY -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 Profitability</div>
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 Profitability <span class="sc-wt" id="wt-prof"></span></div>
           <div class="sc-row"><label>Gross Margin %</label><input class="fi-sm sc-inp" id="sc-gm" type="number" step="0.1" placeholder="e.g. 63.90"/><span class="sc-badge" id="scb-gm"></span></div>
           <div class="sc-row"><label>Oper. Margin %</label><input class="fi-sm sc-inp" id="sc-om" type="number" step="0.1" placeholder="e.g. 13.40"/><span class="sc-badge" id="scb-om"></span></div>
           <div class="sc-row"><label>ROE %</label><input class="fi-sm sc-inp" id="sc-roe" type="number" step="0.1" placeholder="e.g. 16.48"/><span class="sc-badge" id="scb-roe"></span></div>
@@ -593,11 +605,11 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
 
         <!-- ANALYST SIGNALS -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;grid-column:1/-1">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🎯 Analyst & Market Signals</div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🎯 Analyst & Market Signals <span class="sc-wt" id="wt-sig"></span></div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
             <div class="sc-row"><label>Recom. (1–5)</label><input class="fi-sm sc-inp" id="sc-rec" type="number" step="0.01" placeholder="e.g. 1.59"/><span class="sc-badge" id="scb-rec"></span></div>
             <div class="sc-row"><label>Current Price</label><input class="fi-sm sc-inp" id="sc-price" type="number" step="0.01" placeholder="e.g. 40.82" oninput="calcUpside()"/><span></span></div>
-            <div class="sc-row"><label>Target Price</label><input class="fi-sm sc-inp" id="sc-target" type="number" step="0.01" placeholder="e.g. 54.12" oninput="calcUpside()"/><span class="sc-badge" id="scb-up"></span></div>
+            <div class="sc-row"><label>Target Price → Upside</label><input class="fi-sm sc-inp" id="sc-target" type="number" step="0.01" placeholder="e.g. 54.12" oninput="calcUpside()"/><span class="sc-badge" id="scb-up"></span></div>
             <div class="sc-row"><label>RSI (14)</label><input class="fi-sm sc-inp" id="sc-rsi" type="number" step="0.1" placeholder="e.g. 67.25"/><span class="sc-badge" id="scb-rsi"></span></div>
             <div class="sc-row"><label>Short Ratio</label><input class="fi-sm sc-inp" id="sc-sr" type="number" step="0.01" placeholder="e.g. 2.15"/><span class="sc-badge" id="scb-sr"></span></div>
           </div>
@@ -607,6 +619,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
       <!-- RESULT -->
       <div id="sc-result" style="display:none;margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;text-align:center">
         <div id="sc-ticker-lbl" style="font-size:1.2rem;font-weight:800;margin-bottom:4px"></div>
+        <div id="sc-type-lbl" style="font-size:.75rem;color:var(--muted);margin-bottom:8px"></div>
         <div id="sc-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="sc-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="sc-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
@@ -1619,33 +1632,33 @@ function filterFundTable(q){
   });
 }
 
-// ── Stock Scoring System (manual entry) ──────────────────────────────────
+// ── Stock Scoring System (manual entry) ──────────────────────────────────────
 const SC_METRICS = {
-  // [id, label, type, ranges] — type: 'low'=lower is better, 'high'=higher is better
   'sc-peg':    {low:true,  ranges:[[0.5,10],[1,8],[1.5,6],[2,4],[3,2],[Infinity,0]]},
-  'sc-fpe':    {low:true,  ranges:[[15,10],[20,8],[25,6],[35,4],[50,2],[Infinity,0]]},
-  'sc-ps':     {low:true,  ranges:[[2,10],[5,7],[10,4],[20,2],[Infinity,0]]},
-  'sc-pb':     {low:true,  ranges:[[2,10],[5,7],[10,4],[20,2],[Infinity,0]]},
-  'sc-52w':    {low:true,  ranges:[[20,10],[40,8],[60,6],[80,4],[Infinity,2]]},
-  'sc-eps3':   {low:false, ranges:[[10,2],[20,5],[30,7],[50,9],[Infinity,10]]},
-  'sc-eps5':   {low:false, ranges:[[10,2],[20,5],[30,7],[50,9],[Infinity,10]]},
-  'sc-rev5':   {low:false, ranges:[[10,2],[20,5],[30,7],[50,9],[Infinity,10]]},
-  'sc-epsttm': {low:false, ranges:[[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
-  'sc-revttm': {low:false, ranges:[[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
-  'sc-epsty':  {low:false, ranges:[[10,2],[20,5],[40,7],[70,9],[Infinity,10]]},
-  'sc-epsqq':  {low:false, ranges:[[10,2],[25,5],[50,7],[80,9],[Infinity,10]]},
-  'sc-revqq':  {low:false, ranges:[[10,2],[20,5],[30,7],[50,9],[Infinity,10]]},
-  'sc-epsny':  {low:false, ranges:[[5,2],[15,5],[25,7],[35,9],[Infinity,10]]},
-  'sc-epsn5':  {low:false, ranges:[[10,2],[20,5],[30,7],[40,9],[Infinity,10]]},
-  'sc-epsnq':  {low:false, ranges:[[5,2],[15,5],[25,7],[35,9],[Infinity,10]]},
+  'sc-fpe':    {low:true,  ranges:[[12,10],[18,8],[25,6],[35,4],[50,2],[Infinity,0]]},
+  'sc-pfcf':   {low:true,  ranges:[[15,10],[25,8],[35,6],[50,4],[75,2],[Infinity,0]]},
+  'sc-ev':     {low:true,  ranges:[[8,10],[12,8],[18,6],[25,4],[40,2],[Infinity,0]]},
+  'sc-pb':     {low:true,  ranges:[[1,10],[2,8],[4,6],[8,4],[15,2],[Infinity,0]]},
+  'sc-52w':    {low:true,  ranges:[[20,10],[35,8],[55,6],[75,4],[Infinity,2]]},
+  'sc-eps3':   {low:false, ranges:[[0,0],[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
+  'sc-eps5':   {low:false, ranges:[[0,0],[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
+  'sc-rev5':   {low:false, ranges:[[0,0],[5,2],[10,4],[20,7],[35,9],[Infinity,10]]},
+  'sc-epsttm': {low:false, ranges:[[0,0],[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
+  'sc-revttm': {low:false, ranges:[[0,0],[5,2],[10,4],[20,7],[35,9],[Infinity,10]]},
+  'sc-epsty':  {low:false, ranges:[[0,0],[10,2],[20,5],[40,7],[70,9],[Infinity,10]]},
+  'sc-epsqq':  {low:false, ranges:[[0,0],[10,2],[25,5],[50,7],[80,9],[Infinity,10]]},
+  'sc-revqq':  {low:false, ranges:[[0,0],[5,2],[15,5],[25,7],[40,9],[Infinity,10]]},
+  'sc-epsny':  {low:false, ranges:[[0,0],[5,2],[12,5],[20,7],[30,9],[Infinity,10]]},
+  'sc-epsn5':  {low:false, ranges:[[0,0],[8,2],[15,5],[25,7],[35,9],[Infinity,10]]},
+  'sc-epsnq':  {low:false, ranges:[[0,0],[5,2],[10,5],[20,7],[30,9],[Infinity,10]]},
   'sc-de':     {low:true,  ranges:[[0.3,10],[0.5,8],[1,6],[2,3],[Infinity,0]]},
   'sc-ltde':   {low:true,  ranges:[[0.2,10],[0.4,8],[0.8,6],[1.5,3],[Infinity,0]]},
   'sc-cr':     {low:false, ranges:[[1,2],[1.5,5],[2,8],[3,10],[Infinity,10]]},
   'sc-qr':     {low:false, ranges:[[0.5,2],[1,5],[1.5,8],[2,10],[Infinity,10]]},
-  'sc-gm':     {low:false, ranges:[[20,2],[40,5],[55,8],[70,10],[Infinity,10]]},
-  'sc-om':     {low:false, ranges:[[5,2],[10,5],[20,8],[30,10],[Infinity,10]]},
+  'sc-gm':     {low:false, ranges:[[10,1],[20,3],[40,5],[55,8],[70,10],[Infinity,10]]},
+  'sc-om':     {low:false, ranges:[[0,1],[5,3],[10,5],[20,8],[30,10],[Infinity,10]]},
   'sc-roe':    {low:false, ranges:[[5,2],[10,5],[15,7],[25,9],[Infinity,10]]},
-  'sc-roa':    {low:false, ranges:[[3,2],[7,5],[12,8],[20,10],[Infinity,10]]},
+  'sc-roa':    {low:false, ranges:[[2,2],[5,5],[10,7],[18,9],[Infinity,10]]},
   'sc-rec':    {low:true,  ranges:[[1.5,10],[2,8],[2.5,6],[3,4],[3.5,2],[Infinity,0]]},
   'sc-up':     {low:false, ranges:[[5,2],[10,4],[20,7],[30,9],[Infinity,10]]},
   'sc-rsi':    {low:false, ranges:[[30,3],[40,6],[55,10],[70,8],[80,5],[Infinity,2]]},
@@ -1653,7 +1666,7 @@ const SC_METRICS = {
 };
 
 const SC_CATS = {
-  'Valuation':    ['sc-peg','sc-fpe','sc-ps','sc-pb','sc-52w'],
+  'Valuation':    ['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w'],
   'Hist. Growth': ['sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm'],
   'Momentum':     ['sc-epsty','sc-epsqq','sc-revqq'],
   'Fwd Growth':   ['sc-epsny','sc-epsn5','sc-epsnq'],
@@ -1662,72 +1675,87 @@ const SC_CATS = {
   'Signals':      ['sc-rec','sc-up','sc-rsi','sc-sr'],
 };
 
-function getMetricScore(id, val){
-  const m = SC_METRICS[id];
-  if(!m) return null;
-  for(const [t,s] of m.ranges){
-    if(m.low ? val<=t : val<=t) return m.low ? s : (t===Infinity?m.ranges[m.ranges.length-1][1]:s);
-  }
-  return m.ranges[m.ranges.length-1][1];
-}
+const SC_WEIGHTS = {
+  growth:     {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.10,'Profitability':.15,'Signals':.05},
+  financial:  {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  industrial: {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  healthcare: {'Valuation':.15,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.25,'Health':.25,'Profitability':.05,'Signals':.05},
+  consumer:   {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+};
+
+const SC_TYPE_LABELS = {
+  growth:'🚀 Tech / Growth', financial:'🏦 Financial', industrial:'🏭 Industrial / Value',
+  healthcare:'💊 Healthcare / Biotech', consumer:'🛔 Consumer'
+};
 
 function computeMetricScore(id){
   const m = SC_METRICS[id];
   const el = document.getElementById(id);
-  if(!el || el.value==='') return null;
+  if(!m || !el || el.value==='') return null;
   const v = parseFloat(el.value);
   if(isNaN(v)) return null;
-  // find first range where v <= threshold (for low=true) or find bracket (for low=false)
-  if(m.low){
-    for(const [t,s] of m.ranges) if(v<=t) return s;
-    return 0;
-  } else {
-    let last=m.ranges[0][1];
-    for(const [t,s] of m.ranges){ if(v<=t) return s; last=s; }
-    return last;
-  }
+  if(m.low){ for(const [t,s] of m.ranges) if(v<=t) return s; return 0; }
+  else { let last=m.ranges[0][1]; for(const [t,s] of m.ranges){ if(v<=t) return s; last=s; } return last; }
 }
 
 function badgeColor(s){ return s>=8?'#18d47a':s>=5?'#f59e0b':'#f04460'; }
 function badgeBg(s){ return s>=8?'rgba(24,212,122,.15)':s>=5?'rgba(245,158,11,.15)':'rgba(240,68,96,.15)'; }
 
+function updateWeightHints(){
+  const type = document.getElementById('sc-type').value;
+  const w = SC_WEIGHTS[type];
+  const catIds = {'Valuation':'val','Hist. Growth':'hist','Momentum':'mom','Fwd Growth':'fwd','Health':'health','Profitability':'prof','Signals':'sig'};
+  for(const [cat,wid] of Object.entries(catIds)){
+    const el=document.getElementById('wt-'+wid);
+    if(el) el.textContent='('+Math.round(w[cat]*100)+'%)';
+  }
+}
+
 function calcScore(){
-  // Score each metric and update badges
-  let catScores={};
+  const type = document.getElementById('sc-type').value;
+  const weights = SC_WEIGHTS[type];
+  let catScores={}, weightedTotal=0, totalWeight=0;
+
   for(const [cat,ids] of Object.entries(SC_CATS)){
     const scores=[];
     for(const id of ids){
       const s=computeMetricScore(id);
-      const badge=document.getElementById('scb-'+id.replace('sc-',''));
+      const badgeId='scb-'+id.replace('sc-','');
+      const badge=document.getElementById(badgeId);
       if(s!=null){
-        badge.textContent=s;
-        badge.style.background=badgeBg(s);
-        badge.style.color=badgeColor(s);
+        if(badge){ badge.textContent=s; badge.style.background=badgeBg(s); badge.style.color=badgeColor(s); }
         scores.push(s);
       } else {
-        badge.textContent='';
-        badge.style.background='';
+        if(badge){ badge.textContent=''; badge.style.background=''; }
       }
     }
-    catScores[cat]=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length*10):null;
+    if(scores.length){
+      const avg=scores.reduce((a,b)=>a+b,0)/scores.length;
+      catScores[cat]=Math.round(avg*10);
+      weightedTotal += catScores[cat]*weights[cat];
+      totalWeight   += weights[cat];
+    } else {
+      catScores[cat]=null;
+    }
   }
 
-  const avail=Object.values(catScores).filter(x=>x!=null);
-  if(!avail.length){ alert('Enter at least a few values first.'); return; }
-  const total=Math.round(avail.reduce((a,b)=>a+b,0)/avail.length);
+  if(totalWeight===0){ alert('Enter at least a few values first.'); return; }
+  const total=Math.round(weightedTotal/totalWeight);
   const grade=total>=85?'A+':total>=75?'A':total>=65?'B+':total>=55?'B':total>=45?'C':total>=35?'D':'F';
   const color=total>=75?'var(--green)':total>=55?'var(--amber)':'var(--red)';
 
   const ticker=document.getElementById('sc-ticker').value||'—';
   document.getElementById('sc-ticker-lbl').textContent=ticker;
+  document.getElementById('sc-type-lbl').textContent=SC_TYPE_LABELS[type];
   document.getElementById('sc-score-lbl').style.color=color;
   document.getElementById('sc-score-lbl').textContent=total+'/100';
   document.getElementById('sc-grade-lbl').style.color=color;
   document.getElementById('sc-grade-lbl').textContent='Grade: '+grade;
   document.getElementById('sc-cats').innerHTML=Object.entries(catScores).map(([cat,s])=>`
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center;min-width:90px">
       <div style="font-size:.6rem;color:var(--muted);margin-bottom:2px">${cat}</div>
-      <div style="font-size:1.1rem;font-weight:800;color:${s!=null?badgeColor(Math.round(s/10)):'var(--muted)'}">${s!=null?s:'—'}</div>
+      <div style="font-size:.6rem;color:var(--muted)">${Math.round(weights[cat]*100)}% weight</div>
+      <div style="font-size:1.1rem;font-weight:800;color:${s!=null?badgeColor(Math.round(s/10)):'var(--muted)'}">${s!=null?s:'\u2014'}</div>
     </div>`).join('');
   document.getElementById('sc-result').style.display='block';
   document.getElementById('sc-result').scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -1739,7 +1767,6 @@ function calcUpside(){
   const badge  = document.getElementById('scb-up');
   if(!isNaN(price) && !isNaN(target) && price > 0){
     const upside = ((target/price - 1)*100).toFixed(1);
-    // Store computed upside in a hidden input for scoring
     let hidden = document.getElementById('sc-up');
     if(!hidden){ hidden = document.createElement('input'); hidden.id='sc-up'; hidden.type='hidden'; document.body.appendChild(hidden); }
     hidden.value = upside;
@@ -1747,9 +1774,8 @@ function calcUpside(){
     const s = computeMetricScore('sc-up');
     if(s!=null){ badge.style.background=badgeBg(s); badge.style.color=badgeColor(s); }
   } else {
-    document.getElementById('sc-up') && (document.getElementById('sc-up').value='');
-    badge.textContent='';
-    badge.style.background='';
+    const h=document.getElementById('sc-up'); if(h) h.value='';
+    badge.textContent=''; badge.style.background='';
   }
 }
 
@@ -1761,6 +1787,7 @@ function clearScore(){
   document.getElementById('sc-ticker').value='';
 }
 
+setTimeout(updateWeightHints, 100);
 
 const GROQ_KEY = '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';
 
