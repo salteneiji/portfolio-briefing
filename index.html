@@ -2298,9 +2298,9 @@ function renderSparkline(history){
 
 function isBuyZone(e){
   const valScore=e.catScores&&e.catScores['Valuation'];
-  const sc52w=e.inputs&&e.inputs['sc-52w'];
-  if(valScore==null) return false;
-  return valScore>=65&&(!sc52w||parseFloat(sc52w)<=35);
+  const fwdScore=e.catScores&&(e.catScores['Fwd Growth']??e.catScores['Rev Growth']);
+  if(valScore==null||fwdScore==null) return false;
+  return valScore>=65&&fwdScore>=65;
 }
 
 function renderLeaderboard(){
