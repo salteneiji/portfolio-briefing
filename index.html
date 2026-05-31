@@ -635,31 +635,22 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="clearLeaderboard()">Clear All</button>
       </div>
       <div id="sc-leaderboard-empty" style="text-align:center;padding:60px 0;color:var(--muted);font-size:.88rem">No stocks scored yet. Go to 🏆 Score, score a stock, and hit <strong>Save to Leaderboard</strong>.</div>
-      <div style="overflow-x:auto">
-      <table id="sc-leaderboard-tbl" style="display:none;width:100%;border-collapse:collapse;font-size:.84rem;white-space:nowrap">
+      <table id="sc-leaderboard-tbl" style="display:none;width:100%;border-collapse:collapse;font-size:.82rem">
         <thead>
           <tr style="border-bottom:2px solid var(--border)">
-            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">#</th>
-            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Ticker</th>
-            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Type</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Score</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Grade</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">vs Prev</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Val</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Growth</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Mom</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Fwd</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Health</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Prof</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:.7rem">Signals</th>
-            <th style="padding:10px 12px;text-align:right;color:var(--muted);font-weight:600">Price</th>
-            <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Scored On</th>
-            <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600"></th>
+            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">#</th>
+            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Ticker</th>
+            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Sector</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Score</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">vs Prev</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Breakdown</th>
+            <th style="padding:8px 10px;text-align:right;color:var(--muted);font-weight:600">Price</th>
+            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Date</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600"></th>
           </tr>
         </thead>
         <tbody id="sc-leaderboard-body"></tbody>
       </table>
-      </div>
     </div>
   </div>
 
@@ -1987,33 +1978,37 @@ function renderLeaderboard(){
   const sorted=[...lb].sort((a,b)=>b.total-a.total);
   tbody.innerHTML=sorted.map((e,i)=>{
     const color=e.total>=75?'var(--green)':e.total>=55?'var(--amber)':'var(--red)';
-    return `<tr style="border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''" onclick="loadLeaderboardEntry('${e.ticker}')">
-      <td style="padding:10px 12px;color:var(--muted)">${i+1}</td>
-      <td style="padding:10px 12px;font-weight:800">${e.ticker}</td>
-      <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.typeLbl||''}</td>
-      <td style="padding:10px 12px;text-align:center;font-weight:800;color:${color}">${e.total}/100</td>
-      <td style="padding:10px 12px;text-align:center;font-weight:700;color:${color}">${e.grade}</td>
-      ${(()=>{
-        if(e.prevScore==null) return `<td style="padding:10px 12px;text-align:center;color:var(--muted);font-size:.75rem">—</td>`;
-        const diff=e.total-e.prevScore;
-        const dc=diff>0?'var(--green)':diff<0?'var(--red)':'var(--muted)';
-        const arrow=diff>0?'▲':diff<0?'▼':'●';
-        const sign=diff>0?'+':'';
-        return `<td style="padding:10px 12px;text-align:center">
-          <div style="font-weight:700;color:${dc};font-size:.82rem">${arrow} ${sign}${diff}</div>
-          <div style="font-size:.68rem;color:var(--muted)">was ${e.prevScore} · ${e.prevDate||''}</div>
-        </td>`;
-      })()}
-      ${['Valuation','Hist. Growth','Momentum','Fwd Growth','Health','Profitability','Signals'].map(cat=>{
+    // Build breakdown cell — 7 categories as 2-row mini grid
+    const CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
+    const breakdownHtml=`<div style="display:inline-grid;grid-template-columns:repeat(4,auto);gap:3px 8px;font-size:.68rem;line-height:1.3">${
+      CAT_SHORT.map(([cat,short])=>{
         const cs=e.catScores&&e.catScores[cat];
-        if(cs==null) return `<td style="padding:10px 12px;text-align:center;color:var(--muted);font-size:.75rem">—</td>`;
-        const lg=cs>=85?'A+':cs>=75?'A':cs>=65?'B+':cs>=55?'B':cs>=45?'C':cs>=35?'D':'F';
-        const lc=cs>=75?'var(--green)':cs>=55?'var(--amber)':'var(--red)';
-        return `<td style="padding:10px 12px;text-align:center;font-weight:700;color:${lc};font-size:.82rem">${lg}</td>`;
-      }).join('')}
-      <td style="padding:10px 12px;text-align:right;color:var(--text);font-weight:600">${e.price?'$'+parseFloat(e.price).toFixed(2):'—'}</td>
-      <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.date||''}</td>
-      <td style="padding:10px 12px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
+        const lg=cs==null?'—':cs>=85?'A+':cs>=75?'A':cs>=65?'B+':cs>=55?'B':cs>=45?'C':cs>=35?'D':'F';
+        const lc=cs==null?'var(--muted)':cs>=75?'var(--green)':cs>=55?'var(--amber)':'var(--red)';
+        return `<span style="color:var(--muted)">${short}</span><span style="font-weight:700;color:${lc}">${lg}</span>`;
+      }).join('')
+    }</div>`;
+    // vs prev cell
+    const prevCell=(()=>{
+      if(e.prevScore==null) return `<td style="padding:8px 10px;text-align:center;color:var(--muted);font-size:.75rem">—</td>`;
+      const diff=e.total-e.prevScore;
+      const dc=diff>0?'var(--green)':diff<0?'var(--red)':'var(--muted)';
+      const arrow=diff>0?'▲':diff<0?'▼':'●';
+      return `<td style="padding:8px 10px;text-align:center">
+        <div style="font-weight:700;color:${dc};font-size:.82rem">${arrow} ${diff>0?'+':''}${diff}</div>
+        <div style="font-size:.65rem;color:var(--muted)">was ${e.prevScore}</div>
+      </td>`;
+    })();
+    return `<tr style="border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''" onclick="loadLeaderboardEntry('${e.ticker}')">
+      <td style="padding:8px 10px;color:var(--muted)">${i+1}</td>
+      <td style="padding:8px 10px;font-weight:800">${e.ticker}</td>
+      <td style="padding:8px 10px;color:var(--muted);font-size:.72rem;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${(e.typeLbl||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</td>
+      <td style="padding:8px 10px;text-align:center;font-weight:800;color:${color}">${e.total}<span style="font-size:.7rem;color:var(--muted)">/100</span> <span style="font-size:.75rem;font-weight:700">${e.grade}</span></td>
+      ${prevCell}
+      <td style="padding:8px 10px;text-align:center">${breakdownHtml}</td>
+      <td style="padding:8px 10px;text-align:right;color:var(--text);font-weight:600;white-space:nowrap">${e.price?'$'+parseFloat(e.price).toFixed(2):'—'}</td>
+      <td style="padding:8px 10px;color:var(--muted);font-size:.72rem;white-space:nowrap">${e.date||''}</td>
+      <td style="padding:8px 10px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
     </tr>`;
   }).join('');
 }
