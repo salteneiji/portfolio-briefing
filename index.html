@@ -377,6 +377,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
     <button class="tab" onclick="showTab('news',this)">News</button>
     <button class="tab" onclick="showTab('score',this)">🏆 Score</button>
     <button class="tab" onclick="showTab('leaderboard',this)">🥇 Leaderboard</button>
+    <button class="tab" onclick="showTab('preprofit',this)">🔬 Pre-Profit</button>
     <button class="tab" onclick="showTab('ai',this)">✦ AI</button>
   </nav>
 
@@ -655,6 +656,87 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         </thead>
         <tbody id="sc-leaderboard-body"></tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- PRE-PROFIT SCORE TAB -->
+  <div class="tab-pane" id="tab-preprofit">
+    <div style="max-width:800px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+        <input class="fi" id="pp-ticker" placeholder="Ticker" style="width:110px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"/>
+        <button class="btn btn-primary" onclick="calcPreScore()">Score It</button>
+        <button class="btn btn-ghost" onclick="clearPreScore()">Clear</button>
+        <div style="display:flex;align-items:center;gap:6px">
+          <label style="font-size:.72rem;color:var(--muted);white-space:nowrap">📅 Next Earnings</label>
+          <input class="fi" id="pp-earnings" type="date" style="width:145px;font-size:.78rem;padding:6px 10px"/>
+        </div>
+        <span style="font-size:.72rem;color:var(--muted)">For growth-stage & pre-profit companies · blank fields are skipped</span>
+      </div>
+      <div style="font-size:.72rem;color:var(--muted);margin-bottom:18px;padding:8px 12px;background:var(--surface);border-radius:8px;border-left:3px solid var(--blue)">
+        💡 Use this tab for companies with negative earnings. Scores on revenue growth, gross margin quality, path to profitability, cash runway, and valuation.
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+        <!-- Revenue Growth -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 Revenue Growth <span style="font-weight:400">(30%)</span></div>
+          <div class="sc-row"><label>Rev Growth TTM %</label><input class="fi-sm pp-inp" id="pp-revttm" type="number" step="0.1" placeholder="e.g. 45" oninput="ppAutoCalc()"/><span class="sc-badge" id="ppb-revttm"></span></div>
+          <div class="sc-row"><label>Rev Growth Fwd %</label><input class="fi-sm pp-inp" id="pp-revfwd" type="number" step="0.1" placeholder="e.g. 38" oninput="ppAutoCalc()"/><span class="sc-badge" id="ppb-revfwd"></span></div>
+          <div class="sc-row"><label>Acceleration (auto)</label><input class="fi-sm pp-inp" id="pp-revacc" type="number" step="0.1" placeholder="—" style="background:var(--surface);color:var(--muted)" readonly/><span class="sc-badge" id="ppb-revacc"></span></div>
+        </div>
+
+        <!-- Gross Economics -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">💰 Gross Economics <span style="font-weight:400">(20%)</span></div>
+          <div class="sc-row"><label>Gross Margin %</label><input class="fi-sm pp-inp" id="pp-gm" type="number" step="0.1" placeholder="e.g. 72"/><span class="sc-badge" id="ppb-gm"></span></div>
+          <div class="sc-row"><label>GM Change YoY pts</label><input class="fi-sm pp-inp" id="pp-gmchg" type="number" step="0.1" placeholder="e.g. +2.1 or -1.5"/><span class="sc-badge" id="ppb-gmchg"></span></div>
+        </div>
+
+        <!-- Path to Profitability -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🎯 Path to Profitability <span style="font-weight:400">(25%)</span></div>
+          <div class="sc-row"><label>FCF Margin %</label><input class="fi-sm pp-inp" id="pp-fcfm" type="number" step="0.1" placeholder="e.g. -18" oninput="ppAutoCalc()"/><span class="sc-badge" id="ppb-fcfm"></span></div>
+          <div class="sc-row"><label>Op Margin %</label><input class="fi-sm pp-inp" id="pp-opm" type="number" step="0.1" placeholder="e.g. -22"/><span class="sc-badge" id="ppb-opm"></span></div>
+          <div class="sc-row"><label>Op Margin Change YoY pts</label><input class="fi-sm pp-inp" id="pp-opchg" type="number" step="0.1" placeholder="e.g. +5 or -2"/><span class="sc-badge" id="ppb-opchg"></span></div>
+          <div class="sc-row"><label>Rule of 40 (auto)</label><input class="fi-sm pp-inp" id="pp-r40" type="number" step="0.1" placeholder="—" style="background:var(--surface);color:var(--muted)" readonly/><span class="sc-badge" id="ppb-r40"></span></div>
+        </div>
+
+        <!-- Balance Sheet -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🏦 Balance Sheet & Runway <span style="font-weight:400">(15%)</span></div>
+          <div class="sc-row"><label>Cash Runway (quarters)</label><input class="fi-sm pp-inp" id="pp-runway" type="number" step="0.5" placeholder="e.g. 10"/><span class="sc-badge" id="ppb-runway"></span></div>
+          <div class="sc-row"><label>Quick Ratio</label><input class="fi-sm pp-inp" id="pp-qr" type="number" step="0.01" placeholder="e.g. 2.5"/><span class="sc-badge" id="ppb-qr"></span></div>
+        </div>
+
+        <!-- Valuation -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📊 Valuation <span style="font-weight:400">(5%)</span></div>
+          <div class="sc-row"><label>P/S Ratio</label><input class="fi-sm pp-inp" id="pp-ps" type="number" step="0.1" placeholder="e.g. 8.5"/><span class="sc-badge" id="ppb-ps"></span></div>
+          <div class="sc-row"><label>EV / Revenue</label><input class="fi-sm pp-inp" id="pp-evr" type="number" step="0.1" placeholder="e.g. 9.2"/><span class="sc-badge" id="ppb-evr"></span></div>
+        </div>
+
+        <!-- Signals -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🎯 Analyst & Market Signals <span style="font-weight:400">(5%)</span></div>
+          <div class="sc-row"><label>Recom. (1–5)</label><input class="fi-sm pp-inp" id="pp-rec" type="number" step="0.01" placeholder="e.g. 1.8"/><span class="sc-badge" id="ppb-rec"></span></div>
+          <div class="sc-row"><label>Current Price</label><input class="fi-sm pp-inp" id="pp-price" type="number" step="0.01" placeholder="e.g. 28.50" oninput="calcPreUpside()"/><span></span></div>
+          <div class="sc-row"><label>Target Price → Upside</label><input class="fi-sm pp-inp" id="pp-target" type="number" step="0.01" placeholder="e.g. 40.00" oninput="calcPreUpside()"/><span class="sc-badge" id="ppb-up"></span></div>
+          <input type="hidden" id="pp-up"/>
+          <div class="sc-row"><label>Short Ratio</label><input class="fi-sm pp-inp" id="pp-sr" type="number" step="0.01" placeholder="e.g. 3.5"/><span class="sc-badge" id="ppb-sr"></span></div>
+        </div>
+
+      </div>
+
+      <!-- Result -->
+      <div id="pp-result" style="display:none;margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;text-align:center">
+        <div id="pp-ticker-lbl" style="font-size:1.2rem;font-weight:800;margin-bottom:4px"></div>
+        <div style="font-size:.75rem;color:var(--muted);margin-bottom:8px">🔬 Pre-Profit Score</div>
+        <div id="pp-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
+        <div id="pp-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
+        <div id="pp-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+        <button class="btn btn-primary" style="margin-top:18px" onclick="savePreToLeaderboard(this)">💾 Save to Leaderboard</button>
+      </div>
     </div>
   </div>
 
@@ -2140,7 +2222,7 @@ function renderLeaderboard(){
     return `<tr style="border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''" onclick="loadLeaderboardEntry('${e.ticker}')">
       <td style="padding:8px 10px;color:var(--muted)">${i+1}</td>
       <td style="padding:8px 10px;font-weight:800">${e.ticker}</td>
-      <td style="padding:8px 10px;color:var(--muted);font-size:.72rem;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${(e.typeLbl||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</td>
+      <td style="padding:8px 10px;font-size:.72rem;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.scoreType==='preprofit'?'<span style="background:rgba(99,102,241,.18);color:#818cf8;border-radius:4px;padding:1px 5px;font-size:.65rem;font-weight:700;margin-right:4px">🔬 Pre-Profit</span>':''}<span style="color:var(--muted)">${(e.typeLbl||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</span></td>
       <td style="padding:8px 10px;text-align:center;font-weight:800;color:${color}">${e.total}<span style="font-size:.7rem;color:var(--muted)">/100</span> <span style="font-size:.75rem;font-weight:700">${e.grade}</span></td>
       ${prevCell}
       <td style="padding:8px 10px;text-align:center">${breakdownHtml}</td>
@@ -2205,6 +2287,165 @@ setTimeout(()=>{
   updateWeightHints();
   renderLeaderboard();
 },100);
+
+// ── PRE-PROFIT SCORING ────────────────────────────────────────────────────────
+const PP_METRICS = {
+  // Revenue Growth (higher = better)
+  'pp-revttm': {low:false, ranges:[[5,2],[15,4],[25,6],[35,7],[50,8],[75,9],[Infinity,10]]},
+  'pp-revfwd': {low:false, ranges:[[5,2],[15,4],[25,6],[35,7],[50,8],[75,9],[Infinity,10]]},
+  'pp-revacc': {low:false, ranges:[[-15,0],[-5,2],[0,4],[5,7],[10,9],[Infinity,10]]},
+  // Gross Economics
+  'pp-gm':     {low:false, ranges:[[30,1],[40,3],[50,5],[60,7],[70,9],[Infinity,10]]},
+  'pp-gmchg':  {low:false, ranges:[[-5,0],[-2,2],[0,5],[2,7],[5,9],[Infinity,10]]},
+  // Path to Profitability
+  'pp-fcfm':   {low:false, ranges:[[-60,0],[-40,2],[-25,4],[-15,6],[-5,8],[0,10]]},
+  'pp-opm':    {low:false, ranges:[[-60,0],[-40,2],[-25,4],[-15,6],[-5,8],[0,10]]},
+  'pp-opchg':  {low:false, ranges:[[-10,0],[-5,2],[0,4],[2,6],[5,8],[10,10]]},
+  'pp-r40':    {low:false, ranges:[[0,1],[20,3],[30,5],[40,7],[50,9],[60,10]]},
+  // Balance Sheet
+  'pp-runway': {low:false, ranges:[[2,1],[4,3],[6,5],[8,7],[12,9],[Infinity,10]]},
+  'pp-qr':     {low:false, ranges:[[0.5,1],[1,4],[1.5,6],[2,8],[3,10]]},
+  // Valuation (lower = better)
+  'pp-ps':     {low:true,  ranges:[[3,10],[5,8],[8,6],[12,4],[20,2],[Infinity,0]]},
+  'pp-evr':    {low:true,  ranges:[[3,10],[5,8],[8,6],[12,4],[20,2],[Infinity,0]]},
+  // Signals
+  'pp-rec':    {low:true,  ranges:[[1.5,10],[2,8],[2.5,6],[3,4],[3.5,2],[Infinity,0]]},
+  'pp-up':     {low:false, ranges:[[0,1],[10,3],[20,5],[30,7],[50,9],[Infinity,10]]},
+  'pp-sr':     {low:true,  ranges:[[1,10],[2,8],[3,6],[5,4],[8,2],[Infinity,0]]},
+};
+
+const PP_CATS = {
+  'Rev Growth':   ['pp-revttm','pp-revfwd','pp-revacc'],
+  'Gross Econ':   ['pp-gm','pp-gmchg'],
+  'Path→Profit':  ['pp-fcfm','pp-opm','pp-opchg','pp-r40'],
+  'Runway':       ['pp-runway','pp-qr'],
+  'Valuation':    ['pp-ps','pp-evr'],
+  'Signals':      ['pp-rec','pp-up','pp-sr'],
+};
+
+const PP_WEIGHTS = {
+  'Rev Growth':.30,'Gross Econ':.20,'Path→Profit':.25,'Runway':.15,'Valuation':.05,'Signals':.05
+};
+
+const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr'];
+
+function computePreMetricScore(id){
+  const m=PP_METRICS[id];
+  const el=document.getElementById(id);
+  if(!m||!el||el.value==='') return null;
+  const v=parseFloat(el.value);
+  if(isNaN(v)) return null;
+  if(m.low){ for(const [t,s] of m.ranges) if(v<=t) return s; return 0; }
+  else { let last=m.ranges[0][1]; for(const [t,s] of m.ranges){ if(v<=t) return s; last=s; } return last; }
+}
+
+function ppAutoCalc(){
+  const ttm=parseFloat(document.getElementById('pp-revttm').value);
+  const fwd=parseFloat(document.getElementById('pp-revfwd').value);
+  const fcfm=parseFloat(document.getElementById('pp-fcfm').value);
+  // Acceleration = fwd - ttm
+  if(!isNaN(ttm)&&!isNaN(fwd)){
+    const acc=parseFloat((fwd-ttm).toFixed(1));
+    document.getElementById('pp-revacc').value=acc;
+  }
+  // Rule of 40 = rev growth TTM + fcf margin
+  if(!isNaN(ttm)&&!isNaN(fcfm)){
+    document.getElementById('pp-r40').value=parseFloat((ttm+fcfm).toFixed(1));
+  }
+}
+
+function calcPreUpside(){
+  const price=parseFloat(document.getElementById('pp-price').value);
+  const target=parseFloat(document.getElementById('pp-target').value);
+  const badge=document.getElementById('ppb-up');
+  const inp=document.getElementById('pp-up');
+  if(!isNaN(price)&&!isNaN(target)&&price>0){
+    const up=((target/price-1)*100).toFixed(1);
+    if(inp) inp.value=up;
+    const s=computePreMetricScore('pp-up');
+    if(badge&&s!=null){ badge.textContent=s; badge.style.background=badgeBg(s); badge.style.color=badgeColor(s); }
+  } else {
+    if(inp) inp.value='';
+    if(badge){ badge.textContent=''; badge.style.background=''; }
+  }
+}
+
+function calcPreScore(){
+  let catScores={}, weightedTotal=0, totalWeight=0;
+  for(const [cat,ids] of Object.entries(PP_CATS)){
+    const scores=[];
+    for(const id of ids){
+      // skip auto-calc fields from badge update if they're derived
+      const s=computePreMetricScore(id);
+      const badge=document.getElementById('ppb-'+id.replace('pp-',''));
+      if(s!=null){
+        if(badge){ badge.textContent=s; badge.style.background=badgeBg(s); badge.style.color=badgeColor(s); }
+        scores.push(s);
+      } else {
+        if(badge){ badge.textContent=''; badge.style.background=''; }
+      }
+    }
+    if(scores.length){
+      const avg=scores.reduce((a,b)=>a+b,0)/scores.length;
+      catScores[cat]=Math.round(avg*10);
+      weightedTotal+=catScores[cat]*PP_WEIGHTS[cat];
+      totalWeight+=PP_WEIGHTS[cat];
+    } else { catScores[cat]=null; }
+  }
+  if(totalWeight===0){ alert('Enter at least a few values first.'); return; }
+  const total=Math.round(weightedTotal/totalWeight);
+  const grade=total>=85?'A+':total>=75?'A':total>=65?'B+':total>=55?'B':total>=45?'C':total>=35?'D':'F';
+  const color=total>=75?'var(--green)':total>=55?'var(--amber)':'var(--red)';
+  const ticker=(document.getElementById('pp-ticker').value||'—').toUpperCase();
+  window._lastPreScore={ticker,total,grade,catScores,scoreType:'preprofit'};
+  document.getElementById('pp-ticker-lbl').textContent=ticker;
+  document.getElementById('pp-score-lbl').textContent=total+'/100';
+  document.getElementById('pp-score-lbl').style.color=color;
+  document.getElementById('pp-grade-lbl').textContent='Grade: '+grade;
+  document.getElementById('pp-grade-lbl').style.color=color;
+  document.getElementById('pp-cats').innerHTML=Object.entries(catScores).map(([cat,s])=>`
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center;min-width:90px">
+      <div style="font-size:.6rem;color:var(--muted);margin-bottom:2px">${cat}</div>
+      <div style="font-size:.6rem;color:var(--muted)">${Math.round(PP_WEIGHTS[cat]*100)}% weight</div>
+      <div style="font-size:1.1rem;font-weight:800;color:${s!=null?badgeColor(Math.round(s/10)):'var(--muted)'}">${s!=null?s:'—'}</div>
+    </div>`).join('');
+  document.getElementById('pp-result').style.display='block';
+  document.getElementById('pp-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function clearPreScore(){
+  document.querySelectorAll('.pp-inp').forEach(el=>el.value='');
+  document.querySelectorAll('[id^="ppb-"]').forEach(el=>{el.textContent='';el.style.background='';});
+  document.getElementById('pp-result').style.display='none';
+  document.getElementById('pp-ticker').value='';
+  const ee=document.getElementById('pp-earnings'); if(ee) ee.value='';
+  window._lastPreScore=null;
+}
+
+function savePreToLeaderboard(btn){
+  try{
+    const r=window._lastPreScore;
+    if(!r){ alert('Score a stock first.'); return; }
+    const lb=getLeaderboard();
+    const now=new Date();
+    const dateStr=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+    const inputs={};
+    PP_ALL_INPUTS.forEach(id=>{ const el=document.getElementById(id); if(el&&el.value!=='') inputs[id]=el.value; });
+    const priceEl=document.getElementById('pp-price');
+    const price=priceEl&&priceEl.value?priceEl.value:null;
+    const earningsEl=document.getElementById('pp-earnings');
+    const earnings=earningsEl&&earningsEl.value?earningsEl.value:null;
+    const idx=lb.findIndex(e=>e.ticker===r.ticker);
+    const prev=idx>=0?{prevScore:lb[idx].total,prevGrade:lb[idx].grade,prevDate:lb[idx].date,prevPrice:lb[idx].price}:{};
+    const entry={ticker:r.ticker,type:'preprofit',typeLbl:'🔬 Pre-Profit',total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,date:dateStr,ts:now.getTime(),inputs,scoreType:'preprofit',...prev};
+    if(idx>=0) lb[idx]=entry; else lb.push(entry);
+    saveLeaderboard(lb);
+    renderLeaderboard();
+    const lbBtn=document.querySelector('.tab[onclick*="leaderboard"]');
+    showTab('leaderboard',lbBtn);
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(e){ alert('Save failed: '+e.message); }
+}
 
 const GROQ_KEY = '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';
 
