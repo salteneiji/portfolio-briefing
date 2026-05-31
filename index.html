@@ -613,7 +613,6 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
             <div class="sc-row"><label>Recom. (1–5)</label><input class="fi-sm sc-inp" id="sc-rec" type="number" step="0.01" placeholder="e.g. 1.59"/><span class="sc-badge" id="scb-rec"></span></div>
             <div class="sc-row"><label>Current Price</label><input class="fi-sm sc-inp" id="sc-price" type="number" step="0.01" placeholder="e.g. 40.82" oninput="calcUpside()"/><span></span></div>
             <div class="sc-row"><label>Target Price → Upside</label><input class="fi-sm sc-inp" id="sc-target" type="number" step="0.01" placeholder="e.g. 54.12" oninput="calcUpside()"/><span class="sc-badge" id="scb-up"></span></div>
-            <div class="sc-row"><label>RSI (14)</label><input class="fi-sm sc-inp" id="sc-rsi" type="number" step="0.1" placeholder="e.g. 67.25"/><span class="sc-badge" id="scb-rsi"></span></div>
             <div class="sc-row"><label>Short Ratio</label><input class="fi-sm sc-inp" id="sc-sr" type="number" step="0.01" placeholder="e.g. 2.15"/><span class="sc-badge" id="scb-sr"></span></div>
           </div>
         </div>
@@ -1693,7 +1692,6 @@ const SC_METRICS = {
   'sc-roa':    {low:false, ranges:[[2,2],[5,5],[10,7],[18,9],[Infinity,10]]},
   'sc-rec':    {low:true,  ranges:[[1.5,10],[2,8],[2.5,6],[3,4],[3.5,2],[Infinity,0]]},
   'sc-up':     {low:false, ranges:[[5,2],[10,4],[20,7],[30,9],[Infinity,10]]},
-  'sc-rsi':    {low:false, ranges:[[30,3],[40,6],[55,10],[70,8],[80,5],[Infinity,2]]},
   'sc-sr':     {low:true,  ranges:[[1,10],[2,8],[4,6],[6,4],[10,2],[Infinity,0]]},
 };
 
@@ -1704,7 +1702,7 @@ const SC_CATS = {
   'Fwd Growth':   ['sc-epsny','sc-epsn5','sc-epsnq'],
   'Health':       ['sc-de','sc-ltde','sc-cr','sc-qr'],
   'Profitability':['sc-gm','sc-om','sc-roe','sc-roa'],
-  'Signals':      ['sc-rec','sc-up','sc-rsi','sc-sr'],
+  'Signals':      ['sc-rec','sc-up','sc-sr'],
 };
 
 const SC_SECTORS = [
@@ -2072,7 +2070,7 @@ const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-epsny','sc-epsn5','sc-epsnq',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
-  'sc-rec','sc-price','sc-target','sc-rsi','sc-sr'];
+  'sc-rec','sc-price','sc-target','sc-sr'];
 
 function saveToLeaderboard(btn){
   try {
