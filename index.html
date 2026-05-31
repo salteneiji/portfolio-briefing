@@ -626,17 +626,62 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div id="sc-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="sc-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="sc-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
-        <button class="btn btn-primary" style="margin-top:18px" onclick="saveToLeaderboard(this)">💾 Save to Leaderboard</button>
+        <!-- Position sizing suggestion -->
+        <div id="sc-position-hint" style="display:none;margin-top:14px;background:var(--surface);border:1px solid var(--borderh);border-radius:10px;padding:10px 18px;display:inline-block;font-size:.78rem"></div>
+        <!-- Conviction rating -->
+        <div style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:10px">
+          <span style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Conviction</span>
+          <div id="sc-stars" style="display:flex;gap:3px">
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(1,'sc')" onmouseover="hoverConviction(1,'sc')" onmouseout="unhoverConviction('sc')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(2,'sc')" onmouseover="hoverConviction(2,'sc')" onmouseout="unhoverConviction('sc')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(3,'sc')" onmouseover="hoverConviction(3,'sc')" onmouseout="unhoverConviction('sc')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(4,'sc')" onmouseover="hoverConviction(4,'sc')" onmouseout="unhoverConviction('sc')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(5,'sc')" onmouseover="hoverConviction(5,'sc')" onmouseout="unhoverConviction('sc')">★</span>
+          </div>
+          <span id="sc-conviction-lbl" style="font-size:.72rem;color:var(--muted)">Not set</span>
+        </div>
+        <!-- Investment thesis -->
+        <div style="margin-top:14px;text-align:left">
+          <label style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px">📝 Investment Thesis</label>
+          <textarea id="sc-thesis" class="fi" style="width:100%;height:75px;resize:vertical;font-size:.81rem;line-height:1.55;padding:9px 12px" placeholder="Why are you investing? Key catalysts, moat, risks…"></textarea>
+        </div>
+        <button class="btn btn-primary" style="margin-top:16px" onclick="saveToLeaderboard(this)">💾 Save to Leaderboard</button>
       </div>
     </div>
   </div>
 
   <!-- LEADERBOARD TAB -->
   <div class="tab-pane" id="tab-leaderboard">
-    <div style="max-width:900px;margin:0 auto">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-        <div style="font-size:1rem;font-weight:700">🥇 Stock Leaderboard</div>
-        <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="clearLeaderboard()">Clear All</button>
+    <div style="max-width:960px;margin:0 auto">
+      <!-- Earnings countdown banner -->
+      <div id="lb-earnings-banner" style="display:none;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.22);border-radius:var(--r);padding:14px 18px;margin-bottom:18px"></div>
+
+      <!-- Toolbar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="font-size:1rem;font-weight:700">🥇 Stock Leaderboard</div>
+          <select id="lb-sector-filter" class="fi" style="font-size:.75rem;padding:5px 10px;width:auto;color:var(--muted2)" onchange="filterLeaderboard(this.value)">
+            <option value="">All Sectors</option>
+            <option value="💻 Information Technology">💻 Tech</option>
+            <option value="📡 Communication Services">📡 Comm</option>
+            <option value="🛍️ Consumer Discretionary">🛍️ Disc</option>
+            <option value="🧴 Consumer Staples">🧴 Staples</option>
+            <option value="🏥 Healthcare">🏥 Health</option>
+            <option value="🏦 Financials">🏦 Finance</option>
+            <option value="⛽ Energy">⛽ Energy</option>
+            <option value="🔌 Utilities">🔌 Utilities</option>
+            <option value="🏢 Real Estate">🏢 RE</option>
+            <option value="🏭 Industrials">🏭 Industrial</option>
+            <option value="⚗️ Materials">⚗️ Materials</option>
+            <option value="🌾 Agriculture">🌾 Agri</option>
+            <option value="__preprofit">🔬 Pre-Profit</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="openH2HModal()">⚔️ Compare</button>
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="exportLeaderboardCSV()">⬇ CSV</button>
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="clearLeaderboard()">Clear All</button>
+        </div>
       </div>
       <div id="sc-leaderboard-empty" style="text-align:center;padding:60px 0;color:var(--muted);font-size:.88rem">No stocks scored yet. Go to 🏆 Score, score a stock, and hit <strong>Save to Leaderboard</strong>.</div>
       <table id="sc-leaderboard-tbl" style="display:none;width:100%;border-collapse:collapse;font-size:.82rem">
@@ -646,8 +691,9 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
             <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Ticker</th>
             <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Sector</th>
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Score</th>
-            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">vs Prev</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">History</th>
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Breakdown</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Conv.</th>
             <th style="padding:8px 10px;text-align:right;color:var(--muted);font-weight:600">Price</th>
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">📅 Earnings</th>
             <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Scored</th>
@@ -656,6 +702,22 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         </thead>
         <tbody id="sc-leaderboard-body"></tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- HEAD-TO-HEAD MODAL -->
+  <div id="h2h-modal" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.65);backdrop-filter:blur(4px)" onclick="if(event.target===this)closeH2HModal()">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:28px;width:min(780px,95vw);max-height:85vh;overflow-y:auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+        <div style="font-size:1rem;font-weight:700">⚔️ Head-to-Head Comparison</div>
+        <button onclick="closeH2HModal()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;padding:4px">✕</button>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:20px;align-items:center">
+        <select id="h2h-a" class="fi" style="flex:1" onchange="renderH2H()"><option value="">— Pick stock A —</option></select>
+        <span style="color:var(--muted);font-weight:700">vs</span>
+        <select id="h2h-b" class="fi" style="flex:1" onchange="renderH2H()"><option value="">— Pick stock B —</option></select>
+      </div>
+      <div id="h2h-body"></div>
     </div>
   </div>
 
@@ -735,7 +797,26 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div id="pp-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="pp-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="pp-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
-        <button class="btn btn-primary" style="margin-top:18px" onclick="savePreToLeaderboard(this)">💾 Save to Leaderboard</button>
+        <!-- Position sizing suggestion -->
+        <div id="pp-position-hint" style="display:none;margin-top:14px;background:var(--surface);border:1px solid var(--borderh);border-radius:10px;padding:10px 18px;display:inline-block;font-size:.78rem"></div>
+        <!-- Conviction rating -->
+        <div style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:10px">
+          <span style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Conviction</span>
+          <div id="pp-stars" style="display:flex;gap:3px">
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(1,'pp')" onmouseover="hoverConviction(1,'pp')" onmouseout="unhoverConviction('pp')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(2,'pp')" onmouseover="hoverConviction(2,'pp')" onmouseout="unhoverConviction('pp')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(3,'pp')" onmouseover="hoverConviction(3,'pp')" onmouseout="unhoverConviction('pp')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(4,'pp')" onmouseover="hoverConviction(4,'pp')" onmouseout="unhoverConviction('pp')">★</span>
+            <span class="conv-star" style="font-size:1.4rem;cursor:pointer;color:var(--muted);transition:color .12s" onclick="setConviction(5,'pp')" onmouseover="hoverConviction(5,'pp')" onmouseout="unhoverConviction('pp')">★</span>
+          </div>
+          <span id="pp-conviction-lbl" style="font-size:.72rem;color:var(--muted)">Not set</span>
+        </div>
+        <!-- Investment thesis -->
+        <div style="margin-top:14px;text-align:left">
+          <label style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px">📝 Investment Thesis</label>
+          <textarea id="pp-thesis" class="fi" style="width:100%;height:75px;resize:vertical;font-size:.81rem;line-height:1.55;padding:9px 12px" placeholder="Why are you investing? Key catalysts, moat, risks…"></textarea>
+        </div>
+        <button class="btn btn-primary" style="margin-top:16px" onclick="savePreToLeaderboard(this)">💾 Save to Leaderboard</button>
       </div>
     </div>
   </div>
@@ -2112,6 +2193,7 @@ function calcScore(){
     </div>`).join('');
   document.getElementById('sc-result').style.display='block';
   document.getElementById('sc-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+  updatePositionHint('sc', total);
 }
 
 function calcUpside(){
@@ -2139,7 +2221,11 @@ function clearScore(){
   document.getElementById('sc-result').style.display='none';
   document.getElementById('sc-ticker').value='';
   const ee=document.getElementById('sc-earnings'); if(ee) ee.value='';
+  const tt=document.getElementById('sc-thesis'); if(tt) tt.value='';
   window._lastScore=null;
+  window._scConviction=0;
+  renderConviction(0,'sc');
+  const ph=document.getElementById('sc-position-hint'); if(ph) ph.style.display='none';
 }
 
 // ── Leaderboard ───────────────────────────────────────────────────────────────
@@ -2171,13 +2257,16 @@ function saveToLeaderboard(btn){
     const price=priceEl&&priceEl.value?priceEl.value:null;
     const earningsEl=document.getElementById('sc-earnings');
     const earnings=earningsEl&&earningsEl.value?earningsEl.value:null;
-    // Carry forward previous score if rescoring
+    const thesis=(document.getElementById('sc-thesis')||{}).value||'';
+    const conviction=window._scConviction||0;
+    // Build history array
+    const existing=idx>=0?lb[idx]:{};
+    const history=[...(existing.history||[]),{score:r.total,grade:r.grade,date:dateStr,ts:now.getTime()}];
     const prev=idx>=0?{prevScore:lb[idx].total,prevGrade:lb[idx].grade,prevDate:lb[idx].date,prevPrice:lb[idx].price}:{};
-    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,date:dateStr,ts:now.getTime(),inputs,...prev};
+    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,thesis,conviction,history,date:dateStr,ts:now.getTime(),inputs,...prev};
     if(idx>=0) lb[idx]=entry; else lb.push(entry);
     saveLeaderboard(lb);
     renderLeaderboard();
-    // Switch to leaderboard tab
     const lbBtn=document.querySelector('.tab[onclick*="leaderboard"]');
     showTab('leaderboard', lbBtn);
     window.scrollTo({top:0,behavior:'smooth'});
@@ -2188,58 +2277,103 @@ function saveToLeaderboard(btn){
 }
 
 
+let _lbSectorFilter='';
+function filterLeaderboard(group){ _lbSectorFilter=group; renderLeaderboard(); }
+
+function renderSparkline(history){
+  if(!history||history.length<2) return '<span style="color:var(--muted);font-size:.7rem">—</span>';
+  const vals=history.map(h=>h.score);
+  const min=Math.min(...vals), max=Math.max(...vals), range=max-min||1;
+  const W=54,H=20;
+  const pts=vals.map((v,i)=>`${Math.round(i/(vals.length-1)*W)},${Math.round(H-(v-min)/range*H)}`).join(' ');
+  const color=vals[vals.length-1]>=vals[0]?'#18d47a':'#f04460';
+  const latest=vals[vals.length-1];
+  const diff=vals.length>=2?vals[vals.length-1]-vals[vals.length-2]:0;
+  const ds=diff>0?'+'+diff:diff===0?'':String(diff);
+  return `<div style="display:inline-flex;align-items:center;gap:5px">
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="flex-shrink:0"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span style="font-size:.68rem;color:${color};font-weight:700">${ds}</span>
+  </div>`;
+}
+
+function isBuyZone(e){
+  const valScore=e.catScores&&e.catScores['Valuation'];
+  const sc52w=e.inputs&&e.inputs['sc-52w'];
+  if(valScore==null) return false;
+  return valScore>=65&&(!sc52w||parseFloat(sc52w)<=35);
+}
+
 function renderLeaderboard(){
-  const lb=getLeaderboard();
+  const allLb=getLeaderboard();
   const empty=document.getElementById('sc-leaderboard-empty');
   const tbl=document.getElementById('sc-leaderboard-tbl');
   const tbody=document.getElementById('sc-leaderboard-body');
-  if(!lb.length){ empty.style.display=''; tbl.style.display='none'; return; }
+  // Apply sector filter
+  const lb=_lbSectorFilter?allLb.filter(e=>{
+    if(_lbSectorFilter==='__preprofit') return e.scoreType==='preprofit';
+    const grp=(e.typeLbl||'').split(' › ')[0].trim();
+    return grp===_lbSectorFilter;
+  }):allLb;
+  if(!allLb.length){ empty.style.display=''; tbl.style.display='none'; renderEarningsBanner(); return; }
   empty.style.display='none'; tbl.style.display='';
   const sorted=[...lb].sort((a,b)=>b.total-a.total);
+  const PP_CAT_SHORT=[['Rev Growth','RGr'],['Gross Econ','GEc'],['Path→Profit','P2P'],['Runway','Run'],['Valuation','Val'],['Signals','Sig']];
+  const SC_CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
   tbody.innerHTML=sorted.map((e,i)=>{
     const color=e.total>=75?'var(--green)':e.total>=55?'var(--amber)':'var(--red)';
-    // Build breakdown cell — 7 categories as 2-row mini grid
-    const CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
+    const catList=e.scoreType==='preprofit'?PP_CAT_SHORT:SC_CAT_SHORT;
     const breakdownHtml=`<div style="display:inline-grid;grid-template-columns:repeat(4,auto);gap:3px 8px;font-size:.68rem;line-height:1.3">${
-      CAT_SHORT.map(([cat,short])=>{
+      catList.map(([cat,short])=>{
         const cs=e.catScores&&e.catScores[cat];
         const lg=cs==null?'—':cs>=85?'A+':cs>=75?'A':cs>=65?'B+':cs>=55?'B':cs>=45?'C':cs>=35?'D':'F';
         const lc=cs==null?'var(--muted)':cs>=75?'var(--green)':cs>=55?'var(--amber)':'var(--red)';
         return `<span style="color:var(--muted)">${short}</span><span style="font-weight:700;color:${lc}">${lg}</span>`;
       }).join('')
     }</div>`;
-    // vs prev cell
-    const prevCell=(()=>{
-      if(e.prevScore==null) return `<td style="padding:8px 10px;text-align:center;color:var(--muted);font-size:.75rem">—</td>`;
-      const diff=e.total-e.prevScore;
-      const dc=diff>0?'var(--green)':diff<0?'var(--red)':'var(--muted)';
-      const arrow=diff>0?'▲':diff<0?'▼':'●';
-      return `<td style="padding:8px 10px;text-align:center">
-        <div style="font-weight:700;color:${dc};font-size:.82rem">${arrow} ${diff>0?'+':''}${diff}</div>
-        <div style="font-size:.65rem;color:var(--muted)">was ${e.prevScore}</div>
-      </td>`;
+    // History / vs prev cell
+    const histCell=(()=>{
+      const spark=renderSparkline(e.history);
+      if(e.prevScore!=null){
+        const diff=e.total-e.prevScore;
+        const dc=diff>0?'var(--green)':diff<0?'var(--red)':'var(--muted)';
+        const arrow=diff>0?'▲':diff<0?'▼':'●';
+        return `<td style="padding:8px 10px;text-align:center">
+          ${spark}
+          <div style="font-size:.65rem;color:${dc};font-weight:700;margin-top:1px">${arrow}${diff>0?'+':''}${diff} <span style="color:var(--muted);font-weight:400">(was ${e.prevScore})</span></div>
+        </td>`;
+      }
+      return `<td style="padding:8px 10px;text-align:center">${spark}</td>`;
     })();
+    // Conviction stars
+    const conv=e.conviction||0;
+    const convHtml=`<td style="padding:8px 10px;text-align:center;white-space:nowrap;font-size:.9rem;color:var(--amber)">${'★'.repeat(conv)}${'☆'.repeat(5-conv)}</td>`;
+    // Buy zone flag
+    const buyZone=isBuyZone(e)?'<span style="font-size:.6rem;background:rgba(24,212,122,.18);color:var(--green);border-radius:4px;padding:1px 5px;margin-left:4px;font-weight:700">🎯 Buy</span>':'';
+    // Thesis tooltip
+    const thTitle=e.thesis?` title="${e.thesis.replace(/"/g,'&quot;')}"`:' title="No thesis"';
     return `<tr style="border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''" onclick="loadLeaderboardEntry('${e.ticker}')">
       <td style="padding:8px 10px;color:var(--muted)">${i+1}</td>
-      <td style="padding:8px 10px;font-weight:800">${e.ticker}</td>
-      <td style="padding:8px 10px;font-size:.72rem;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.scoreType==='preprofit'?'<span style="background:rgba(99,102,241,.18);color:#818cf8;border-radius:4px;padding:1px 5px;font-size:.65rem;font-weight:700;margin-right:4px">🔬 Pre-Profit</span>':''}<span style="color:var(--muted)">${(e.typeLbl||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</span></td>
+      <td style="padding:8px 10px;font-weight:800"${thTitle}>${e.ticker}${buyZone}</td>
+      <td style="padding:8px 10px;font-size:.72rem;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${e.scoreType==='preprofit'?'<span style="background:rgba(99,102,241,.18);color:#818cf8;border-radius:4px;padding:1px 5px;font-size:.65rem;font-weight:700;margin-right:4px">🔬</span>':''}<span style="color:var(--muted)">${(e.typeLbl||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</span></td>
       <td style="padding:8px 10px;text-align:center;font-weight:800;color:${color}">${e.total}<span style="font-size:.7rem;color:var(--muted)">/100</span> <span style="font-size:.75rem;font-weight:700">${e.grade}</span></td>
-      ${prevCell}
+      ${histCell}
       <td style="padding:8px 10px;text-align:center">${breakdownHtml}</td>
+      ${convHtml}
       <td style="padding:8px 10px;text-align:right;color:var(--text);font-weight:600;white-space:nowrap">${e.price?'$'+parseFloat(e.price).toFixed(2):'—'}</td>
       ${(()=>{
         if(!e.earnings) return `<td style="padding:8px 10px;text-align:center;color:var(--muted);font-size:.72rem">—</td>`;
         const d=new Date(e.earnings); const now=new Date(); const days=Math.round((d-now)/86400000);
-        const isPast=days<0; const isSoon=days>=0&&days<=14;
+        const isPast=days<0; const isSoon=days>=0&&days<=7;
         const ec=isPast?'var(--muted)':isSoon?'var(--amber)':'var(--text)';
-        const label=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
-        const tag=isSoon?` <span style="font-size:.6rem;background:rgba(245,158,11,.2);color:var(--amber);border-radius:4px;padding:1px 4px">soon</span>`:isPast?` <span style="font-size:.6rem;color:var(--muted)">(past)</span>`:'';
+        const label=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});
+        const tag=isSoon?` <span style="font-size:.6rem;background:rgba(245,158,11,.2);color:var(--amber);border-radius:4px;padding:1px 4px">${days===0?'Today':days+'d'}</span>`:isPast?` <span style="font-size:.6rem;color:var(--muted)">(past)</span>`:'';
         return `<td style="padding:8px 10px;text-align:center;white-space:nowrap"><span style="font-size:.72rem;color:${ec};font-weight:${isSoon?'700':'400'}">${label}</span>${tag}</td>`;
       })()}
       <td style="padding:8px 10px;color:var(--muted);font-size:.72rem;white-space:nowrap">${e.date||''}</td>
       <td style="padding:8px 10px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
     </tr>`;
   }).join('');
+  renderEarningsBanner();
 }
 
 function loadLeaderboardEntry(ticker){
@@ -2262,9 +2396,13 @@ function loadLeaderboardEntry(ticker){
     if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
   });
   const eEl=document.getElementById('sc-earnings'); if(eEl) eEl.value=e.earnings||'';
+  const thEl=document.getElementById('sc-thesis'); if(thEl) thEl.value=e.thesis||'';
   calcUpside();
   // Re-run the score so badges light up
   calcScore();
+  // Restore conviction
+  window._scConviction=e.conviction||0;
+  renderConviction(window._scConviction,'sc');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -2411,6 +2549,7 @@ function calcPreScore(){
     </div>`).join('');
   document.getElementById('pp-result').style.display='block';
   document.getElementById('pp-result').scrollIntoView({behavior:'smooth',block:'nearest'});
+  updatePositionHint('pp', total);
 }
 
 function clearPreScore(){
@@ -2419,7 +2558,11 @@ function clearPreScore(){
   document.getElementById('pp-result').style.display='none';
   document.getElementById('pp-ticker').value='';
   const ee=document.getElementById('pp-earnings'); if(ee) ee.value='';
+  const tt=document.getElementById('pp-thesis'); if(tt) tt.value='';
   window._lastPreScore=null;
+  window._ppConviction=0;
+  renderConviction(0,'pp');
+  const ph=document.getElementById('pp-position-hint'); if(ph) ph.style.display='none';
 }
 
 function savePreToLeaderboard(btn){
@@ -2435,9 +2578,13 @@ function savePreToLeaderboard(btn){
     const price=priceEl&&priceEl.value?priceEl.value:null;
     const earningsEl=document.getElementById('pp-earnings');
     const earnings=earningsEl&&earningsEl.value?earningsEl.value:null;
+    const thesis=(document.getElementById('pp-thesis')||{}).value||'';
+    const conviction=window._ppConviction||0;
     const idx=lb.findIndex(e=>e.ticker===r.ticker);
+    const existing=idx>=0?lb[idx]:{};
+    const history=[...(existing.history||[]),{score:r.total,grade:r.grade,date:dateStr,ts:now.getTime()}];
     const prev=idx>=0?{prevScore:lb[idx].total,prevGrade:lb[idx].grade,prevDate:lb[idx].date,prevPrice:lb[idx].price}:{};
-    const entry={ticker:r.ticker,type:'preprofit',typeLbl:'🔬 Pre-Profit',total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,date:dateStr,ts:now.getTime(),inputs,scoreType:'preprofit',...prev};
+    const entry={ticker:r.ticker,type:'preprofit',typeLbl:'🔬 Pre-Profit',total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,thesis,conviction,history,date:dateStr,ts:now.getTime(),inputs,scoreType:'preprofit',...prev};
     if(idx>=0) lb[idx]=entry; else lb.push(entry);
     saveLeaderboard(lb);
     renderLeaderboard();
@@ -2525,6 +2672,191 @@ function importData(){
   } catch(e){
     alert('❌ Invalid data. Make sure you pasted the full exported text.');
   }
+}
+
+// ── Conviction stars ──────────────────────────────────────────────────────
+window._scConviction=0; window._ppConviction=0;
+const CONV_LABELS=['','Low','Low-Med','Medium','Med-High','High'];
+function renderConviction(n, prefix){
+  const el=document.getElementById(prefix+'-stars');
+  if(!el) return;
+  el.querySelectorAll('.conv-star').forEach((s,i)=>{
+    s.style.color=i<n?'var(--amber)':'var(--muted)';
+  });
+  const lbl=document.getElementById(prefix+'-conviction-lbl');
+  if(lbl) lbl.textContent=n?CONV_LABELS[n]+' ('+n+'/5)':'Not set';
+  updatePositionHint(prefix, prefix==='sc'?window._lastScore?.total:window._lastPreScore?.total);
+}
+function setConviction(n, prefix){
+  if(prefix==='sc') window._scConviction=n; else window._ppConviction=n;
+  renderConviction(n, prefix);
+}
+function hoverConviction(n, prefix){
+  const el=document.getElementById(prefix+'-stars');
+  if(!el) return;
+  el.querySelectorAll('.conv-star').forEach((s,i)=>{ s.style.color=i<n?'var(--amber)':'var(--muted)'; });
+}
+function unhoverConviction(prefix){
+  renderConviction(prefix==='sc'?window._scConviction:window._ppConviction, prefix);
+}
+
+// ── Position sizing suggestion ─────────────────────────────────────────────
+function updatePositionHint(prefix, total){
+  const el=document.getElementById(prefix+'-position-hint');
+  if(!el) return;
+  const conv=prefix==='sc'?window._scConviction:window._ppConviction;
+  if(!total||!conv){ el.style.display='none'; return; }
+  const maxPos=15;
+  const pct=Math.max(1,Math.round((total/100)*(conv/5)*maxPos));
+  const color=pct>=10?'var(--green)':pct>=5?'var(--amber)':'var(--red)';
+  el.style.display='block';
+  el.innerHTML=`💼 Suggested position size: <strong style="color:${color}">${pct}%</strong> of portfolio &nbsp;<span style="color:var(--muted);font-size:.7rem">(Score ${total}/100 × Conviction ${conv}/5 × max 15%)</span>`;
+}
+
+// ── Earnings countdown banner ──────────────────────────────────────────────
+function renderEarningsBanner(){
+  const el=document.getElementById('lb-earnings-banner');
+  if(!el) return;
+  const lb=getLeaderboard();
+  const now=new Date();
+  const upcoming=lb.filter(e=>{
+    if(!e.earnings) return false;
+    const d=new Date(e.earnings);
+    const days=Math.round((d-now)/86400000);
+    return days>=0&&days<=7;
+  }).sort((a,b)=>new Date(a.earnings)-new Date(b.earnings));
+  if(!upcoming.length){ el.style.display='none'; return; }
+  el.style.display='block';
+  const tgBot='8668525958:AAG7LRqZbNuDVUXPLeqQmkSa66hi-NgSzpQ';
+  const tgChat='6050679787';
+  const tgMsg=upcoming.map(e=>{const d=new Date(e.earnings);const days=Math.round((d-now)/86400000);return `${e.ticker}: ${days===0?'TODAY':days+'d'}`;}).join(', ');
+  el.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-size:.75rem;font-weight:700;color:var(--amber);margin-bottom:8px">📅 Earnings This Week</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${upcoming.map(e=>{
+          const d=new Date(e.earnings);
+          const days=Math.round((d-now)/86400000);
+          const label=days===0?'Today!':days===1?'Tomorrow':'In '+days+'d';
+          return `<div style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.22);border-radius:8px;padding:6px 12px;cursor:pointer" onclick="loadLeaderboardEntry('${e.ticker}')">
+            <span style="font-weight:800;color:var(--text)">${e.ticker}</span>
+            <span style="font-size:.7rem;color:var(--amber);margin-left:6px">${label}</span>
+            ${e.conviction?'<span style="font-size:.65rem;color:var(--muted);margin-left:4px">${'★'.repeat(e.conviction)}</span>':''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+    <button class="btn btn-ghost" style="font-size:.72rem;padding:5px 12px;white-space:nowrap" onclick="sendEarningsTelegram()">📨 Telegram Reminder</button>
+  </div>`;
+  window._tgEarningsMsg='📅 Earnings Reminder\\n\\n'+upcoming.map(e=>{
+    const d=new Date(e.earnings);
+    const days=Math.round((d-now)/86400000);
+    return `$${e.ticker} — Score: ${e.total} (${e.grade}) — ${days===0?'TODAY':days===1?'Tomorrow':'in '+days+' days'}`;
+  }).join('\\n');
+}
+
+async function sendEarningsTelegram(){
+  const token='8668525958:AAG7LRqZbNuDVUXPLeqQmkSa66hi-NgSzpQ';
+  const chat='6050679787';
+  const msg=window._tgEarningsMsg||'No upcoming earnings.';
+  try{
+    const res=await fetch(`https://api.telegram.org/bot${token}/sendMessage`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:chat,text:msg,parse_mode:'Markdown'})
+    });
+    const d=await res.json();
+    if(d.ok) alert('✅ Reminder sent to Telegram!');
+    else alert('❌ Telegram error: '+d.description);
+  }catch(e){ alert('❌ Failed: '+e.message); }
+}
+
+// ── Export leaderboard CSV ─────────────────────────────────────────────────
+function exportLeaderboardCSV(){
+  const lb=getLeaderboard().sort((a,b)=>b.total-a.total);
+  if(!lb.length){ alert('No entries to export.'); return; }
+  const headers=['Rank','Ticker','Sector','Score','Grade','Conviction','vs Prev','Price','Earnings','Scored','Thesis'];
+  const rows=lb.map((e,i)=>[
+    i+1, e.ticker,
+    (e.typeLbl||'').replace(/,/g,' '),
+    e.total, e.grade,
+    e.conviction||0,
+    e.prevScore!=null?e.total-e.prevScore:'',
+    e.price||'', e.earnings||'', e.date||'',
+    '"'+(e.thesis||'').replace(/"/g,"''")+'"'
+  ]);
+  const csv=[headers,...rows].map(r=>r.join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='leaderboard_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+// ── Head-to-Head Comparison ───────────────────────────────────────────────
+function openH2HModal(){
+  const lb=getLeaderboard();
+  if(lb.length<2){ alert('Need at least 2 stocks in the leaderboard to compare.'); return; }
+  const opts=lb.map(e=>`<option value="${e.ticker}">${e.ticker} (${e.total})</option>`).join('');
+  document.getElementById('h2h-a').innerHTML='<option value="">— Stock A —</option>'+opts;
+  document.getElementById('h2h-b').innerHTML='<option value="">— Stock B —</option>'+opts;
+  document.getElementById('h2h-body').innerHTML='';
+  document.getElementById('h2h-modal').style.display='block';
+}
+function closeH2HModal(){ document.getElementById('h2h-modal').style.display='none'; }
+function renderH2H(){
+  const tA=document.getElementById('h2h-a').value;
+  const tB=document.getElementById('h2h-b').value;
+  const body=document.getElementById('h2h-body');
+  if(!tA||!tB||tA===tB){ body.innerHTML='<p style="color:var(--muted);text-align:center;padding:20px 0">Select two different stocks above.</p>'; return; }
+  const lb=getLeaderboard();
+  const eA=lb.find(e=>e.ticker===tA);
+  const eB=lb.find(e=>e.ticker===tB);
+  if(!eA||!eB) return;
+  const allCats=[...new Set([...Object.keys(eA.catScores||{}),...Object.keys(eB.catScores||{})])];
+  const colA=eA.total>=75?'var(--green)':eA.total>=55?'var(--amber)':'var(--red)';
+  const colB=eB.total>=75?'var(--green)':eB.total>=55?'var(--amber)':'var(--red)';
+  body.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;text-align:center">
+      <div style="padding:12px;background:var(--card);border-radius:10px 0 0 10px;border:1px solid var(--border)">
+        <div style="font-size:1.1rem;font-weight:800">${eA.ticker}</div>
+        <div style="font-size:2.5rem;font-weight:900;color:${colA};line-height:1.1">${eA.total}</div>
+        <div style="font-size:.9rem;font-weight:700;color:${colA}">${eA.grade}</div>
+        ${eA.conviction?'<div style="color:var(--amber);margin-top:4px">'+'★'.repeat(eA.conviction)+'</div>':''}
+        ${eA.thesis?`<div style="font-size:.72rem;color:var(--muted2);margin-top:8px;text-align:left;line-height:1.4">${eA.thesis}</div>`:''}
+      </div>
+      <div style="padding:12px 8px;display:flex;align-items:center;color:var(--muted);font-weight:700;font-size:.8rem">VS</div>
+      <div style="padding:12px;background:var(--card);border-radius:0 10px 10px 0;border:1px solid var(--border)">
+        <div style="font-size:1.1rem;font-weight:800">${eB.ticker}</div>
+        <div style="font-size:2.5rem;font-weight:900;color:${colB};line-height:1.1">${eB.total}</div>
+        <div style="font-size:.9rem;font-weight:700;color:${colB}">${eB.grade}</div>
+        ${eB.conviction?'<div style="color:var(--amber);margin-top:4px">'+'★'.repeat(eB.conviction)+'</div>':''}
+        ${eB.thesis?`<div style="font-size:.72rem;color:var(--muted2);margin-top:8px;text-align:left;line-height:1.4">${eB.thesis}</div>`:''}
+      </div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;margin-top:14px;font-size:.82rem">
+      <thead><tr style="border-bottom:1px solid var(--border)">
+        <th style="padding:7px 10px;text-align:left;color:var(--muted);font-weight:600">Category</th>
+        <th style="padding:7px 10px;text-align:center;color:var(--blue);font-weight:700">${eA.ticker}</th>
+        <th style="padding:7px 10px;text-align:center;color:var(--accent);font-weight:700">${eB.ticker}</th>
+        <th style="padding:7px 10px;text-align:center;color:var(--muted);font-weight:600">Edge</th>
+      </tr></thead>
+      <tbody>${allCats.map(cat=>{
+        const sA=eA.catScores[cat];
+        const sB=eB.catScores[cat];
+        const gradeOf=s=>s==null?'—':s>=85?'A+':s>=75?'A':s>=65?'B+':s>=55?'B':s>=45?'C':s>=35?'D':'F';
+        const colOf=s=>s==null?'var(--muted)':s>=75?'var(--green)':s>=55?'var(--amber)':'var(--red)';
+        const edge=sA!=null&&sB!=null?(sA>sB?eA.ticker:sA<sB?eB.ticker:'Tie'):'—';
+        const ec=edge===eA.ticker?'var(--blue)':edge===eB.ticker?'var(--accent)':'var(--muted)';
+        return `<tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:7px 10px;color:var(--muted2)">${cat}</td>
+          <td style="padding:7px 10px;text-align:center;font-weight:700;color:${colOf(sA)}">${gradeOf(sA)}${sA!=null?` <span style="font-size:.65rem;color:var(--muted)">(${sA})</span>`:''}</td>
+          <td style="padding:7px 10px;text-align:center;font-weight:700;color:${colOf(sB)}">${gradeOf(sB)}${sB!=null?` <span style="font-size:.65rem;color:var(--muted)">(${sB})</span>`:''}</td>
+          <td style="padding:7px 10px;text-align:center;font-weight:700;color:${ec}">${edge}</td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table>
+    <div style="margin-top:12px;text-align:center;font-size:.8rem;color:var(--muted2)">
+      ${(()=>{const dA=eA.total-eB.total;return dA>0?`<strong style="color:var(--text)">${eA.ticker}</strong> leads by <strong style="color:var(--green)">${dA} pts</strong>`:dA<0?`<strong style="color:var(--text)">${eB.ticker}</strong> leads by <strong style="color:var(--green)">${Math.abs(dA)} pts</strong>`:'<strong>Tied!</strong>';})()}
+    </div>`;
 }
 
 // ── Sticky table header ────────────────────────────────────────────────────
