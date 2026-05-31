@@ -540,6 +540,10 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         </div>
         <button class="btn btn-primary" onclick="calcScore()">Score It</button>
         <button class="btn btn-ghost" onclick="clearScore()">Clear</button>
+        <div style="display:flex;align-items:center;gap:6px;margin-left:4px">
+          <label style="font-size:.72rem;color:var(--muted);white-space:nowrap">📅 Next Earnings</label>
+          <input class="fi" id="sc-earnings" type="date" style="width:145px;font-size:.78rem;padding:6px 10px"/>
+        </div>
         <span style="font-size:.73rem;color:var(--muted)">Enter values from Finviz · blank = skipped</span>
       </div>
 
@@ -645,7 +649,8 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">vs Prev</th>
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">Breakdown</th>
             <th style="padding:8px 10px;text-align:right;color:var(--muted);font-weight:600">Price</th>
-            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Date</th>
+            <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600">📅 Earnings</th>
+            <th style="padding:8px 10px;text-align:left;color:var(--muted);font-weight:600">Scored</th>
             <th style="padding:8px 10px;text-align:center;color:var(--muted);font-weight:600"></th>
           </tr>
         </thead>
@@ -1921,6 +1926,7 @@ function clearScore(){
   const h=document.getElementById('sc-up'); if(h) h.value='';
   document.getElementById('sc-result').style.display='none';
   document.getElementById('sc-ticker').value='';
+  const ee=document.getElementById('sc-earnings'); if(ee) ee.value='';
   window._lastScore=null;
 }
 
@@ -1951,9 +1957,11 @@ function saveToLeaderboard(btn){
     const idx=lb.findIndex(e=>e.ticker===r.ticker);
     const priceEl=document.getElementById('sc-price');
     const price=priceEl&&priceEl.value?priceEl.value:null;
+    const earningsEl=document.getElementById('sc-earnings');
+    const earnings=earningsEl&&earningsEl.value?earningsEl.value:null;
     // Carry forward previous score if rescoring
     const prev=idx>=0?{prevScore:lb[idx].total,prevGrade:lb[idx].grade,prevDate:lb[idx].date,prevPrice:lb[idx].price}:{};
-    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,date:dateStr,ts:now.getTime(),inputs,...prev};
+    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,date:dateStr,ts:now.getTime(),inputs,...prev};
     if(idx>=0) lb[idx]=entry; else lb.push(entry);
     saveLeaderboard(lb);
     renderLeaderboard();
@@ -2007,6 +2015,15 @@ function renderLeaderboard(){
       ${prevCell}
       <td style="padding:8px 10px;text-align:center">${breakdownHtml}</td>
       <td style="padding:8px 10px;text-align:right;color:var(--text);font-weight:600;white-space:nowrap">${e.price?'$'+parseFloat(e.price).toFixed(2):'—'}</td>
+      ${(()=>{
+        if(!e.earnings) return `<td style="padding:8px 10px;text-align:center;color:var(--muted);font-size:.72rem">—</td>`;
+        const d=new Date(e.earnings); const now=new Date(); const days=Math.round((d-now)/86400000);
+        const isPast=days<0; const isSoon=days>=0&&days<=14;
+        const ec=isPast?'var(--muted)':isSoon?'var(--amber)':'var(--text)';
+        const label=d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+        const tag=isSoon?` <span style="font-size:.6rem;background:rgba(245,158,11,.2);color:var(--amber);border-radius:4px;padding:1px 4px">soon</span>`:isPast?` <span style="font-size:.6rem;color:var(--muted)">(past)</span>`:'';
+        return `<td style="padding:8px 10px;text-align:center;white-space:nowrap"><span style="font-size:.72rem;color:${ec};font-weight:${isSoon?'700':'400'}">${label}</span>${tag}</td>`;
+      })()}
       <td style="padding:8px 10px;color:var(--muted);font-size:.72rem;white-space:nowrap">${e.date||''}</td>
       <td style="padding:8px 10px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
     </tr>`;
@@ -2032,6 +2049,7 @@ function loadLeaderboardEntry(ticker){
     const el=document.getElementById(id);
     if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
   });
+  const eEl=document.getElementById('sc-earnings'); if(eEl) eEl.value=e.earnings||'';
   calcUpside();
   // Re-run the score so badges light up
   calcScore();
