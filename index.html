@@ -533,13 +533,11 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
       <!-- TOOLBAR -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
         <input class="fi" id="sc-ticker" placeholder="Ticker (e.g. ONON)" style="width:120px;text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"/>
-        <select class="fi" id="sc-type" style="width:190px" onchange="updateWeightHints()">
-          <option value="growth">🚀 Tech / Growth</option>
-          <option value="financial">🏦 Financial (Banks)</option>
-          <option value="industrial">🏭 Industrial / Value</option>
-          <option value="healthcare">💊 Healthcare / Biotech</option>
-          <option value="consumer">🛍️ Consumer</option>
-        </select>
+        <div style="position:relative;width:220px" id="sc-type-wrap">
+          <input class="fi" id="sc-type-search" placeholder="🔍 Search sector…" autocomplete="off" style="width:100%;cursor:pointer" oninput="filterSectorDropdown(this.value)" onfocus="openSectorDropdown()" onblur="setTimeout(closeSectorDropdown,180)" onkeydown="sectorDropdownKey(event)" readonly onclick="this.removeAttribute('readonly');openSectorDropdown()"/>
+          <input type="hidden" id="sc-type" value="saas"/>
+          <div id="sc-type-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--card);border:1px solid var(--border);border-radius:8px;max-height:260px;overflow-y:auto;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.35)"></div>
+        </div>
         <button class="btn btn-primary" onclick="calcScore()">Score It</button>
         <button class="btn btn-ghost" onclick="clearScore()">Clear</button>
         <span style="font-size:.73rem;color:var(--muted)">Enter values from Finviz · blank = skipped</span>
@@ -645,6 +643,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
             <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Type</th>
             <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Score</th>
             <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600">Grade</th>
+            <th style="padding:10px 12px;text-align:right;color:var(--muted);font-weight:600">Price</th>
             <th style="padding:10px 12px;text-align:left;color:var(--muted);font-weight:600">Scored On</th>
             <th style="padding:10px 12px;text-align:center;color:var(--muted);font-weight:600"></th>
           </tr>
@@ -1702,18 +1701,126 @@ const SC_CATS = {
   'Signals':      ['sc-rec','sc-up','sc-rsi','sc-sr'],
 };
 
+const SC_SECTORS = [
+  {id:'saas',        label:'🖥️ Software / SaaS'},
+  {id:'semiconductors', label:'⚡ Semiconductors'},
+  {id:'hardware',    label:'🔧 Hardware / Electronics'},
+  {id:'cybersecurity',label:'🔒 Cybersecurity'},
+  {id:'cloud',       label:'☁️ Cloud / Internet'},
+  {id:'ai',          label:'🤖 AI / Machine Learning'},
+  {id:'fintech',     label:'💳 Fintech'},
+  {id:'ecommerce',   label:'🛒 E-commerce'},
+  {id:'biotech',     label:'🧬 Biotech'},
+  {id:'pharma',      label:'💊 Pharmaceuticals'},
+  {id:'meddevices',  label:'🏥 Medical Devices'},
+  {id:'healthservices',label:'🩺 Health Services'},
+  {id:'banks',       label:'🏦 Banks / Financial'},
+  {id:'insurance',   label:'🛡️ Insurance'},
+  {id:'assetmgmt',   label:'📈 Asset Management'},
+  {id:'reits',       label:'🏢 REITs'},
+  {id:'oilgas',      label:'⛽ Oil & Gas'},
+  {id:'renewable',   label:'🌿 Renewable Energy'},
+  {id:'utilities',   label:'🔌 Utilities'},
+  {id:'industrials', label:'🏭 Industrials / Manufacturing'},
+  {id:'defense',     label:'✈️ Defense & Aerospace'},
+  {id:'transportation',label:'🚚 Transportation / Logistics'},
+  {id:'construction',label:'🏗️ Construction'},
+  {id:'consumer_disc',label:'🛍️ Consumer Discretionary'},
+  {id:'consumer_stap',label:'🧴 Consumer Staples'},
+  {id:'restaurants', label:'🍔 Restaurants / Food'},
+  {id:'retail',      label:'🏪 Retail'},
+  {id:'media',       label:'📺 Media / Entertainment'},
+  {id:'telecom',     label:'📡 Telecom'},
+  {id:'materials',   label:'⚗️ Materials / Chemicals'},
+  {id:'mining',      label:'⛏️ Mining / Metals'},
+  {id:'agriculture', label:'🌾 Agriculture'},
+  {id:'hospitality', label:'🏨 Hospitality / Travel'},
+  {id:'sports',      label:'🎮 Gaming / Sports'},
+];
+
 const SC_WEIGHTS = {
-  growth:     {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.10,'Profitability':.15,'Signals':.05},
-  financial:  {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
-  industrial: {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  healthcare: {'Valuation':.15,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.25,'Health':.25,'Profitability':.05,'Signals':.05},
-  consumer:   {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  saas:         {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
+  semiconductors:{'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  hardware:     {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  cybersecurity:{'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
+  cloud:        {'Valuation':.10,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.25,'Health':.10,'Profitability':.15,'Signals':.05},
+  ai:           {'Valuation':.10,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.30,'Health':.10,'Profitability':.15,'Signals':.05},
+  fintech:      {'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  ecommerce:    {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.10,'Profitability':.15,'Signals':.05},
+  biotech:      {'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},
+  pharma:       {'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},
+  meddevices:   {'Valuation':.15,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.25,'Health':.15,'Profitability':.15,'Signals':.05},
+  healthservices:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  banks:        {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  insurance:    {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  assetmgmt:    {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  reits:        {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},
+  oilgas:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  renewable:    {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},
+  utilities:    {'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},
+  industrials:  {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  defense:      {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  transportation:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  construction: {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  consumer_disc:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  consumer_stap:{'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},
+  restaurants:  {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  retail:       {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  media:        {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  telecom:      {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},
+  materials:    {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  mining:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  agriculture:  {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  hospitality:  {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  sports:       {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.10,'Signals':.05},
+  // legacy keys kept for backward compat
+  growth:       {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
+  financial:    {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  industrial:   {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  healthcare:   {'Valuation':.15,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.25,'Health':.25,'Profitability':.05,'Signals':.05},
+  consumer:     {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
 };
 
-const SC_TYPE_LABELS = {
-  growth:'🚀 Tech / Growth', financial:'🏦 Financial', industrial:'🏭 Industrial / Value',
-  healthcare:'💊 Healthcare / Biotech', consumer:'🛔 Consumer'
-};
+const SC_TYPE_LABELS = Object.fromEntries(SC_SECTORS.map(s=>[s.id,s.label]));
+// legacy
+Object.assign(SC_TYPE_LABELS,{growth:'🚀 Tech / Growth',financial:'🏦 Financial',industrial:'🏭 Industrial',healthcare:'💊 Healthcare',consumer:'🛍️ Consumer'});
+
+// ── Sector searchable dropdown ────────────────────────────────────────────────
+let _scDropdownOpen=false;
+function buildSectorDropdown(filter=''){
+  const q=filter.toLowerCase().replace(/[^a-z0-9]/g,' ').trim();
+  const items=q?SC_SECTORS.filter(s=>s.label.toLowerCase().includes(q)||s.id.includes(q)):SC_SECTORS;
+  const dd=document.getElementById('sc-type-dropdown');
+  dd.innerHTML=items.map(s=>`<div data-id="${s.id}" style="padding:9px 14px;cursor:pointer;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onmousedown="selectSector('${s.id}')" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''">${s.label}</div>`).join('');
+  if(!items.length) dd.innerHTML='<div style="padding:9px 14px;color:var(--muted);font-size:.82rem">No match</div>';
+}
+function openSectorDropdown(){
+  buildSectorDropdown(document.getElementById('sc-type-search').value);
+  document.getElementById('sc-type-dropdown').style.display='block';
+  _scDropdownOpen=true;
+}
+function closeSectorDropdown(){
+  document.getElementById('sc-type-dropdown').style.display='none';
+  _scDropdownOpen=false;
+  // restore display label if nothing typed
+  const cur=document.getElementById('sc-type').value;
+  const s=SC_SECTORS.find(x=>x.id===cur);
+  if(s) document.getElementById('sc-type-search').value=s.label;
+}
+function filterSectorDropdown(q){
+  buildSectorDropdown(q);
+  document.getElementById('sc-type-dropdown').style.display='block';
+}
+function selectSector(id){
+  const s=SC_SECTORS.find(x=>x.id===id)||{id,label:id};
+  document.getElementById('sc-type').value=id;
+  document.getElementById('sc-type-search').value=s.label;
+  document.getElementById('sc-type-dropdown').style.display='none';
+  updateWeightHints();
+}
+function sectorDropdownKey(e){
+  if(e.key==='Escape') closeSectorDropdown();
+}
 
 function computeMetricScore(id){
   const m = SC_METRICS[id];
@@ -1841,7 +1948,9 @@ function saveToLeaderboard(btn){
       if(el && el.value!=='') inputs[id]=el.value;
     });
     const idx=lb.findIndex(e=>e.ticker===r.ticker);
-    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,date:dateStr,ts:now.getTime(),inputs};
+    const priceEl=document.getElementById('sc-price');
+    const price=priceEl&&priceEl.value?priceEl.value:null;
+    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,price,date:dateStr,ts:now.getTime(),inputs};
     if(idx>=0) lb[idx]=entry; else lb.push(entry);
     saveLeaderboard(lb);
     renderLeaderboard();
@@ -1872,6 +1981,7 @@ function renderLeaderboard(){
       <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.typeLbl||''}</td>
       <td style="padding:10px 12px;text-align:center;font-weight:800;color:${color}">${e.total}/100</td>
       <td style="padding:10px 12px;text-align:center;font-weight:700;color:${color}">${e.grade}</td>
+      <td style="padding:10px 12px;text-align:right;color:var(--text);font-weight:600">${e.price?'$'+parseFloat(e.price).toFixed(2):'—'}</td>
       <td style="padding:10px 12px;color:var(--muted);font-size:.75rem">${e.date||''}</td>
       <td style="padding:10px 12px;text-align:center" onclick="event.stopPropagation();deleteLeaderboardEntry('${e.ticker}')"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove">✕</span></td>
     </tr>`;
@@ -1887,7 +1997,10 @@ function loadLeaderboardEntry(ticker){
   showTab('score', scoreBtn);
   // Populate fields
   document.getElementById('sc-ticker').value=e.ticker;
-  document.getElementById('sc-type').value=e.type||'growth';
+  const restoreType=e.type||'saas';
+  document.getElementById('sc-type').value=restoreType;
+  const restoreSector=SC_SECTORS.find(x=>x.id===restoreType);
+  if(restoreSector) document.getElementById('sc-type-search').value=restoreSector.label;
   updateWeightHints();
   // Restore all inputs
   SC_ALL_INPUTS.forEach(id=>{
@@ -1912,8 +2025,13 @@ function clearLeaderboard(){
   renderLeaderboard();
 }
 
-setTimeout(updateWeightHints, 100);
-setTimeout(renderLeaderboard, 150);
+setTimeout(()=>{
+  const cur=document.getElementById('sc-type').value||'saas';
+  const s=SC_SECTORS.find(x=>x.id===cur);
+  if(s) document.getElementById('sc-type-search').value=s.label;
+  updateWeightHints();
+  renderLeaderboard();
+},100);
 
 const GROQ_KEY = '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';
 
