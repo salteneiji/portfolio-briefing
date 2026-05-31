@@ -1708,97 +1708,229 @@ const SC_CATS = {
 };
 
 const SC_SECTORS = [
-  {id:'saas',        label:'🖥️ Software / SaaS'},
-  {id:'semiconductors', label:'⚡ Semiconductors'},
-  {id:'hardware',    label:'🔧 Hardware / Electronics'},
-  {id:'cybersecurity',label:'🔒 Cybersecurity'},
-  {id:'cloud',       label:'☁️ Cloud / Internet'},
-  {id:'ai',          label:'🤖 AI / Machine Learning'},
-  {id:'fintech',     label:'💳 Fintech'},
-  {id:'ecommerce',   label:'🛒 E-commerce'},
-  {id:'biotech',     label:'🧬 Biotech'},
-  {id:'pharma',      label:'💊 Pharmaceuticals'},
-  {id:'meddevices',  label:'🏥 Medical Devices'},
-  {id:'healthservices',label:'🩺 Health Services'},
-  {id:'banks',       label:'🏦 Banks / Financial'},
-  {id:'insurance',   label:'🛡️ Insurance'},
-  {id:'assetmgmt',   label:'📈 Asset Management'},
-  {id:'reits',       label:'🏢 REITs'},
-  {id:'oilgas',      label:'⛽ Oil & Gas'},
-  {id:'renewable',   label:'🌿 Renewable Energy'},
-  {id:'utilities',   label:'🔌 Utilities'},
-  {id:'industrials', label:'🏭 Industrials / Manufacturing'},
-  {id:'defense',     label:'✈️ Defense & Aerospace'},
-  {id:'transportation',label:'🚚 Transportation / Logistics'},
-  {id:'construction',label:'🏗️ Construction'},
-  {id:'consumer_disc',label:'🛍️ Consumer Discretionary'},
-  {id:'consumer_stap',label:'🧴 Consumer Staples'},
-  {id:'restaurants', label:'🍔 Restaurants / Food'},
-  {id:'retail',      label:'🏪 Retail'},
-  {id:'media',       label:'📺 Media / Entertainment'},
-  {id:'telecom',     label:'📡 Telecom'},
-  {id:'materials',   label:'⚗️ Materials / Chemicals'},
-  {id:'mining',      label:'⛏️ Mining / Metals'},
-  {id:'agriculture', label:'🌾 Agriculture'},
-  {id:'hospitality', label:'🏨 Hospitality / Travel'},
-  {id:'sports',      label:'🎮 Gaming / Sports'},
+  // ── INFORMATION TECHNOLOGY ──────────────────────────────────────
+  {id:'saas',           group:'💻 Information Technology', label:'Software / SaaS'},
+  {id:'semiconductors', group:'💻 Information Technology', label:'Semiconductors'},
+  {id:'semi_equipment', group:'💻 Information Technology', label:'Semiconductor Equipment'},
+  {id:'hardware',       group:'💻 Information Technology', label:'Hardware / Electronics'},
+  {id:'cybersecurity',  group:'💻 Information Technology', label:'Cybersecurity'},
+  {id:'cloud',          group:'💻 Information Technology', label:'Cloud Computing'},
+  {id:'ai',             group:'💻 Information Technology', label:'AI / Machine Learning'},
+  {id:'it_services',    group:'💻 Information Technology', label:'IT Services / Consulting'},
+  {id:'data_centers',   group:'💻 Information Technology', label:'Data Centers / Infrastructure'},
+  {id:'electronic_comp',group:'💻 Information Technology', label:'Electronic Components'},
+  {id:'robotics',       group:'💻 Information Technology', label:'Robotics & Automation'},
+  {id:'space',          group:'💻 Information Technology', label:'Space / Satellite'},
+  {id:'threed_print',   group:'💻 Information Technology', label:'3D Printing'},
+  // ── COMMUNICATION SERVICES ──────────────────────────────────────
+  {id:'telecom',        group:'📡 Communication Services', label:'Telecom / Wireless'},
+  {id:'cable',          group:'📡 Communication Services', label:'Cable & Satellite'},
+  {id:'media',          group:'📡 Communication Services', label:'Media / Entertainment'},
+  {id:'social_media',   group:'📡 Communication Services', label:'Social Media / Internet'},
+  {id:'streaming',      group:'📡 Communication Services', label:'Video Streaming'},
+  {id:'gaming',         group:'📡 Communication Services', label:'Gaming / Esports'},
+  {id:'adtech',         group:'📡 Communication Services', label:'Advertising Technology'},
+  {id:'publishing',     group:'📡 Communication Services', label:'Publishing / News'},
+  // ── CONSUMER DISCRETIONARY ─────────────────────────────────────
+  {id:'ecommerce',      group:'🛍️ Consumer Discretionary', label:'E-commerce / Online Retail'},
+  {id:'specialty_retail',group:'🛍️ Consumer Discretionary',label:'Specialty Retail'},
+  {id:'auto',           group:'🛍️ Consumer Discretionary', label:'Auto Manufacturers'},
+  {id:'auto_parts',     group:'🛍️ Consumer Discretionary', label:'Auto Parts & Dealers'},
+  {id:'ev',             group:'🛍️ Consumer Discretionary', label:'Electric Vehicles'},
+  {id:'restaurants',    group:'🛍️ Consumer Discretionary', label:'Restaurants / Fast Food'},
+  {id:'hotels',         group:'🛍️ Consumer Discretionary', label:'Hotels & Resorts'},
+  {id:'cruise',         group:'🛍️ Consumer Discretionary', label:'Cruise Lines'},
+  {id:'airlines',       group:'🛍️ Consumer Discretionary', label:'Airlines'},
+  {id:'apparel',        group:'🛍️ Consumer Discretionary', label:'Apparel / Luxury Fashion'},
+  {id:'home_furnishing',group:'🛍️ Consumer Discretionary', label:'Home Improvement / Furniture'},
+  {id:'leisure',        group:'🛍️ Consumer Discretionary', label:'Leisure / Recreation'},
+  {id:'travel',         group:'🛍️ Consumer Discretionary', label:'Online Travel / Booking'},
+  {id:'sports_ent',     group:'🛍️ Consumer Discretionary', label:'Sports & Entertainment'},
+  {id:'education',      group:'🛍️ Consumer Discretionary', label:'EdTech / Education'},
+  // ── CONSUMER STAPLES ───────────────────────────────────────────
+  {id:'food_bev',       group:'🧴 Consumer Staples', label:'Food & Beverages'},
+  {id:'household',      group:'🧴 Consumer Staples', label:'Household Products'},
+  {id:'beauty',         group:'🧴 Consumer Staples', label:'Personal Care / Beauty'},
+  {id:'tobacco',        group:'🧴 Consumer Staples', label:'Tobacco'},
+  {id:'grocery',        group:'🧴 Consumer Staples', label:'Grocery / Food Retail'},
+  {id:'discount_retail',group:'🧴 Consumer Staples', label:'Discount Retail'},
+  {id:'cannabis',       group:'🧴 Consumer Staples', label:'Cannabis'},
+  // ── HEALTHCARE ─────────────────────────────────────────────────
+  {id:'biotech',        group:'🏥 Healthcare', label:'Biotech'},
+  {id:'pharma',         group:'🏥 Healthcare', label:'Pharmaceuticals'},
+  {id:'meddevices',     group:'🏥 Healthcare', label:'Medical Devices'},
+  {id:'med_equipment',  group:'🏥 Healthcare', label:'Medical Equipment & Supplies'},
+  {id:'healthservices', group:'🏥 Healthcare', label:'Health Services / Managed Care'},
+  {id:'diagnostics',    group:'🏥 Healthcare', label:'Diagnostics & Research Labs'},
+  {id:'hospitals',      group:'🏥 Healthcare', label:'Hospitals & Facilities'},
+  {id:'veterinary',     group:'🏥 Healthcare', label:'Veterinary'},
+  {id:'dental',         group:'🏥 Healthcare', label:'Dental / Vision'},
+  // ── FINANCIALS ─────────────────────────────────────────────────
+  {id:'banks',          group:'🏦 Financials', label:'Banks / Commercial Banking'},
+  {id:'investment_bank',group:'🏦 Financials', label:'Investment Banks / Brokerages'},
+  {id:'insurance_life', group:'🏦 Financials', label:'Insurance - Life & Health'},
+  {id:'insurance_pc',   group:'🏦 Financials', label:'Insurance - Property & Casualty'},
+  {id:'assetmgmt',      group:'🏦 Financials', label:'Asset Management / Wealth'},
+  {id:'fintech',        group:'🏦 Financials', label:'Fintech / Digital Payments'},
+  {id:'mortgage',       group:'🏦 Financials', label:'Mortgage / Real Estate Finance'},
+  {id:'private_equity', group:'🏦 Financials', label:'Private Equity / Venture'},
+  {id:'exchanges',      group:'🏦 Financials', label:'Exchanges & Financial Infra'},
+  // ── ENERGY ─────────────────────────────────────────────────────
+  {id:'oil_integrated', group:'⛽ Energy', label:'Oil & Gas - Integrated'},
+  {id:'oil_ep',         group:'⛽ Energy', label:'Oil & Gas - Exploration & Production'},
+  {id:'oil_midstream',  group:'⛽ Energy', label:'Oil & Gas - Midstream / Pipelines'},
+  {id:'oil_refining',   group:'⛽ Energy', label:'Oil & Gas - Refining & Marketing'},
+  {id:'oil_services',   group:'⛽ Energy', label:'Oil Field Services & Equipment'},
+  {id:'renewable',      group:'⛽ Energy', label:'Renewable Energy'},
+  {id:'solar',          group:'⛽ Energy', label:'Solar Energy'},
+  {id:'wind',           group:'⛽ Energy', label:'Wind Energy'},
+  {id:'nuclear',        group:'⛽ Energy', label:'Nuclear Energy'},
+  {id:'hydrogen',       group:'⛽ Energy', label:'Hydrogen / Clean Energy'},
+  {id:'battery_tech',   group:'⛽ Energy', label:'Battery Technology'},
+  // ── UTILITIES ──────────────────────────────────────────────────
+  {id:'electric_util',  group:'🔌 Utilities', label:'Electric Utilities'},
+  {id:'gas_util',       group:'🔌 Utilities', label:'Gas Utilities'},
+  {id:'water_util',     group:'🔌 Utilities', label:'Water Utilities'},
+  {id:'multi_util',     group:'🔌 Utilities', label:'Multi-Utilities'},
+  // ── REAL ESTATE ────────────────────────────────────────────────
+  {id:'reits_residential',group:'🏢 Real Estate', label:'REITs - Residential'},
+  {id:'reits_commercial', group:'🏢 Real Estate', label:'REITs - Commercial / Office'},
+  {id:'reits_industrial', group:'🏢 Real Estate', label:'REITs - Industrial / Warehouse'},
+  {id:'reits_retail',     group:'🏢 Real Estate', label:'REITs - Retail / Mall'},
+  {id:'reits_datacenter', group:'🏢 Real Estate', label:'REITs - Data Centers'},
+  {id:'reits_healthcare', group:'🏢 Real Estate', label:'REITs - Healthcare'},
+  {id:'reits_hotel',      group:'🏢 Real Estate', label:'REITs - Hotels'},
+  {id:'real_estate_dev',  group:'🏢 Real Estate', label:'Real Estate Development'},
+  {id:'proptech',         group:'🏢 Real Estate', label:'PropTech'},
+  // ── INDUSTRIALS ────────────────────────────────────────────────
+  {id:'defense',        group:'🏭 Industrials', label:'Defense & Aerospace'},
+  {id:'industrials',    group:'🏭 Industrials', label:'Industrial Machinery'},
+  {id:'electrical_equip',group:'🏭 Industrials',label:'Electrical Equipment'},
+  {id:'construction',   group:'🏭 Industrials', label:'Construction & Engineering'},
+  {id:'building_mat',   group:'🏭 Industrials', label:'Building Materials'},
+  {id:'trucking',       group:'🏭 Industrials', label:'Trucking / Logistics'},
+  {id:'rail',           group:'🏭 Industrials', label:'Rail Transport'},
+  {id:'shipping',       group:'🏭 Industrials', label:'Marine Shipping'},
+  {id:'waste',          group:'🏭 Industrials', label:'Waste Management'},
+  {id:'professional_svcs',group:'🏭 Industrials',label:'Professional Services'},
+  {id:'staffing',       group:'🏭 Industrials', label:'Staffing & Employment'},
+  {id:'security_svcs',  group:'🏭 Industrials', label:'Security Services'},
+  // ── MATERIALS ──────────────────────────────────────────────────
+  {id:'chemicals',      group:'⚗️ Materials', label:'Specialty Chemicals'},
+  {id:'basic_chemicals',group:'⚗️ Materials', label:'Basic / Commodity Chemicals'},
+  {id:'mining_gold',    group:'⚗️ Materials', label:'Mining - Gold & Precious Metals'},
+  {id:'mining_base',    group:'⚗️ Materials', label:'Mining - Copper & Base Metals'},
+  {id:'mining_lithium', group:'⚗️ Materials', label:'Mining - Lithium / Battery Materials'},
+  {id:'steel',          group:'⚗️ Materials', label:'Steel & Iron'},
+  {id:'aluminum',       group:'⚗️ Materials', label:'Aluminum'},
+  {id:'paper_packaging',group:'⚗️ Materials', label:'Paper & Packaging'},
+  // ── AGRICULTURE ────────────────────────────────────────────────
+  {id:'agriculture',    group:'🌾 Agriculture', label:'Agricultural Products'},
+  {id:'farm_equipment', group:'🌾 Agriculture', label:'Farm Equipment'},
+  {id:'agri_chemicals', group:'🌾 Agriculture', label:'Agricultural Chemicals / Fertilizers'},
+  {id:'aquaculture',    group:'🌾 Agriculture', label:'Aquaculture / Seafood'},
 ];
 
+// Weight templates — all must sum to 1.0
+const _W = {
+  growth_tech:    {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
+  hardware_tech:  {'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  media_growth:   {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  telecom_w:      {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},
+  consumer_disc_w:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  consumer_stap_w:{'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},
+  biotech_w:      {'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},
+  pharma_w:       {'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},
+  health_svc_w:   {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  banks_w:        {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  assetmgmt_w:    {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  energy_w:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  renewable_w:    {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},
+  utilities_w:    {'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},
+  reits_w:        {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},
+  industrials_w:  {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  materials_w:    {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+};
 const SC_WEIGHTS = {
-  saas:         {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
-  semiconductors:{'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
-  hardware:     {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  cybersecurity:{'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
-  cloud:        {'Valuation':.10,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.25,'Health':.10,'Profitability':.15,'Signals':.05},
-  ai:           {'Valuation':.10,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.30,'Health':.10,'Profitability':.15,'Signals':.05},
-  fintech:      {'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
-  ecommerce:    {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.10,'Profitability':.15,'Signals':.05},
-  biotech:      {'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},
-  pharma:       {'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},
-  meddevices:   {'Valuation':.15,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.25,'Health':.15,'Profitability':.15,'Signals':.05},
-  healthservices:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  banks:        {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
-  insurance:    {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
-  assetmgmt:    {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  reits:        {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},
-  oilgas:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  renewable:    {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},
-  utilities:    {'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},
-  industrials:  {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  defense:      {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  transportation:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  construction: {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  consumer_disc:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
-  consumer_stap:{'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},
-  restaurants:  {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
-  retail:       {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
-  media:        {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
-  telecom:      {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},
-  materials:    {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  mining:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  agriculture:  {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  hospitality:  {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
-  sports:       {'Valuation':.15,'Hist. Growth':.20,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.10,'Signals':.05},
-  // legacy keys kept for backward compat
-  growth:       {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
-  financial:    {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
-  industrial:   {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  healthcare:   {'Valuation':.15,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.25,'Health':.25,'Profitability':.05,'Signals':.05},
-  consumer:     {'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  // Information Technology
+  saas:_W.growth_tech, semiconductors:_W.hardware_tech, semi_equipment:_W.hardware_tech,
+  hardware:_W.hardware_tech, cybersecurity:_W.growth_tech, cloud:_W.growth_tech,
+  ai:_W.growth_tech, it_services:_W.hardware_tech, data_centers:_W.hardware_tech,
+  electronic_comp:_W.hardware_tech, robotics:_W.hardware_tech, space:_W.growth_tech,
+  threed_print:_W.hardware_tech,
+  // Communication Services
+  telecom:_W.telecom_w, cable:_W.telecom_w, media:_W.media_growth,
+  social_media:_W.growth_tech, streaming:_W.media_growth, gaming:_W.media_growth,
+  adtech:_W.growth_tech, publishing:_W.media_growth,
+  // Consumer Discretionary
+  ecommerce:_W.consumer_disc_w, specialty_retail:_W.consumer_disc_w, auto:_W.industrials_w,
+  auto_parts:_W.industrials_w, ev:_W.growth_tech, restaurants:_W.consumer_disc_w,
+  hotels:_W.consumer_disc_w, cruise:_W.consumer_disc_w, airlines:_W.industrials_w,
+  apparel:_W.consumer_disc_w, home_furnishing:_W.consumer_disc_w, leisure:_W.consumer_disc_w,
+  travel:_W.consumer_disc_w, sports_ent:_W.media_growth, education:_W.growth_tech,
+  // Consumer Staples
+  food_bev:_W.consumer_stap_w, household:_W.consumer_stap_w, beauty:_W.consumer_stap_w,
+  tobacco:_W.consumer_stap_w, grocery:_W.consumer_stap_w, discount_retail:_W.consumer_stap_w,
+  cannabis:_W.consumer_disc_w,
+  // Healthcare
+  biotech:_W.biotech_w, pharma:_W.pharma_w, meddevices:_W.pharma_w,
+  med_equipment:_W.pharma_w, healthservices:_W.health_svc_w, diagnostics:_W.pharma_w,
+  hospitals:_W.health_svc_w, veterinary:_W.health_svc_w, dental:_W.health_svc_w,
+  // Financials
+  banks:_W.banks_w, investment_bank:_W.assetmgmt_w, insurance_life:_W.banks_w,
+  insurance_pc:_W.banks_w, assetmgmt:_W.assetmgmt_w, fintech:_W.growth_tech,
+  mortgage:_W.banks_w, private_equity:_W.assetmgmt_w, exchanges:_W.assetmgmt_w,
+  // Energy
+  oil_integrated:_W.energy_w, oil_ep:_W.energy_w, oil_midstream:_W.energy_w,
+  oil_refining:_W.energy_w, oil_services:_W.industrials_w, renewable:_W.renewable_w,
+  solar:_W.renewable_w, wind:_W.renewable_w, nuclear:_W.utilities_w,
+  hydrogen:_W.renewable_w, battery_tech:_W.growth_tech,
+  // Utilities
+  electric_util:_W.utilities_w, gas_util:_W.utilities_w, water_util:_W.utilities_w, multi_util:_W.utilities_w,
+  // Real Estate
+  reits_residential:_W.reits_w, reits_commercial:_W.reits_w, reits_industrial:_W.reits_w,
+  reits_retail:_W.reits_w, reits_datacenter:_W.reits_w, reits_healthcare:_W.reits_w,
+  reits_hotel:_W.reits_w, real_estate_dev:_W.reits_w, proptech:_W.growth_tech,
+  // Industrials
+  defense:_W.industrials_w, industrials:_W.industrials_w, electrical_equip:_W.industrials_w,
+  construction:_W.industrials_w, building_mat:_W.industrials_w, trucking:_W.industrials_w,
+  rail:_W.industrials_w, shipping:_W.industrials_w, waste:_W.industrials_w,
+  professional_svcs:_W.assetmgmt_w, staffing:_W.industrials_w, security_svcs:_W.industrials_w,
+  // Materials
+  chemicals:_W.materials_w, basic_chemicals:_W.materials_w, mining_gold:_W.materials_w,
+  mining_base:_W.materials_w, mining_lithium:_W.materials_w, steel:_W.materials_w,
+  aluminum:_W.materials_w, paper_packaging:_W.materials_w,
+  // Agriculture
+  agriculture:_W.materials_w, farm_equipment:_W.industrials_w,
+  agri_chemicals:_W.materials_w, aquaculture:_W.materials_w,
+  // Legacy backward-compat
+  growth:_W.growth_tech, financial:_W.banks_w, industrial:_W.industrials_w,
+  healthcare:_W.pharma_w, consumer:_W.consumer_disc_w,
+  oilgas:_W.energy_w, mining:_W.materials_w, hospitality:_W.consumer_disc_w, sports:_W.media_growth,
+  transportation:_W.industrials_w, consumer_disc:_W.consumer_disc_w, consumer_stap:_W.consumer_stap_w,
+  retail:_W.consumer_disc_w, insurance:_W.banks_w, reits:_W.reits_w, materials:_W.materials_w,
 };
 
-const SC_TYPE_LABELS = Object.fromEntries(SC_SECTORS.map(s=>[s.id,s.label]));
+const SC_TYPE_LABELS = Object.fromEntries(SC_SECTORS.map(s=>[s.id, s.group ? s.group+' › '+s.label : s.label]));
 // legacy
-Object.assign(SC_TYPE_LABELS,{growth:'🚀 Tech / Growth',financial:'🏦 Financial',industrial:'🏭 Industrial',healthcare:'💊 Healthcare',consumer:'🛍️ Consumer'});
+Object.assign(SC_TYPE_LABELS,{growth:'💻 IT › Tech / Growth',financial:'🏦 Financials › Banking',industrial:'🏭 Industrials › Manufacturing',healthcare:'🏥 Healthcare › General',consumer:'🛍️ Consumer Disc. › General',oilgas:'⛽ Energy › Oil & Gas',mining:'⚗️ Materials › Mining',hospitality:'🛍️ Consumer Disc. › Hospitality',sports:'📡 Comm. › Gaming / Sports',transportation:'🏭 Industrials › Transportation',consumer_disc:'🛍️ Consumer Discretionary',consumer_stap:'🧴 Consumer Staples',retail:'🛍️ Consumer Disc. › Retail',insurance:'🏦 Financials › Insurance',reits:'🏢 Real Estate › REITs',materials:'⚗️ Materials'});
 
 // ── Sector searchable dropdown ────────────────────────────────────────────────
 let _scDropdownOpen=false;
 function buildSectorDropdown(filter=''){
   const q=filter.toLowerCase().replace(/[^a-z0-9]/g,' ').trim();
-  const items=q?SC_SECTORS.filter(s=>s.label.toLowerCase().includes(q)||s.id.includes(q)):SC_SECTORS;
+  const items=q?SC_SECTORS.filter(s=>s.label.toLowerCase().includes(q)||s.id.includes(q)||(s.group||'').toLowerCase().includes(q)):SC_SECTORS;
   const dd=document.getElementById('sc-type-dropdown');
-  dd.innerHTML=items.map(s=>`<div data-id="${s.id}" style="padding:9px 14px;cursor:pointer;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" onmousedown="selectSector('${s.id}')" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''">${s.label}</div>`).join('');
-  if(!items.length) dd.innerHTML='<div style="padding:9px 14px;color:var(--muted);font-size:.82rem">No match</div>';
+  if(!items.length){ dd.innerHTML='<div style="padding:9px 14px;color:var(--muted);font-size:.82rem">No match</div>'; return; }
+  let html=''; let lastGroup='';
+  for(const s of items){
+    if(!q && s.group && s.group!==lastGroup){
+      html+=`<div style="padding:6px 14px 3px;font-size:.68rem;font-weight:700;color:var(--muted);letter-spacing:.05em;background:var(--surface);border-top:1px solid var(--border);pointer-events:none">${s.group}</div>`;
+      lastGroup=s.group;
+    }
+    html+=`<div data-id="${s.id}" style="padding:8px 14px 8px 20px;cursor:pointer;font-size:.81rem" onmousedown="selectSector('${s.id}')" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background=''">${s.label}</div>`;
+  }
+  dd.innerHTML=html;
 }
 function openSectorDropdown(){
   buildSectorDropdown(document.getElementById('sc-type-search').value);
@@ -1820,7 +1952,7 @@ function filterSectorDropdown(q){
 function selectSector(id){
   const s=SC_SECTORS.find(x=>x.id===id)||{id,label:id};
   document.getElementById('sc-type').value=id;
-  document.getElementById('sc-type-search').value=s.label;
+  document.getElementById('sc-type-search').value=(s.group?s.group.replace(/^[^\s]+\s/,'')+' › ':'')+s.label;
   document.getElementById('sc-type-dropdown').style.display='none';
   updateWeightHints();
 }
