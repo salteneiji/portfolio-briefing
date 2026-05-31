@@ -2741,7 +2741,7 @@ function renderEarningsBanner(){
           return `<div style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.22);border-radius:8px;padding:6px 12px;cursor:pointer" onclick="loadLeaderboardEntry('${e.ticker}')">
             <span style="font-weight:800;color:var(--text)">${e.ticker}</span>
             <span style="font-size:.7rem;color:var(--amber);margin-left:6px">${label}</span>
-            ${e.conviction?'<span style="font-size:.65rem;color:var(--muted);margin-left:4px">${'★'.repeat(e.conviction)}</span>':''}
+            ${e.conviction?`<span style="font-size:.65rem;color:var(--muted);margin-left:4px">${'★'.repeat(e.conviction)}</span>`:''}
           </div>`;
         }).join('')}
       </div>
