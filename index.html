@@ -770,6 +770,8 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🏦 Balance Sheet & Runway <span style="font-weight:400">(15%)</span></div>
           <div class="sc-row"><label>Cash Runway (quarters)</label><input class="fi-sm pp-inp" id="pp-runway" type="number" step="0.5" placeholder="e.g. 10"/><span class="sc-badge" id="ppb-runway"></span></div>
           <div class="sc-row"><label>Quick Ratio</label><input class="fi-sm pp-inp" id="pp-qr" type="number" step="0.01" placeholder="e.g. 2.5"/><span class="sc-badge" id="ppb-qr"></span></div>
+          <div class="sc-row"><label>Backlog / ARR Coverage (x)</label><input class="fi-sm pp-inp" id="pp-arr" type="number" step="0.1" placeholder="e.g. 3.2"/><span class="sc-badge" id="ppb-arr"></span></div>
+          <div class="sc-row"><label>Dilution Rate YoY %</label><input class="fi-sm pp-inp" id="pp-dilution" type="number" step="0.1" placeholder="e.g. 12"/><span class="sc-badge" id="ppb-dilution"></span></div>
         </div>
 
         <!-- Valuation -->
@@ -2449,6 +2451,8 @@ const PP_METRICS = {
   // Balance Sheet
   'pp-runway': {low:false, ranges:[[2,1],[4,3],[6,5],[8,7],[12,9],[Infinity,10]]},
   'pp-qr':     {low:false, ranges:[[0.5,1],[1,4],[1.5,6],[2,8],[3,10]]},
+  'pp-arr':    {low:false, ranges:[[0.5,1],[1,4],[2,6],[3,9],[Infinity,10]]},
+  'pp-dilution':{low:true, ranges:[[3,10],[5,8],[8,6],[12,4],[15,2],[Infinity,0]]},
   // Valuation (lower = better)
   'pp-ps':     {low:true,  ranges:[[3,10],[5,8],[8,6],[12,4],[20,2],[Infinity,0]]},
   'pp-evr':    {low:true,  ranges:[[3,10],[5,8],[8,6],[12,4],[20,2],[Infinity,0]]},
@@ -2462,7 +2466,7 @@ const PP_CATS = {
   'Rev Growth':   ['pp-revttm','pp-revfwd','pp-revacc'],
   'Gross Econ':   ['pp-gm','pp-gmchg'],
   'Path→Profit':  ['pp-fcfm','pp-opm','pp-opchg','pp-r40'],
-  'Runway':       ['pp-runway','pp-qr'],
+  'Runway':       ['pp-runway','pp-qr','pp-arr','pp-dilution'],
   'Valuation':    ['pp-ps','pp-evr'],
   'Signals':      ['pp-rec','pp-up','pp-sr'],
 };
@@ -2471,7 +2475,7 @@ const PP_WEIGHTS = {
   'Rev Growth':.30,'Gross Econ':.20,'Path→Profit':.25,'Runway':.15,'Valuation':.05,'Signals':.05
 };
 
-const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr'];
+const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr'];
 
 function computePreMetricScore(id){
   const m=PP_METRICS[id];
