@@ -53,6 +53,10 @@ input,select,button{font-family:inherit}
 .ep-tot-val{font-weight:700;color:var(--text)}
 .tr-row{cursor:pointer;transition:background .12s}
 .tr-row:hover{background:rgba(255,255,255,.03)}
+.tr-row.drag-over{background:rgba(64,144,246,.10);border-top:2px solid var(--blue)}
+.tr-row.dragging{opacity:.4}
+.drag-handle{cursor:grab;color:var(--muted);padding:0 6px;font-size:13px;line-height:1;user-select:none}
+.drag-handle:hover{color:var(--text)}
 
 /* CHART CARD */
 .chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin:16px 20px 12px;overflow:hidden}
@@ -405,6 +409,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr>
+          <th style="width:20px"></th>
           <th>Stock</th><th class="r">Price</th>
           <th class="r hide-sm">Position</th>
           <th class="r">Value</th><th class="r">P&amp;L</th>
@@ -1073,11 +1078,13 @@ function showTab(name, btn){
 // ──────────────────────────────────────────────────────────────
 let priceCache = {};
 
+let _dragSrcIdx=null;
+
 function renderHoldings(){
   const tbody = document.getElementById('holdings-body');
   tbody.innerHTML = '';
   if(!portfolio.length){
-    tbody.innerHTML=`<tr><td colspan="6"><div class="empty">No holdings yet — click <strong>+ Add</strong>.</div></td></tr>`;
+    tbody.innerHTML=`<tr><td colspan="7"><div class="empty">No holdings yet — click <strong>+ Add</strong>.</div></td></tr>`;
     document.getElementById('s-count').textContent='0';
     updateAlertTickers(); return;
   }
@@ -1093,8 +1100,40 @@ function renderHoldings(){
 
     const tr=document.createElement('tr');
     tr.className='tr-row';
-    tr.onclick=(e)=>{ if(!e.target.closest('button')) openEditPanel(i); };
+    tr.draggable=true;
+    tr.dataset.idx=i;
+    tr.onclick=(e)=>{ if(!e.target.closest('button')&&!e.target.closest('.drag-handle')) openEditPanel(i); };
+
+    // Drag events
+    tr.addEventListener('dragstart',e=>{
+      _dragSrcIdx=i;
+      tr.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+    });
+    tr.addEventListener('dragend',()=>{
+      tr.classList.remove('dragging');
+      tbody.querySelectorAll('.drag-over').forEach(r=>r.classList.remove('drag-over'));
+    });
+    tr.addEventListener('dragover',e=>{
+      e.preventDefault();
+      e.dataTransfer.dropEffect='move';
+      tbody.querySelectorAll('.drag-over').forEach(r=>r.classList.remove('drag-over'));
+      tr.classList.add('drag-over');
+    });
+    tr.addEventListener('dragleave',()=>tr.classList.remove('drag-over'));
+    tr.addEventListener('drop',e=>{
+      e.preventDefault();
+      tr.classList.remove('drag-over');
+      const destIdx=parseInt(tr.dataset.idx);
+      if(_dragSrcIdx===null||_dragSrcIdx===destIdx) return;
+      const moved=portfolio.splice(_dragSrcIdx,1)[0];
+      portfolio.splice(destIdx,0,moved);
+      savePortfolio(portfolio);
+      renderHoldings();
+    });
+
     tr.innerHTML=`
+      <td style="padding:0 4px;border:none"><span class="drag-handle" title="Drag to reorder">⠿</span></td>
       <td><div class="tk">${p.ticker}</div><div class="tk-name">${p.name||''}</div></td>
       <td class="r">
         <div class="price">${price!=null?'$'+fmt(price):'<span class="sk" style="width:52px"></span>'}</div>
