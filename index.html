@@ -2388,29 +2388,45 @@ function loadLeaderboardEntry(ticker){
   const lb=getLeaderboard();
   const e=lb.find(x=>x.ticker===ticker);
   if(!e) return;
-  // Switch to Score tab
-  const scoreBtn=document.querySelector('.tab[onclick*="score"]');
-  showTab('score', scoreBtn);
-  // Populate fields
-  document.getElementById('sc-ticker').value=e.ticker;
-  const restoreType=e.type||'saas';
-  document.getElementById('sc-type').value=restoreType;
-  const restoreSector=SC_SECTORS.find(x=>x.id===restoreType);
-  if(restoreSector) document.getElementById('sc-type-search').value=restoreSector.label;
-  updateWeightHints();
-  // Restore all inputs
-  SC_ALL_INPUTS.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
-  });
-  const eEl=document.getElementById('sc-earnings'); if(eEl) eEl.value=e.earnings||'';
-  const thEl=document.getElementById('sc-thesis'); if(thEl) thEl.value=e.thesis||'';
-  calcUpside();
-  // Re-run the score so badges light up
-  calcScore();
-  // Restore conviction
-  window._scConviction=e.conviction||0;
-  renderConviction(window._scConviction,'sc');
+
+  if(e.scoreType==='preprofit'){
+    // ── Route to Pre-Profit tab ──
+    const ppBtn=document.querySelector('.tab[onclick*="preprofit"]');
+    showTab('preprofit', ppBtn);
+    document.getElementById('pp-ticker').value=e.ticker;
+    PP_ALL_INPUTS.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
+    });
+    const eEl=document.getElementById('pp-earnings'); if(eEl) eEl.value=e.earnings||'';
+    const thEl=document.getElementById('pp-thesis'); if(thEl) thEl.value=e.thesis||'';
+    ppAutoCalc();
+    calcPreUpside();
+    calcPreScore();
+    window._ppConviction=e.conviction||0;
+    renderConviction(window._ppConviction,'pp');
+  } else {
+    // ── Route to Score tab ──
+    const scoreBtn=document.querySelector('.tab[onclick*="\'score\'"]')||document.querySelector('.tab[onclick*="score"]');
+    showTab('score', scoreBtn);
+    document.getElementById('sc-ticker').value=e.ticker;
+    const restoreType=e.type||'saas';
+    document.getElementById('sc-type').value=restoreType;
+    const restoreSector=SC_SECTORS.find(x=>x.id===restoreType);
+    if(restoreSector) document.getElementById('sc-type-search').value=restoreSector.label;
+    updateWeightHints();
+    SC_ALL_INPUTS.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el) el.value=(e.inputs&&e.inputs[id]!=null)?e.inputs[id]:'';
+    });
+    const eEl=document.getElementById('sc-earnings'); if(eEl) eEl.value=e.earnings||'';
+    const thEl=document.getElementById('sc-thesis'); if(thEl) thEl.value=e.thesis||'';
+    calcUpside();
+    calcScore();
+    window._scConviction=e.conviction||0;
+    renderConviction(window._scConviction,'sc');
+  }
+
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
