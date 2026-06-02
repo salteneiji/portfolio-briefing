@@ -660,6 +660,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px;flex-wrap:wrap">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <div style="font-size:1rem;font-weight:700">🥇 Stock Leaderboard</div>
+          <input id="lb-search" class="fi" placeholder="🔍 Search ticker…" style="font-size:.75rem;padding:5px 10px;width:150px" oninput="renderLeaderboard()"/>
           <select id="lb-sector-filter" class="fi" style="font-size:.75rem;padding:5px 10px;width:auto;color:var(--muted2)" onchange="filterLeaderboard(this.value)">
             <option value="">All Sectors</option>
             <option value="💻 Information Technology">💻 Tech</option>
@@ -2308,12 +2309,17 @@ function renderLeaderboard(){
   const empty=document.getElementById('sc-leaderboard-empty');
   const tbl=document.getElementById('sc-leaderboard-tbl');
   const tbody=document.getElementById('sc-leaderboard-body');
-  // Apply sector filter
-  const lb=_lbSectorFilter?allLb.filter(e=>{
-    if(_lbSectorFilter==='__preprofit') return e.scoreType==='preprofit';
-    const grp=(e.typeLbl||'').split(' › ')[0].trim();
-    return grp===_lbSectorFilter;
-  }):allLb;
+  // Apply search + sector filter
+  const q=(document.getElementById('lb-search')?.value||'').trim().toUpperCase();
+  const lb=allLb.filter(e=>{
+    if(q&&!e.ticker.includes(q)&&!(e.typeLbl||'').toUpperCase().includes(q)) return false;
+    if(_lbSectorFilter){
+      if(_lbSectorFilter==='__preprofit') return e.scoreType==='preprofit';
+      const grp=(e.typeLbl||'').split(' › ')[0].trim();
+      if(grp!==_lbSectorFilter) return false;
+    }
+    return true;
+  });
   if(!allLb.length){ empty.style.display=''; tbl.style.display='none'; renderEarningsBanner(); return; }
   empty.style.display='none'; tbl.style.display='';
   const sorted=[...lb].sort((a,b)=>b.total-a.total);
