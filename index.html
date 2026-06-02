@@ -300,6 +300,26 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
   </div>
 </div>
 
+<!-- SELL MODAL -->
+<div class="overlay" id="sell-modal" onclick="if(event.target===this)closeSellModal()">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="modal-title" id="sell-title">Sell Position</div>
+      <button class="modal-x" onclick="closeSellModal()">✕</button>
+    </div>
+    <div style="font-size:.78rem;color:var(--muted2);margin-bottom:12px" id="sell-info"></div>
+    <div class="frow">
+      <div class="fg"><label class="fl">Sell Price ($)</label><input class="fi" id="sell-price" type="number" step="0.01" placeholder="0.00"/></div>
+      <div class="fg"><label class="fl">Sell Date</label><input class="fi" id="sell-date" type="date"/></div>
+    </div>
+    <div style="margin-top:10px;padding:12px;background:var(--card2);border-radius:10px;font-size:.82rem" id="sell-summary">—</div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeSellModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmSell()" style="background:var(--green)">💰 Confirm Sell</button>
+    </div>
+  </div>
+</div>
+
 <!-- TRIM MODAL -->
 <div class="overlay" id="trim-modal" onclick="if(event.target===this)closeTrimModal()">
   <div class="modal">
@@ -373,6 +393,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
   <!-- TABS -->
   <nav class="tabs">
     <button class="tab active" onclick="showTab('holdings',this)">Holdings</button>
+    <button class="tab" onclick="showTab('sold',this)">💰 Sold</button>
     <button class="tab" onclick="showTab('allocation',this)">Allocation</button>
     <button class="tab" onclick="showTab('watchlist',this)">Watchlist</button>
     <button class="tab" onclick="showTab('fundamentals',this)">Fundamentals</button>
@@ -417,6 +438,39 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         </tr></thead>
         <tbody id="holdings-body"></tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- SOLD -->
+  <div class="tab-pane" id="tab-sold">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+        <div style="font-size:1rem;font-weight:700">💰 Sold Positions</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="exportSoldCSV()">⬇ CSV</button>
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="refreshSoldPrices()">↻ Refresh Prices</button>
+          <button class="btn btn-ghost" style="font-size:.72rem;padding:4px 10px" onclick="clearSold()">Clear All</button>
+        </div>
+      </div>
+      <!-- Summary strip -->
+      <div id="sold-summary-strip" style="display:none;margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap"></div>
+      <div id="sold-empty" style="text-align:center;padding:60px 0;color:var(--muted);font-size:.88rem">No sold positions yet. Hit <strong>Sell</strong> on any holding to record a sale.</div>
+      <div class="tbl-wrap" id="sold-tbl-wrap" style="display:none">
+        <table class="tbl" style="font-size:.82rem">
+          <thead><tr>
+            <th>Stock</th>
+            <th class="r">Bought At</th>
+            <th class="r">Sold At</th>
+            <th class="r">Shares</th>
+            <th class="r">P&amp;L at Sale</th>
+            <th class="r">Current Price</th>
+            <th class="r">Since Sold</th>
+            <th class="r">Sell Date</th>
+            <th style="width:28px"></th>
+          </tr></thead>
+          <tbody id="sold-body"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -923,6 +977,180 @@ function editCash(){ document.getElementById('cash-inp').value=getCash().toFixed
 function closeCashModal(){ document.getElementById('cash-modal').classList.remove('open'); }
 function saveCash(){ const v=parseFloat(document.getElementById('cash-inp').value); if(!isNaN(v)&&v>=0) setCash(v); closeCashModal(); }
 
+// ── SOLD POSITIONS ────────────────────────────────────────────
+function getSold(){ try{ return JSON.parse(localStorage.getItem('pf_sold')||'[]'); }catch(e){ return []; } }
+function saveSold(s){ try{ localStorage.setItem('pf_sold',JSON.stringify(s)); }catch(e){} }
+
+let sellIdx=null;
+function openSellModal(i){
+  sellIdx=i;
+  const p=portfolio[i];
+  const curPrice=priceCache[p.ticker]?.price||p.avgPrice;
+  document.getElementById('sell-title').textContent=`Sell ${p.ticker}`;
+  document.getElementById('sell-info').textContent=`${fmt(p.shares,4)} shares · Avg cost $${fmt(p.avgPrice)} · Bought for $${fmt(p.shares*p.avgPrice)}`;
+  document.getElementById('sell-price').value=curPrice.toFixed(2);
+  document.getElementById('sell-date').value=new Date().toISOString().slice(0,10);
+  updateSellSummary();
+  document.getElementById('sell-modal').classList.add('open');
+  ['sell-price','sell-date'].forEach(id=>document.getElementById(id).oninput=updateSellSummary);
+}
+function closeSellModal(){ document.getElementById('sell-modal').classList.remove('open'); sellIdx=null; }
+function updateSellSummary(){
+  if(sellIdx===null) return;
+  const p=portfolio[sellIdx];
+  const sp=parseFloat(document.getElementById('sell-price').value);
+  if(isNaN(sp)||sp<=0){ document.getElementById('sell-summary').innerHTML='Enter a sell price above.'; return; }
+  const pl=p.shares*(sp-p.avgPrice);
+  const plPct=(sp/p.avgPrice-1)*100;
+  const proceeds=p.shares*sp;
+  const color=pl>=0?'var(--green)':'var(--red)';
+  document.getElementById('sell-summary').innerHTML=`
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center">
+      <div><div style="font-size:.68rem;color:var(--muted);margin-bottom:3px">Proceeds</div><div style="font-weight:700">$${fmt(proceeds)}</div></div>
+      <div><div style="font-size:.68rem;color:var(--muted);margin-bottom:3px">P&amp;L</div><div style="font-weight:700;color:${color}">${pl>=0?'+':'-'}$${fmt(Math.abs(pl))}</div></div>
+      <div><div style="font-size:.68rem;color:var(--muted);margin-bottom:3px">Return</div><div style="font-weight:700;color:${color}">${plPct>=0?'+':''}${plPct.toFixed(2)}%</div></div>
+    </div>`;
+}
+function confirmSell(){
+  if(sellIdx===null) return;
+  const p=portfolio[sellIdx];
+  const sp=parseFloat(document.getElementById('sell-price').value);
+  const sd=document.getElementById('sell-date').value;
+  if(isNaN(sp)||sp<=0){ alert('Enter a valid sell price.'); return; }
+  const pl=p.shares*(sp-p.avgPrice);
+  const plPct=(sp/p.avgPrice-1)*100;
+  const entry={
+    ticker:p.ticker, name:p.name||'', shares:p.shares,
+    avgPrice:p.avgPrice, buyDate:p.buyDate||null,
+    sellPrice:sp, sellDate:sd||new Date().toISOString().slice(0,10),
+    plAmount:pl, plPct, proceeds:p.shares*sp,
+    currentPrice:priceCache[p.ticker]?.price||null,
+    ts:Date.now()
+  };
+  const sold=getSold();
+  sold.push(entry);
+  saveSold(sold);
+  // Remove from portfolio
+  portfolio.splice(sellIdx,1);
+  savePortfolio(portfolio);
+  closeSellModal();
+  renderHoldings(); loadPrices();
+  // Switch to Sold tab
+  const soldBtn=document.querySelector('.tab[onclick*="sold"]');
+  showTab('sold',soldBtn);
+  renderSold();
+}
+
+function renderSold(){
+  const sold=getSold();
+  const empty=document.getElementById('sold-empty');
+  const wrap=document.getElementById('sold-tbl-wrap');
+  const strip=document.getElementById('sold-summary-strip');
+  if(!sold.length){ empty.style.display='block'; wrap.style.display='none'; strip.style.display='none'; return; }
+  empty.style.display='none'; wrap.style.display='';
+
+  // Summary strip
+  const totalPL=sold.reduce((s,e)=>s+e.plAmount,0);
+  const winners=sold.filter(e=>e.plAmount>0).length;
+  strip.style.display='flex';
+  strip.innerHTML=[
+    {lbl:'Total Realized P&L', val:(totalPL>=0?'+':'-')+'$'+fmt(Math.abs(totalPL)), color:totalPL>=0?'var(--green)':'var(--red)'},
+    {lbl:'Positions Sold', val:sold.length, color:'var(--text)'},
+    {lbl:'Win Rate', val:sold.length?Math.round(winners/sold.length*100)+'%':'—', color:'var(--blue)'},
+  ].map(s=>`<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rsm);padding:10px 16px;min-width:130px">
+    <div style="font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">${s.lbl}</div>
+    <div style="font-size:1rem;font-weight:700;color:${s.color}">${s.val}</div>
+  </div>`).join('');
+
+  const tbody=document.getElementById('sold-body');
+  tbody.innerHTML=sold.slice().reverse().map((e,ri)=>{
+    const idx=sold.length-1-ri;
+    const plColor=e.plAmount>=0?'var(--green)':'var(--red)';
+    // Since sold calculation
+    let sinceSoldHtml='<span style="color:var(--muted);font-size:.72rem">—</span>';
+    if(e.currentPrice!=null){
+      const diff=e.currentPrice-e.sellPrice;
+      const diffPct=(diff/e.sellPrice)*100;
+      const diffAmt=e.shares*diff;
+      // positive diff = price went up after you sold = you missed out
+      // negative diff = price went down after you sold = good call
+      const goodCall=diff<0;
+      const c=goodCall?'var(--green)':'var(--red)';
+      const label=goodCall?'✓ Good call':'↑ Left on table';
+      sinceSoldHtml=`<div style="font-size:.75rem;font-weight:700;color:${c}">${label}</div>
+        <div style="font-size:.68rem;color:${c}">${diff>=0?'+':'-'}$${fmt(Math.abs(diffAmt))} (${diffPct>=0?'+':''}${diffPct.toFixed(1)}%)</div>
+        <div style="font-size:.65rem;color:var(--muted)">cur $${fmt(e.currentPrice)}</div>`;
+    }
+    return `<tr style="border-bottom:1px solid var(--border)">
+      <td><div class="tk">${e.ticker}</div><div class="tk-name">${e.name}</div></td>
+      <td class="r"><div style="font-size:.82rem;font-weight:600">$${fmt(e.avgPrice)}</div>${e.buyDate?`<div style="font-size:.68rem;color:var(--muted)">${new Date(e.buyDate+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'})}</div>`:''}</td>
+      <td class="r"><div style="font-size:.82rem;font-weight:600">$${fmt(e.sellPrice)}</div><div style="font-size:.68rem;color:var(--muted)">$${fmt(e.proceeds)} proceeds</div></td>
+      <td class="r" style="font-size:.82rem">${fmt(e.shares,4)}</td>
+      <td class="r">
+        <div style="font-weight:700;color:${plColor}">${e.plAmount>=0?'+':'-'}$${fmt(Math.abs(e.plAmount))}</div>
+        <div style="font-size:.72rem;color:${plColor}">${e.plPct>=0?'+':''}${e.plPct.toFixed(2)}%</div>
+      </td>
+      <td class="r" style="font-size:.75rem;color:var(--muted2)">${e.currentPrice!=null?'$'+fmt(e.currentPrice):'<span style="color:var(--muted)">—</span>'}</td>
+      <td class="r">${sinceSoldHtml}</td>
+      <td class="r" style="font-size:.72rem;color:var(--muted);white-space:nowrap">${e.sellDate?new Date(e.sellDate+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):''}</td>
+      <td style="text-align:center"><span style="cursor:pointer;color:var(--muted);font-size:.85rem" title="Remove" onclick="deleteSoldEntry(${idx})">✕</span></td>
+    </tr>`;
+  }).join('');
+}
+
+async function refreshSoldPrices(){
+  const sold=getSold();
+  if(!sold.length) return;
+  const btn=document.querySelector('#tab-sold button[onclick*="refresh"]');
+  if(btn){ btn.textContent='↻ Loading…'; btn.disabled=true; }
+  const tickers=[...new Set(sold.map(e=>e.ticker))];
+  await Promise.all(tickers.map(async ticker=>{
+    try{
+      const url=`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`;
+      const proxies=[u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,u=>`https://corsproxy.io/?${encodeURIComponent(u)}`];
+      let price=null;
+      for(const p of proxies){
+        try{
+          const r=await fetch(p(url),{signal:AbortSignal.timeout(6000)});
+          const d=await r.json();
+          price=d?.chart?.result?.[0]?.meta?.regularMarketPrice||null;
+          if(price) break;
+        }catch(e){}
+      }
+      if(price) sold.forEach(e=>{ if(e.ticker===ticker) e.currentPrice=price; });
+    }catch(e){}
+  }));
+  saveSold(sold);
+  renderSold();
+  if(btn){ btn.textContent='↻ Refresh Prices'; btn.disabled=false; }
+}
+
+function deleteSoldEntry(idx){
+  const sold=getSold();
+  if(!confirm(`Remove ${sold[idx]?.ticker} from sold history?`)) return;
+  sold.splice(idx,1); saveSold(sold); renderSold();
+}
+function clearSold(){
+  if(!confirm('Clear all sold positions?')) return;
+  saveSold([]); renderSold();
+}
+function exportSoldCSV(){
+  const sold=getSold();
+  if(!sold.length){ alert('No sold positions to export.'); return; }
+  const headers=['Ticker','Shares','Avg Buy','Sell Price','Proceeds','P&L $','P&L %','Current Price','Since Sold $','Sell Date'];
+  const rows=sold.map(e=>{
+    const since=e.currentPrice!=null?e.shares*(e.currentPrice-e.sellPrice):'';
+    return[e.ticker,e.shares,e.avgPrice,e.sellPrice,e.proceeds.toFixed(2),e.plAmount.toFixed(2),e.plPct.toFixed(2),e.currentPrice||'',since?since.toFixed(2):'',e.sellDate||''];
+  });
+  const csv=[headers,...rows].map(r=>r.join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='sold_positions_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+// Init sold tab on click
+document.querySelector('.tab[onclick*="sold"]').addEventListener('click',()=>setTimeout(renderSold,50));
+
 // TRIM MODAL
 // ──────────────────────────────────────────────────────────────
 let trimIdx = null;
@@ -1150,6 +1378,7 @@ function renderHoldings(){
         <div class="msub">${plPct!=null?sign(plPct)+fmt(Math.abs(plPct))+'%':''}</div>
       </td>
       <td style="text-align:center;white-space:nowrap;display:flex;gap:4px;padding:8px 4px;border:none">
+        <button class="btn btn-ghost btn-sm" onclick="openSellModal(${i})" title="Sell position" style="color:var(--green);border-color:rgba(24,212,122,.3)">Sell</button>
         <button class="btn btn-ghost btn-sm" onclick="openTrimModal(${i})" title="Trim position">Trim</button>
         <button class="btn-del" onclick="removeHolding(${i})">✕</button>
       </td>`;
