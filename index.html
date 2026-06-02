@@ -1409,7 +1409,9 @@ async function loadPrices(){
     renderHoldings();
     let tCost=0,tVal=0,tDay=0;
     results.forEach(p=>{ tCost+=p.shares*p.avgPrice; tVal+=p.shares*p.price; tDay+=p.shares*(p.price-p.prev); });
-    const tPL=tVal-tCost, tPLPct=(tPL/tCost)*100;
+    const cash=getCash();
+    tVal+=cash; tCost+=cash; // cash counts at face value — no P&L on cash
+    const tPL=tVal-tCost, tPLPct=(tCost>0?(tPL/tCost)*100:0);
     document.getElementById('s-total').textContent='$'+fmt(tVal);
     const plEl=document.getElementById('s-pl');
     plEl.className=`hero-pl ${cc(tPL)}`;
