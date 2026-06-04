@@ -3224,70 +3224,76 @@ function calcPriceZones(prefix){
     };
   }
 
-  // ── Zone definitions ──────────────────────────────────────────
-  // WATCH: above VAH / near analyst target — overextended, wait
-  // BUY: EMA50 / VAL confluence — healthy pullback to first support
-  // STRONG BUY: EMA200 / POC confluence — major structural support
-  // MAX FEAR: Fib 61.8–78.6% retracement or near 52W Low — capitulation
-  const zones=[];
+  // ── Raw support/resistance levels ─────────────────────────────
+  // Collect all meaningful price anchors then assign zones by price rank
+  // so WATCH > BUY > STRONG BUY > MAX FEAR always — regardless of EMA relationship.
 
-  // WATCH zone
+  // When EMA200 > EMA50 (death cross) the stock is in a downtrend.
+  // The higher EMA acts as resistance, the lower EMA is the first support to watch.
+  // We separate EMAs: higherEMA = resistance/watch level, lowerEMA = support level.
+  const higherEMA = (ema50!=null&&ema200!=null) ? Math.max(ema50,ema200) : (ema200??ema50??null);
+  const lowerEMA  = (ema50!=null&&ema200!=null) ? Math.min(ema50,ema200) : null;
+
+  // ── Build candidate raw zones (unordered) ─────────────────────
+  const rawZones=[];
+
+  // Candidate A: WATCH — near analyst target or VAH (overextended / full value)
   if(target&&vah){
-    zones.push({key:'watch',icon:'👀',name:'WATCH',action:'Monitor / Trim',
-      upper:target, lower:Math.max(vah,target*0.90),
-      border:'rgba(100,116,139,.5)',bg:'rgba(100,116,139,.07)',textColor:'#94a3b8'});
+    rawZones.push({center:(target+Math.max(vah,target*0.90))/2, upper:target, lower:Math.max(vah,target*0.90)});
   } else if(target){
-    zones.push({key:'watch',icon:'👀',name:'WATCH',action:'Monitor / Trim',
-      upper:target, lower:target*0.90,
-      border:'rgba(100,116,139,.5)',bg:'rgba(100,116,139,.07)',textColor:'#94a3b8'});
+    rawZones.push({center:target*0.95, upper:target, lower:target*0.90});
+  } else if(vah){
+    rawZones.push({center:vah, upper:vah*1.02, lower:vah*0.98});
   }
 
-  // BUY zone — EMA50 / VAL confluence
-  if(ema50!=null&&val!=null){
-    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
-      upper:Math.max(ema50,val)*1.01, lower:Math.min(ema50,val)*0.99,
-      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
-  } else if(ema50!=null){
-    const anchor=fibs?fibs.f382:ema50;
-    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
-      upper:ema50*1.01, lower:Math.min(ema50*0.97,anchor),
-      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
-  } else if(val!=null){
-    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
-      upper:val*1.01, lower:val*0.97,
-      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
+  // Candidate B: first support — lowerEMA / VAL confluence
+  if(lowerEMA!=null&&val!=null){
+    const lo=Math.min(lowerEMA,val)*0.99, hi=Math.max(lowerEMA,val)*1.01;
+    rawZones.push({center:(lo+hi)/2, upper:hi, lower:lo});
+  } else if(lowerEMA!=null){
+    rawZones.push({center:lowerEMA, upper:lowerEMA*1.015, lower:lowerEMA*0.985});
+  } else if(val!=null&&ema50==null&&ema200==null){
+    rawZones.push({center:val, upper:val*1.01, lower:val*0.99});
   }
 
-  // STRONG BUY zone — EMA200 / POC confluence (Fib 50% as fallback anchor)
-  if(ema200!=null&&poc!=null){
-    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
-      upper:Math.max(ema200,poc)*1.01, lower:Math.min(ema200,poc)*0.99,
-      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
-  } else if(ema200!=null){
-    const anchor=fibs?fibs.f500:ema200;
-    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
-      upper:ema200*1.01, lower:Math.min(ema200*0.97,anchor),
-      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
-  } else if(poc!=null){
-    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
-      upper:poc*1.01, lower:poc*0.97,
-      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
+  // Candidate C: deeper support — POC (volume cluster, strongest magnet)
+  if(poc!=null){
+    rawZones.push({center:poc, upper:poc*1.015, lower:poc*0.985});
   }
 
-  // MAX FEAR zone — Fib 61.8%→78.6% retracement or EMA200×0.92→52W Low
+  // Candidate D: MAX FEAR — Fib 61.8–78.6% deep retracement / 52W Low
   if(fibs&&wlow!=null){
-    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
-      upper:fibs.f618, lower:Math.max(fibs.f786*0.99,wlow),
-      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
-  } else if(ema200!=null&&wlow!=null){
-    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
-      upper:ema200*0.92, lower:wlow,
-      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
+    rawZones.push({center:(fibs.f618+Math.max(fibs.f786,wlow))/2, upper:fibs.f618, lower:Math.max(fibs.f786,wlow)});
   } else if(wlow!=null){
-    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
-      upper:wlow*1.05, lower:wlow,
-      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
+    rawZones.push({center:wlow*1.025, upper:wlow*1.05, lower:wlow});
   }
+
+  // ── Deduplicate candidates that are within 3% of each other ───
+  const merged=[];
+  for(const z of rawZones.sort((a,b)=>b.center-a.center)){
+    const last=merged[merged.length-1];
+    if(last&&Math.abs(z.center-last.center)/last.center<0.03){
+      // Expand the existing band rather than add a new one
+      last.lower=Math.min(last.lower,z.lower);
+      last.upper=Math.max(last.upper,z.upper);
+      last.center=(last.lower+last.upper)/2;
+    } else {
+      merged.push({...z});
+    }
+  }
+  // Sort high→low after merge
+  merged.sort((a,b)=>b.center-a.center);
+
+  // ── Assign labels top→bottom: WATCH, BUY, STRONG BUY, MAX FEAR ─
+  const zoneTemplates=[
+    {key:'watch',    icon:'👀',name:'WATCH',      action:'Monitor / Trim',      border:'rgba(100,116,139,.5)',bg:'rgba(100,116,139,.07)',textColor:'#94a3b8'},
+    {key:'buy',      icon:'✅',name:'BUY',         action:'Build Position',       border:'rgba(24,212,122,.4)', bg:'rgba(24,212,122,.07)', textColor:'var(--green)'},
+    {key:'strongbuy',icon:'🔥',name:'STRONG BUY', action:'Add Aggressively',     border:'rgba(16,185,129,.5)', bg:'rgba(16,185,129,.09)', textColor:'#10b981'},
+    {key:'maxfear',  icon:'💎',name:'MAX FEAR',    action:'Back Up The Truck',   border:'rgba(245,158,11,.5)', bg:'rgba(245,158,11,.08)', textColor:'var(--amber)'},
+  ];
+  // If only 1–2 raw zones exist, skip WATCH label and start from BUY
+  const templateOffset=merged.length<=2?1:0;
+  const zones=merged.map((z,i)=>({...zoneTemplates[Math.min(i+templateOffset,3)],...z}));
 
   // ── Zone cards ────────────────────────────────────────────────
   const cardsHtml=zones.map(z=>`
