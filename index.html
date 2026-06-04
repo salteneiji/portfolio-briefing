@@ -696,11 +696,13 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">POC $ <span style="font-size:.65rem;color:var(--muted)">(Point of Control)</span></label><input class="fi-sm sc-inp" id="sc-poc" type="number" step="0.01" placeholder="e.g. 350.00" oninput="calcPriceZones('sc')"/></div>
             </div>
             <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAH $ <span style="font-size:.65rem;color:var(--muted)">(Value Area High)</span></label><input class="fi-sm sc-inp" id="sc-vah" type="number" step="0.01" placeholder="e.g. 410.00" oninput="calcPriceZones('sc')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm sc-inp" id="sc-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W High $</label><input class="fi-sm sc-inp" id="sc-52whigh" type="number" step="0.01" placeholder="e.g. 480.00" oninput="calcPriceZones('sc')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm sc-inp" id="sc-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('sc')"/></div>
-              <div style="font-size:.7rem;color:var(--muted);margin-top:8px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Target & Price pulled automatically from Signals above ↑</div>
             </div>
           </div>
+          <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Current Price &amp; Analyst Target pulled automatically from Signals above ↑</div>
           <div id="sc-zone-output"><div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div></div>
         </div>
         <!-- Position sizing suggestion -->
@@ -888,11 +890,13 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">POC $ <span style="font-size:.65rem;color:var(--muted)">(Point of Control)</span></label><input class="fi-sm pp-inp" id="pp-poc" type="number" step="0.01" placeholder="e.g. 350.00" oninput="calcPriceZones('pp')"/></div>
             </div>
             <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAH $ <span style="font-size:.65rem;color:var(--muted)">(Value Area High)</span></label><input class="fi-sm pp-inp" id="pp-vah" type="number" step="0.01" placeholder="e.g. 410.00" oninput="calcPriceZones('pp')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm pp-inp" id="pp-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W High $</label><input class="fi-sm pp-inp" id="pp-52whigh" type="number" step="0.01" placeholder="e.g. 480.00" oninput="calcPriceZones('pp')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm pp-inp" id="pp-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('pp')"/></div>
-              <div style="font-size:.7rem;color:var(--muted);margin-top:8px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Target & Price pulled automatically from Signals above ↑</div>
             </div>
           </div>
+          <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Current Price &amp; Analyst Target pulled automatically from Signals above ↑</div>
           <div id="pp-zone-output"><div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div></div>
         </div>
         <!-- Position sizing suggestion -->
@@ -2550,7 +2554,7 @@ const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
   'sc-rec','sc-price','sc-target','sc-sr','sc-rsi',
-  'sc-ema50','sc-ema200','sc-poc','sc-val','sc-52wlow'];
+  'sc-ema50','sc-ema200','sc-poc','sc-vah','sc-val','sc-52whigh','sc-52wlow'];
 
 function saveToLeaderboard(btn){
   try {
@@ -2800,7 +2804,7 @@ const PP_WEIGHTS = {
   'Rev Growth':.30,'Gross Econ':.20,'Path→Profit':.25,'Runway':.15,'Valuation':.05,'Signals':.05
 };
 
-const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr','pp-rsi','pp-ema50','pp-ema200','pp-poc','pp-val','pp-52wlow'];
+const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr','pp-rsi','pp-ema50','pp-ema200','pp-poc','pp-vah','pp-val','pp-52whigh','pp-52wlow'];
 
 function computePreMetricScore(id){
   const m=PP_METRICS[id];
@@ -3198,42 +3202,91 @@ function renderH2H(){
 // ── Price Zones ───────────────────────────────────────────────────────────
 function calcPriceZones(prefix){
   const g=id=>{ const el=document.getElementById(prefix+'-'+id); return el&&el.value!==''?parseFloat(el.value):null; };
-  const ema50=g('ema50'), ema200=g('ema200'), poc=g('poc'), val=g('val'), wlow=g('52wlow');
+  const ema50=g('ema50'), ema200=g('ema200'), poc=g('poc'), vah=g('vah'), val=g('val');
+  const whigh=g('52whigh'), wlow=g('52wlow');
   const price=g('price'), target=g('target'), rsi=g('rsi');
   const out=document.getElementById(prefix+'-zone-output');
   if(!out) return;
 
-  if(!ema50&&!ema200){ out.innerHTML='<div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div>'; return; }
+  const hasAny=ema50||ema200||poc||vah||val||whigh||wlow;
+  if(!hasAny){ out.innerHTML='<div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div>'; return; }
 
-  // ── Zone calculations ─────────────────────────────────────────
+  // ── Fibonacci retracement levels (requires 52W High + 52W Low) ────────────
+  let fibs=null;
+  if(whigh!=null&&wlow!=null&&whigh>wlow){
+    const rng=whigh-wlow;
+    fibs={
+      f236: whigh-rng*0.236,
+      f382: whigh-rng*0.382,
+      f500: whigh-rng*0.500,
+      f618: whigh-rng*0.618,
+      f786: whigh-rng*0.786,
+    };
+  }
+
+  // ── Zone definitions ──────────────────────────────────────────
+  // WATCH: above VAH / near analyst target — overextended, wait
+  // BUY: EMA50 / VAL confluence — healthy pullback to first support
+  // STRONG BUY: EMA200 / POC confluence — major structural support
+  // MAX FEAR: Fib 61.8–78.6% retracement or near 52W Low — capitulation
   const zones=[];
-  if(target){
-    zones.push({key:'watch', icon:'👀', name:'WATCH', action:'Monitor',
-      upper:target*0.95, lower:target*0.85,
-      border:'rgba(100,116,139,.5)', bg:'rgba(100,116,139,.07)', textColor:'#94a3b8'});
+
+  // WATCH zone
+  if(target&&vah){
+    zones.push({key:'watch',icon:'👀',name:'WATCH',action:'Monitor / Trim',
+      upper:target, lower:Math.max(vah,target*0.90),
+      border:'rgba(100,116,139,.5)',bg:'rgba(100,116,139,.07)',textColor:'#94a3b8'});
+  } else if(target){
+    zones.push({key:'watch',icon:'👀',name:'WATCH',action:'Monitor / Trim',
+      upper:target, lower:target*0.90,
+      border:'rgba(100,116,139,.5)',bg:'rgba(100,116,139,.07)',textColor:'#94a3b8'});
   }
-  if(ema50&&val){
-    zones.push({key:'buy', icon:'✅', name:'BUY', action:'Build Position',
-      upper:Math.max(ema50,val), lower:Math.min(ema50,val),
-      border:'rgba(24,212,122,.4)', bg:'rgba(24,212,122,.07)', textColor:'var(--green)'});
-  } else if(ema50){
-    zones.push({key:'buy', icon:'✅', name:'BUY', action:'Build Position',
-      upper:ema50*1.02, lower:ema50*0.98,
-      border:'rgba(24,212,122,.4)', bg:'rgba(24,212,122,.07)', textColor:'var(--green)'});
+
+  // BUY zone — EMA50 / VAL confluence
+  if(ema50!=null&&val!=null){
+    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
+      upper:Math.max(ema50,val)*1.01, lower:Math.min(ema50,val)*0.99,
+      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
+  } else if(ema50!=null){
+    const anchor=fibs?fibs.f382:ema50;
+    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
+      upper:ema50*1.01, lower:Math.min(ema50*0.97,anchor),
+      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
+  } else if(val!=null){
+    zones.push({key:'buy',icon:'✅',name:'BUY',action:'Build Position',
+      upper:val*1.01, lower:val*0.97,
+      border:'rgba(24,212,122,.4)',bg:'rgba(24,212,122,.07)',textColor:'var(--green)'});
   }
-  if(ema200&&poc){
-    zones.push({key:'strongbuy', icon:'🔥', name:'STRONG BUY', action:'Add Aggressively',
-      upper:Math.max(ema200,poc), lower:Math.min(ema200,poc),
-      border:'rgba(16,185,129,.5)', bg:'rgba(16,185,129,.09)', textColor:'#10b981'});
-  } else if(ema200){
-    zones.push({key:'strongbuy', icon:'🔥', name:'STRONG BUY', action:'Add Aggressively',
-      upper:ema200*1.02, lower:ema200*0.98,
-      border:'rgba(16,185,129,.5)', bg:'rgba(16,185,129,.09)', textColor:'#10b981'});
+
+  // STRONG BUY zone — EMA200 / POC confluence (Fib 50% as fallback anchor)
+  if(ema200!=null&&poc!=null){
+    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
+      upper:Math.max(ema200,poc)*1.01, lower:Math.min(ema200,poc)*0.99,
+      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
+  } else if(ema200!=null){
+    const anchor=fibs?fibs.f500:ema200;
+    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
+      upper:ema200*1.01, lower:Math.min(ema200*0.97,anchor),
+      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
+  } else if(poc!=null){
+    zones.push({key:'strongbuy',icon:'🔥',name:'STRONG BUY',action:'Add Aggressively',
+      upper:poc*1.01, lower:poc*0.97,
+      border:'rgba(16,185,129,.5)',bg:'rgba(16,185,129,.09)',textColor:'#10b981'});
   }
-  if(ema200&&wlow){
-    zones.push({key:'maxfear', icon:'💎', name:'MAX FEAR', action:'Back Up The Truck',
-      upper:ema200*0.95, lower:wlow,
-      border:'rgba(245,158,11,.5)', bg:'rgba(245,158,11,.08)', textColor:'var(--amber)'});
+
+  // MAX FEAR zone — Fib 61.8%→78.6% retracement or EMA200×0.92→52W Low
+  if(fibs&&wlow!=null){
+    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
+      upper:fibs.f618, lower:Math.max(fibs.f786*0.99,wlow),
+      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
+  } else if(ema200!=null&&wlow!=null){
+    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
+      upper:ema200*0.92, lower:wlow,
+      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
+  } else if(wlow!=null){
+    zones.push({key:'maxfear',icon:'💎',name:'MAX FEAR',action:'Back Up The Truck',
+      upper:wlow*1.05, lower:wlow,
+      border:'rgba(245,158,11,.5)',bg:'rgba(245,158,11,.08)',textColor:'var(--amber)'});
   }
 
   // ── Zone cards ────────────────────────────────────────────────
@@ -3241,63 +3294,98 @@ function calcPriceZones(prefix){
     <div style="flex:1;min-width:130px;border:1px solid ${z.border};background:${z.bg};border-radius:10px;padding:12px;text-align:center">
       <div style="font-size:1.1rem">${z.icon}</div>
       <div style="font-size:.68rem;font-weight:800;color:${z.textColor};letter-spacing:.04em;margin:4px 0 2px">${z.name}</div>
-      <div style="font-size:.72rem;color:var(--muted2);font-variant-numeric:tabular-nums">$${z.lower.toFixed(2)} — $${z.upper.toFixed(2)}</div>
+      <div style="font-size:.72rem;color:var(--muted2);font-variant-numeric:tabular-nums">$${z.lower.toFixed(2)} – $${z.upper.toFixed(2)}</div>
       <div style="font-size:.65rem;color:var(--muted);margin-top:4px;font-style:italic">${z.action}</div>
     </div>`).join('');
 
   // ── Current zone detection ────────────────────────────────────
   let currentZone=null;
-  if(price){
+  if(price!=null){
     for(const z of [...zones].reverse()){
       if(price>=z.lower&&price<=z.upper){ currentZone=z; break; }
     }
     if(!currentZone){
-      // Find nearest
       const above=zones.filter(z=>price<z.lower).sort((a,b)=>a.lower-b.lower)[0];
-      if(above) currentZone={...above, approximate:true, name:'Below '+above.name};
+      if(above) currentZone={...above, name:'Below '+above.name};
+      else {
+        const below=zones.filter(z=>price>z.upper).sort((a,b)=>b.upper-a.upper)[0];
+        if(below) currentZone={...below, name:'Above '+below.name};
+      }
     }
   }
 
-  // ── Price bar SVG ──────────────────────────────────────────────
+  // ── Price bar SVG with Fibonacci tick marks ────────────────────
   let barHtml='';
-  if(price&&zones.length){
+  if(price!=null&&zones.length){
     const allPrices=[price,...zones.flatMap(z=>[z.lower,z.upper])];
+    if(whigh) allPrices.push(whigh);
+    if(wlow) allPrices.push(wlow);
     const barMin=Math.min(...allPrices)*0.97;
     const barMax=Math.max(...allPrices)*1.03;
     const range=barMax-barMin||1;
-    const W=100; // percentage
-    const toX=v=>((v-barMin)/range*100).toFixed(2)+'%';
+    const toXpct=v=>((v-barMin)/range*100).toFixed(2);
     const zoneColors={'watch':'#64748b','buy':'#18d47a','strongbuy':'#10b981','maxfear':'#f59e0b'};
     const zoneBands=zones.map(z=>{
-      const x1=((z.lower-barMin)/range*100);
-      const x2=((z.upper-barMin)/range*100);
+      const x1=+toXpct(z.lower); const x2=+toXpct(z.upper);
       const w=Math.max(x2-x1,0.5);
-      return `<rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="${zoneColors[z.key]}" opacity="0.25" rx="2"/>
-              <rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="none" stroke="${zoneColors[z.key]}" stroke-width="0.5" opacity="0.6"/>`;
+      return `<rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="${zoneColors[z.key]}" opacity="0.22"/>
+              <rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="none" stroke="${zoneColors[z.key]}" stroke-width="0.7" opacity="0.7"/>`;
     }).join('');
-    const priceX=((price-barMin)/range*100).toFixed(2);
+    // Fibonacci tick marks
+    let fibTicks='';
+    if(fibs){
+      const fibDefs=[
+        {v:fibs.f236,label:'23.6%',color:'rgba(148,163,184,.5)'},
+        {v:fibs.f382,label:'38.2%',color:'rgba(96,165,250,.5)'},
+        {v:fibs.f500,label:'50%',color:'rgba(167,139,250,.5)'},
+        {v:fibs.f618,label:'61.8%',color:'rgba(251,191,36,.6)'},
+        {v:fibs.f786,label:'78.6%',color:'rgba(248,113,113,.6)'},
+      ];
+      fibTicks=fibDefs.map(f=>{
+        const x=+toXpct(f.v);
+        if(x<0||x>100) return '';
+        return `<line x1="${x.toFixed(2)}%" x2="${x.toFixed(2)}%" y1="0" y2="100%" stroke="${f.color}" stroke-width="1" stroke-dasharray="2,2"/>`;
+      }).join('');
+    }
+    const priceX=toXpct(price);
     const priceLine=`<line x1="${priceX}%" x2="${priceX}%" y1="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="3,2"/>
       <circle cx="${priceX}%" cy="50%" r="5" fill="white" stroke="var(--bg)" stroke-width="1.5"/>`;
     const zoneLabel=currentZone?`<span style="font-weight:700;color:${currentZone.textColor||'var(--text)'}">${currentZone.name}</span>`:'<span style="color:var(--muted)">Outside zones</span>';
+    // Fib legend if available
+    const fibLegend=fibs?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:5px;font-size:.6rem;color:var(--muted)">
+      <span style="color:rgba(148,163,184,.9)">— 23.6%: $${fibs.f236.toFixed(2)}</span>
+      <span style="color:rgba(96,165,250,.9)">— 38.2%: $${fibs.f382.toFixed(2)}</span>
+      <span style="color:rgba(167,139,250,.9)">— 50%: $${fibs.f500.toFixed(2)}</span>
+      <span style="color:rgba(251,191,36,.9)">— 61.8%: $${fibs.f618.toFixed(2)}</span>
+      <span style="color:rgba(248,113,113,.9)">— 78.6%: $${fibs.f786.toFixed(2)}</span>
+    </div>`:'';
     barHtml=`
       <div style="margin-top:14px">
         <div style="font-size:.72rem;color:var(--muted);margin-bottom:6px">Current Zone: ${zoneLabel} &nbsp;<span style="color:var(--muted2);font-variant-numeric:tabular-nums">$${price.toFixed(2)}</span></div>
         <div style="position:relative;height:32px;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--border)">
-          <svg width="100%" height="100%" preserveAspectRatio="none">${zoneBands}${priceLine}</svg>
+          <svg width="100%" height="100%" preserveAspectRatio="none">${zoneBands}${fibTicks}${priceLine}</svg>
         </div>
         <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums">
           <span>$${barMin.toFixed(0)}</span><span>$${((barMin+barMax)/2).toFixed(0)}</span><span>$${barMax.toFixed(0)}</span>
         </div>
+        ${fibLegend}
       </div>`;
   }
 
   // ── Conviction checklist ──────────────────────────────────────
   const score=prefix==='sc'?window._lastScore?.total:window._lastPreScore?.total;
+  // Determine if price is in BUY or better zone
+  const buyZone=zones.find(z=>z.key==='buy');
+  const sbZone=zones.find(z=>z.key==='strongbuy');
+  const mfZone=zones.find(z=>z.key==='maxfear');
+  const inActionableZone=price!=null&&[buyZone,sbZone,mfZone].some(z=>z&&price>=z.lower&&price<=z.upper);
+  // At or below Fib 38.2% (healthy pullback level)
+  const belowFib382=price!=null&&fibs!=null&&price<=fibs.f382*1.02;
   const checks=[
     {label:'Scorecard above 75', pass:score!=null&&score>75},
-    {label:'Price at or below EMA 50', pass:price!=null&&ema50!=null&&price<=ema50*1.05},
-    {label:'RSI below 50', pass:rsi!=null&&rsi<50},
-    {label:'Price inside or below value area', pass:price!=null&&val!=null&&price<=val*1.05},
+    {label:'Price in BUY, STRONG BUY, or MAX FEAR zone', pass:inActionableZone},
+    {label:'RSI below 50 (not overbought)', pass:rsi!=null&&rsi<50},
+    {label:'Price at or below Fib 38.2% retracement'+(fibs?` ($${fibs.f382.toFixed(2)})`:''), pass:belowFib382},
     {label:'Analyst upside above 20%', pass:price!=null&&target!=null&&((target-price)/price*100)>20},
   ];
   const passed=checks.filter(c=>c.pass).length;
