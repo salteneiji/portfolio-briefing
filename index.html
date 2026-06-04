@@ -674,6 +674,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
             <div class="sc-row"><label>Current Price</label><input class="fi-sm sc-inp" id="sc-price" type="number" step="0.01" placeholder="e.g. 40.82" oninput="calcUpside()"/><span></span></div>
             <div class="sc-row"><label>Target Price → Upside</label><input class="fi-sm sc-inp" id="sc-target" type="number" step="0.01" placeholder="e.g. 54.12" oninput="calcUpside()"/><span class="sc-badge" id="scb-up"></span></div>
             <div class="sc-row"><label>Short Ratio</label><input class="fi-sm sc-inp" id="sc-sr" type="number" step="0.01" placeholder="e.g. 2.15"/><span class="sc-badge" id="scb-sr"></span></div>
+            <div class="sc-row"><label>RSI 14</label><input class="fi-sm sc-inp" id="sc-rsi" type="number" step="0.1" placeholder="e.g. 47.2" oninput="calcPriceZones('sc')"/><span></span></div>
           </div>
         </div>
       </div>
@@ -685,6 +686,23 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div id="sc-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="sc-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="sc-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+        <!-- PRICE ZONES -->
+        <div id="sc-pricezone" style="margin-top:22px;text-align:left;border-top:1px solid var(--border);padding-top:18px">
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📊 Price Zone Analysis</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+            <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">EMA 50 $</label><input class="fi-sm sc-inp" id="sc-ema50" type="number" step="0.01" placeholder="e.g. 388.16" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">EMA 200 $</label><input class="fi-sm sc-inp" id="sc-ema200" type="number" step="0.01" placeholder="e.g. 341.36" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">POC $ <span style="font-size:.65rem;color:var(--muted)">(Point of Control)</span></label><input class="fi-sm sc-inp" id="sc-poc" type="number" step="0.01" placeholder="e.g. 350.00" oninput="calcPriceZones('sc')"/></div>
+            </div>
+            <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm sc-inp" id="sc-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm sc-inp" id="sc-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('sc')"/></div>
+              <div style="font-size:.7rem;color:var(--muted);margin-top:8px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Target & Price pulled automatically from Signals above ↑</div>
+            </div>
+          </div>
+          <div id="sc-zone-output"><div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div></div>
+        </div>
         <!-- Position sizing suggestion -->
         <div id="sc-position-hint" style="display:none;margin-top:14px;background:var(--surface);border:1px solid var(--borderh);border-radius:10px;padding:10px 18px;display:inline-block;font-size:.78rem"></div>
         <!-- Conviction rating -->
@@ -848,6 +866,7 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <div class="sc-row"><label>Target Price → Upside</label><input class="fi-sm pp-inp" id="pp-target" type="number" step="0.01" placeholder="e.g. 40.00" oninput="calcPreUpside()"/><span class="sc-badge" id="ppb-up"></span></div>
           <input type="hidden" id="pp-up"/>
           <div class="sc-row"><label>Short Ratio</label><input class="fi-sm pp-inp" id="pp-sr" type="number" step="0.01" placeholder="e.g. 3.5"/><span class="sc-badge" id="ppb-sr"></span></div>
+          <div class="sc-row"><label>RSI 14</label><input class="fi-sm pp-inp" id="pp-rsi" type="number" step="0.1" placeholder="e.g. 47.2" oninput="calcPriceZones('pp')"/><span></span></div>
         </div>
 
       </div>
@@ -859,6 +878,23 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div id="pp-score-lbl" style="font-size:4rem;font-weight:900;line-height:1"></div>
         <div id="pp-grade-lbl" style="font-size:1.5rem;font-weight:700;margin-bottom:16px"></div>
         <div id="pp-cats" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"></div>
+        <!-- PRICE ZONES -->
+        <div id="pp-pricezone" style="margin-top:22px;text-align:left;border-top:1px solid var(--border);padding-top:18px">
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📊 Price Zone Analysis</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+            <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">EMA 50 $</label><input class="fi-sm pp-inp" id="pp-ema50" type="number" step="0.01" placeholder="e.g. 388.16" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">EMA 200 $</label><input class="fi-sm pp-inp" id="pp-ema200" type="number" step="0.01" placeholder="e.g. 341.36" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">POC $ <span style="font-size:.65rem;color:var(--muted)">(Point of Control)</span></label><input class="fi-sm pp-inp" id="pp-poc" type="number" step="0.01" placeholder="e.g. 350.00" oninput="calcPriceZones('pp')"/></div>
+            </div>
+            <div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm pp-inp" id="pp-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm pp-inp" id="pp-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('pp')"/></div>
+              <div style="font-size:.7rem;color:var(--muted);margin-top:8px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Target & Price pulled automatically from Signals above ↑</div>
+            </div>
+          </div>
+          <div id="pp-zone-output"><div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div></div>
+        </div>
         <!-- Position sizing suggestion -->
         <div id="pp-position-hint" style="display:none;margin-top:14px;background:var(--surface);border:1px solid var(--borderh);border-radius:10px;padding:10px 18px;display:inline-block;font-size:.78rem"></div>
         <!-- Conviction rating -->
@@ -2467,6 +2503,7 @@ function calcScore(){
   document.getElementById('sc-result').style.display='block';
   document.getElementById('sc-result').scrollIntoView({behavior:'smooth',block:'nearest'});
   updatePositionHint('sc', total);
+  calcPriceZones('sc');
 }
 
 function calcUpside(){
@@ -2485,6 +2522,7 @@ function calcUpside(){
     const h=document.getElementById('sc-up'); if(h) h.value='';
     badge.textContent=''; badge.style.background='';
   }
+  calcPriceZones('sc');
 }
 
 function clearScore(){
@@ -2511,7 +2549,8 @@ const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-epsny','sc-epsn5','sc-epsnq',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
-  'sc-rec','sc-price','sc-target','sc-sr'];
+  'sc-rec','sc-price','sc-target','sc-sr','sc-rsi',
+  'sc-ema50','sc-ema200','sc-poc','sc-val','sc-52wlow'];
 
 function saveToLeaderboard(btn){
   try {
@@ -2761,7 +2800,7 @@ const PP_WEIGHTS = {
   'Rev Growth':.30,'Gross Econ':.20,'Path→Profit':.25,'Runway':.15,'Valuation':.05,'Signals':.05
 };
 
-const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr'];
+const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr','pp-rsi','pp-ema50','pp-ema200','pp-poc','pp-val','pp-52wlow'];
 
 function computePreMetricScore(id){
   const m=PP_METRICS[id];
@@ -2846,6 +2885,7 @@ function calcPreScore(){
   document.getElementById('pp-result').style.display='block';
   document.getElementById('pp-result').scrollIntoView({behavior:'smooth',block:'nearest'});
   updatePositionHint('pp', total);
+  calcPriceZones('pp');
 }
 
 function clearPreScore(){
@@ -3153,6 +3193,130 @@ function renderH2H(){
     <div style="margin-top:12px;text-align:center;font-size:.8rem;color:var(--muted2)">
       ${(()=>{const dA=eA.total-eB.total;return dA>0?`<strong style="color:var(--text)">${eA.ticker}</strong> leads by <strong style="color:var(--green)">${dA} pts</strong>`:dA<0?`<strong style="color:var(--text)">${eB.ticker}</strong> leads by <strong style="color:var(--green)">${Math.abs(dA)} pts</strong>`:'<strong>Tied!</strong>';})()}
     </div>`;
+}
+
+// ── Price Zones ───────────────────────────────────────────────────────────
+function calcPriceZones(prefix){
+  const g=id=>{ const el=document.getElementById(prefix+'-'+id); return el&&el.value!==''?parseFloat(el.value):null; };
+  const ema50=g('ema50'), ema200=g('ema200'), poc=g('poc'), val=g('val'), wlow=g('52wlow');
+  const price=g('price'), target=g('target'), rsi=g('rsi');
+  const out=document.getElementById(prefix+'-zone-output');
+  if(!out) return;
+
+  if(!ema50&&!ema200){ out.innerHTML='<div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div>'; return; }
+
+  // ── Zone calculations ─────────────────────────────────────────
+  const zones=[];
+  if(target){
+    zones.push({key:'watch', icon:'👀', name:'WATCH', action:'Monitor',
+      upper:target*0.95, lower:target*0.85,
+      border:'rgba(100,116,139,.5)', bg:'rgba(100,116,139,.07)', textColor:'#94a3b8'});
+  }
+  if(ema50&&val){
+    zones.push({key:'buy', icon:'✅', name:'BUY', action:'Build Position',
+      upper:Math.max(ema50,val), lower:Math.min(ema50,val),
+      border:'rgba(24,212,122,.4)', bg:'rgba(24,212,122,.07)', textColor:'var(--green)'});
+  } else if(ema50){
+    zones.push({key:'buy', icon:'✅', name:'BUY', action:'Build Position',
+      upper:ema50*1.02, lower:ema50*0.98,
+      border:'rgba(24,212,122,.4)', bg:'rgba(24,212,122,.07)', textColor:'var(--green)'});
+  }
+  if(ema200&&poc){
+    zones.push({key:'strongbuy', icon:'🔥', name:'STRONG BUY', action:'Add Aggressively',
+      upper:Math.max(ema200,poc), lower:Math.min(ema200,poc),
+      border:'rgba(16,185,129,.5)', bg:'rgba(16,185,129,.09)', textColor:'#10b981'});
+  } else if(ema200){
+    zones.push({key:'strongbuy', icon:'🔥', name:'STRONG BUY', action:'Add Aggressively',
+      upper:ema200*1.02, lower:ema200*0.98,
+      border:'rgba(16,185,129,.5)', bg:'rgba(16,185,129,.09)', textColor:'#10b981'});
+  }
+  if(ema200&&wlow){
+    zones.push({key:'maxfear', icon:'💎', name:'MAX FEAR', action:'Back Up The Truck',
+      upper:ema200*0.95, lower:wlow,
+      border:'rgba(245,158,11,.5)', bg:'rgba(245,158,11,.08)', textColor:'var(--amber)'});
+  }
+
+  // ── Zone cards ────────────────────────────────────────────────
+  const cardsHtml=zones.map(z=>`
+    <div style="flex:1;min-width:130px;border:1px solid ${z.border};background:${z.bg};border-radius:10px;padding:12px;text-align:center">
+      <div style="font-size:1.1rem">${z.icon}</div>
+      <div style="font-size:.68rem;font-weight:800;color:${z.textColor};letter-spacing:.04em;margin:4px 0 2px">${z.name}</div>
+      <div style="font-size:.72rem;color:var(--muted2);font-variant-numeric:tabular-nums">$${z.lower.toFixed(2)} — $${z.upper.toFixed(2)}</div>
+      <div style="font-size:.65rem;color:var(--muted);margin-top:4px;font-style:italic">${z.action}</div>
+    </div>`).join('');
+
+  // ── Current zone detection ────────────────────────────────────
+  let currentZone=null;
+  if(price){
+    for(const z of [...zones].reverse()){
+      if(price>=z.lower&&price<=z.upper){ currentZone=z; break; }
+    }
+    if(!currentZone){
+      // Find nearest
+      const above=zones.filter(z=>price<z.lower).sort((a,b)=>a.lower-b.lower)[0];
+      if(above) currentZone={...above, approximate:true, name:'Below '+above.name};
+    }
+  }
+
+  // ── Price bar SVG ──────────────────────────────────────────────
+  let barHtml='';
+  if(price&&zones.length){
+    const allPrices=[price,...zones.flatMap(z=>[z.lower,z.upper])];
+    const barMin=Math.min(...allPrices)*0.97;
+    const barMax=Math.max(...allPrices)*1.03;
+    const range=barMax-barMin||1;
+    const W=100; // percentage
+    const toX=v=>((v-barMin)/range*100).toFixed(2)+'%';
+    const zoneColors={'watch':'#64748b','buy':'#18d47a','strongbuy':'#10b981','maxfear':'#f59e0b'};
+    const zoneBands=zones.map(z=>{
+      const x1=((z.lower-barMin)/range*100);
+      const x2=((z.upper-barMin)/range*100);
+      const w=Math.max(x2-x1,0.5);
+      return `<rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="${zoneColors[z.key]}" opacity="0.25" rx="2"/>
+              <rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="none" stroke="${zoneColors[z.key]}" stroke-width="0.5" opacity="0.6"/>`;
+    }).join('');
+    const priceX=((price-barMin)/range*100).toFixed(2);
+    const priceLine=`<line x1="${priceX}%" x2="${priceX}%" y1="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="3,2"/>
+      <circle cx="${priceX}%" cy="50%" r="5" fill="white" stroke="var(--bg)" stroke-width="1.5"/>`;
+    const zoneLabel=currentZone?`<span style="font-weight:700;color:${currentZone.textColor||'var(--text)'}">${currentZone.name}</span>`:'<span style="color:var(--muted)">Outside zones</span>';
+    barHtml=`
+      <div style="margin-top:14px">
+        <div style="font-size:.72rem;color:var(--muted);margin-bottom:6px">Current Zone: ${zoneLabel} &nbsp;<span style="color:var(--muted2);font-variant-numeric:tabular-nums">$${price.toFixed(2)}</span></div>
+        <div style="position:relative;height:32px;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--border)">
+          <svg width="100%" height="100%" preserveAspectRatio="none">${zoneBands}${priceLine}</svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums">
+          <span>$${barMin.toFixed(0)}</span><span>$${((barMin+barMax)/2).toFixed(0)}</span><span>$${barMax.toFixed(0)}</span>
+        </div>
+      </div>`;
+  }
+
+  // ── Conviction checklist ──────────────────────────────────────
+  const score=prefix==='sc'?window._lastScore?.total:window._lastPreScore?.total;
+  const checks=[
+    {label:'Scorecard above 75', pass:score!=null&&score>75},
+    {label:'Price at or below EMA 50', pass:price!=null&&ema50!=null&&price<=ema50*1.05},
+    {label:'RSI below 50', pass:rsi!=null&&rsi<50},
+    {label:'Price inside or below value area', pass:price!=null&&val!=null&&price<=val*1.05},
+    {label:'Analyst upside above 20%', pass:price!=null&&target!=null&&((target-price)/price*100)>20},
+  ];
+  const passed=checks.filter(c=>c.pass).length;
+  const convLabel=passed===5?'⭐ Maximum Conviction Entry':passed===4?'✅ Strong Entry':passed===3?'🟡 Moderate Entry':'⏳ Wait For Better Setup';
+  const convColor=passed>=4?'var(--green)':passed===3?'var(--amber)':'var(--muted)';
+  const checklistHtml=`
+    <div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px">
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Conviction Checklist</div>
+      ${checks.map(c=>`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:.78rem">
+        <span style="color:${c.pass?'var(--green)':'var(--muted)'};font-size:.9rem">${c.pass?'☑':'☐'}</span>
+        <span style="color:${c.pass?'var(--text)':'var(--muted)'}">${c.label}</span>
+      </div>`).join('')}
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-weight:700;color:${convColor};font-size:.85rem">${convLabel} <span style="font-size:.72rem;font-weight:400;color:var(--muted)">(${passed}/5)</span></div>
+    </div>`;
+
+  out.innerHTML=`
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${cardsHtml}</div>
+    ${barHtml}
+    ${checklistHtml}`;
 }
 
 // ── Sticky table header ────────────────────────────────────────────────────
