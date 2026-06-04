@@ -700,6 +700,8 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm sc-inp" id="sc-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('sc')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W High $</label><input class="fi-sm sc-inp" id="sc-52whigh" type="number" step="0.01" placeholder="e.g. 480.00" oninput="calcPriceZones('sc')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm sc-inp" id="sc-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">AVWAP $ <span style="font-size:.65rem;color:var(--muted)">(Anchored VWAP)</span></label><input class="fi-sm sc-inp" id="sc-avwap" type="number" step="0.01" placeholder="e.g. 310.00" oninput="calcPriceZones('sc')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">DCF Fair Value $</label><input class="fi-sm sc-inp" id="sc-dcf" type="number" step="0.01" placeholder="e.g. 450.00" oninput="calcPriceZones('sc')"/></div>
             </div>
           </div>
           <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Current Price &amp; Analyst Target pulled automatically from Signals above ↑</div>
@@ -894,6 +896,8 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">VAL $ <span style="font-size:.65rem;color:var(--muted)">(Value Area Low)</span></label><input class="fi-sm pp-inp" id="pp-val" type="number" step="0.01" placeholder="e.g. 290.00" oninput="calcPriceZones('pp')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W High $</label><input class="fi-sm pp-inp" id="pp-52whigh" type="number" step="0.01" placeholder="e.g. 480.00" oninput="calcPriceZones('pp')"/></div>
               <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">52W Low $</label><input class="fi-sm pp-inp" id="pp-52wlow" type="number" step="0.01" placeholder="e.g. 241.11" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">AVWAP $ <span style="font-size:.65rem;color:var(--muted)">(Anchored VWAP)</span></label><input class="fi-sm pp-inp" id="pp-avwap" type="number" step="0.01" placeholder="e.g. 310.00" oninput="calcPriceZones('pp')"/></div>
+              <div class="sc-row"><label style="font-size:.72rem;color:var(--muted2)">DCF Fair Value $</label><input class="fi-sm pp-inp" id="pp-dcf" type="number" step="0.01" placeholder="e.g. 450.00" oninput="calcPriceZones('pp')"/></div>
             </div>
           </div>
           <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;padding:6px 10px;background:var(--surface);border-radius:7px">RSI, Current Price &amp; Analyst Target pulled automatically from Signals above ↑</div>
@@ -2554,7 +2558,7 @@ const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
   'sc-rec','sc-price','sc-target','sc-sr','sc-rsi',
-  'sc-ema50','sc-ema200','sc-poc','sc-vah','sc-val','sc-52whigh','sc-52wlow'];
+  'sc-ema50','sc-ema200','sc-poc','sc-vah','sc-val','sc-52whigh','sc-52wlow','sc-avwap','sc-dcf'];
 
 function saveToLeaderboard(btn){
   try {
@@ -2804,7 +2808,7 @@ const PP_WEIGHTS = {
   'Rev Growth':.30,'Gross Econ':.20,'Path→Profit':.25,'Runway':.15,'Valuation':.05,'Signals':.05
 };
 
-const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr','pp-rsi','pp-ema50','pp-ema200','pp-poc','pp-vah','pp-val','pp-52whigh','pp-52wlow'];
+const PP_ALL_INPUTS = ['pp-revttm','pp-revfwd','pp-fcfm','pp-gm','pp-gmchg','pp-opm','pp-opchg','pp-runway','pp-qr','pp-arr','pp-dilution','pp-ps','pp-evr','pp-rec','pp-price','pp-target','pp-sr','pp-rsi','pp-ema50','pp-ema200','pp-poc','pp-vah','pp-val','pp-52whigh','pp-52wlow','pp-avwap','pp-dcf'];
 
 function computePreMetricScore(id){
   const m=PP_METRICS[id];
@@ -3204,11 +3208,12 @@ function calcPriceZones(prefix){
   const g=id=>{ const el=document.getElementById(prefix+'-'+id); return el&&el.value!==''?parseFloat(el.value):null; };
   const ema50=g('ema50'), ema200=g('ema200'), poc=g('poc'), vah=g('vah'), val=g('val');
   const whigh=g('52whigh'), wlow=g('52wlow');
+  const avwap=g('avwap'), dcf=g('dcf');
   const price=g('price'), target=g('target'), rsi=g('rsi');
   const out=document.getElementById(prefix+'-zone-output');
   if(!out) return;
 
-  const hasAny=ema50||ema200||poc||vah||val||whigh||wlow;
+  const hasAny=ema50||ema200||poc||vah||val||whigh||wlow||avwap||dcf;
   if(!hasAny){ out.innerHTML='<div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0">Enter technical levels above to see price zones.</div>'; return; }
 
   // ── Fibonacci retracement levels (requires 52W High + 52W Low) ────────────
@@ -3237,8 +3242,13 @@ function calcPriceZones(prefix){
   // ── Build candidate raw zones (unordered) ─────────────────────
   const rawZones=[];
 
-  // Candidate A: WATCH — near analyst target or VAH (overextended / full value)
-  if(target&&vah){
+  // Candidate A: WATCH — DCF fair value or analyst target or VAH (full/overvalued)
+  // DCF takes priority as the fundamental ceiling
+  if(dcf){
+    const watchLo=target?Math.min(dcf,target)*0.97:dcf*0.97;
+    const watchHi=target?Math.max(dcf,target)*1.01:dcf*1.01;
+    rawZones.push({center:(watchLo+watchHi)/2, upper:watchHi, lower:watchLo, isDCFWatch:true});
+  } else if(target&&vah){
     rawZones.push({center:(target+Math.max(vah,target*0.90))/2, upper:target, lower:Math.max(vah,target*0.90)});
   } else if(target){
     rawZones.push({center:target*0.95, upper:target, lower:target*0.90});
@@ -3256,12 +3266,18 @@ function calcPriceZones(prefix){
     rawZones.push({center:val, upper:val*1.01, lower:val*0.99});
   }
 
-  // Candidate C: deeper support — POC (volume cluster, strongest magnet)
+  // Candidate C: AVWAP — institutional cost basis (anchored VWAP from earnings/low)
+  // Strong support: price above AVWAP = institutions in profit; below = underwater
+  if(avwap!=null){
+    rawZones.push({center:avwap, upper:avwap*1.015, lower:avwap*0.985});
+  }
+
+  // Candidate D: deeper support — POC (volume cluster, strongest magnet)
   if(poc!=null){
     rawZones.push({center:poc, upper:poc*1.015, lower:poc*0.985});
   }
 
-  // Candidate D: MAX FEAR — Fib 61.8–78.6% deep retracement / 52W Low
+  // Candidate E: MAX FEAR — Fib 61.8–78.6% deep retracement / 52W Low
   if(fibs&&wlow!=null){
     rawZones.push({center:(fibs.f618+Math.max(fibs.f786,wlow))/2, upper:fibs.f618, lower:Math.max(fibs.f786,wlow)});
   } else if(wlow!=null){
@@ -3337,6 +3353,17 @@ function calcPriceZones(prefix){
       return `<rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="${zoneColors[z.key]}" opacity="0.22"/>
               <rect x="${x1.toFixed(2)}%" y="0" width="${w.toFixed(2)}%" height="100%" fill="none" stroke="${zoneColors[z.key]}" stroke-width="0.7" opacity="0.7"/>`;
     }).join('');
+    // AVWAP + DCF reference lines
+    let extraLines='';
+    if(avwap!=null){
+      const ax=+toXpct(avwap);
+      if(ax>=0&&ax<=100) extraLines+=`<line x1="${ax.toFixed(2)}%" x2="${ax.toFixed(2)}%" y1="0" y2="100%" stroke="rgba(96,165,250,.8)" stroke-width="1.5" stroke-dasharray="4,2"/>`;
+    }
+    if(dcf!=null){
+      const dx=+toXpct(dcf);
+      if(dx>=0&&dx<=100) extraLines+=`<line x1="${dx.toFixed(2)}%" x2="${dx.toFixed(2)}%" y1="0" y2="100%" stroke="rgba(167,139,250,.8)" stroke-width="1.5" stroke-dasharray="4,2"/>`;
+    }
+
     // Fibonacci tick marks
     let fibTicks='';
     if(fibs){
@@ -3357,19 +3384,22 @@ function calcPriceZones(prefix){
     const priceLine=`<line x1="${priceX}%" x2="${priceX}%" y1="0" y2="100%" stroke="white" stroke-width="2" stroke-dasharray="3,2"/>
       <circle cx="${priceX}%" cy="50%" r="5" fill="white" stroke="var(--bg)" stroke-width="1.5"/>`;
     const zoneLabel=currentZone?`<span style="font-weight:700;color:${currentZone.textColor||'var(--text)'}">${currentZone.name}</span>`:'<span style="color:var(--muted)">Outside zones</span>';
-    // Fib legend if available
-    const fibLegend=fibs?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:5px;font-size:.6rem;color:var(--muted)">
-      <span style="color:rgba(148,163,184,.9)">— 23.6%: $${fibs.f236.toFixed(2)}</span>
+    // Legend: Fib levels + AVWAP + DCF
+    const avwapLegend=avwap!=null?`<span style="color:rgba(96,165,250,.9)">┃ AVWAP: $${avwap.toFixed(2)}</span>`:'';
+    const dcfLegend=dcf!=null?`<span style="color:rgba(167,139,250,.9)">┃ DCF: $${dcf.toFixed(2)}</span>`:'';
+    const fibLegend=(fibs||avwap||dcf)?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:5px;font-size:.6rem;color:var(--muted)">
+      ${fibs?`<span style="color:rgba(148,163,184,.9)">— 23.6%: $${fibs.f236.toFixed(2)}</span>
       <span style="color:rgba(96,165,250,.9)">— 38.2%: $${fibs.f382.toFixed(2)}</span>
       <span style="color:rgba(167,139,250,.9)">— 50%: $${fibs.f500.toFixed(2)}</span>
       <span style="color:rgba(251,191,36,.9)">— 61.8%: $${fibs.f618.toFixed(2)}</span>
-      <span style="color:rgba(248,113,113,.9)">— 78.6%: $${fibs.f786.toFixed(2)}</span>
+      <span style="color:rgba(248,113,113,.9)">— 78.6%: $${fibs.f786.toFixed(2)}</span>`:''}
+      ${avwapLegend}${dcfLegend}
     </div>`:'';
     barHtml=`
       <div style="margin-top:14px">
         <div style="font-size:.72rem;color:var(--muted);margin-bottom:6px">Current Zone: ${zoneLabel} &nbsp;<span style="color:var(--muted2);font-variant-numeric:tabular-nums">$${price.toFixed(2)}</span></div>
         <div style="position:relative;height:32px;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--border)">
-          <svg width="100%" height="100%" preserveAspectRatio="none">${zoneBands}${fibTicks}${priceLine}</svg>
+          <svg width="100%" height="100%" preserveAspectRatio="none">${zoneBands}${fibTicks}${extraLines}${priceLine}</svg>
         </div>
         <div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums">
           <span>$${barMin.toFixed(0)}</span><span>$${((barMin+barMax)/2).toFixed(0)}</span><span>$${barMax.toFixed(0)}</span>
@@ -3385,14 +3415,19 @@ function calcPriceZones(prefix){
   const sbZone=zones.find(z=>z.key==='strongbuy');
   const mfZone=zones.find(z=>z.key==='maxfear');
   const inActionableZone=price!=null&&[buyZone,sbZone,mfZone].some(z=>z&&price>=z.lower&&price<=z.upper);
-  // At or below Fib 38.2% (healthy pullback level)
+  // At or below Fib 38.2% OR below AVWAP (institutional cost basis = key support)
   const belowFib382=price!=null&&fibs!=null&&price<=fibs.f382*1.02;
+  const belowAVWAP=price!=null&&avwap!=null&&price<=avwap*1.02;
+  // Price below DCF fair value = margin of safety
+  const belowDCF=price!=null&&dcf!=null&&price<dcf*0.90; // at least 10% discount to DCF
+  // Upside: use DCF if available, else analyst target
+  const upsidePct=price!=null?(dcf!=null?((dcf-price)/price*100):(target!=null?((target-price)/price*100):null)):null;
   const checks=[
     {label:'Scorecard above 75', pass:score!=null&&score>75},
     {label:'Price in BUY, STRONG BUY, or MAX FEAR zone', pass:inActionableZone},
     {label:'RSI below 50 (not overbought)', pass:rsi!=null&&rsi<50},
-    {label:'Price at or below Fib 38.2% retracement'+(fibs?` ($${fibs.f382.toFixed(2)})`:''), pass:belowFib382},
-    {label:'Analyst upside above 20%', pass:price!=null&&target!=null&&((target-price)/price*100)>20},
+    {label:(avwap!=null?`Price at/below AVWAP ($${avwap.toFixed(2)}) — institutions underwater`:(fibs?`Price at/below Fib 38.2% ($${fibs.f382.toFixed(2)})`:'Price below key moving average')), pass:belowAVWAP||belowFib382},
+    {label:(dcf!=null?`≥10% discount to DCF Fair Value ($${dcf.toFixed(2)})`:'Analyst upside above 20%'), pass:dcf!=null?belowDCF:(upsidePct!=null&&upsidePct>20)},
   ];
   const passed=checks.filter(c=>c.pass).length;
   const convLabel=passed===5?'⭐ Maximum Conviction Entry':passed===4?'✅ Strong Entry':passed===3?'🟡 Moderate Entry':'⏳ Wait For Better Setup';
