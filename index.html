@@ -657,31 +657,6 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <div class="sc-row"><label>Sales Q/Q %</label><input class="fi-sm sc-inp" id="sc-revqq" type="number" step="0.1" placeholder="e.g. 31.34"/><span class="sc-badge" id="scb-revqq"></span></div>
         </div>
 
-        <!-- EPS REVISIONS -->
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
-          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 EPS Revisions <span class="sc-wt" id="wt-epsrev"></span></div>
-          <div class="sc-row">
-            <label>FY1 Up Revisions %</label>
-            <input class="fi-sm sc-inp" id="sc-epsfup" type="number" step="0.1" placeholder="e.g. 100" oninput="calcEPSRevGrade()"/>
-            <span class="sc-badge" id="scb-epsfup"></span>
-          </div>
-          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 8px 0;padding-left:2px">% of analysts raising EPS estimates last 90 days</div>
-          <div class="sc-row">
-            <label>FY1 Down Revisions %</label>
-            <input class="fi-sm sc-inp" id="sc-epsfdn" type="number" step="0.1" placeholder="e.g. 0" oninput="calcEPSRevGrade()"/>
-            <span class="sc-badge" id="scb-epsfdn"></span>
-          </div>
-          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 8px 0;padding-left:2px">% of analysts cutting EPS estimates last 90 days</div>
-          <div class="sc-row">
-            <label>vs Sector Median (Up %)</label>
-            <input class="fi-sm sc-inp" id="sc-epssec" type="number" step="0.1" placeholder="e.g. 53.85" oninput="calcEPSRevGrade()"/>
-            <span class="sc-badge" id="scb-epssec"></span>
-          </div>
-          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 10px 0;padding-left:2px">Sector median up revision rate for comparison</div>
-          <div id="sc-epsrev-grade" style="display:none;margin-top:8px;padding:8px 12px;border-radius:8px;font-size:.8rem;font-weight:700;text-align:center"></div>
-          <div style="font-size:.6rem;color:var(--muted);margin-top:6px;text-align:center">Source: Seeking Alpha Revisions Grade</div>
-        </div>
-
         <!-- FORWARD GROWTH -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
           <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🚀 Forward Growth <span class="sc-wt" id="wt-fwd"></span></div>
@@ -2218,16 +2193,12 @@ const SC_METRICS = {
   'sc-rec':    {low:true,  ranges:[[1.5,10],[2,8],[2.5,6],[3,4],[3.5,2],[Infinity,0]]},
   'sc-up':     {low:false, ranges:[[5,2],[10,4],[20,7],[30,9],[Infinity,10]]},
   'sc-sr':     {low:true,  ranges:[[1,10],[2,8],[4,6],[6,4],[10,2],[Infinity,0]]},
-  // EPS Revisions (Seeking Alpha)
-  'sc-epsfup': {low:false, ranges:[[30,0],[50,3],[65,6],[75,8],[90,9],[Infinity,10]]},
-  'sc-epsfdn': {low:true,  ranges:[[10,10],[20,7],[30,4],[50,1],[Infinity,0]]},
 };
 
 const SC_CATS = {
   'Valuation':    ['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w'],
   'Hist. Growth': ['sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm'],
   'Momentum':     ['sc-epsty','sc-epsqq','sc-revqq'],
-  'EPS Rev':      ['sc-epsfup','sc-epsfdn'],  // sc-epssec handled as modifier in calcScore
   'Fwd Growth':   ['sc-epsny','sc-epsn5','sc-epsnq'],
   'Health':       ['sc-de','sc-ltde','sc-cr','sc-qr'],
   'Profitability':['sc-gm','sc-om','sc-roe','sc-roa'],
@@ -2359,32 +2330,24 @@ const SC_SECTORS = [
 ];
 
 // Weight templates — all must sum to 1.0
-// EPS Rev added at 5% across all profiles (other cats scaled by 0.95), except growth_tech uses user-specified 9%
-function _addEpsRev(w, epsRevWt){
-  const scale=(1-epsRevWt);
-  const out={'EPS Rev':epsRevWt};
-  for(const [k,v] of Object.entries(w)) out[k]=+(v*scale).toFixed(4);
-  return out;
-}
 const _W = {
-  // growth_tech uses exact user-specified weights
-  growth_tech:    {'Valuation':.09,'Hist. Growth':.18,'Momentum':.09,'EPS Rev':.09,'Fwd Growth':.23,'Health':.09,'Profitability':.18,'Signals':.05},
-  hardware_tech:  _addEpsRev({'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},.05),
-  media_growth:   _addEpsRev({'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},.05),
-  telecom_w:      _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},.05),
-  consumer_disc_w:_addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},.05),
-  consumer_stap_w:_addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},.05),
-  biotech_w:      _addEpsRev({'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},.05),
-  pharma_w:       _addEpsRev({'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},.05),
-  health_svc_w:   _addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},.05),
-  banks_w:        _addEpsRev({'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},.05),
-  assetmgmt_w:    _addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},.05),
-  energy_w:       _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
-  renewable_w:    _addEpsRev({'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},.05),
-  utilities_w:    _addEpsRev({'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},.05),
-  reits_w:        _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},.05),
-  industrials_w:  _addEpsRev({'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
-  materials_w:    _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
+  growth_tech:    {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
+  hardware_tech:  {'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  media_growth:   {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
+  telecom_w:      {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},
+  consumer_disc_w:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
+  consumer_stap_w:{'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},
+  biotech_w:      {'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},
+  pharma_w:       {'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},
+  health_svc_w:   {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  banks_w:        {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
+  assetmgmt_w:    {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
+  energy_w:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  renewable_w:    {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},
+  utilities_w:    {'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},
+  reits_w:        {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},
+  industrials_w:  {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  materials_w:    {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
 };
 const SC_WEIGHTS = {
   // Information Technology
@@ -2541,46 +2504,7 @@ function updateProfThresholds(){
   if(roeEl) roeEl.textContent=`Threshold: ≥${t.roe[0]}% green · ≥${t.roe[1]}% yellow (${lbl})`;
 }
 
-// ── EPS Revisions Grade (Seeking Alpha style) ─────────────────────────────────
-function calcEPSRevGrade(){
-  const upEl=document.getElementById('sc-epsfup');
-  const dnEl=document.getElementById('sc-epsfdn');
-  const secEl=document.getElementById('sc-epssec');
-  const gradeEl=document.getElementById('sc-epsrev-grade');
-  if(!gradeEl) return;
-  const upVal=upEl&&upEl.value!==''?parseFloat(upEl.value):null;
-  const dnVal=dnEl&&dnEl.value!==''?parseFloat(dnEl.value):null;
-  if(upVal==null&&dnVal==null){ gradeEl.style.display='none'; return; }
 
-  // Score 0–100: up% and down% carry full weight; vs-sector is a small ±modifier
-  // to match the calcScore logic — a great up/down score shouldn't be wrecked by sector comparison
-  const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
-  let baseScore=0, baseParts=0;
-  if(upVal!=null){
-    baseScore+=upVal>=75?100:upVal>=50?60:upVal>=30?30:0;
-    baseParts++;
-  }
-  if(dnVal!=null){
-    baseScore+=dnVal<=10?100:dnVal<=20?70:dnVal<=30?40:0;
-    baseParts++;
-  }
-  let avg=baseParts>0?baseScore/baseParts:0;
-  // Apply vs-sector as a small ±10 point nudge (max), not a full 33% vote
-  if(upVal!=null&&secVal!=null){
-    const diff=upVal-secVal;
-    const nudge=diff>20?10:diff>10?6:diff>0?3:diff>-10?0:diff>-20?-6:-10;
-    avg=Math.max(0,Math.min(100,avg+nudge));
-  }
-  const grade=avg>=90?'A+':avg>=75?'A':avg>=65?'B+':avg>=55?'B':avg>=45?'C':avg>=35?'D':'F';
-  const color=avg>=75?'var(--green)':avg>=55?'var(--amber)':'var(--red)';
-  const bg=avg>=75?'rgba(24,212,122,.1)':avg>=55?'rgba(245,158,11,.1)':'rgba(240,68,96,.1)';
-  const border=avg>=75?'rgba(24,212,122,.25)':avg>=55?'rgba(245,158,11,.25)':'rgba(240,68,96,.25)';
-  gradeEl.style.display='block';
-  gradeEl.style.background=bg;
-  gradeEl.style.border=`1px solid ${border}`;
-  gradeEl.style.color=color;
-  gradeEl.innerHTML=`SA Revisions Grade: <span style="font-size:1.1rem">${grade}</span> <span style="font-size:.7rem;font-weight:400;color:var(--muted)">(${Math.round(avg)}/100)</span>`;
-}
 
 function computeMetricScore(id){
   const m = SC_METRICS[id];
@@ -2598,7 +2522,7 @@ function badgeBg(s){ return s>=8?'rgba(24,212,122,.15)':s>=5?'rgba(245,158,11,.1
 function updateWeightHints(){
   const type = document.getElementById('sc-type').value;
   const w = SC_WEIGHTS[type];
-  const catIds = {'Valuation':'val','Hist. Growth':'hist','Momentum':'mom','EPS Rev':'epsrev','Fwd Growth':'fwd','Health':'health','Profitability':'prof','Signals':'sig'};
+  const catIds = {'Valuation':'val','Hist. Growth':'hist','Momentum':'mom','Fwd Growth':'fwd','Health':'health','Profitability':'prof','Signals':'sig'};
   for(const [cat,wid] of Object.entries(catIds)){
     const el=document.getElementById('wt-'+wid);
     if(el&&w[cat]!=null) el.textContent='('+Math.round(w[cat]*100)+'%)';
@@ -2622,29 +2546,6 @@ function calcScore(){
         scores.push(s);
       } else {
         if(badge){ badge.textContent=''; badge.style.background=''; }
-      }
-    }
-    // EPS Rev: vs-sector is a small ±modifier on base, NOT an equal peer
-    if(cat==='EPS Rev'&&scores.length){
-      const upEl=document.getElementById('sc-epsfup');
-      const secEl=document.getElementById('sc-epssec');
-      const upVal=upEl&&upEl.value!==''?parseFloat(upEl.value):null;
-      const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
-      const secBadge=document.getElementById('scb-epssec');
-      if(upVal!=null&&secVal!=null){
-        const diff=upVal-secVal;
-        // Modifier is small: max ±1.5 on a 0–10 scale so it doesn't overwhelm a strong base
-        const modifier=diff>20?1.5:diff>10?1.0:diff>0?0.5:diff>-10?0:diff>-20?-0.5:-1.5;
-        if(secBadge){ secBadge.textContent=(diff>=0?'+':'')+diff.toFixed(1)+'%'; secBadge.style.background=diff>=0?'rgba(24,212,122,.15)':'rgba(240,68,96,.15)'; secBadge.style.color=diff>=0?'var(--green)':'var(--red)'; }
-        // Apply modifier to the average, not as a new equal score
-        const base=scores.reduce((a,b)=>a+b,0)/scores.length;
-        const adjusted=Math.max(0,Math.min(10,base+modifier));
-        catScores[cat]=Math.round(adjusted*10);
-        weightedTotal += catScores[cat]*(weights[cat]||0);
-        totalWeight   += (weights[cat]||0);
-        continue; // skip normal avg below
-      } else {
-        if(secBadge){ secBadge.textContent=''; secBadge.style.background=''; }
       }
     }
     if(scores.length){
@@ -2709,7 +2610,6 @@ function clearScore(){
   document.getElementById('sc-ticker').value='';
   const ee=document.getElementById('sc-earnings'); if(ee) ee.value='';
   const tt=document.getElementById('sc-thesis'); if(tt) tt.value='';
-  const rg=document.getElementById('sc-epsrev-grade'); if(rg) rg.style.display='none';
   const ps=document.getElementById('sc-prof-sector'); if(ps) ps.value='tech';
   updateProfThresholds();
   window._lastScore=null;
@@ -2725,7 +2625,6 @@ function saveLeaderboard(lb){ try{ localStorage.setItem('pf_leaderboard',JSON.st
 const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm',
   'sc-epsty','sc-epsqq','sc-revqq',
-  'sc-epsfup','sc-epsfdn','sc-epssec',
   'sc-epsny','sc-epsn5','sc-epsnq',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
@@ -2816,7 +2715,7 @@ function renderLeaderboard(){
   empty.style.display='none'; tbl.style.display='';
   const sorted=[...lb].sort((a,b)=>b.total-a.total);
   const PP_CAT_SHORT=[['Rev Growth','RGr'],['Gross Econ','GEc'],['Path→Profit','P2P'],['Runway','Run'],['Valuation','Val'],['Signals','Sig']];
-  const SC_CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['EPS Rev','Rev'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
+  const SC_CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
   tbody.innerHTML=sorted.map((e,i)=>{
     const color=e.total>=75?'var(--green)':e.total>=55?'var(--amber)':'var(--red)';
     const catList=e.scoreType==='preprofit'?PP_CAT_SHORT:SC_CAT_SHORT;
@@ -2914,7 +2813,6 @@ function loadLeaderboardEntry(ticker){
     const psEl=document.getElementById('sc-prof-sector'); if(psEl) psEl.value=e.profSector||'tech';
     updateProfThresholds();
     calcUpside();
-    calcEPSRevGrade();
     calcScore();
     window._scConviction=e.conviction||0;
     renderConviction(window._scConviction,'sc');
