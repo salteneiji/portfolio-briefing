@@ -2552,23 +2552,25 @@ function calcEPSRevGrade(){
   const dnVal=dnEl&&dnEl.value!==''?parseFloat(dnEl.value):null;
   if(upVal==null&&dnVal==null){ gradeEl.style.display='none'; return; }
 
-  // Score 0–100 from the three signals
-  let score=0, parts=0;
+  // Score 0–100: up% and down% carry full weight; vs-sector is a small ±modifier
+  // to match the calcScore logic — a great up/down score shouldn't be wrecked by sector comparison
+  const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
+  let baseScore=0, baseParts=0;
   if(upVal!=null){
-    score+=upVal>=75?100:upVal>=50?60:upVal>=30?30:0;
-    parts++;
+    baseScore+=upVal>=75?100:upVal>=50?60:upVal>=30?30:0;
+    baseParts++;
   }
   if(dnVal!=null){
-    score+=dnVal<=10?100:dnVal<=20?70:dnVal<=30?40:0;
-    parts++;
+    baseScore+=dnVal<=10?100:dnVal<=20?70:dnVal<=30?40:0;
+    baseParts++;
   }
-  const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
+  let avg=baseParts>0?baseScore/baseParts:0;
+  // Apply vs-sector as a small ±10 point nudge (max), not a full 33% vote
   if(upVal!=null&&secVal!=null){
     const diff=upVal-secVal;
-    score+=diff>15?100:diff>5?70:diff>-5?50:diff>-15?30:0;
-    parts++;
+    const nudge=diff>20?10:diff>10?6:diff>0?3:diff>-10?0:diff>-20?-6:-10;
+    avg=Math.max(0,Math.min(100,avg+nudge));
   }
-  const avg=parts>0?score/parts:0;
   const grade=avg>=90?'A+':avg>=75?'A':avg>=65?'B+':avg>=55?'B':avg>=45?'C':avg>=35?'D':'F';
   const color=avg>=75?'var(--green)':avg>=55?'var(--amber)':'var(--red)';
   const bg=avg>=75?'rgba(24,212,122,.1)':avg>=55?'rgba(245,158,11,.1)':'rgba(240,68,96,.1)';
@@ -2622,7 +2624,7 @@ function calcScore(){
         if(badge){ badge.textContent=''; badge.style.background=''; }
       }
     }
-    // EPS Rev: apply vs-sector modifier on top of base score
+    // EPS Rev: vs-sector is a small ±modifier on base, NOT an equal peer
     if(cat==='EPS Rev'&&scores.length){
       const upEl=document.getElementById('sc-epsfup');
       const secEl=document.getElementById('sc-epssec');
@@ -2631,9 +2633,16 @@ function calcScore(){
       const secBadge=document.getElementById('scb-epssec');
       if(upVal!=null&&secVal!=null){
         const diff=upVal-secVal;
-        const modifier=diff>15?10:diff>5?7:diff>-5?5:diff>-15?3:0; // vs-sector score
-        if(secBadge){ secBadge.textContent=diff>=0?'+'+diff.toFixed(1)+'%':diff.toFixed(1)+'%'; secBadge.style.background=diff>=0?'rgba(24,212,122,.15)':'rgba(240,68,96,.15)'; secBadge.style.color=diff>=0?'var(--green)':'var(--red)'; }
-        scores.push(modifier);
+        // Modifier is small: max ±1.5 on a 0–10 scale so it doesn't overwhelm a strong base
+        const modifier=diff>20?1.5:diff>10?1.0:diff>0?0.5:diff>-10?0:diff>-20?-0.5:-1.5;
+        if(secBadge){ secBadge.textContent=(diff>=0?'+':'')+diff.toFixed(1)+'%'; secBadge.style.background=diff>=0?'rgba(24,212,122,.15)':'rgba(240,68,96,.15)'; secBadge.style.color=diff>=0?'var(--green)':'var(--red)'; }
+        // Apply modifier to the average, not as a new equal score
+        const base=scores.reduce((a,b)=>a+b,0)/scores.length;
+        const adjusted=Math.max(0,Math.min(10,base+modifier));
+        catScores[cat]=Math.round(adjusted*10);
+        weightedTotal += catScores[cat]*(weights[cat]||0);
+        totalWeight   += (weights[cat]||0);
+        continue; // skip normal avg below
       } else {
         if(secBadge){ secBadge.textContent=''; secBadge.style.background=''; }
       }
