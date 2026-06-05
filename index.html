@@ -607,6 +607,23 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <span style="font-size:.73rem;color:var(--muted)">Enter values from Finviz · blank = skipped</span>
       </div>
 
+      <!-- PROFITABILITY SECTOR SELECTOR -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--rsm)">
+        <span style="font-size:.72rem;font-weight:700;color:var(--muted2);white-space:nowrap">📊 Profitability Sector:</span>
+        <select class="fi-sm" id="sc-prof-sector" onchange="updateProfThresholds()" style="flex:1;max-width:260px">
+          <option value="tech">Tech / Growth (default)</option>
+          <option value="saas">Software / SaaS</option>
+          <option value="semi">Semiconductor</option>
+          <option value="ems">EMS / Hardware Assembly</option>
+          <option value="consumer">Consumer / Retail</option>
+          <option value="ecommerce">E-commerce</option>
+          <option value="healthcare">Healthcare / Medtech</option>
+          <option value="energy">Energy / Utilities</option>
+          <option value="financial">Financial Services</option>
+        </select>
+        <span style="font-size:.68rem;color:var(--muted)">Adjusts GM / Oper. Margin / ROE thresholds</span>
+      </div>
+
       <!-- WEIGHT HINT BAR -->
       <div id="sc-weight-hint" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;font-size:.68rem"></div>
 
@@ -640,6 +657,31 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
           <div class="sc-row"><label>Sales Q/Q %</label><input class="fi-sm sc-inp" id="sc-revqq" type="number" step="0.1" placeholder="e.g. 31.34"/><span class="sc-badge" id="scb-revqq"></span></div>
         </div>
 
+        <!-- EPS REVISIONS -->
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 EPS Revisions <span class="sc-wt" id="wt-epsrev"></span></div>
+          <div class="sc-row">
+            <label>FY1 Up Revisions %</label>
+            <input class="fi-sm sc-inp" id="sc-epsfup" type="number" step="0.1" placeholder="e.g. 100" oninput="calcEPSRevGrade()"/>
+            <span class="sc-badge" id="scb-epsfup"></span>
+          </div>
+          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 8px 0;padding-left:2px">% of analysts raising EPS estimates last 90 days</div>
+          <div class="sc-row">
+            <label>FY1 Down Revisions %</label>
+            <input class="fi-sm sc-inp" id="sc-epsfdn" type="number" step="0.1" placeholder="e.g. 0" oninput="calcEPSRevGrade()"/>
+            <span class="sc-badge" id="scb-epsfdn"></span>
+          </div>
+          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 8px 0;padding-left:2px">% of analysts cutting EPS estimates last 90 days</div>
+          <div class="sc-row">
+            <label>vs Sector Median (Up %)</label>
+            <input class="fi-sm sc-inp" id="sc-epssec" type="number" step="0.1" placeholder="e.g. 53.85" oninput="calcEPSRevGrade()"/>
+            <span class="sc-badge" id="scb-epssec"></span>
+          </div>
+          <div style="font-size:.62rem;color:var(--muted);margin:-6px 0 10px 0;padding-left:2px">Sector median up revision rate for comparison</div>
+          <div id="sc-epsrev-grade" style="display:none;margin-top:8px;padding:8px 12px;border-radius:8px;font-size:.8rem;font-weight:700;text-align:center"></div>
+          <div style="font-size:.6rem;color:var(--muted);margin-top:6px;text-align:center">Source: Seeking Alpha Revisions Grade</div>
+        </div>
+
         <!-- FORWARD GROWTH -->
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
           <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">🚀 Forward Growth <span class="sc-wt" id="wt-fwd"></span></div>
@@ -661,8 +703,11 @@ footer{text-align:center;padding:22px 16px;font-size:.63rem;color:var(--muted);b
         <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px">
           <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">📈 Profitability <span class="sc-wt" id="wt-prof"></span></div>
           <div class="sc-row"><label>Gross Margin %</label><input class="fi-sm sc-inp" id="sc-gm" type="number" step="0.1" placeholder="e.g. 63.90"/><span class="sc-badge" id="scb-gm"></span></div>
+          <div style="font-size:.6rem;color:var(--muted2);margin:-6px 0 7px 0" id="sc-gm-thresh"></div>
           <div class="sc-row"><label>Oper. Margin %</label><input class="fi-sm sc-inp" id="sc-om" type="number" step="0.1" placeholder="e.g. 13.40"/><span class="sc-badge" id="scb-om"></span></div>
+          <div style="font-size:.6rem;color:var(--muted2);margin:-6px 0 7px 0" id="sc-om-thresh"></div>
           <div class="sc-row"><label>ROE %</label><input class="fi-sm sc-inp" id="sc-roe" type="number" step="0.1" placeholder="e.g. 16.48"/><span class="sc-badge" id="scb-roe"></span></div>
+          <div style="font-size:.6rem;color:var(--muted2);margin:-6px 0 7px 0" id="sc-roe-thresh"></div>
           <div class="sc-row"><label>ROA %</label><input class="fi-sm sc-inp" id="sc-roa" type="number" step="0.1" placeholder="e.g. 9.88"/><span class="sc-badge" id="scb-roa"></span></div>
         </div>
 
@@ -2173,12 +2218,16 @@ const SC_METRICS = {
   'sc-rec':    {low:true,  ranges:[[1.5,10],[2,8],[2.5,6],[3,4],[3.5,2],[Infinity,0]]},
   'sc-up':     {low:false, ranges:[[5,2],[10,4],[20,7],[30,9],[Infinity,10]]},
   'sc-sr':     {low:true,  ranges:[[1,10],[2,8],[4,6],[6,4],[10,2],[Infinity,0]]},
+  // EPS Revisions (Seeking Alpha)
+  'sc-epsfup': {low:false, ranges:[[30,0],[50,3],[65,6],[75,8],[90,9],[Infinity,10]]},
+  'sc-epsfdn': {low:true,  ranges:[[10,10],[20,7],[30,4],[50,1],[Infinity,0]]},
 };
 
 const SC_CATS = {
   'Valuation':    ['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w'],
   'Hist. Growth': ['sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm'],
   'Momentum':     ['sc-epsty','sc-epsqq','sc-revqq'],
+  'EPS Rev':      ['sc-epsfup','sc-epsfdn'],  // sc-epssec handled as modifier in calcScore
   'Fwd Growth':   ['sc-epsny','sc-epsn5','sc-epsnq'],
   'Health':       ['sc-de','sc-ltde','sc-cr','sc-qr'],
   'Profitability':['sc-gm','sc-om','sc-roe','sc-roa'],
@@ -2310,24 +2359,32 @@ const SC_SECTORS = [
 ];
 
 // Weight templates — all must sum to 1.0
+// EPS Rev added at 5% across all profiles (other cats scaled by 0.95), except growth_tech uses user-specified 9%
+function _addEpsRev(w, epsRevWt){
+  const scale=(1-epsRevWt);
+  const out={'EPS Rev':epsRevWt};
+  for(const [k,v] of Object.entries(w)) out[k]=+(v*scale).toFixed(4);
+  return out;
+}
 const _W = {
-  growth_tech:    {'Valuation':.10,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.25,'Health':.10,'Profitability':.20,'Signals':.05},
-  hardware_tech:  {'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
-  media_growth:   {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},
-  telecom_w:      {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},
-  consumer_disc_w:{'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},
-  consumer_stap_w:{'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},
-  biotech_w:      {'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},
-  pharma_w:       {'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},
-  health_svc_w:   {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  banks_w:        {'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},
-  assetmgmt_w:    {'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},
-  energy_w:       {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  renewable_w:    {'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},
-  utilities_w:    {'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},
-  reits_w:        {'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},
-  industrials_w:  {'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
-  materials_w:    {'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},
+  // growth_tech uses exact user-specified weights
+  growth_tech:    {'Valuation':.09,'Hist. Growth':.18,'Momentum':.09,'EPS Rev':.09,'Fwd Growth':.23,'Health':.09,'Profitability':.18,'Signals':.05},
+  hardware_tech:  _addEpsRev({'Valuation':.15,'Hist. Growth':.20,'Momentum':.10,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},.05),
+  media_growth:   _addEpsRev({'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.20,'Health':.15,'Profitability':.15,'Signals':.05},.05),
+  telecom_w:      _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.20,'Profitability':.20,'Signals':.05},.05),
+  consumer_disc_w:_addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.15,'Health':.15,'Profitability':.15,'Signals':.05},.05),
+  consumer_stap_w:_addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.25,'Signals':.05},.05),
+  biotech_w:      _addEpsRev({'Valuation':.10,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.30,'Health':.20,'Profitability':.10,'Signals':.05},.05),
+  pharma_w:       _addEpsRev({'Valuation':.15,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.25,'Health':.20,'Profitability':.15,'Signals':.05},.05),
+  health_svc_w:   _addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},.05),
+  banks_w:        _addEpsRev({'Valuation':.20,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.20,'Signals':.05},.05),
+  assetmgmt_w:    _addEpsRev({'Valuation':.20,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.15,'Health':.15,'Profitability':.20,'Signals':.05},.05),
+  energy_w:       _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
+  renewable_w:    _addEpsRev({'Valuation':.15,'Hist. Growth':.15,'Momentum':.15,'Fwd Growth':.25,'Health':.15,'Profitability':.10,'Signals':.05},.05),
+  utilities_w:    _addEpsRev({'Valuation':.30,'Hist. Growth':.05,'Momentum':.10,'Fwd Growth':.05,'Health':.20,'Profitability':.25,'Signals':.05},.05),
+  reits_w:        _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.10,'Fwd Growth':.10,'Health':.25,'Profitability':.15,'Signals':.05},.05),
+  industrials_w:  _addEpsRev({'Valuation':.25,'Hist. Growth':.15,'Momentum':.10,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
+  materials_w:    _addEpsRev({'Valuation':.25,'Hist. Growth':.10,'Momentum':.15,'Fwd Growth':.10,'Health':.15,'Profitability':.20,'Signals':.05},.05),
 };
 const SC_WEIGHTS = {
   // Information Technology
@@ -2438,6 +2495,91 @@ function sectorDropdownKey(e){
   if(e.key==='Escape') closeSectorDropdown();
 }
 
+// ── Profitability sector thresholds ──────────────────────────────────────────
+// Each entry: {gm:[green_min,yellow_min], om:[green_min,yellow_min], roe:[green_min,yellow_min]}
+const PROF_SECTOR_THRESHOLDS = {
+  saas:      {gm:[60,40], om:[20,10], roe:[20,12], label:'SaaS'},
+  consumer:  {gm:[40,25], om:[15, 8], roe:[20,12], label:'Consumer/Retail'},
+  healthcare:{gm:[50,35], om:[15, 8], roe:[15, 8], label:'Healthcare'},
+  semi:      {gm:[50,35], om:[20,10], roe:[20,12], label:'Semiconductor'},
+  ems:       {gm:[10, 7], om:[ 5, 3], roe:[10, 5], label:'EMS/HW Assembly'},
+  energy:    {gm:[25,15], om:[15, 8], roe:[ 8, 4], label:'Energy/Utilities'},
+  ecommerce: {gm:[30,20], om:[10, 5], roe:[15, 8], label:'E-commerce'},
+  financial: {gm:[20,12], om:[15, 8], roe:[12, 6], label:'Financial Svcs'},
+  tech:      {gm:[40,20], om:[15, 8], roe:[15, 8], label:'Tech/Growth'},
+};
+
+function getProfThreshold(){
+  const sel=document.getElementById('sc-prof-sector');
+  const key=sel?sel.value:'tech';
+  return PROF_SECTOR_THRESHOLDS[key]||PROF_SECTOR_THRESHOLDS.tech;
+}
+
+// Score gm/om/roe using dynamic sector thresholds
+function computeProfScore(id){
+  const el=document.getElementById(id);
+  if(!el||el.value==='') return null;
+  const v=parseFloat(el.value);
+  if(isNaN(v)) return null;
+  const t=getProfThreshold();
+  const key=id.replace('sc-',''); // gm, om, roe
+  const [greenMin,yellowMin]=t[key]||[40,20];
+  if(v>=greenMin) return 10;
+  if(v>=yellowMin) return Math.round(5+(v-yellowMin)/(greenMin-yellowMin)*5);
+  if(v>0) return Math.round((v/yellowMin)*5);
+  return 0;
+}
+
+function updateProfThresholds(){
+  const t=getProfThreshold();
+  const lbl=t.label;
+  const gmEl=document.getElementById('sc-gm-thresh');
+  const omEl=document.getElementById('sc-om-thresh');
+  const roeEl=document.getElementById('sc-roe-thresh');
+  if(gmEl)  gmEl.textContent= `Threshold: ≥${t.gm[0]}% green · ≥${t.gm[1]}% yellow (${lbl})`;
+  if(omEl)  omEl.textContent= `Threshold: ≥${t.om[0]}% green · ≥${t.om[1]}% yellow (${lbl})`;
+  if(roeEl) roeEl.textContent=`Threshold: ≥${t.roe[0]}% green · ≥${t.roe[1]}% yellow (${lbl})`;
+}
+
+// ── EPS Revisions Grade (Seeking Alpha style) ─────────────────────────────────
+function calcEPSRevGrade(){
+  const upEl=document.getElementById('sc-epsfup');
+  const dnEl=document.getElementById('sc-epsfdn');
+  const secEl=document.getElementById('sc-epssec');
+  const gradeEl=document.getElementById('sc-epsrev-grade');
+  if(!gradeEl) return;
+  const upVal=upEl&&upEl.value!==''?parseFloat(upEl.value):null;
+  const dnVal=dnEl&&dnEl.value!==''?parseFloat(dnEl.value):null;
+  if(upVal==null&&dnVal==null){ gradeEl.style.display='none'; return; }
+
+  // Score 0–100 from the three signals
+  let score=0, parts=0;
+  if(upVal!=null){
+    score+=upVal>=75?100:upVal>=50?60:upVal>=30?30:0;
+    parts++;
+  }
+  if(dnVal!=null){
+    score+=dnVal<=10?100:dnVal<=20?70:dnVal<=30?40:0;
+    parts++;
+  }
+  const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
+  if(upVal!=null&&secVal!=null){
+    const diff=upVal-secVal;
+    score+=diff>15?100:diff>5?70:diff>-5?50:diff>-15?30:0;
+    parts++;
+  }
+  const avg=parts>0?score/parts:0;
+  const grade=avg>=90?'A+':avg>=75?'A':avg>=65?'B+':avg>=55?'B':avg>=45?'C':avg>=35?'D':'F';
+  const color=avg>=75?'var(--green)':avg>=55?'var(--amber)':'var(--red)';
+  const bg=avg>=75?'rgba(24,212,122,.1)':avg>=55?'rgba(245,158,11,.1)':'rgba(240,68,96,.1)';
+  const border=avg>=75?'rgba(24,212,122,.25)':avg>=55?'rgba(245,158,11,.25)':'rgba(240,68,96,.25)';
+  gradeEl.style.display='block';
+  gradeEl.style.background=bg;
+  gradeEl.style.border=`1px solid ${border}`;
+  gradeEl.style.color=color;
+  gradeEl.innerHTML=`SA Revisions Grade: <span style="font-size:1.1rem">${grade}</span> <span style="font-size:.7rem;font-weight:400;color:var(--muted)">(${Math.round(avg)}/100)</span>`;
+}
+
 function computeMetricScore(id){
   const m = SC_METRICS[id];
   const el = document.getElementById(id);
@@ -2454,10 +2596,10 @@ function badgeBg(s){ return s>=8?'rgba(24,212,122,.15)':s>=5?'rgba(245,158,11,.1
 function updateWeightHints(){
   const type = document.getElementById('sc-type').value;
   const w = SC_WEIGHTS[type];
-  const catIds = {'Valuation':'val','Hist. Growth':'hist','Momentum':'mom','Fwd Growth':'fwd','Health':'health','Profitability':'prof','Signals':'sig'};
+  const catIds = {'Valuation':'val','Hist. Growth':'hist','Momentum':'mom','EPS Rev':'epsrev','Fwd Growth':'fwd','Health':'health','Profitability':'prof','Signals':'sig'};
   for(const [cat,wid] of Object.entries(catIds)){
     const el=document.getElementById('wt-'+wid);
-    if(el) el.textContent='('+Math.round(w[cat]*100)+'%)';
+    if(el&&w[cat]!=null) el.textContent='('+Math.round(w[cat]*100)+'%)';
   }
 }
 
@@ -2469,7 +2611,8 @@ function calcScore(){
   for(const [cat,ids] of Object.entries(SC_CATS)){
     const scores=[];
     for(const id of ids){
-      const s=computeMetricScore(id);
+      // Use dynamic profitability scoring for gm/om/roe
+      const s=(id==='sc-gm'||id==='sc-om'||id==='sc-roe')?computeProfScore(id):computeMetricScore(id);
       const badgeId='scb-'+id.replace('sc-','');
       const badge=document.getElementById(badgeId);
       if(s!=null){
@@ -2479,11 +2622,27 @@ function calcScore(){
         if(badge){ badge.textContent=''; badge.style.background=''; }
       }
     }
+    // EPS Rev: apply vs-sector modifier on top of base score
+    if(cat==='EPS Rev'&&scores.length){
+      const upEl=document.getElementById('sc-epsfup');
+      const secEl=document.getElementById('sc-epssec');
+      const upVal=upEl&&upEl.value!==''?parseFloat(upEl.value):null;
+      const secVal=secEl&&secEl.value!==''?parseFloat(secEl.value):null;
+      const secBadge=document.getElementById('scb-epssec');
+      if(upVal!=null&&secVal!=null){
+        const diff=upVal-secVal;
+        const modifier=diff>15?10:diff>5?7:diff>-5?5:diff>-15?3:0; // vs-sector score
+        if(secBadge){ secBadge.textContent=diff>=0?'+'+diff.toFixed(1)+'%':diff.toFixed(1)+'%'; secBadge.style.background=diff>=0?'rgba(24,212,122,.15)':'rgba(240,68,96,.15)'; secBadge.style.color=diff>=0?'var(--green)':'var(--red)'; }
+        scores.push(modifier);
+      } else {
+        if(secBadge){ secBadge.textContent=''; secBadge.style.background=''; }
+      }
+    }
     if(scores.length){
       const avg=scores.reduce((a,b)=>a+b,0)/scores.length;
       catScores[cat]=Math.round(avg*10);
-      weightedTotal += catScores[cat]*weights[cat];
-      totalWeight   += weights[cat];
+      weightedTotal += catScores[cat]*(weights[cat]||0);
+      totalWeight   += (weights[cat]||0);
     } else {
       catScores[cat]=null;
     }
@@ -2541,6 +2700,9 @@ function clearScore(){
   document.getElementById('sc-ticker').value='';
   const ee=document.getElementById('sc-earnings'); if(ee) ee.value='';
   const tt=document.getElementById('sc-thesis'); if(tt) tt.value='';
+  const rg=document.getElementById('sc-epsrev-grade'); if(rg) rg.style.display='none';
+  const ps=document.getElementById('sc-prof-sector'); if(ps) ps.value='tech';
+  updateProfThresholds();
   window._lastScore=null;
   window._scConviction=0;
   renderConviction(0,'sc');
@@ -2554,6 +2716,7 @@ function saveLeaderboard(lb){ try{ localStorage.setItem('pf_leaderboard',JSON.st
 const SC_ALL_INPUTS=['sc-peg','sc-fpe','sc-pfcf','sc-ev','sc-pb','sc-52w',
   'sc-eps3','sc-eps5','sc-rev5','sc-epsttm','sc-revttm',
   'sc-epsty','sc-epsqq','sc-revqq',
+  'sc-epsfup','sc-epsfdn','sc-epssec',
   'sc-epsny','sc-epsn5','sc-epsnq',
   'sc-de','sc-ltde','sc-cr','sc-qr',
   'sc-gm','sc-om','sc-roe','sc-roa',
@@ -2579,11 +2742,12 @@ function saveToLeaderboard(btn){
     const earnings=earningsEl&&earningsEl.value?earningsEl.value:null;
     const thesis=(document.getElementById('sc-thesis')||{}).value||'';
     const conviction=window._scConviction||0;
+    const profSector=(document.getElementById('sc-prof-sector')||{}).value||'tech';
     // Build history array
     const existing=idx>=0?lb[idx]:{};
     const history=[...(existing.history||[]),{score:r.total,grade:r.grade,date:dateStr,ts:now.getTime()}];
     const prev=idx>=0?{prevScore:lb[idx].total,prevGrade:lb[idx].grade,prevDate:lb[idx].date,prevPrice:lb[idx].price}:{};
-    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,thesis,conviction,history,date:dateStr,ts:now.getTime(),inputs,...prev};
+    const entry={ticker:r.ticker,type:r.type,typeLbl:r.typeLbl,total:r.total,grade:r.grade,catScores:r.catScores||{},price,earnings,thesis,conviction,profSector,history,date:dateStr,ts:now.getTime(),inputs,...prev};
     if(idx>=0) lb[idx]=entry; else lb.push(entry);
     saveLeaderboard(lb);
     renderLeaderboard();
@@ -2643,7 +2807,7 @@ function renderLeaderboard(){
   empty.style.display='none'; tbl.style.display='';
   const sorted=[...lb].sort((a,b)=>b.total-a.total);
   const PP_CAT_SHORT=[['Rev Growth','RGr'],['Gross Econ','GEc'],['Path→Profit','P2P'],['Runway','Run'],['Valuation','Val'],['Signals','Sig']];
-  const SC_CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
+  const SC_CAT_SHORT=[['Valuation','Val'],['Hist. Growth','Grw'],['Momentum','Mom'],['EPS Rev','Rev'],['Fwd Growth','Fwd'],['Health','Hlt'],['Profitability','Prf'],['Signals','Sig']];
   tbody.innerHTML=sorted.map((e,i)=>{
     const color=e.total>=75?'var(--green)':e.total>=55?'var(--amber)':'var(--red)';
     const catList=e.scoreType==='preprofit'?PP_CAT_SHORT:SC_CAT_SHORT;
@@ -2738,7 +2902,10 @@ function loadLeaderboardEntry(ticker){
     });
     const eEl=document.getElementById('sc-earnings'); if(eEl) eEl.value=e.earnings||'';
     const thEl=document.getElementById('sc-thesis'); if(thEl) thEl.value=e.thesis||'';
+    const psEl=document.getElementById('sc-prof-sector'); if(psEl) psEl.value=e.profSector||'tech';
+    updateProfThresholds();
     calcUpside();
+    calcEPSRevGrade();
     calcScore();
     window._scConviction=e.conviction||0;
     renderConviction(window._scConviction,'sc');
@@ -2764,6 +2931,7 @@ setTimeout(()=>{
   const s=SC_SECTORS.find(x=>x.id===cur);
   if(s) document.getElementById('sc-type-search').value=s.label;
   updateWeightHints();
+  updateProfThresholds();
   renderLeaderboard();
 },100);
 
