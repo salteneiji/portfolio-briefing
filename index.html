@@ -1261,9 +1261,9 @@ function confirmTrim(){
 // ──────────────────────────────────────────────────────────────
 async function proxyFetch(url){
   const proxies = [
-    async u => { const r=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`); const d=await r.json(); return JSON.parse(d.contents); },
-    async u => { const r=await fetch(`https://corsproxy.io/?url=${encodeURIComponent(u)}`); return r.json(); },
-    async u => { const r=await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`); return r.json(); },
+    async u => { const r=await fetch(`https://corsproxy.io/?${encodeURIComponent(u)}`,{signal:AbortSignal.timeout(8000)}); return r.json(); },
+    async u => { const r=await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,{signal:AbortSignal.timeout(8000)}); const d=await r.json(); return JSON.parse(d.contents); },
+    async u => { const r=await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,{signal:AbortSignal.timeout(8000)}); return r.json(); },
   ];
   for(const fn of proxies){ try{ const d=await fn(url); if(d) return d; }catch(e){} }
   throw new Error('All proxies failed for: '+url);
